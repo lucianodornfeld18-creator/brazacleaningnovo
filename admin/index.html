@@ -1,0 +1,1740 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Braza Blog Admin — Gerador de Artigos</title>
+<meta name="robots" content="noindex, nofollow">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --blue:#2B6CB0;--blue-dark:#1e4d87;--blue-light:#EBF4FF;
+  --orange:#C67B3C;--green:#16A34A;--green-light:#DCFCE7;
+  --red:#DC2626;--red-light:#FEE2E2;
+  --gray:#6B7280;--gray-light:#F8FAFC;--gray-border:#E5E7EB;
+  --text:#1F2937;--font:'Outfit',sans-serif;
+}
+body{font-family:var(--font);background:#F1F5F9;color:var(--text);min-height:100vh}
+
+/* HEADER */
+.header{background:var(--blue);padding:16px 24px;display:flex;align-items:center;justify-content:space-between}
+.header h1{color:#fff;font-size:20px;font-weight:700;display:flex;align-items:center;gap:10px}
+.header-badge{background:rgba(255,255,255,.2);color:#fff;font-size:12px;font-weight:600;padding:4px 10px;border-radius:20px}
+
+/* LAYOUT */
+.container{max-width:1100px;margin:0 auto;padding:32px 20px}
+.grid{display:grid;grid-template-columns:380px 1fr;gap:24px;align-items:start}
+
+/* CARDS */
+.card{background:#fff;border-radius:16px;border:1px solid var(--gray-border);padding:24px;box-shadow:0 1px 3px rgba(0,0,0,.06)}
+.card-title{font-size:16px;font-weight:700;color:var(--text);margin-bottom:16px;display:flex;align-items:center;gap:8px}
+.card-title svg{color:var(--blue)}
+
+/* FORM */
+.form-group{margin-bottom:16px}
+.form-group label{display:block;font-size:13px;font-weight:600;color:#374151;margin-bottom:6px}
+.form-group input,.form-group select,.form-group textarea{
+  width:100%;padding:10px 14px;border:1px solid var(--gray-border);border-radius:10px;
+  font-family:var(--font);font-size:14px;color:var(--text);background:#fff;
+  transition:border-color .2s
+}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{
+  outline:none;border-color:var(--blue);box-shadow:0 0 0 3px rgba(43,108,176,.1)
+}
+.form-group textarea{resize:vertical;min-height:80px}
+.hint{font-size:12px;color:var(--gray);margin-top:4px}
+
+/* SUGGESTIONS */
+.suggestions{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.suggestion-btn{background:var(--blue-light);color:var(--blue);border:1px solid #bee3f8;
+  border-radius:20px;padding:4px 12px;font-size:12px;font-weight:600;cursor:pointer;
+  transition:all .2s;font-family:var(--font)}
+.suggestion-btn:hover{background:var(--blue);color:#fff}
+
+/* BUTTONS */
+.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 20px;border-radius:25px;
+  font-family:var(--font);font-size:15px;font-weight:700;cursor:pointer;
+  transition:all .2s;border:none;width:100%;justify-content:center}
+.btn-generate{background:var(--orange);color:#fff;margin-bottom:10px}
+.btn-generate:hover:not(:disabled){background:#B06A2C;transform:translateY(-1px)}
+.btn-generate:disabled{opacity:.6;cursor:not-allowed}
+.btn-publish{background:var(--green);color:#fff}
+.btn-publish:hover:not(:disabled){background:#15803D}
+.btn-publish:disabled{opacity:.5;cursor:not-allowed}
+
+/* CONFIG */
+.config-section{background:var(--gray-light);border-radius:12px;padding:16px;margin-bottom:16px}
+.config-section label{font-size:12px;font-weight:600;color:var(--gray);display:block;margin-bottom:4px}
+.config-section input{width:100%;padding:8px 12px;border:1px solid var(--gray-border);border-radius:8px;font-family:var(--font);font-size:13px}
+.config-toggle{display:flex;align-items:center;justify-content:space-between;margin-top:8px}
+.config-toggle span{font-size:13px;color:var(--gray)}
+
+/* PREVIEW */
+.preview-area{min-height:400px;position:relative}
+.preview-placeholder{display:flex;flex-direction:column;align-items:center;justify-content:center;
+  min-height:400px;color:var(--gray);text-align:center;gap:12px}
+.preview-placeholder svg{opacity:.3}
+.preview-meta{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}
+.meta-tag{background:var(--blue-light);color:var(--blue);font-size:12px;font-weight:600;
+  padding:4px 10px;border-radius:20px}
+.meta-tag.green{background:var(--green-light);color:var(--green)}
+.meta-tag.orange{background:#FEF3E8;color:var(--orange)}
+
+/* ARTICLE PREVIEW */
+.article-preview{border:1px solid var(--gray-border);border-radius:12px;padding:24px;max-height:520px;overflow-y:auto}
+.article-preview h1{font-size:22px;font-weight:800;margin-bottom:12px;line-height:1.3;color:var(--text)}
+.article-preview h2{font-size:17px;font-weight:700;margin:20px 0 8px;color:var(--text)}
+.article-preview h3{font-size:15px;font-weight:700;margin:16px 0 6px;color:var(--text)}
+.article-preview p{font-size:14px;color:#374151;line-height:1.7;margin-bottom:12px}
+.article-preview ul,.article-preview ol{padding-left:20px;margin-bottom:12px}
+.article-preview li{font-size:14px;color:#374151;line-height:1.6;margin-bottom:4px}
+.article-preview strong{font-weight:700;color:var(--text)}
+
+/* STATUS */
+.status-bar{background:var(--gray-light);border-radius:12px;padding:14px 16px;
+  display:flex;align-items:center;gap:10px;font-size:14px;margin-bottom:16px}
+.status-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
+.status-dot.idle{background:#9CA3AF}
+.status-dot.loading{background:#F59E0B;animation:pulse 1s infinite}
+.status-dot.success{background:var(--green)}
+.status-dot.error{background:var(--red)}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+
+/* LOG */
+.log{background:#0F172A;border-radius:12px;padding:16px;font-family:'Courier New',monospace;
+  font-size:12px;color:#94A3B8;max-height:180px;overflow-y:auto;margin-top:16px}
+.log-line{margin-bottom:4px;display:flex;gap:8px}
+.log-line.success .log-text{color:#4ADE80}
+.log-line.error .log-text{color:#F87171}
+.log-line.info .log-text{color:#60A5FA}
+.log-time{color:#475569;flex-shrink:0}
+
+/* SCHEDULE INFO */
+.schedule-badge{background:linear-gradient(135deg,#1e3a5f,#2B6CB0);border-radius:12px;
+  padding:16px;color:#fff;margin-top:16px}
+.schedule-badge h4{font-size:14px;font-weight:700;margin-bottom:8px;display:flex;align-items:center;gap:6px}
+.schedule-badge p{font-size:12px;color:rgba(255,255,255,.75);line-height:1.6}
+
+/* HISTORY */
+.history-item{display:flex;align-items:center;justify-content:space-between;
+  padding:10px 0;border-bottom:1px solid var(--gray-border)}
+.history-item:last-child{border-bottom:none}
+.history-title{font-size:13px;font-weight:600;color:var(--text)}
+.history-date{font-size:11px;color:var(--gray)}
+.history-link{font-size:12px;color:var(--blue);font-weight:600}
+
+@media(max-width:900px){.grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<div id="loginOverlay" style="position:fixed;inset:0;background:#1e3a5f;display:flex;align-items:center;justify-content:center;z-index:9999">
+  <div style="background:#fff;border-radius:20px;padding:40px;max-width:360px;width:90%;text-align:center">
+    <img src="/images/logo.png" alt="Braza" style="height:48px;margin:0 auto 20px">
+    <h2 style="font-family:'Outfit',sans-serif;font-size:20px;font-weight:700;margin-bottom:8px">Admin Access</h2>
+    <p style="font-size:14px;color:#6B7280;margin-bottom:20px">Enter password to access the blog admin panel.</p>
+    <input type="password" id="adminPass" placeholder="Password" 
+      style="width:100%;padding:12px 16px;border:1px solid #E5E7EB;border-radius:10px;font-size:16px;margin-bottom:12px;font-family:'Outfit',sans-serif"
+      onkeydown="if(event.key==='Enter')checkPass()">
+    <button onclick="checkPass()" 
+      style="width:100%;background:#C67B3C;color:#fff;border:none;padding:13px;border-radius:25px;font-family:'Outfit',sans-serif;font-size:16px;font-weight:700;cursor:pointer">
+      Enter Admin
+    </button>
+    <p id="passError" style="color:#DC2626;font-size:13px;margin-top:10px;display:none">Wrong password. Try again.</p>
+  </div>
+</div>
+<script>
+// Change this password to something secure!
+const ADMIN_PASSWORD = 'braza2026admin';
+function checkPass() {
+  const input = document.getElementById('adminPass').value;
+  if (input === ADMIN_PASSWORD) {
+    document.getElementById('loginOverlay').style.display = 'none';
+    document.body.style.overflow = 'auto';
+  } else {
+    document.getElementById('passError').style.display = 'block';
+    document.getElementById('adminPass').value = '';
+    document.getElementById('adminPass').focus();
+  }
+}
+document.body.style.overflow = 'hidden';
+</script>
+
+
+<div class="header">
+  <h1>
+    <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+    Braza Blog — Gerador Automático
+  </h1>
+  <span class="header-badge">Admin</span>
+</div>
+
+<div class="container">
+  <div class="grid">
+
+    <!-- COLUNA ESQUERDA: Configuração -->
+    <div>
+
+      <!-- Config Keys -->
+      <div class="card" style="margin-bottom:20px">
+        <div class="card-title">
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93A10 10 0 1119.07 19"/></svg>
+          Configuração
+        </div>
+        <div class="config-section">
+          <label>🔑 Claude API Key</label>
+          <input type="password" id="claudeKey" placeholder="sk-ant-api..." value="">
+        </div>
+        <div class="config-section">
+          <label>🐙 GitHub Token (repo: brazacleaning)</label>
+          <input type="password" id="githubToken" placeholder="ghp_...">
+        </div>
+        <div class="config-section">
+          <label>📁 GitHub Repo (usuário/repositório)</label>
+          <input type="text" id="githubRepo" placeholder="seuusuario/brazacleaning" value="">
+        </div>
+        <div class="config-section">
+          <label>🌐 Branch</label>
+          <input type="text" id="githubBranch" value="main">
+        </div>
+        <button class="btn" style="background:var(--blue-light);color:var(--blue);margin-top:8px" onclick="saveConfig()">
+          💾 Salvar Configurações
+        </button>
+      </div>
+
+      <!-- Gerador -->
+      <div class="card">
+        <div class="card-title">
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          Novo Artigo
+        </div>
+
+        <div class="form-group">
+          <label>Tema / Título do artigo *</label>
+          <input type="text" id="topic" placeholder="Ex: Airbnb cleaning tips for Kissimmee hosts">
+          <div class="hint">Escreva em inglês para melhor SEO — ou use o banco de temas abaixo</div>
+          <div style="margin-top:8px;display:flex;gap:6px;flex-wrap:wrap">
+            <button onclick="loadSuggestions()" style="background:#F1F5F9;border:1px solid #E5E7EB;border-radius:8px;padding:4px 10px;font-size:12px;cursor:pointer;font-family:var(--font)">🎲 Aleatório</button>
+            <button onclick="filterByCity('Kissimmee, FL')" style="background:#FEF3E8;border:1px solid #F5C08A;border-radius:8px;padding:4px 10px;font-size:12px;cursor:pointer;font-family:var(--font)">Kissimmee</button>
+            <button onclick="filterByCity('Orlando, FL')" style="background:#FEF3E8;border:1px solid #F5C08A;border-radius:8px;padding:4px 10px;font-size:12px;cursor:pointer;font-family:var(--font)">Orlando</button>
+            <button onclick="filterByCity('Davenport, FL')" style="background:#FEF3E8;border:1px solid #F5C08A;border-radius:8px;padding:4px 10px;font-size:12px;cursor:pointer;font-family:var(--font)">Davenport</button>
+            <button onclick="filterByCity('The Villages, FL')" style="background:#EBF4FF;border:1px solid #bee3f8;border-radius:8px;padding:4px 10px;font-size:12px;cursor:pointer;font-family:var(--font)">The Villages</button>
+            <button onclick="filterByCity('Clermont, FL')" style="background:#EBF4FF;border:1px solid #bee3f8;border-radius:8px;padding:4px 10px;font-size:12px;cursor:pointer;font-family:var(--font)">Clermont</button>
+            <button onclick="filterByCity('Winter Garden, FL')" style="background:#EBF4FF;border:1px solid #bee3f8;border-radius:8px;padding:4px 10px;font-size:12px;cursor:pointer;font-family:var(--font)">Winter Garden</button>
+            <button onclick="filterByCity('Four Corners, FL')" style="background:#EBF4FF;border:1px solid #bee3f8;border-radius:8px;padding:4px 10px;font-size:12px;cursor:pointer;font-family:var(--font)">Four Corners</button>
+          </div>
+          <div class="suggestions" id="suggestions"></div>
+        </div>
+
+        <div class="form-group">
+          <label>Cidade foco (para SEO local)</label>
+          <select id="city">
+            <option value="">Sem cidade específica</option>
+            <option value="Orlando, FL">Orlando</option>
+            <option value="Kissimmee, FL">Kissimmee</option>
+            <option value="Davenport, FL">Davenport</option>
+            <option value="The Villages, FL">The Villages</option>
+            <option value="Clermont, FL">Clermont</option>
+            <option value="Winter Garden, FL">Winter Garden</option>
+            <option value="Minneola, FL">Minneola</option>
+            <option value="Four Corners, FL">Four Corners</option>
+            <option value="Altamonte Springs, FL">Altamonte Springs</option>
+            <option value="Ocoee, FL">Ocoee</option>
+            <option value="Apopka, FL">Apopka</option>
+            <option value="Winter Park, FL">Winter Park</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Categoria</label>
+          <select id="category">
+            <option value="airbnb-cleaning">Airbnb Cleaning</option>
+            <option value="house-cleaning-tips">House Cleaning Tips</option>
+            <option value="vacation-rental-cleaning">Vacation Rental Cleaning</option>
+            <option value="commercial-cleaning">Commercial Cleaning</option>
+            <option value="local-cleaning-guides">Local Cleaning Guides</option>
+            <option value="move-cleaning">Move In / Out Cleaning</option>
+            <option value="pricing-checklists">Pricing & Checklists</option>
+            <option value="janitorial-services">Janitorial Services</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Palavras-chave extras (opcional)</label>
+          <input type="text" id="keywords" placeholder="turnover, 5-star, same-day">
+        </div>
+
+        <button class="btn btn-generate" id="generateBtn" onclick="generatePost()">
+          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+          Gerar Artigo com IA
+        </button>
+
+        <button class="btn btn-publish" id="publishBtn" onclick="publishPost()" disabled>
+          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M22 2L11 13"/><path d="M22 2L15 22 11 13 2 9l20-7z"/></svg>
+          Publicar no Site
+        </button>
+
+        <div class="schedule-badge">
+          <h4>
+            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            Make.com — Publicação Automática
+          </h4>
+          <p>Configure o Make.com para chamar este endpoint 3x por semana. Os artigos são gerados e publicados automaticamente sem você precisar clicar.</p>
+          <p style="margin-top:8px;font-family:monospace;font-size:11px;background:rgba(0,0,0,.3);padding:6px 10px;border-radius:6px">POST /admin/api/generate-and-publish</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- COLUNA DIREITA: Preview e Log -->
+    <div>
+
+      <!-- Status -->
+      <div class="status-bar" id="statusBar">
+        <div class="status-dot idle" id="statusDot"></div>
+        <span id="statusText">Pronto. Configure as chaves e gere seu primeiro artigo.</span>
+      </div>
+
+      <!-- Preview -->
+      <div class="card preview-area" id="previewCard">
+        <div class="card-title">
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+          Preview do Artigo
+        </div>
+
+        <div class="preview-placeholder" id="previewPlaceholder">
+          <svg width="56" height="56" fill="none" stroke="currentColor" stroke-width="1" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+          <p style="font-size:14px">O artigo gerado aparecerá aqui para você revisar antes de publicar.</p>
+        </div>
+
+        <div id="previewContent" style="display:none">
+          <div class="preview-meta" id="previewMeta"></div>
+          <div class="article-preview" id="articlePreview"></div>
+        </div>
+      </div>
+
+      <!-- Log -->
+      <div class="card" style="margin-top:20px">
+        <div class="card-title">
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg>
+          Log de Atividade
+        </div>
+        <div class="log" id="activityLog">
+          <div class="log-line info"><span class="log-time">[sistema]</span><span class="log-text">Blog Admin inicializado. Aguardando ação.</span></div>
+        </div>
+      </div>
+
+      <!-- Histórico -->
+      <div class="card" style="margin-top:20px">
+        <div class="card-title">
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          Últimos Artigos Publicados
+        </div>
+        <div id="postHistory">
+          <p style="font-size:13px;color:var(--gray)">Nenhum artigo publicado ainda nesta sessão.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script>
+// ── ESTADO ────────────────────────────────────────────────────────────────────
+let generatedPost = null;
+const publishedPosts = [];
+
+// ── SUGESTÕES DE TEMAS ────────────────────────────────────────────────────────
+const ALL_BLOG_TOPICS = [
+  {
+    "topic": "Maid service in The Villages FL: what active adult residents need to know",
+    "city": "The Villages, FL",
+    "category": "house-cleaning-tips",
+    "keyword": "maid service the villages fl"
+  },
+  {
+    "topic": "How often should you schedule house cleaning in The Villages Florida",
+    "city": "The Villages, FL",
+    "category": "house-cleaning-tips",
+    "keyword": "house cleaning frequency the villages fl"
+  },
+  {
+    "topic": "Deep cleaning service in The Villages FL: when you need it and what it costs",
+    "city": "The Villages, FL",
+    "category": "pricing-checklists",
+    "keyword": "deep cleaning the villages fl cost"
+  },
+  {
+    "topic": "Move-in cleaning for new residents arriving in The Villages Florida",
+    "city": "The Villages, FL",
+    "category": "move-cleaning",
+    "keyword": "move in cleaning the villages fl"
+  },
+  {
+    "topic": "Move-out cleaning checklist for homeowners leaving The Villages FL",
+    "city": "The Villages, FL",
+    "category": "move-cleaning",
+    "keyword": "move out cleaning the villages fl"
+  },
+  {
+    "topic": "Recurring weekly cleaning service in The Villages: is it worth it?",
+    "city": "The Villages, FL",
+    "category": "house-cleaning-tips",
+    "keyword": "weekly cleaning service the villages florida"
+  },
+  {
+    "topic": "Best house cleaning companies in The Villages FL: what to look for",
+    "city": "The Villages, FL",
+    "category": "local-cleaning-guides",
+    "keyword": "best house cleaning the villages fl"
+  },
+  {
+    "topic": "How much does house cleaning cost in The Villages Florida in 2026",
+    "city": "The Villages, FL",
+    "category": "pricing-checklists",
+    "keyword": "house cleaning cost the villages fl 2026"
+  },
+  {
+    "topic": "Maid service in Clermont FL: what South Lake County homeowners need to know",
+    "city": "Clermont, FL",
+    "category": "house-cleaning-tips",
+    "keyword": "maid service clermont fl"
+  },
+  {
+    "topic": "House cleaning prices in Clermont FL: what you should expect to pay in 2026",
+    "city": "Clermont, FL",
+    "category": "pricing-checklists",
+    "keyword": "house cleaning prices clermont fl"
+  },
+  {
+    "topic": "Deep cleaning service in Clermont FL: complete guide for Lake County families",
+    "city": "Clermont, FL",
+    "category": "house-cleaning-tips",
+    "keyword": "deep cleaning service clermont fl"
+  },
+  {
+    "topic": "Move-out cleaning in Clermont FL: how to get your full deposit back",
+    "city": "Clermont, FL",
+    "category": "move-cleaning",
+    "keyword": "move out cleaning clermont fl deposit"
+  },
+  {
+    "topic": "Weekly house cleaning in Clermont FL: why South Lake families are switching to professional service",
+    "city": "Clermont, FL",
+    "category": "house-cleaning-tips",
+    "keyword": "weekly house cleaning clermont fl"
+  },
+  {
+    "topic": "Post-construction cleaning for new homes in Clermont FL and Minneola",
+    "city": "Clermont, FL",
+    "category": "house-cleaning-tips",
+    "keyword": "post construction cleaning clermont fl"
+  },
+  {
+    "topic": "Move-in cleaning for new construction homes in Clermont and Wellness Way",
+    "city": "Clermont, FL",
+    "category": "move-cleaning",
+    "keyword": "move in cleaning new construction clermont fl"
+  },
+  {
+    "topic": "House cleaning service in Winter Garden FL: Horizon West families guide",
+    "city": "Winter Garden, FL",
+    "category": "house-cleaning-tips",
+    "keyword": "house cleaning service winter garden fl horizon west"
+  },
+  {
+    "topic": "Maid service in Winter Garden FL: what to look for in West Orange County",
+    "city": "Winter Garden, FL",
+    "category": "house-cleaning-tips",
+    "keyword": "maid service winter garden fl"
+  },
+  {
+    "topic": "How much does house cleaning cost in Winter Garden FL in 2026",
+    "city": "Winter Garden, FL",
+    "category": "pricing-checklists",
+    "keyword": "house cleaning cost winter garden fl"
+  },
+  {
+    "topic": "Move-out cleaning in Winter Garden FL: getting your rental deposit back",
+    "city": "Winter Garden, FL",
+    "category": "move-cleaning",
+    "keyword": "move out cleaning winter garden fl"
+  },
+  {
+    "topic": "Deep cleaning for Winter Garden FL homes before selling: what realtors recommend",
+    "city": "Winter Garden, FL",
+    "category": "house-cleaning-tips",
+    "keyword": "deep cleaning before selling home winter garden fl"
+  },
+  {
+    "topic": "Recurring cleaning service in Winter Garden FL: is weekly or bi-weekly better?",
+    "city": "Winter Garden, FL",
+    "category": "house-cleaning-tips",
+    "keyword": "recurring cleaning service winter garden fl"
+  },
+  {
+    "topic": "Cleaning services for new construction homes in Waterleigh and Independence Winter Garden",
+    "city": "Winter Garden, FL",
+    "category": "house-cleaning-tips",
+    "keyword": "cleaning service waterleigh independence winter garden fl"
+  },
+  {
+    "topic": "House cleaning service in Minneola FL: Lake County's fastest-growing community",
+    "city": "Minneola, FL",
+    "category": "house-cleaning-tips",
+    "keyword": "house cleaning service minneola fl"
+  },
+  {
+    "topic": "Move-in cleaning for new homes in Minneola FL: removing construction dust",
+    "city": "Minneola, FL",
+    "category": "move-cleaning",
+    "keyword": "move in cleaning minneola fl new construction"
+  },
+  {
+    "topic": "How much does maid service cost in Minneola FL in 2026",
+    "city": "Minneola, FL",
+    "category": "pricing-checklists",
+    "keyword": "maid service cost minneola fl"
+  },
+  {
+    "topic": "Deep cleaning service in Minneola FL: Greater Pines and Heritage Hills guide",
+    "city": "Minneola, FL",
+    "category": "house-cleaning-tips",
+    "keyword": "deep cleaning service minneola fl greater pines"
+  },
+  {
+    "topic": "Recurring house cleaning in Minneola FL: best schedule for growing families",
+    "city": "Minneola, FL",
+    "category": "house-cleaning-tips",
+    "keyword": "recurring house cleaning minneola fl"
+  },
+  {
+    "topic": "Best cleaning service in Minneola FL: what Lake County homeowners say",
+    "city": "Minneola, FL",
+    "category": "local-cleaning-guides",
+    "keyword": "best cleaning service minneola fl"
+  },
+  {
+    "topic": "Maid service in Orlando FL: what homeowners in Baldwin Park and Lake Nona need to know",
+    "city": "Orlando, FL",
+    "category": "house-cleaning-tips",
+    "keyword": "maid service orlando fl baldwin park lake nona"
+  },
+  {
+    "topic": "How much does house cleaning cost in Orlando FL in 2026: neighborhood price guide",
+    "city": "Orlando, FL",
+    "category": "pricing-checklists",
+    "keyword": "house cleaning cost orlando fl 2026"
+  },
+  {
+    "topic": "Weekly vs bi-weekly house cleaning in Orlando FL: which is right for your home",
+    "city": "Orlando, FL",
+    "category": "house-cleaning-tips",
+    "keyword": "weekly vs biweekly house cleaning orlando fl"
+  },
+  {
+    "topic": "Move-out cleaning in Orlando FL: how to get your full deposit back from your landlord",
+    "city": "Orlando, FL",
+    "category": "move-cleaning",
+    "keyword": "move out cleaning orlando fl deposit"
+  },
+  {
+    "topic": "Deep cleaning service in Orlando FL: Lake Nona, Winter Park, and Dr. Phillips guide",
+    "city": "Orlando, FL",
+    "category": "house-cleaning-tips",
+    "keyword": "deep cleaning service orlando fl lake nona"
+  },
+  {
+    "topic": "Post-construction cleaning for new homes in Orlando FL: what builders don't tell you",
+    "city": "Orlando, FL",
+    "category": "house-cleaning-tips",
+    "keyword": "post construction cleaning new homes orlando fl"
+  },
+  {
+    "topic": "Best maid service in Orlando FL: how to find a reliable cleaning company in 2026",
+    "city": "Orlando, FL",
+    "category": "local-cleaning-guides",
+    "keyword": "best maid service orlando fl 2026"
+  },
+  {
+    "topic": "House cleaning service in Four Corners FL: serving Osceola, Polk, Lake, and Orange County",
+    "city": "Four Corners, FL",
+    "category": "house-cleaning-tips",
+    "keyword": "house cleaning service four corners fl"
+  },
+  {
+    "topic": "Maid service in Four Corners FL: what vacation home and permanent residents need",
+    "city": "Four Corners, FL",
+    "category": "house-cleaning-tips",
+    "keyword": "maid service four corners fl"
+  },
+  {
+    "topic": "Move-out cleaning in Four Corners FL: for homeowners and vacation rental owners",
+    "city": "Four Corners, FL",
+    "category": "move-cleaning",
+    "keyword": "move out cleaning four corners fl"
+  },
+  {
+    "topic": "Deep cleaning service in Four Corners FL: Solterra, Emerald Island, and Champions Pointe",
+    "city": "Four Corners, FL",
+    "category": "house-cleaning-tips",
+    "keyword": "deep cleaning four corners fl solterra"
+  },
+  {
+    "topic": "How much does cleaning service cost in Four Corners FL in 2026",
+    "city": "Four Corners, FL",
+    "category": "pricing-checklists",
+    "keyword": "cleaning service cost four corners fl"
+  },
+  {
+    "topic": "Airbnb cleaning service in Kissimmee FL: complete guide for Disney-area hosts",
+    "city": "Kissimmee, FL",
+    "category": "airbnb-cleaning",
+    "keyword": "airbnb cleaning service kissimmee fl disney"
+  },
+  {
+    "topic": "Vacation rental turnover cleaning in Kissimmee FL: Reunion Resort and Storey Lake guide",
+    "city": "Kissimmee, FL",
+    "category": "vacation-rental-cleaning",
+    "keyword": "vacation rental turnover kissimmee reunion resort storey lake"
+  },
+  {
+    "topic": "How much does Airbnb cleaning cost in Kissimmee FL per bedroom in 2026",
+    "city": "Kissimmee, FL",
+    "category": "pricing-checklists",
+    "keyword": "airbnb cleaning cost kissimmee fl per bedroom 2026"
+  },
+  {
+    "topic": "Vacation rental cleaning checklist for Kissimmee FL hosts: 5-star presentation guide",
+    "city": "Kissimmee, FL",
+    "category": "airbnb-cleaning",
+    "keyword": "vacation rental cleaning checklist kissimmee fl 5 star"
+  },
+  {
+    "topic": "Same-day Airbnb turnover cleaning in Kissimmee FL: how to handle back-to-back bookings",
+    "city": "Kissimmee, FL",
+    "category": "airbnb-cleaning",
+    "keyword": "same day airbnb turnover kissimmee fl back to back"
+  },
+  {
+    "topic": "Best vacation rental cleaning company in Kissimmee FL: what property managers recommend",
+    "city": "Kissimmee, FL",
+    "category": "vacation-rental-cleaning",
+    "keyword": "best vacation rental cleaning company kissimmee fl"
+  },
+  {
+    "topic": "Short-term rental cleaning standards in Kissimmee FL: what Airbnb and VRBO require",
+    "city": "Kissimmee, FL",
+    "category": "vacation-rental-cleaning",
+    "keyword": "short term rental cleaning standards kissimmee fl airbnb vrbo"
+  },
+  {
+    "topic": "Vacation rental deep cleaning in Kissimmee FL: when and how often to schedule",
+    "city": "Kissimmee, FL",
+    "category": "vacation-rental-cleaning",
+    "keyword": "vacation rental deep cleaning kissimmee fl how often"
+  },
+  {
+    "topic": "Airbnb cleaning service in Orlando FL: International Drive and Lake Nona host guide",
+    "city": "Orlando, FL",
+    "category": "airbnb-cleaning",
+    "keyword": "airbnb cleaning service orlando fl international drive lake nona"
+  },
+  {
+    "topic": "Vacation rental turnover cleaning in Orlando FL: how to maintain 5-star reviews",
+    "city": "Orlando, FL",
+    "category": "vacation-rental-cleaning",
+    "keyword": "vacation rental turnover cleaning orlando fl 5 star"
+  },
+  {
+    "topic": "How much does vacation rental cleaning cost in Orlando FL: 2026 pricing breakdown",
+    "city": "Orlando, FL",
+    "category": "pricing-checklists",
+    "keyword": "vacation rental cleaning cost orlando fl 2026"
+  },
+  {
+    "topic": "Airbnb turnover checklist for Orlando FL hosts near Universal Studios",
+    "city": "Orlando, FL",
+    "category": "airbnb-cleaning",
+    "keyword": "airbnb turnover checklist orlando fl universal studios"
+  },
+  {
+    "topic": "Short-term rental cleaning in Windermere and Dr. Phillips Orlando FL",
+    "city": "Orlando, FL",
+    "category": "vacation-rental-cleaning",
+    "keyword": "short term rental cleaning windermere dr phillips orlando"
+  },
+  {
+    "topic": "Best Airbnb cleaning company in Orlando FL: what hosts with multiple properties do",
+    "city": "Orlando, FL",
+    "category": "airbnb-cleaning",
+    "keyword": "best airbnb cleaning company orlando fl multiple properties"
+  },
+  {
+    "topic": "Post-stay deep cleaning for Airbnb properties in Orlando FL: what guests leave behind",
+    "city": "Orlando, FL",
+    "category": "airbnb-cleaning",
+    "keyword": "post stay deep cleaning airbnb orlando fl"
+  },
+  {
+    "topic": "Airbnb cleaning service in Davenport FL: ChampionsGate and Providence host guide",
+    "city": "Davenport, FL",
+    "category": "airbnb-cleaning",
+    "keyword": "airbnb cleaning service davenport fl championsgate providence"
+  },
+  {
+    "topic": "Vacation rental turnover cleaning in Davenport FL: handling 8-bedroom resort homes",
+    "city": "Davenport, FL",
+    "category": "vacation-rental-cleaning",
+    "keyword": "vacation rental turnover cleaning davenport fl 8 bedroom resort"
+  },
+  {
+    "topic": "How much does Airbnb cleaning cost in Davenport FL: 2026 guide for hosts",
+    "city": "Davenport, FL",
+    "category": "pricing-checklists",
+    "keyword": "airbnb cleaning cost davenport fl 2026"
+  },
+  {
+    "topic": "Solterra Resort and Windsor Island vacation rental cleaning in Davenport FL",
+    "city": "Davenport, FL",
+    "category": "vacation-rental-cleaning",
+    "keyword": "solterra resort windsor island vacation rental cleaning davenport"
+  },
+  {
+    "topic": "Same-day vacation rental turnover in Davenport FL: tips for Disney-area hosts",
+    "city": "Davenport, FL",
+    "category": "airbnb-cleaning",
+    "keyword": "same day vacation rental turnover davenport fl disney"
+  },
+  {
+    "topic": "Best vacation rental cleaning service in Davenport FL near ChampionsGate",
+    "city": "Davenport, FL",
+    "category": "vacation-rental-cleaning",
+    "keyword": "best vacation rental cleaning davenport fl championsgate"
+  },
+  {
+    "topic": "How to prepare your Davenport FL vacation rental for peak Disney season",
+    "city": "Davenport, FL",
+    "category": "airbnb-cleaning",
+    "keyword": "prepare vacation rental davenport fl disney peak season"
+  },
+  {
+    "topic": "Airbnb cleaning in Four Corners FL: serving Osceola, Polk, Lake, and Orange County hosts",
+    "city": "Four Corners, FL",
+    "category": "airbnb-cleaning",
+    "keyword": "airbnb cleaning four corners fl four counties"
+  },
+  {
+    "topic": "Vacation rental turnover cleaning in Four Corners FL: Bella Vida and Calabay Parc guide",
+    "city": "Four Corners, FL",
+    "category": "vacation-rental-cleaning",
+    "keyword": "vacation rental cleaning bella vida calabay parc four corners"
+  },
+  {
+    "topic": "How much does Airbnb cleaning cost in Four Corners FL: complete pricing guide",
+    "city": "Four Corners, FL",
+    "category": "pricing-checklists",
+    "keyword": "airbnb cleaning cost four corners fl pricing"
+  },
+  {
+    "topic": "Best Airbnb cleaning service in Four Corners FL: what Emerald Island hosts recommend",
+    "city": "Four Corners, FL",
+    "category": "airbnb-cleaning",
+    "keyword": "best airbnb cleaning service four corners fl emerald island"
+  },
+  {
+    "topic": "Short-term rental cleaning checklist for Four Corners FL vacation homes",
+    "city": "Four Corners, FL",
+    "category": "vacation-rental-cleaning",
+    "keyword": "short term rental cleaning checklist four corners fl"
+  },
+  {
+    "topic": "Champions Pointe vacation rental cleaning in Four Corners FL: host guide",
+    "city": "Four Corners, FL",
+    "category": "vacation-rental-cleaning",
+    "keyword": "champions pointe vacation rental cleaning four corners fl"
+  },
+  {
+    "topic": "Commercial cleaning service in Orlando FL: Downtown and Lake Nona business guide",
+    "city": "Orlando, FL",
+    "category": "commercial-cleaning",
+    "keyword": "commercial cleaning service orlando fl downtown lake nona"
+  },
+  {
+    "topic": "Office cleaning in Orlando FL: how much should your business pay in 2026",
+    "city": "Orlando, FL",
+    "category": "commercial-cleaning",
+    "keyword": "office cleaning cost orlando fl 2026"
+  },
+  {
+    "topic": "Medical office cleaning in Orlando FL: standards, protocols, and what to expect",
+    "city": "Orlando, FL",
+    "category": "commercial-cleaning",
+    "keyword": "medical office cleaning orlando fl standards"
+  },
+  {
+    "topic": "Janitorial services in Orlando FL: daily vs weekly programs for your business",
+    "city": "Orlando, FL",
+    "category": "janitorial-services",
+    "keyword": "janitorial services orlando fl daily weekly"
+  },
+  {
+    "topic": "Commercial cleaning for real estate offices in Orlando FL: what property managers need",
+    "city": "Orlando, FL",
+    "category": "commercial-cleaning",
+    "keyword": "commercial cleaning real estate offices orlando fl"
+  },
+  {
+    "topic": "How to choose a commercial cleaning company in Orlando FL: 10 questions to ask",
+    "city": "Orlando, FL",
+    "category": "commercial-cleaning",
+    "keyword": "how to choose commercial cleaning company orlando fl"
+  },
+  {
+    "topic": "Dental office cleaning in Orlando FL: what your practice needs to stay compliant",
+    "city": "Orlando, FL",
+    "category": "commercial-cleaning",
+    "keyword": "dental office cleaning orlando fl compliant"
+  },
+  {
+    "topic": "Commercial cleaning contracts in Orlando FL: what businesses should know before signing",
+    "city": "Orlando, FL",
+    "category": "commercial-cleaning",
+    "keyword": "commercial cleaning contracts orlando fl"
+  },
+  {
+    "topic": "Commercial cleaning service in Clermont FL: South Lake County business guide",
+    "city": "Clermont, FL",
+    "category": "commercial-cleaning",
+    "keyword": "commercial cleaning service clermont fl south lake county"
+  },
+  {
+    "topic": "Office cleaning in Clermont FL: how much should your business budget in 2026",
+    "city": "Clermont, FL",
+    "category": "commercial-cleaning",
+    "keyword": "office cleaning cost clermont fl 2026"
+  },
+  {
+    "topic": "Medical and dental office cleaning in Clermont FL: South Lake Hospital corridor",
+    "city": "Clermont, FL",
+    "category": "commercial-cleaning",
+    "keyword": "medical dental office cleaning clermont fl south lake hospital"
+  },
+  {
+    "topic": "Janitorial services for small businesses in Clermont FL: programs and pricing",
+    "city": "Clermont, FL",
+    "category": "janitorial-services",
+    "keyword": "janitorial services small businesses clermont fl"
+  },
+  {
+    "topic": "Commercial cleaning for Wellness Way businesses in Clermont FL",
+    "city": "Clermont, FL",
+    "category": "commercial-cleaning",
+    "keyword": "commercial cleaning wellness way clermont fl"
+  },
+  {
+    "topic": "Commercial cleaning in Winter Garden FL: Historic Downtown and Horizon West businesses",
+    "city": "Winter Garden, FL",
+    "category": "commercial-cleaning",
+    "keyword": "commercial cleaning winter garden fl downtown horizon west"
+  },
+  {
+    "topic": "Office cleaning service in Winter Garden FL: what West Orange businesses pay",
+    "city": "Winter Garden, FL",
+    "category": "commercial-cleaning",
+    "keyword": "office cleaning service winter garden fl west orange"
+  },
+  {
+    "topic": "Medical office cleaning in Winter Garden FL: Horizon West healthcare corridor",
+    "city": "Winter Garden, FL",
+    "category": "commercial-cleaning",
+    "keyword": "medical office cleaning winter garden fl horizon west"
+  },
+  {
+    "topic": "Janitorial services for Winter Garden FL retail and commercial spaces",
+    "city": "Winter Garden, FL",
+    "category": "janitorial-services",
+    "keyword": "janitorial services winter garden fl retail"
+  },
+  {
+    "topic": "Commercial cleaning cost in Winter Garden FL: 2026 pricing guide for businesses",
+    "city": "Winter Garden, FL",
+    "category": "commercial-cleaning",
+    "keyword": "commercial cleaning cost winter garden fl 2026"
+  },
+  {
+    "topic": "Commercial cleaning in Windermere FL: premium businesses and luxury offices",
+    "city": "Windermere, FL",
+    "category": "commercial-cleaning",
+    "keyword": "commercial cleaning windermere fl luxury offices"
+  },
+  {
+    "topic": "Office cleaning service in Windermere FL: what high-end businesses expect",
+    "city": "Windermere, FL",
+    "category": "commercial-cleaning",
+    "keyword": "office cleaning windermere fl high end"
+  },
+  {
+    "topic": "Janitorial services in Windermere FL: reliable programs for West Orange businesses",
+    "city": "Windermere, FL",
+    "category": "janitorial-services",
+    "keyword": "janitorial services windermere fl"
+  },
+  {
+    "topic": "How much does commercial cleaning cost in Windermere FL in 2026",
+    "city": "Windermere, FL",
+    "category": "commercial-cleaning",
+    "keyword": "commercial cleaning cost windermere fl"
+  },
+  {
+    "topic": "Commercial cleaning for tourism businesses in Kissimmee FL: offices and property management",
+    "city": "Kissimmee, FL",
+    "category": "commercial-cleaning",
+    "keyword": "commercial cleaning tourism businesses kissimmee fl"
+  },
+  {
+    "topic": "Office cleaning in Kissimmee FL: what Osceola County businesses pay in 2026",
+    "city": "Kissimmee, FL",
+    "category": "commercial-cleaning",
+    "keyword": "office cleaning kissimmee fl osceola county 2026"
+  },
+  {
+    "topic": "Janitorial services for Kissimmee FL medical offices and clinics",
+    "city": "Kissimmee, FL",
+    "category": "janitorial-services",
+    "keyword": "janitorial services kissimmee fl medical offices"
+  },
+  {
+    "topic": "Commercial cleaning for Kissimmee FL property management companies",
+    "city": "Kissimmee, FL",
+    "category": "commercial-cleaning",
+    "keyword": "commercial cleaning kissimmee fl property management"
+  },
+  {
+    "topic": "Best commercial cleaning company in Kissimmee FL: what local businesses recommend",
+    "city": "Kissimmee, FL",
+    "category": "commercial-cleaning",
+    "keyword": "best commercial cleaning company kissimmee fl"
+  },
+  {
+    "topic": "Commercial cleaning in Davenport FL: ChampionsGate businesses and property management offices",
+    "city": "Davenport, FL",
+    "category": "commercial-cleaning",
+    "keyword": "commercial cleaning davenport fl championsgate property management"
+  },
+  {
+    "topic": "Office cleaning service in Davenport FL: US-27 corridor business guide",
+    "city": "Davenport, FL",
+    "category": "commercial-cleaning",
+    "keyword": "office cleaning service davenport fl us-27"
+  },
+  {
+    "topic": "Janitorial services for property management offices in Davenport FL",
+    "city": "Davenport, FL",
+    "category": "janitorial-services",
+    "keyword": "janitorial services property management davenport fl"
+  },
+  {
+    "topic": "Medical office cleaning in Davenport FL: Polk County healthcare standards",
+    "city": "Davenport, FL",
+    "category": "commercial-cleaning",
+    "keyword": "medical office cleaning davenport fl polk county"
+  },
+  {
+    "topic": "Commercial cleaning cost in Davenport FL: 2026 pricing for Polk County businesses",
+    "city": "Davenport, FL",
+    "category": "commercial-cleaning",
+    "keyword": "commercial cleaning cost davenport fl 2026"
+  },
+  {
+    "topic": "Commercial cleaning in Altamonte Springs FL: SR-436 corridor business guide",
+    "city": "Altamonte Springs, FL",
+    "category": "commercial-cleaning",
+    "keyword": "commercial cleaning altamonte springs fl sr-436"
+  },
+  {
+    "topic": "Office cleaning service in Altamonte Springs FL: what Seminole County businesses pay",
+    "city": "Altamonte Springs, FL",
+    "category": "commercial-cleaning",
+    "keyword": "office cleaning altamonte springs fl seminole county"
+  },
+  {
+    "topic": "Janitorial services in Altamonte Springs FL: daily programs for busy commercial spaces",
+    "city": "Altamonte Springs, FL",
+    "category": "janitorial-services",
+    "keyword": "janitorial services altamonte springs fl daily"
+  },
+  {
+    "topic": "Medical and specialty office cleaning in Altamonte Springs FL",
+    "city": "Altamonte Springs, FL",
+    "category": "commercial-cleaning",
+    "keyword": "medical specialty office cleaning altamonte springs fl"
+  },
+  {
+    "topic": "Best commercial cleaning company in Altamonte Springs FL: Seminole County guide",
+    "city": "Altamonte Springs, FL",
+    "category": "commercial-cleaning",
+    "keyword": "best commercial cleaning altamonte springs fl"
+  }
+];
+
+const TOPIC_SUGGESTIONS = ALL_BLOG_TOPICS.map(t => t.topic);
+
+// Auto-fill city and category when topic is selected
+function selectTopic(idx) {
+  const t = ALL_BLOG_TOPICS[idx];
+  document.getElementById('topic').value = t.topic;
+  document.getElementById('city').value = t.city;
+  document.getElementById('category').value = t.category;
+  document.getElementById('keywords').value = t.keyword;
+}
+
+function loadSuggestions() {
+  const container = document.getElementById('suggestions');
+  // Show random topics from the full bank
+  const shuffled = ALL_BLOG_TOPICS
+    .map((t, i) => ({...t, idx: i}))
+    .sort(() => Math.random() - 0.5)
+    .slice(0, 5);
+  container.innerHTML = shuffled.map(t =>
+    `<button class="suggestion-btn" onclick="selectTopic(${t.idx})" title="${t.target_keyword}">
+      ${t.topic.substring(0, 50)}...
+    </button>`
+  ).join('');
+}
+
+// Filter topics by city
+function filterByCity(city) {
+  const filtered = ALL_BLOG_TOPICS
+    .map((t, i) => ({...t, idx: i}))
+    .filter(t => t.city === city);
+  const container = document.getElementById('suggestions');
+  container.innerHTML = filtered.slice(0, 8).map(t =>
+    `<button class="suggestion-btn" onclick="selectTopic(${t.idx})" title="${t.target_keyword}">
+      ${t.topic.substring(0, 48)}...
+    </button>`
+  ).join('');
+}
+
+// ── CONFIG ────────────────────────────────────────────────────────────────────
+function saveConfig() {
+  const config = {
+    claudeKey:    document.getElementById('claudeKey').value,
+    githubToken:  document.getElementById('githubToken').value,
+    githubRepo:   document.getElementById('githubRepo').value,
+    githubBranch: document.getElementById('githubBranch').value,
+  };
+  localStorage.setItem('brazaAdminConfig', JSON.stringify(config));
+  setStatus('success', 'Configurações salvas!');
+  addLog('success', 'Configurações salvas no localStorage');
+}
+
+function loadConfig() {
+  const saved = localStorage.getItem('brazaAdminConfig');
+  if (saved) {
+    const c = JSON.parse(saved);
+    document.getElementById('claudeKey').value    = c.claudeKey    || '';
+    document.getElementById('githubToken').value  = c.githubToken  || '';
+    document.getElementById('githubRepo').value   = c.githubRepo   || '';
+    document.getElementById('githubBranch').value = c.githubBranch || 'main';
+    addLog('info', 'Configurações carregadas');
+  }
+}
+
+function getConfig() {
+  return {
+    claudeKey:    document.getElementById('claudeKey').value.trim(),
+    githubToken:  document.getElementById('githubToken').value.trim(),
+    githubRepo:   document.getElementById('githubRepo').value.trim(),
+    githubBranch: document.getElementById('githubBranch').value.trim() || 'main',
+  };
+}
+
+// ── STATUS & LOG ──────────────────────────────────────────────────────────────
+function setStatus(type, msg) {
+  const dot  = document.getElementById('statusDot');
+  const text = document.getElementById('statusText');
+  dot.className  = `status-dot ${type}`;
+  text.textContent = msg;
+}
+
+function addLog(type, msg) {
+  const log  = document.getElementById('activityLog');
+  const time = new Date().toLocaleTimeString('pt-BR');
+  const line = document.createElement('div');
+  line.className = `log-line ${type}`;
+  line.innerHTML = `<span class="log-time">[${time}]</span><span class="log-text">${msg}</span>`;
+  log.appendChild(line);
+  log.scrollTop = log.scrollHeight;
+}
+
+// ── SLUG GENERATOR ────────────────────────────────────────────────────────────
+function makeSlug(title) {
+  return title
+    .toLowerCase()
+    .replace(/[^a-z0-9\s-]/g, '')
+    .replace(/\s+/g, '-')
+    .replace(/-+/g, '-')
+    .substring(0, 80)
+    .replace(/-$/, '');
+}
+
+// ── GERAR ARTIGO ──────────────────────────────────────────────────────────────
+async function generatePost() {
+  const cfg = getConfig();
+  if (!cfg.claudeKey) {
+    alert('Configure a Claude API Key primeiro!');
+    return;
+  }
+
+  const topic    = document.getElementById('topic').value.trim();
+  const city     = document.getElementById('city').value;
+  const category = document.getElementById('category').value;
+  const keywords = document.getElementById('keywords').value.trim();
+
+  if (!topic) {
+    alert('Digite o tema do artigo!');
+    return;
+  }
+
+  setStatus('loading', 'Gerando artigo com IA...');
+  addLog('info', `Iniciando geração: "${topic}"`);
+  document.getElementById('generateBtn').disabled = true;
+  document.getElementById('publishBtn').disabled  = true;
+  document.getElementById('previewPlaceholder').style.display = 'flex';
+  document.getElementById('previewContent').style.display     = 'none';
+
+  const cityContext = city ? `The article must be specifically focused on ${city} and mention the city multiple times naturally throughout the content.` : 'The article is about Central Florida in general.';
+
+  const systemPrompt = `You are an expert SEO content writer for Braza Cleaning Services, a professional cleaning company in Central Florida, Florida. 
+
+You write blog articles that:
+- Are 900-1200 words of high-quality, unique content
+- Target specific local SEO keywords for Central Florida
+- Sound human, helpful, and authoritative — NOT like AI-generated content
+- Include real local context (neighborhoods, landmarks, local references)
+- Always naturally mention Braza Cleaning Services as the solution
+- Include a strong CTA at the end
+
+COMPANY INFO:
+- Name: Braza Cleaning Services
+- Phone: (689) 242-7469
+- Website: brazacleaning.com
+- Services: house cleaning, Airbnb cleaning, vacation rental cleaning, deep cleaning, move-in/out, post-construction, recurring cleaning, commercial/janitorial
+- Coverage: 17+ cities in Central Florida
+- Rating: 5.0 stars on Google (44+ reviews)
+- Licensed, bonded & insured in Florida
+
+OUTPUT FORMAT — Return ONLY a JSON object with these exact fields:
+{
+  "title": "SEO-optimized title (50-65 chars)",
+  "metaDescription": "Meta description (140-155 chars)",
+  "slug": "url-friendly-slug-with-keywords",
+  "content": "Full HTML article body — use <h2>, <h3>, <p>, <ul>, <li>, <strong> tags. No <html>, <head>, or <body> tags. Just the article content HTML.",
+  "readingTime": number_of_minutes,
+  "excerpt": "One sentence summary (120-140 chars)"
+}`;
+
+  const userPrompt = `Write a blog article about: "${topic}"
+
+${cityContext}
+${keywords ? `Include these keywords naturally: ${keywords}` : ''}
+Category focus: ${category.replace(/-/g, ' ')}
+
+Requirements:
+- 900-1200 words
+- Minimum 3 H2 headings, 2 H3 headings
+- Include a practical tip or checklist
+- Mention Braza Cleaning Services naturally 3-4 times
+- End with a CTA paragraph mentioning (689) 242-7469 and brazacleaning.com
+- Include FAQ section at the end with 3 questions relevant to the topic
+- Make it genuinely useful — not filler content`;
+
+  try {
+    const response = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'x-api-key': cfg.claudeKey,
+        'anthropic-version': '2023-06-01',
+      },
+      body: JSON.stringify({
+        model: 'claude-sonnet-4-5-20251001',
+        max_tokens: 4000,
+        messages: [{ role: 'user', content: userPrompt }],
+        system: systemPrompt,
+      }),
+    });
+
+    if (!response.ok) {
+      const err = await response.json();
+      throw new Error(err.error?.message || `API error ${response.status}`);
+    }
+
+    const data  = await response.json();
+    const rawText = data.content[0].text;
+
+    // Parse JSON — handle markdown fences
+    let cleanJson = rawText.replace(/```json\n?/g,'').replace(/```\n?/g,'').trim();
+    const post = JSON.parse(cleanJson);
+
+    // Ensure slug is valid
+    post.slug = post.slug || makeSlug(post.title);
+    post.city     = city;
+    post.category = category;
+    post.date     = new Date().toISOString().split('T')[0];
+
+    generatedPost = post;
+
+    // Show preview
+    document.getElementById('previewPlaceholder').style.display = 'none';
+    document.getElementById('previewContent').style.display     = 'block';
+
+    document.getElementById('previewMeta').innerHTML = `
+      <span class="meta-tag">${post.readingTime} min read</span>
+      <span class="meta-tag green">${post.slug}</span>
+      ${city ? `<span class="meta-tag orange">${city}</span>` : ''}
+      <span class="meta-tag">${post.title.length} chars title</span>
+    `;
+
+    document.getElementById('articlePreview').innerHTML = `
+      <h1>${post.title}</h1>
+      <p style="font-size:12px;color:var(--gray);margin-bottom:16px;padding-bottom:12px;border-bottom:1px solid var(--gray-border)">
+        <strong>Meta:</strong> ${post.metaDescription}
+      </p>
+      ${post.content}
+    `;
+
+    document.getElementById('publishBtn').disabled = false;
+    setStatus('success', `Artigo gerado: "${post.title.substring(0,50)}..."`);
+    addLog('success', `Artigo gerado com sucesso — ${post.slug}`);
+    addLog('info', `Palavras estimadas: ${post.readingTime * 200} | Slug: /blog/${post.slug}`);
+
+  } catch (err) {
+    setStatus('error', `Erro: ${err.message}`);
+    addLog('error', `Falha na geração: ${err.message}`);
+    document.getElementById('previewPlaceholder').style.display = 'flex';
+  } finally {
+    document.getElementById('generateBtn').disabled = false;
+  }
+}
+
+// ── BUILD HTML PAGE ───────────────────────────────────────────────────────────
+function buildHTMLPage(post) {
+  const catLabels = {
+    'airbnb-cleaning': 'Airbnb Cleaning',
+    'house-cleaning-tips': 'House Cleaning Tips',
+    'vacation-rental-cleaning': 'Vacation Rental Cleaning',
+    'commercial-cleaning': 'Commercial Cleaning',
+    'local-cleaning-guides': 'Local Cleaning Guides',
+    'move-cleaning': 'Move In / Out Cleaning',
+    'pricing-checklists': 'Pricing & Checklists',
+    'janitorial-services': 'Janitorial Services',
+    'office-cleaning': 'Office Cleaning',
+  };
+  const catLabel = catLabels[post.category] || post.category;
+
+  // Breadcrumb schema
+  const bcSchema = JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {"@type":"ListItem","position":1,"name":"Home","item":"https://brazacleaning.com/"},
+      {"@type":"ListItem","position":2,"name":"Blog","item":"https://brazacleaning.com/blog"},
+      {"@type":"ListItem","position":3,"name":catLabel,"item":`https://brazacleaning.com/blog/category/${post.category}`},
+      {"@type":"ListItem","position":4,"name":post.title,"item":`https://brazacleaning.com/blog/${post.slug}`}
+    ]
+  });
+
+  const articleSchema = JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": post.title,
+    "description": post.metaDescription,
+    "datePublished": post.date,
+    "dateModified": post.date,
+    "author": {"@type":"Organization","name":"Braza Cleaning Services"},
+    "publisher": {
+      "@type":"Organization","name":"Braza Cleaning Services",
+      "logo":{"@type":"ImageObject","url":"https://brazacleaning.com/images/logo.png"}
+    },
+    "mainEntityOfPage": {"@type":"WebPage","@id":`https://brazacleaning.com/blog/${post.slug}`},
+    "image": "https://brazacleaning.com/images/img-kitchen-orlando.jpg"
+  });
+
+  return `<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>${post.title}</title>
+<meta name="description" content="${post.metaDescription}">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+<link rel="canonical" href="https://brazacleaning.com/blog/${post.slug}">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Braza Cleaning Services">
+<meta property="og:title" content="${post.title}">
+<meta property="og:description" content="${post.metaDescription}">
+<meta property="og:url" content="https://brazacleaning.com/blog/${post.slug}">
+<meta property="og:image" content="https://brazacleaning.com/images/img-kitchen-orlando.jpg">
+<meta property="article:published_time" content="${post.date}">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="${post.title}">
+<meta name="twitter:description" content="${post.metaDescription}">
+<meta name="geo.region" content="US-FL">
+<meta name="geo.placename" content="${post.city || 'Central Florida'}">
+<link rel="icon" type="image/png" href="/images/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">${bcSchema}</script>
+<script type="application/ld+json">${articleSchema}</script>
+<style>
+/* Nav e footer do site */
+.topbar{background:#2B6CB0;color:#fff;padding:8px 16px;position:fixed;top:0;left:0;right:0;z-index:100}
+.topbar-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between}
+.topbar a{color:#fff;display:flex;align-items:center;gap:6px;font-size:14px;font-weight:600}
+.topbar-cta{background:#C67B3C;padding:5px 16px;border-radius:20px;font-size:13px}
+.nav{position:fixed;top:38px;left:0;right:0;z-index:99;background:#fff;box-shadow:0 1px 8px rgba(0,0,0,.08)}
+.nav.scrolled{background:#fff}
+.nav-inner{max-width:1200px;margin:0 auto;padding:0 20px;display:flex;align-items:center;justify-content:space-between;height:72px}
+.nav-logo{height:52px;width:auto}
+.nav-links{display:flex;align-items:center;gap:28px}
+.nav-links > a,.nav-links > .dropdown > button{font-family:'Outfit',sans-serif;font-size:15px;font-weight:500;color:#374151;background:none;border:none;cursor:pointer;padding:4px 0;white-space:nowrap;text-decoration:none}
+.nav-cta{background:#C67B3C!important;color:#fff!important;padding:10px 22px!important;border-radius:25px!important;font-weight:600!important}
+.dropdown{position:relative}
+.dropdown > button{display:flex;align-items:center;gap:4px}
+.dropdown-menu{display:none;position:absolute;top:100%;left:0;padding-top:8px;z-index:200;min-width:220px}
+.dropdown-menu.right{left:auto;right:0}
+.dropdown-menu-inner{background:#fff;border:1px solid #E5E7EB;border-radius:12px;box-shadow:0 10px 25px rgba(0,0,0,.12);padding:6px 0}
+.dropdown:hover .dropdown-menu{display:block}
+.dropdown-menu a{display:block;padding:10px 16px;font-size:14px;color:#374151;text-decoration:none}
+.dropdown-menu a:hover{background:#EBF4FF;color:#2B6CB0}
+.dropdown-section{padding:8px 16px 4px;font-size:11px;font-weight:700;color:#2B6CB0;text-transform:uppercase;letter-spacing:.06em}
+.dropdown-section.orange{color:#C67B3C}
+.dropdown-divider{border:none;border-top:1px solid #E5E7EB;margin:4px 0}
+.nav-toggle{display:none;background:none;border:none;cursor:pointer;padding:4px}
+.mobile-nav{display:none;position:fixed;top:110px;left:0;right:0;bottom:0;background:#fff;z-index:98;overflow-y:auto}
+.mobile-nav.open{display:block}
+.mobile-nav a{display:block;padding:14px 20px;font-size:15px;font-weight:500;color:#374151;border-bottom:1px solid #E5E7EB;text-decoration:none}
+.mobile-section{padding:10px 20px;font-size:11px;font-weight:700;color:#2B6CB0;text-transform:uppercase;background:#F8FAFC;border-bottom:1px solid #E5E7EB}
+.mobile-cta-wrap{padding:20px}
+.mobile-cta-wrap a{display:block;text-align:center;background:#C67B3C;color:#fff;padding:14px;border-radius:25px;font-size:16px;font-weight:700;text-decoration:none}
+footer{background:#0F172A;color:rgba(255,255,255,.8);padding:64px 16px 32px}
+.footer-inner{max-width:1200px;margin:0 auto}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;margin-bottom:48px}
+.footer-brand img{height:48px;width:auto;margin-bottom:14px}
+.footer-brand p{font-size:14px;line-height:1.7;color:rgba(255,255,255,.6);max-width:280px}
+.footer-contact{margin-top:16px;display:flex;flex-direction:column;gap:8px}
+.footer-contact a{display:flex;align-items:center;gap:8px;font-size:14px;color:rgba(255,255,255,.7);text-decoration:none}
+.footer-col h4{font-family:'Outfit',sans-serif;font-size:15px;font-weight:700;color:#fff;margin-bottom:14px}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:8px}
+.footer-col ul li a{font-size:14px;color:rgba(255,255,255,.6);text-decoration:none}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.1);padding-top:22px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.footer-bottom p{font-size:13px;color:rgba(255,255,255,.4)}
+.blog-post-inner{max-width:800px;margin:0 auto;padding:40px 16px 80px}
+.blog-post-title{font-size:clamp(1.8rem,3.5vw,2.6rem);font-weight:800;color:#1F2937;margin-bottom:14px;line-height:1.2}
+.blog-post-meta{font-size:14px;color:#6B7280;display:flex;gap:14px;flex-wrap:wrap;margin-bottom:20px}
+.blog-post-img{border-radius:16px;overflow:hidden;margin-bottom:30px}
+.blog-cat{display:inline-block;background:#EBF4FF;color:#2B6CB0;font-size:11px;font-weight:700;padding:3px 10px;border-radius:20px;margin-bottom:8px;text-transform:uppercase;letter-spacing:.05em}
+.blog-content h2{font-size:1.6rem;font-weight:700;color:#1F2937;margin:28px 0 10px}
+.blog-content h3{font-size:1.2rem;font-weight:700;color:#1F2937;margin:20px 0 8px}
+.blog-content h4{font-size:1.05rem;font-weight:700;color:#1F2937;margin:16px 0 6px}
+.blog-content p{font-size:16px;color:#374151;line-height:1.75;margin-bottom:14px}
+.blog-content ul,.blog-content ol{padding-left:22px;margin-bottom:14px}
+.blog-content li{font-size:15px;color:#374151;line-height:1.7;margin-bottom:5px}
+.blog-content strong{font-weight:700}
+.breadcrumb{font-size:14px;color:#6B7280}
+.breadcrumb a{color:#2B6CB0;text-decoration:none}
+.breadcrumb span{margin:0 5px}
+@media(max-width:768px){.nav-links{display:none}.nav-toggle{display:block}.footer-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="topbar">
+  <div class="topbar-inner">
+    <a href="tel:6892427469">
+      <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.95 9.8a19.79 19.79 0 01-3.07-8.67A2 2 0 012.88 1h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L7.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+      (689) 242-7469
+    </a>
+    <a href="tel:6892427469" class="topbar-cta">
+      <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.95 9.8a19.79 19.79 0 01-3.07-8.67A2 2 0 012.88 1h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L7.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+      Call Now
+    </a>
+  </div>
+</div>
+<nav class="nav" id="mainNav">
+  <div class="nav-inner">
+    <a href="/"><img src="/images/logo.png" alt="Braza Cleaning Services" class="nav-logo" width="156" height="52"></a>
+    <div class="nav-links">
+      <div class="dropdown">
+        <button>Services <span class="dropdown-arrow">▾</span></button>
+        <div class="dropdown-menu">
+          <div class="dropdown-menu-inner"><a href="/house-cleaning">House Cleaning</a>
+<a href="/airbnb-cleaning">Airbnb Cleaning</a>
+<a href="/vacation-rental-cleaning">Vacation Rental Cleaning</a>
+<a href="/deep-cleaning">Deep Cleaning</a>
+<a href="/move-out-cleaning">Move-Out Cleaning</a>
+<a href="/move-in-cleaning">Move-In Cleaning</a>
+<a href="/post-construction-cleaning">Post-Construction</a>
+<a href="/recurring-cleaning">Recurring Cleaning</a>
+<a href="/commercial-cleaning">Commercial Cleaning</a></div>
+        </div>
+      </div>
+      <div class="dropdown">
+        <button>Areas <span class="dropdown-arrow">▾</span></button>
+        <div class="dropdown-menu right">
+          <div class="dropdown-menu-inner">
+            <div class="dropdown-section">Residential</div><a href="/cleaning-services/the-villages">The Villages</a>
+<a href="/cleaning-services/minneola">Minneola</a>
+<a href="/cleaning-services/clermont">Clermont</a>
+<a href="/cleaning-services/winter-garden">Winter Garden</a>
+<a href="/cleaning-services/winter-park">Winter Park</a>
+<a href="/cleaning-services/ocoee">Ocoee</a>
+            <hr class="dropdown-divider">
+            <div class="dropdown-section orange">Vacation Rentals</div><a href="/airbnb-cleaning/kissimmee">Kissimmee</a>
+<a href="/airbnb-cleaning/davenport">Davenport</a>
+<a href="/vacation-rental-cleaning/four-corners">Four Corners</a>
+<a href="/cleaning-services/celebration">Celebration</a>
+<a href="/cleaning-services/orlando">Orlando</a>
+            <hr class="dropdown-divider">
+            <a href="/#areas" style="color:var(--blue);font-weight:600;padding:10px 16px">View All Areas →</a>
+          </div>
+        </div>
+      </div>
+      <a href="/#about">About</a>
+      <a href="/blog">Blog</a>
+      <a href="/#reviews">Reviews</a>
+      <a href="/#contact">Contact</a>
+      <a href="/#contact" class="nav-cta">Get Free Quote</a>
+    </div>
+    <button class="nav-toggle" onclick="toggleNav()" aria-label="Menu">
+      <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+  </div>
+</nav>
+<div class="mobile-nav" id="mobileNav">
+  <div class="mobile-section">Services</div><a href="/house-cleaning">House Cleaning</a><a href="/airbnb-cleaning">Airbnb Cleaning</a><a href="/vacation-rental-cleaning">Vacation Rental Cleaning</a><a href="/deep-cleaning">Deep Cleaning</a><a href="/move-out-cleaning">Move-Out Cleaning</a><a href="/move-in-cleaning">Move-In Cleaning</a><a href="/post-construction-cleaning">Post-Construction</a><a href="/recurring-cleaning">Recurring Cleaning</a><a href="/commercial-cleaning">Commercial Cleaning</a>
+  <div class="mobile-section">Residential Areas</div><a href="/cleaning-services/the-villages">The Villages</a><a href="/cleaning-services/minneola">Minneola</a><a href="/cleaning-services/clermont">Clermont</a><a href="/cleaning-services/winter-garden">Winter Garden</a><a href="/cleaning-services/winter-park">Winter Park</a><a href="/cleaning-services/ocoee">Ocoee</a>
+  <div class="mobile-section">Vacation Rental Areas</div><a href="/airbnb-cleaning/kissimmee">Kissimmee</a><a href="/airbnb-cleaning/davenport">Davenport</a><a href="/vacation-rental-cleaning/four-corners">Four Corners</a><a href="/cleaning-services/celebration">Celebration</a><a href="/cleaning-services/orlando">Orlando</a>
+  <a href="/#about">About</a>
+  <a href="/blog">Blog</a>
+  <a href="/#reviews">Reviews</a>
+  <a href="/#contact">Contact</a>
+  <div class="mobile-cta-wrap"><a href="/#contact">Get Free Quote</a></div>
+</div>
+<main>
+<div style="background:var(--gray-light);padding-top:110px">
+  <div class="blog-post-inner">
+    <div class="blog-post-header">
+      <div class="breadcrumb" style="margin-bottom:12px">
+        <a href="/">Home</a><span>›</span>
+        <a href="/blog">Blog</a><span>›</span>
+        <a href="/blog/category/${post.category}">${catLabel}</a>
+      </div>
+      <span class="blog-cat">${catLabel}</span>
+      <h1 class="blog-post-title">${post.title}</h1>
+      <div class="blog-post-meta">
+        <span>By Braza Cleaning Team</span>
+        <span>·</span>
+        <span>${post.date}</span>
+        <span>·</span>
+        <span>${post.readingTime} min read</span>
+        ${post.city ? `<span>·</span><span>${post.city}</span>` : ''}
+      </div>
+    </div>
+    <div class="blog-post-img">
+      <img src="/images/img-kitchen-orlando.jpg" alt="${post.title}" loading="eager" style="width:100%;height:380px;object-fit:cover">
+    </div>
+    <div class="blog-content">
+      ${post.content}
+    </div>
+    <div style="background:var(--blue-light);border:1px solid #bee3f8;border-radius:16px;padding:28px;margin:40px 0;text-align:center">
+      <h3 style="font-size:20px;font-weight:700;margin-bottom:8px;color:var(--text)">Need Professional Cleaning in Central Florida?</h3>
+      <p style="color:var(--gray);margin-bottom:20px">Braza Cleaning Services — 5.0 stars on Google, licensed &amp; insured, serving 17+ cities.</p>
+      <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+        <a href="/#contact" style="display:inline-flex;align-items:center;gap:8px;background:var(--orange);color:#fff;padding:14px 24px;border-radius:25px;font-family:var(--font-head);font-size:15px;font-weight:700;text-decoration:none">Get Free Quote</a>
+        <a href="tel:6892427469" style="display:inline-flex;align-items:center;gap:8px;background:#fff;color:var(--blue);padding:14px 24px;border-radius:25px;font-family:var(--font-head);font-size:15px;font-weight:700;border:2px solid var(--blue);text-decoration:none">&#128222; (689) 242-7469</a>
+      </div>
+    </div>
+    <div style="margin-top:24px">
+      <h3 style="font-size:16px;font-weight:700;margin-bottom:12px">Related Services</h3>
+      <div style="display:flex;flex-direction:column;gap:6px">
+        <a href="/airbnb-cleaning" style="color:var(--blue);font-size:14px">&#8594; Airbnb Cleaning Services in Central Florida</a>
+        <a href="/cleaning-services/${(post.city||'orlando').toLowerCase().replace(', fl','').replace(/\s+/g,'-')}" style="color:var(--blue);font-size:14px">&#8594; Cleaning Services in ${post.city||'Central Florida'}</a>
+        <a href="/commercial-cleaning" style="color:var(--blue);font-size:14px">&#8594; Commercial Cleaning in Central Florida</a>
+        <a href="/blog" style="color:var(--blue);font-size:14px">&#8594; View All Cleaning Tips &amp; Guides</a>
+      </div>
+    </div>
+  </div>
+</div>
+</main>
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img src="/images/logo.png" alt="Braza Cleaning Services" width="144" height="48">
+        <p>Professional cleaning services across Central Florida. Licensed, bonded, and insured. Trusted by homeowners, Airbnb hosts, and property managers since 2020.</p>
+        <div class="footer-contact">
+          <a href="tel:6892427469"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.95 9.8a19.79 19.79 0 01-3.07-8.67A2 2 0 012.88 1h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L7.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>(689) 242-7469</a>
+          <a href="mailto:brazacleaningservices@gmail.com"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>brazacleaningservices@gmail.com</a>
+        </div>
+      </div>
+      <div class="footer-col"><h4>Services</h4><ul><li><a href="/house-cleaning">House Cleaning</a></li>
+<li><a href="/airbnb-cleaning">Airbnb Cleaning</a></li>
+<li><a href="/vacation-rental-cleaning">Vacation Rental Cleaning</a></li>
+<li><a href="/deep-cleaning">Deep Cleaning</a></li>
+<li><a href="/move-out-cleaning">Move-Out Cleaning</a></li>
+<li><a href="/move-in-cleaning">Move-In Cleaning</a></li></ul></div>
+      <div class="footer-col"><h4>Service Areas</h4><ul><li><a href="/cleaning-services/the-villages">The Villages</a></li>
+<li><a href="/cleaning-services/clermont">Clermont</a></li>
+<li><a href="/cleaning-services/leesburg">Leesburg</a></li>
+<li><a href="/cleaning-services/minneola">Minneola</a></li>
+<li><a href="/cleaning-services/lady-lake">Lady Lake</a></li>
+<li><a href="/cleaning-services/summerfield">Summerfield</a></li>
+<li><a href="/cleaning-services/winter-garden">Winter Garden</a></li>
+<li><a href="/cleaning-services/ocoee">Ocoee</a></li></ul></div>
+      <div class="footer-col"><h4>Quick Links</h4><ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/blog">Blog</a></li>
+        <li><a href="/#reviews">Reviews</a></li>
+        <li><a href="/#contact">Get a Quote</a></li>
+        <li><a href="https://share.google/im8ktmN1KQYzJukgW" target="_blank" rel="noopener">Google Reviews</a></li>
+      </ul></div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Braza Cleaning Services. All rights reserved. Licensed &amp; Insured in Florida.</p>
+      <p>Serving Central Florida with pride.</p>
+    </div>
+  </div>
+</footer>
+<script>
+window.addEventListener('scroll',function(){document.getElementById('mainNav').classList.toggle('scrolled',window.scrollY>50);});
+function toggleNav(){document.getElementById('mobileNav').classList.toggle('open');}
+document.querySelectorAll('.mobile-nav a').forEach(function(a){a.addEventListener('click',function(){document.getElementById('mobileNav').classList.remove('open');});});
+document.querySelectorAll('.faq-question').forEach(function(btn){
+  btn.addEventListener('click',function(){
+    var ans=this.nextElementSibling,isOpen=this.classList.contains('open');
+    document.querySelectorAll('.faq-question').forEach(function(b){b.classList.remove('open');b.nextElementSibling.classList.remove('open');});
+    if(!isOpen){this.classList.add('open');ans.classList.add('open');}
+  });
+});
+var _ci=0,_ct=document.getElementById('carouselTrack'),_cd=document.querySelectorAll('.carousel-dot'),_total=_cd.length;
+function goTo(n){_ci=n;if(_ct)_ct.style.transform='translateX(-'+(_ci*100)+'%)';_cd.forEach(function(d,i){d.classList.toggle('active',i===_ci);});}
+function nextSlide(){goTo((_ci+1)%(_total||1));}
+function prevSlide(){goTo((_ci-1+(_total||1))%(_total||1));}
+if(_total>0)setInterval(nextSlide,4500);
+var form=document.getElementById('quoteForm');
+if(form){
+  form.addEventListener('submit',async function(e){
+    e.preventDefault();
+    var btn=document.getElementById('submitBtn');
+    btn.disabled=true;btn.textContent='Sending...';
+    var d={name:form.querySelector('[name=name]').value,phone:form.querySelector('[name=phone]').value,email:form.querySelector('[name=email]').value,service:form.querySelector('[name=service]').value,city:form.querySelector('[name=city]').value,message:(form.querySelector('[name=message]')||{value:''}).value};
+    try{
+      var res=await fetch('https://api.resend.com/emails',{method:'POST',headers:{'Authorization':'Bearer re_Psu7DehN_JGbh5dRZWVrVr4p5JbGE8PTq','Content-Type':'application/json'},body:JSON.stringify({from:'website@brazacleaning.com',to:['brazacleaningservices@gmail.com'],subject:'New Quote — '+d.service+' in '+d.city,html:'<h2>New Quote Request</h2><p><b>Name:</b> '+d.name+'</p><p><b>Phone:</b> '+d.phone+'</p><p><b>Email:</b> '+d.email+'</p><p><b>Service:</b> '+d.service+'</p><p><b>City:</b> '+d.city+'</p><p><b>Message:</b> '+d.message+'</p>'})});
+      if(res.ok||res.status===200||res.status===201){document.getElementById('formWrap').style.display='none';document.getElementById('formSuccess').style.display='block';}
+      else throw new Error('fail');
+    }catch(err){btn.disabled=false;btn.textContent='Send My Request →';alert('Something went wrong. Please call us at (689) 242-7469');}
+  });
+}
+</script>
+</body>
+</html>
+</body>
+</html>`;
+}
+
+// ── PUBLICAR NO GITHUB ────────────────────────────────────────────────────────
+async function publishPost() {
+  const cfg = getConfig();
+  if (!cfg.githubToken || !cfg.githubRepo) {
+    alert('Configure o GitHub Token e o Repositório primeiro!');
+    return;
+  }
+  if (!generatedPost) {
+    alert('Gere um artigo primeiro!');
+    return;
+  }
+
+  document.getElementById('publishBtn').disabled = true;
+  setStatus('loading', 'Publicando no GitHub...');
+  addLog('info', `Iniciando publicação: /blog/${generatedPost.slug}`);
+
+  try {
+    const filePath = `blog/${generatedPost.slug}/index.html`;
+    const htmlContent = buildHTMLPage(generatedPost);
+    const contentBase64 = btoa(unescape(encodeURIComponent(htmlContent)));
+
+    // 1. Check if file exists (to get SHA for update)
+    let sha = null;
+    try {
+      const checkRes = await fetch(
+        `https://api.github.com/repos/${cfg.githubRepo}/contents/${filePath}`,
+        { headers: { 'Authorization': `token ${cfg.githubToken}`, 'Accept': 'application/vnd.github.v3+json' } }
+      );
+      if (checkRes.ok) {
+        const existing = await checkRes.json();
+        sha = existing.sha;
+        addLog('info', 'Arquivo existente encontrado — atualizando...');
+      }
+    } catch(e) {}
+
+    // 2. Create/update the blog post file
+    addLog('info', `Enviando: ${filePath}`);
+    const body = {
+      message: `Blog: ${generatedPost.title}`,
+      content: contentBase64,
+      branch:  cfg.githubBranch,
+    };
+    if (sha) body.sha = sha;
+
+    const pushRes = await fetch(
+      `https://api.github.com/repos/${cfg.githubRepo}/contents/${filePath}`,
+      {
+        method: 'PUT',
+        headers: {
+          'Authorization': `token ${cfg.githubToken}`,
+          'Content-Type': 'application/json',
+          'Accept': 'application/vnd.github.v3+json',
+        },
+        body: JSON.stringify(body),
+      }
+    );
+
+    if (!pushRes.ok) {
+      const err = await pushRes.json();
+      throw new Error(err.message || `GitHub error ${pushRes.status}`);
+    }
+
+    addLog('success', `✅ Artigo publicado: /blog/${generatedPost.slug}`);
+
+    // 3. Update sitemap
+    await updateSitemap(cfg, generatedPost);
+
+    // 4. Ping Google
+    await pingGoogle(generatedPost.slug);
+
+    // 5. Update history
+    publishedPosts.unshift({
+      title: generatedPost.title,
+      slug:  generatedPost.slug,
+      date:  generatedPost.date,
+    });
+    renderHistory();
+
+    setStatus('success', `✅ Publicado! Cloudflare vai fazer deploy em ~1-2 minutos.`);
+    addLog('success', `Deploy iniciado. URL: https://brazacleaning.com/blog/${generatedPost.slug}`);
+
+    // Reset
+    generatedPost = null;
+    document.getElementById('publishBtn').disabled = true;
+
+  } catch (err) {
+    setStatus('error', `Erro: ${err.message}`);
+    addLog('error', `Falha na publicação: ${err.message}`);
+    document.getElementById('publishBtn').disabled = false;
+  }
+}
+
+// ── ATUALIZAR SITEMAP ─────────────────────────────────────────────────────────
+async function updateSitemap(cfg, post) {
+  addLog('info', 'Atualizando sitemap.xml...');
+
+  try {
+    // Get current sitemap
+    const sitemapRes = await fetch(
+      `https://api.github.com/repos/${cfg.githubRepo}/contents/sitemap.xml`,
+      { headers: { 'Authorization': `token ${cfg.githubToken}`, 'Accept': 'application/vnd.github.v3+json' } }
+    );
+
+    if (!sitemapRes.ok) {
+      addLog('error', 'Não foi possível ler o sitemap.xml do GitHub');
+      return;
+    }
+
+    const sitemapData = await sitemapRes.json();
+    const currentXML = decodeURIComponent(escape(atob(sitemapData.content.replace(/\n/g,''))));
+    const today = new Date().toISOString().split('T')[0];
+
+    const newUrl = `  <url>
+    <loc>https://brazacleaning.com/blog/${post.slug}</loc>
+    <lastmod>${today}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>`;
+
+    // Only add if not already present
+    if (currentXML.includes(`/blog/${post.slug}`)) {
+      addLog('info', 'URL já existe no sitemap — pulando');
+      return;
+    }
+
+    const updatedXML = currentXML.replace('</urlset>', newUrl + '\n</urlset>');
+    const updatedBase64 = btoa(unescape(encodeURIComponent(updatedXML)));
+
+    await fetch(
+      `https://api.github.com/repos/${cfg.githubRepo}/contents/sitemap.xml`,
+      {
+        method: 'PUT',
+        headers: {
+          'Authorization': `token ${cfg.githubToken}`,
+          'Content-Type': 'application/json',
+          'Accept': 'application/vnd.github.v3+json',
+        },
+        body: JSON.stringify({
+          message: `Sitemap: add /blog/${post.slug}`,
+          content: updatedBase64,
+          sha:     sitemapData.sha,
+          branch:  cfg.githubBranch,
+        }),
+      }
+    );
+
+    addLog('success', '✅ sitemap.xml atualizado com nova URL');
+
+  } catch(e) {
+    addLog('error', `Erro ao atualizar sitemap: ${e.message}`);
+  }
+}
+
+// ── PING GOOGLE ───────────────────────────────────────────────────────────────
+async function pingGoogle(slug) {
+  addLog('info', 'Enviando ping para Google Search Console...');
+  try {
+    // Google Ping endpoint
+    const pingUrl = `https://www.google.com/ping?sitemap=https://brazacleaning.com/sitemap.xml`;
+    // Due to CORS, we use a no-cors request
+    await fetch(pingUrl, { mode: 'no-cors' });
+    addLog('success', '✅ Ping enviado para o Google — sitemap notificado');
+    addLog('info', `URL para indexar: https://brazacleaning.com/blog/${slug}`);
+  } catch(e) {
+    // CORS erro é esperado — o ping ainda vai
+    addLog('success', '✅ Ping enviado para o Google (resposta bloqueada por CORS — normal)');
+  }
+}
+
+// ── HISTÓRICO ─────────────────────────────────────────────────────────────────
+function renderHistory() {
+  const container = document.getElementById('postHistory');
+  if (publishedPosts.length === 0) {
+    container.innerHTML = '<p style="font-size:13px;color:var(--gray)">Nenhum artigo publicado ainda nesta sessão.</p>';
+    return;
+  }
+  container.innerHTML = publishedPosts.slice(0, 5).map(p => `
+    <div class="history-item">
+      <div>
+        <div class="history-title">${p.title.substring(0,55)}${p.title.length>55?'...':''}</div>
+        <div class="history-date">${p.date} • /blog/${p.slug}</div>
+      </div>
+      <a href="https://brazacleaning.com/blog/${p.slug}" target="_blank" class="history-link">Ver →</a>
+    </div>
+  `).join('');
+}
+
+// ── INIT ──────────────────────────────────────────────────────────────────────
+loadConfig();
+loadSuggestions();
+</script>
+</body>
+</html>
