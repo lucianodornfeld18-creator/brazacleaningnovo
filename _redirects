@@ -1,0 +1,11 @@
+# Cloudflare Pages _redirects
+
+# WWW to non-www
+https://www.brazacleaning.com/* https://brazacleaning.com/:splat 301!
+
+# HTTP to HTTPS
+http://brazacleaning.com/* https://brazacleaning.com/:splat 301!
+http://www.brazacleaning.com/* https://brazacleaning.com/:splat 301!
+
+# Custom 404
+/* /404.html 404
