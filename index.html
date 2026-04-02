@@ -23,7 +23,6 @@
 <meta name="geo.placename" content="Central Florida">
 <link rel="icon" type="image/png" href="/images/logo.png">
 <link rel="apple-touch-icon" href="/images/logo.png">
-<link rel="preload" as="image" href="/images/img-bed-davenport.jpg" fetchpriority="high">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Lato:wght@400;700&display=swap" rel="stylesheet">
@@ -41,15 +40,24 @@
   "priceRange": "$$",
   "areaServed": [{"@type":"City","name":"Orlando"},{"@type":"City","name":"Kissimmee"},{"@type":"City","name":"Davenport"},{"@type":"City","name":"The Villages"},{"@type":"City","name":"Clermont"}],
   "address": {"@type":"PostalAddress","addressRegion":"FL","addressCountry":"US","addressLocality":"Central Florida"},
-  "geo": {
-    "@type": "GeoCoordinates",
-    "latitude": 28.5383,
-    "longitude": -81.3792
-  },
   "aggregateRating": {"@type":"AggregateRating","ratingValue":"5.0","reviewCount":"47","bestRating":"5"}
 }
 </script>
-
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": "https://brazacleaning.com/#website",
+  "url": "https://brazacleaning.com",
+  "name": "Braza Cleaning Services",
+  "description": "Professional cleaning services in Central Florida",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": {"@type": "EntryPoint", "urlTemplate": "https://brazacleaning.com/blog?q={search_term_string}"},
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
@@ -72,7 +80,7 @@ a{color:inherit;text-decoration:none}
 .topbar-cta{background:var(--orange);padding:5px 16px;border-radius:20px;font-size:13px}
 .nav{position:fixed;top:38px;left:0;right:0;z-index:99;transition:all .3s;background:#fff;box-shadow:0 1px 8px rgba(0,0,0,.07)}
 .nav.scrolled{background:#fff;box-shadow:0 2px 12px rgba(0,0,0,.1)}
-.nav-inner{max-width:1200px;margin:0 auto;padding:0 20px;display:flex;align-items:center;justify-content:space-between;height:72px}
+.nav-inner{max-width:1200px;margin:0 auto;padding:0 20px;display:flex;align-items:center;justify-content:space-between;height:80px}
 .nav-logo{height:52px;width:auto}
 .nav-links{display:flex;align-items:center;gap:28px}
 .nav-links > a,.nav-links > .dropdown > button{font-family:var(--font-head);font-size:15px;font-weight:500;color:#374151;background:none;border:none;cursor:pointer;padding:4px 0;transition:color .2s;white-space:nowrap}
@@ -99,7 +107,7 @@ a{color:inherit;text-decoration:none}
 .mobile-section{padding:10px 20px;font-size:11px;font-weight:700;color:var(--blue);text-transform:uppercase;letter-spacing:.06em;background:var(--gray-light);border-bottom:1px solid var(--gray-border)}
 .mobile-cta-wrap{padding:20px}
 .mobile-cta-wrap a{display:block;text-align:center;background:var(--orange);color:#fff;padding:14px;border-radius:25px;font-family:var(--font-head);font-size:16px;font-weight:700}
-.hero{padding-top:110px;background:#fff}
+.hero{padding-top:118px;background:#fff}
 .hero-inner{max-width:1200px;margin:0 auto;padding:64px 20px 72px;display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
 .hero-badge{display:inline-flex;align-items:center;gap:8px;background:#FEF3E8;border:1px solid #F5C08A;color:var(--orange-dark);padding:7px 14px;border-radius:20px;font-size:13px;font-weight:600;margin-bottom:20px}
 .hero h1{font-size:clamp(2rem,3.8vw,3rem);font-weight:800;color:var(--text);margin-bottom:18px;line-height:1.1}
@@ -278,44 +286,6 @@ footer{background:#0F172A;color:rgba(255,255,255,.8);padding:64px 16px 32px}
   .page-hero{padding:130px 16px 60px}
 }
 </style>
-<style>
-.nav{background:#fff;box-shadow:0 1px 8px rgba(0,0,0,.08)}
-.nav.scrolled{background:#fff}
-.hero{padding-top:90px}
-.hero-inner{padding-top:40px;padding-bottom:60px;align-items:flex-start}
-</style><script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "What cleaning services does Braza Cleaning offer in Central Florida?",
-      "acceptedAnswer": {"@type": "Answer", "text": "Braza Cleaning Services offers house cleaning, Airbnb cleaning, vacation rental cleaning, deep cleaning, move-in cleaning, move-out cleaning, post-construction cleaning, recurring cleaning, and commercial cleaning throughout Central Florida."}
-    },
-    {
-      "@type": "Question",
-      "name": "Which cities does Braza Cleaning service in Central Florida?",
-      "acceptedAnswer": {"@type": "Answer", "text": "We serve 17+ cities including Orlando, Kissimmee, Davenport, The Villages, Clermont, Winter Garden, Minneola, Four Corners, Celebration, Ocoee, Winter Park, Altamonte Springs, Maitland, Leesburg, Lady Lake, Summerfield, and Dr. Phillips."}
-    },
-    {
-      "@type": "Question",
-      "name": "Is Braza Cleaning Services licensed and insured in Florida?",
-      "acceptedAnswer": {"@type": "Answer", "text": "Yes — Braza Cleaning Services is fully licensed, bonded, and insured in Florida. All team members are background-checked. We carry general liability and workers compensation coverage on every job."}
-    },
-    {
-      "@type": "Question",
-      "name": "Does Braza Cleaning offer Airbnb and vacation rental turnover cleaning?",
-      "acceptedAnswer": {"@type": "Answer", "text": "Yes — Airbnb and vacation rental turnover cleaning is one of our specialties. We serve hosts throughout Kissimmee, Davenport, Four Corners, and the greater Orlando area with same-day turnover service and photo documentation."}
-    },
-    {
-      "@type": "Question",
-      "name": "How do I get a cleaning quote from Braza Cleaning Services?",
-      "acceptedAnswer": {"@type": "Answer", "text": "Call us at (689) 242-7469 or fill out our online quote form at brazacleaning.com. We respond within 2 hours during business hours and provide free, no-obligation quotes."}
-    }
-  ]
-}
-</script>
 </head>
 <body>
 <div class="topbar">
@@ -331,12 +301,12 @@ footer{background:#0F172A;color:rgba(255,255,255,.8);padding:64px 16px 32px}
   </div>
 </div><nav class="nav" id="mainNav">
   <div class="nav-inner">
-    <a href="/"><img src="/images/logo.png" alt="Braza Cleaning Services" class="nav-logo" width="156" height="56"></a>
+    <a href="/"><img src="/images/logo.png" alt="Braza Cleaning Services" class="nav-logo" width="156" height="52"></a>
     <div class="nav-links">
-      <a href="/#about">About</a>
       <div class="dropdown">
-        <button>Services <span class="dropdown-arrow">&#9660;</span></button>
-        <div class="dropdown-menu"><div class="dropdown-menu-inner"><a href="/house-cleaning">House Cleaning</a>
+        <button>Services <span class="dropdown-arrow">▾</span></button>
+        <div class="dropdown-menu">
+          <div class="dropdown-menu-inner"><a href="/house-cleaning">House Cleaning</a>
 <a href="/airbnb-cleaning">Airbnb Cleaning</a>
 <a href="/vacation-rental-cleaning">Vacation Rental Cleaning</a>
 <a href="/deep-cleaning">Deep Cleaning</a>
@@ -344,10 +314,11 @@ footer{background:#0F172A;color:rgba(255,255,255,.8);padding:64px 16px 32px}
 <a href="/move-in-cleaning">Move-In Cleaning</a>
 <a href="/post-construction-cleaning">Post-Construction</a>
 <a href="/recurring-cleaning">Recurring Cleaning</a>
-<a href="/commercial-cleaning">Commercial Cleaning</a></div></div>
+<a href="/commercial-cleaning">Commercial Cleaning</a></div>
+        </div>
       </div>
       <div class="dropdown">
-        <button>Areas <span class="dropdown-arrow">&#9660;</span></button>
+        <button>Areas <span class="dropdown-arrow">▾</span></button>
         <div class="dropdown-menu right">
           <div class="dropdown-menu-inner">
             <div class="dropdown-section">Residential</div><a href="/cleaning-services/the-villages">The Villages</a>
@@ -363,10 +334,11 @@ footer{background:#0F172A;color:rgba(255,255,255,.8);padding:64px 16px 32px}
 <a href="/cleaning-services/celebration">Celebration</a>
 <a href="/cleaning-services/orlando">Orlando</a>
             <hr class="dropdown-divider">
-            <a href="/#areas" style="color:var(--blue);font-weight:600;padding:10px 16px">View All Areas &#8594;</a>
+            <a href="/#areas" style="color:var(--blue);font-weight:600;padding:10px 16px">View All Areas →</a>
           </div>
         </div>
       </div>
+      <a href="/#about">About</a>
       <a href="/blog">Blog</a>
       <a href="/#reviews">Reviews</a>
       <a href="/#contact">Contact</a>
@@ -378,167 +350,183 @@ footer{background:#0F172A;color:rgba(255,255,255,.8);padding:64px 16px 32px}
   </div>
 </nav>
 <div class="mobile-nav" id="mobileNav">
-  <a href="/#about">About</a>
   <div class="mobile-section">Services</div><a href="/house-cleaning">House Cleaning</a><a href="/airbnb-cleaning">Airbnb Cleaning</a><a href="/vacation-rental-cleaning">Vacation Rental Cleaning</a><a href="/deep-cleaning">Deep Cleaning</a><a href="/move-out-cleaning">Move-Out Cleaning</a><a href="/move-in-cleaning">Move-In Cleaning</a><a href="/post-construction-cleaning">Post-Construction</a><a href="/recurring-cleaning">Recurring Cleaning</a><a href="/commercial-cleaning">Commercial Cleaning</a>
   <div class="mobile-section">Residential Areas</div><a href="/cleaning-services/the-villages">The Villages</a><a href="/cleaning-services/minneola">Minneola</a><a href="/cleaning-services/clermont">Clermont</a><a href="/cleaning-services/winter-garden">Winter Garden</a><a href="/cleaning-services/winter-park">Winter Park</a><a href="/cleaning-services/ocoee">Ocoee</a>
   <div class="mobile-section">Vacation Rental Areas</div><a href="/airbnb-cleaning/kissimmee">Kissimmee</a><a href="/airbnb-cleaning/davenport">Davenport</a><a href="/vacation-rental-cleaning/four-corners">Four Corners</a><a href="/cleaning-services/celebration">Celebration</a><a href="/cleaning-services/orlando">Orlando</a>
+  <a href="/#about">About</a>
   <a href="/blog">Blog</a>
   <a href="/#reviews">Reviews</a>
   <a href="/#contact">Contact</a>
   <div class="mobile-cta-wrap"><a href="/#contact">Get Free Quote</a></div>
 </div>
 <main>
+<!-- HERO -->
 <section class="hero" id="home">
+  <img src="/images/hero-dining.jpg" alt="Professional cleaning service Central Florida" class="hero-bg" width="1920" height="1080">
   <div class="hero-inner">
-    <div>
-      <div class="hero-badge">&#11088; #1 Rated Cleaning Service in Central Florida</div>
+    <div class="hero-content">
+      <div class="hero-badge">⭐ #1 Rated Cleaning Service in Central Florida</div>
       <h1>Professional Cleaning Services in <span>Central Florida</span></h1>
-      <p class="hero-desc">From Airbnb turnovers in Kissimmee to house cleaning in The Villages &#8212; we deliver spotless results that keep clients coming back. Licensed, insured, and locally owned.</p>
+      <p class="hero-desc">From Airbnb turnovers in Kissimmee to house cleaning in The Villages — we deliver spotless results that keep clients coming back. Licensed, insured, and locally owned.</p>
       <div class="hero-btns">
         <a href="#contact" class="btn-primary">
-          <svg width="17" height="17" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
           Get Free Quote
         </a>
-        <a href="tel:6892427469" class="btn-call">
-          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.95 9.8a19.79 19.79 0 01-3.07-8.67A2 2 0 012.88 1h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L7.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+        <a href="tel:6892427469" class="btn-secondary">
+          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.95 9.8a19.79 19.79 0 01-3.07-8.67A2 2 0 012.88 1h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L7.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
           (689) 242-7469
         </a>
       </div>
       <div class="hero-trust">
-        <div class="hero-trust-item"><span class="trust-dot"></span>Licensed &amp; Insured</div>
-        <div class="hero-trust-item"><span class="trust-dot"></span>200+ Happy Clients</div>
-        <div class="hero-trust-item"><span class="trust-dot"></span>5-Star Google Rating</div>
-      </div>
+    <div class="hero-trust-item">
+      <svg width="18" height="18" fill="none" stroke="#4ade80" stroke-width="2.5" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4"/><path d="M21 12c0 4.97-4.03 9-9 9S3 16.97 3 12 7.03 3 12 3s9 4.03 9 9z"/></svg>
+      Licensed &amp; Insured
     </div>
-    <div>
-      <div class="carousel" id="heroCarousel">
-        <div class="carousel-track" id="carouselTrack"><div class="carousel-slide"><img src="/images/img-kitchen-orlando.jpg" width="600" height="450" alt="Professional kitchen cleaning Central Florida" loading="eager"></div><div class="carousel-slide"><img src="/images/img-bed-davenport.jpg" width="600" height="450" alt="Airbnb bedroom cleaning Davenport FL" loading="eager"></div><div class="carousel-slide"><img src="/images/img-living-wintergarden.jpg" width="600" height="450" alt="Living room cleaning Winter Garden FL" loading="eager"></div><div class="carousel-slide"><img src="/images/img-airbnb-kissimmee.jpg" width="600" height="450" alt="Vacation rental cleaning Kissimmee FL" loading="eager"></div><div class="carousel-slide"><img src="/images/img-bathroom-clermont.jpg" width="600" height="450" alt="Bathroom deep cleaning Clermont FL" loading="eager"></div><div class="carousel-slide"><img src="/images/img-vacation-davenport.jpg" width="600" height="450" alt="Vacation rental cleaning Davenport FL" loading="eager"></div></div>
-        <button class="carousel-btn carousel-prev" onclick="prevSlide()" aria-label="Previous">&#8249;</button>
-        <button class="carousel-btn carousel-next" onclick="nextSlide()" aria-label="Next">&#8250;</button>
-        <div class="carousel-dots"><button class="carousel-dot active" onclick="goTo(0)" aria-label="Slide 1"></button><button class="carousel-dot" onclick="goTo(1)" aria-label="Slide 2"></button><button class="carousel-dot" onclick="goTo(2)" aria-label="Slide 3"></button><button class="carousel-dot" onclick="goTo(3)" aria-label="Slide 4"></button><button class="carousel-dot" onclick="goTo(4)" aria-label="Slide 5"></button><button class="carousel-dot" onclick="goTo(5)" aria-label="Slide 6"></button></div>
+    <div class="hero-trust-item">
+      <svg width="18" height="18" fill="none" stroke="#4ade80" stroke-width="2.5" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4"/><path d="M21 12c0 4.97-4.03 9-9 9S3 16.97 3 12 7.03 3 12 3s9 4.03 9 9z"/></svg>
+      200+ Happy Clients
+    </div>
+    <div class="hero-trust-item">
+      <svg width="18" height="18" fill="none" stroke="#4ade80" stroke-width="2.5" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4"/><path d="M21 12c0 4.97-4.03 9-9 9S3 16.97 3 12 7.03 3 12 3s9 4.03 9 9z"/></svg>
+      5-Star Google Rating
+    </div></div>
+    </div>
+    <div class="hero-card">
+      <div class="hero-card-img">
+        <img src="/images/img-bed-davenport.jpg" alt="Clean vacation rental bedroom Davenport FL" width="400" height="220" loading="lazy">
       </div>
       <div class="hero-stats">
-        <div class="stat"><div class="stat-num">5&#9733;</div><div class="stat-label">Google Rating</div></div>
+        <div class="stat"><div class="stat-num">5★</div><div class="stat-label">Google Rating</div></div>
         <div class="stat"><div class="stat-num">200+</div><div class="stat-label">Happy Clients</div></div>
-        <div class="stat"><div class="stat-num">6+</div><div class="stat-label">Years in FL</div></div>
+        <div class="stat"><div class="stat-num">6+</div><div class="stat-label">Years Serving FL</div></div>
         <div class="stat"><div class="stat-num">17</div><div class="stat-label">Cities Covered</div></div>
       </div>
     </div>
   </div>
 </section>
 
+<!-- SERVICES -->
 <section class="section" id="services">
   <div class="section-inner">
     <div class="section-head center">
       <span class="section-label">What We Do</span>
       <h2 class="section-title">Cleaning Services for Every Need</h2>
-      <p class="section-desc">From weekly house cleaning to Airbnb turnovers, janitorial programs, and post-construction cleanups across Central Florida.</p>
+      <p class="section-desc">From weekly house cleaning to Airbnb turnovers and post-construction cleanups — we do it all across Central Florida.</p>
     </div>
     <div class="services-grid"><div class="service-card">
-      <div class="service-card-img"><img src="/images/img-living-wintergarden.jpg" width="400" height="160" alt="House Cleaning in Central Florida" loading="lazy"></div>
-      <div class="service-card-body">
-        <h3>House Cleaning</h3>
-        <p>Weekly, bi-weekly, or monthly maid service. Consistent teams who learn your home inside and out.</p>
-        <a href="/house-cleaning" class="service-link">Learn more &#8594;</a>
-      </div>
+      <div class="service-icon">🏠</div>
+      <h3>House Cleaning</h3>
+      <p>Weekly, bi-weekly, or monthly maid service for Central Florida homes. Consistent teams who learn your preferences.</p>
+      <a href="/house-cleaning" class="service-link">Learn more →</a>
     </div><div class="service-card">
-      <div class="service-card-img"><img src="/images/img-airbnb-kissimmee.jpg" width="400" height="160" alt="Airbnb Cleaning in Central Florida" loading="lazy"></div>
-      <div class="service-card-body">
-        <h3>Airbnb Cleaning</h3>
-        <p>Same-day vacation rental turnovers in Kissimmee and Davenport. 5-star guest presentation every time.</p>
-        <a href="/airbnb-cleaning" class="service-link">Learn more &#8594;</a>
-      </div>
+      <div class="service-icon">✈️</div>
+      <h3>Airbnb Cleaning</h3>
+      <p>Fast, thorough vacation rental turnovers. We help hosts in Kissimmee and Davenport maintain 5-star ratings.</p>
+      <a href="/airbnb-cleaning" class="service-link">Learn more →</a>
     </div><div class="service-card">
-      <div class="service-card-img"><img src="/images/img-vacation-davenport.jpg" width="400" height="160" alt="Vacation Rental Cleaning in Central Florida" loading="lazy"></div>
-      <div class="service-card-body">
-        <h3>Vacation Rental Cleaning</h3>
-        <p>Specialized turnover cleaning for resort properties near Disney. Photo documentation included.</p>
-        <a href="/vacation-rental-cleaning" class="service-link">Learn more &#8594;</a>
-      </div>
+      <div class="service-icon">🏖️</div>
+      <h3>Vacation Rental Cleaning</h3>
+      <p>Specialized turnover cleaning for short-term rentals. Same-day service available.</p>
+      <a href="/vacation-rental-cleaning" class="service-link">Learn more →</a>
     </div><div class="service-card">
-      <div class="service-card-img"><img src="/images/img-bathroom-clermont.jpg" width="400" height="160" alt="Deep Cleaning in Central Florida" loading="lazy"></div>
-      <div class="service-card-body">
-        <h3>Deep Cleaning</h3>
-        <p>Top-to-bottom deep clean reaching inside cabinets, baseboards, and behind every appliance.</p>
-        <a href="/deep-cleaning" class="service-link">Learn more &#8594;</a>
-      </div>
+      <div class="service-icon">✨</div>
+      <h3>Deep Cleaning</h3>
+      <p>Top-to-bottom deep clean for homes needing extra attention. Inside cabinets, baseboards, and beyond.</p>
+      <a href="/deep-cleaning" class="service-link">Learn more →</a>
     </div><div class="service-card">
-      <div class="service-card-img"><img src="/images/img-moveout-villages.jpg" width="400" height="160" alt="Move-Out Cleaning in Central Florida" loading="lazy"></div>
-      <div class="service-card-body">
-        <h3>Move-Out Cleaning</h3>
-        <p>Thorough move-out cleaning to help recover your security deposit. Landlord-approved standards.</p>
-        <a href="/move-out-cleaning" class="service-link">Learn more &#8594;</a>
-      </div>
+      <div class="service-icon">📦</div>
+      <h3>Move-Out Cleaning</h3>
+      <p>Thorough cleaning that helps you get your security deposit back. Landlord-approved checklists.</p>
+      <a href="/move-out-cleaning" class="service-link">Learn more →</a>
     </div><div class="service-card">
-      <div class="service-card-img"><img src="/images/img-kitchen-orlando.jpg" width="400" height="160" alt="Move-In Cleaning in Central Florida" loading="lazy"></div>
-      <div class="service-card-body">
-        <h3>Move-In Cleaning</h3>
-        <p>Start fresh in your new home with a professional deep clean before you unpack a single box.</p>
-        <a href="/move-in-cleaning" class="service-link">Learn more &#8594;</a>
-      </div>
+      <div class="service-icon">🔑</div>
+      <h3>Move-In Cleaning</h3>
+      <p>Start fresh in your new home with a professional deep clean before you unpack.</p>
+      <a href="/move-in-cleaning" class="service-link">Learn more →</a>
     </div><div class="service-card">
-      <div class="service-card-img"><img src="/images/img-office-deep.jpg" width="400" height="160" alt="Post-Construction in Central Florida" loading="lazy"></div>
-      <div class="service-card-body">
-        <h3>Post-Construction</h3>
-        <p>Remove construction dust, paint residue, and debris. New builds and renovations made move-in ready.</p>
-        <a href="/post-construction-cleaning" class="service-link">Learn more &#8594;</a>
-      </div>
+      <div class="service-icon">🏗️</div>
+      <h3>Post-Construction</h3>
+      <p>Remove construction dust, debris, and residues. We prep new builds and renovations for move-in.</p>
+      <a href="/post-construction-cleaning" class="service-link">Learn more →</a>
     </div><div class="service-card">
-      <div class="service-card-img"><img src="/images/img-bathroom-minneola.jpg" width="400" height="160" alt="Recurring Cleaning in Central Florida" loading="lazy"></div>
-      <div class="service-card-body">
-        <h3>Recurring Cleaning</h3>
-        <p>Set-and-forget recurring service. Same team, same schedule, loyalty discounts for regular clients.</p>
-        <a href="/recurring-cleaning" class="service-link">Learn more &#8594;</a>
-      </div>
+      <div class="service-icon">🔄</div>
+      <h3>Recurring Cleaning</h3>
+      <p>Set up a recurring schedule and never worry about cleaning again. Discount for regular clients.</p>
+      <a href="/recurring-cleaning" class="service-link">Learn more →</a>
     </div><div class="service-card">
-      <div class="service-card-img"><img src="/images/img-office-orlando.jpg" width="400" height="160" alt="Commercial Cleaning in Central Florida" loading="lazy"></div>
-      <div class="service-card-body">
-        <h3>Commercial Cleaning</h3>
-        <p>Office cleaning, janitorial services, and commercial property maintenance across Central Florida.</p>
-        <a href="/commercial-cleaning" class="service-link">Learn more &#8594;</a>
-      </div>
+      <div class="service-icon">🏢</div>
+      <h3>Commercial Cleaning</h3>
+      <p>Office cleaning, janitorial services, and commercial property maintenance across Central Florida.</p>
+      <a href="/commercial-cleaning" class="service-link">Learn more →</a>
     </div></div>
   </div>
 </section>
 
-<section class="section" style="background:var(--gray-light);padding-top:64px;padding-bottom:64px" id="about">
+<!-- PHOTO GALLERY -->
+<section class="section" style="background:var(--gray-light);padding-top:64px;padding-bottom:64px">
+  <div class="section-inner">
+    <div class="section-head center">
+      <span class="section-label orange">Our Work</span>
+      <h2 class="section-title">Real Results from Real Properties</h2>
+      <p class="section-desc">Every photo is from an actual job in Central Florida — no stock images.</p>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px">
+      <div style="border-radius:12px;overflow:hidden;height:220px"><img src="/images/img-kitchen-orlando.jpg" alt="Clean kitchen after professional cleaning Orlando FL" style="width:100%;height:100%;object-fit:cover" loading="lazy"></div>
+      <div style="border-radius:12px;overflow:hidden;height:220px"><img src="/images/img-bathroom-clermont.jpg" alt="Sparkling bathroom cleaning Clermont FL" style="width:100%;height:100%;object-fit:cover" loading="lazy"></div>
+      <div style="border-radius:12px;overflow:hidden;height:220px"><img src="/images/img-bed-davenport.jpg" alt="Fresh bed Airbnb cleaning Davenport FL" style="width:100%;height:100%;object-fit:cover" loading="lazy"></div>
+      <div style="border-radius:12px;overflow:hidden;height:220px"><img src="/images/img-living-wintergarden.jpg" alt="Organized living room cleaning Winter Garden FL" style="width:100%;height:100%;object-fit:cover" loading="lazy"></div>
+      <div style="border-radius:12px;overflow:hidden;height:220px"><img src="/images/img-vacation-davenport.jpg" alt="Vacation rental cleaning Davenport FL" style="width:100%;height:100%;object-fit:cover" loading="lazy"></div>
+      <div style="border-radius:12px;overflow:hidden;height:220px"><img src="/images/img-airbnb-kissimmee.jpg" alt="Airbnb cleaning Kissimmee FL" style="width:100%;height:100%;object-fit:cover" loading="lazy"></div>
+      <div style="border-radius:12px;overflow:hidden;height:220px"><img src="/images/img-bathroom-minneola.jpg" alt="Home cleaning Minneola FL bathroom" style="width:100%;height:100%;object-fit:cover" loading="lazy"></div>
+      <div style="border-radius:12px;overflow:hidden;height:220px"><img src="/images/img-moveout-villages.jpg" alt="Move-out cleaning The Villages FL kitchen" style="width:100%;height:100%;object-fit:cover" loading="lazy"></div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY CHOOSE -->
+<section class="section" id="about">
   <div class="section-inner">
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center">
       <div>
-        <span class="section-label">About Us</span>
-        <h2 class="section-title">Central Florida&#39;s Trusted Cleaning Experts</h2>
-        <p style="font-size:16px;color:var(--gray);margin-bottom:26px;line-height:1.75">We&#39;re a locally owned, Brazilian-American family business built on hard work and attention to detail. Every home, vacation rental, and commercial space we clean gets the same care we&#39;d give our own. Since 2020, hundreds of Central Florida families, Airbnb hosts, and business owners have trusted Braza Cleaning Services for consistent, professional results.</p>
+        <span class="section-label">Why Braza?</span>
+        <h2 class="section-title">Central Florida's Trusted Cleaning Experts</h2>
+        <p style="font-size:16px;color:var(--gray);margin-bottom:28px;line-height:1.75">We're a locally owned, Brazilian-American family business built on hard work and attention to detail. Every home and vacation rental we clean gets the same care we'd give our own.</p>
         <ul class="checklist">
           <li><span class="check-icon"></span>Licensed, bonded &amp; fully insured in Florida</li>
-          <li><span class="check-icon"></span>Consistent teams &#8212; same cleaners every visit</li>
-          <li><span class="check-icon"></span>Airbnb &amp; commercial cleaning specialists</li>
+          <li><span class="check-icon"></span>Consistent teams — same cleaners every visit</li>
+          <li><span class="check-icon"></span>Airbnb specialists with same-day turnover service</li>
           <li><span class="check-icon"></span>Photo documentation on every clean</li>
           <li><span class="check-icon"></span>Flexible scheduling including weekends</li>
           <li><span class="check-icon"></span>100% satisfaction guarantee</li>
         </ul>
-        <div style="margin-top:28px;display:flex;gap:12px;flex-wrap:wrap">
+        <div style="margin-top:32px;display:flex;gap:12px;flex-wrap:wrap">
           <a href="#contact" class="btn-primary">Get Free Quote</a>
-          <a href="tel:6892427469" class="btn-call">(689) 242-7469</a>
+          <a href="tel:6892427469" style="display:inline-flex;align-items:center;gap:8px;color:var(--blue);font-family:var(--font-head);font-weight:600;font-size:15px">
+            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.95 9.8a19.79 19.79 0 01-3.07-8.67A2 2 0 012.88 1h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L7.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+            (689) 242-7469
+          </a>
         </div>
       </div>
       <div style="position:relative">
-        <img src="/images/img-house-winter-garden.jpg" alt="Professional cleaning Winter Garden FL" style="width:100%;height:400px;object-fit:cover;border-radius:20px" loading="lazy">
-        <div style="position:absolute;bottom:-16px;right:-16px;background:#fff;border:1px solid var(--gray-border);border-radius:16px;padding:18px 22px;box-shadow:var(--shadow-lg);text-align:center">
-          <div style="font-family:var(--font-head);font-size:30px;font-weight:800;color:var(--blue)">5.0</div>
-          <div style="color:#F59E0B;font-size:18px">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-          <div style="font-size:12px;color:var(--gray);margin-top:3px">Google Rating</div>
+        <img src="/images/img-house-winter-garden.jpg" alt="Professional house cleaning Winter Garden FL" style="width:100%;height:400px;object-fit:cover;border-radius:20px" loading="lazy">
+        <div style="position:absolute;bottom:-20px;right:-20px;background:#fff;border:1px solid var(--gray-border);border-radius:16px;padding:20px;box-shadow:var(--shadow-lg);min-width:160px;text-align:center">
+          <div style="font-family:var(--font-head);font-size:32px;font-weight:800;color:var(--blue)">5.0</div>
+          <div style="color:#F59E0B;font-size:20px">★★★★★</div>
+          <div style="font-size:13px;color:var(--gray);margin-top:4px">Google Rating</div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
+<!-- CTA BANNER -->
 <div class="cta-section">
-  <h2>Ready for a Spotless Home or Office?</h2>
+  <h2>Ready for a Spotless Home?</h2>
   <p>Get a free, no-obligation quote within 2 hours. Serving Central Florida 7 days a week.</p>
   <div class="cta-btns">
     <a href="#contact" class="btn-white">Get Free Quote</a>
-    <a href="tel:6892427469" class="btn-outline-white">&#128222; (689) 242-7469</a>
+    <a href="tel:6892427469" class="btn-orange-outline">📞 (689) 242-7469</a>
   </div>
 </div>
 <section class="section" id="reviews" style="background:var(--gray-light)">
@@ -678,12 +666,9 @@ footer{background:#0F172A;color:rgba(255,255,255,.8);padding:64px 16px 32px}
 <li><a href="/cleaning-services/ocoee">Ocoee</a></li></ul></div>
       <div class="footer-col"><h4>Quick Links</h4><ul>
         <li><a href="/">Home</a></li>
-        <li><a href="/about">About Us</a></li>
         <li><a href="/blog">Blog</a></li>
-        <li><a href="/contact">Contact</a></li>
         <li><a href="/#reviews">Reviews</a></li>
         <li><a href="/#contact">Get a Quote</a></li>
-        <li><a href="/privacy-policy">Privacy Policy</a></li>
         <li><a href="https://share.google/im8ktmN1KQYzJukgW" target="_blank" rel="noopener">Google Reviews</a></li>
       </ul></div>
     </div>
