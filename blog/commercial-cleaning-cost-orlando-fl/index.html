@@ -66,7 +66,7 @@ a{color:inherit;text-decoration:none}
 .topbar-cta{background:var(--orange);padding:5px 16px;border-radius:20px;font-size:13px}
 .nav{position:fixed;top:38px;left:0;right:0;z-index:99;transition:all .3s;background:#fff;box-shadow:0 1px 8px rgba(0,0,0,.07)}
 .nav.scrolled{background:#fff;box-shadow:0 2px 12px rgba(0,0,0,.1)}
-.nav-inner{max-width:1200px;margin:0 auto;padding:0 20px;display:flex;align-items:center;justify-content:space-between;height:80px}
+.nav-inner{max-width:1200px;margin:0 auto;padding:0 20px;display:flex;align-items:center;justify-content:space-between;height:72px}
 .nav-logo{height:52px;width:auto}
 .nav-links{display:flex;align-items:center;gap:28px}
 .nav-links > a,.nav-links > .dropdown > button{font-family:var(--font-head);font-size:15px;font-weight:500;color:#374151;background:none;border:none;cursor:pointer;padding:4px 0;transition:color .2s;white-space:nowrap}
@@ -87,13 +87,13 @@ a{color:inherit;text-decoration:none}
 .dropdown-section.orange{color:var(--orange)}
 .dropdown-divider{border:none;border-top:1px solid var(--gray-border);margin:4px 0}
 .nav-toggle{display:none;background:none;border:none;cursor:pointer;padding:4px}
-.mobile-nav{display:none;position:fixed;top:118px;left:0;right:0;bottom:0;background:#fff;z-index:98;overflow-y:auto;padding:0 0 32px}
+.mobile-nav{display:none;position:fixed;top:110px;left:0;right:0;bottom:0;background:#fff;z-index:98;overflow-y:auto;padding:0 0 32px}
 .mobile-nav.open{display:block}
 .mobile-nav a,.mobile-nav button{display:block;width:100%;text-align:left;padding:14px 20px;font-family:var(--font-head);font-size:15px;font-weight:500;color:#374151;background:none;border:none;border-bottom:1px solid var(--gray-border);cursor:pointer}
 .mobile-section{padding:12px 20px;font-size:12px;font-weight:700;color:var(--blue);text-transform:uppercase;letter-spacing:.06em;background:var(--gray-light);border-bottom:1px solid var(--gray-border);cursor:pointer;display:flex;align-items:center;justify-content:space-between}.mobile-section::after{content:"›";font-size:16px;transition:transform .2s}.mobile-section.expanded::after{transform:rotate(90deg)}.mobile-submenu{display:none}.mobile-submenu.open{display:block}
 .mobile-cta-wrap{padding:20px}
 .mobile-cta-wrap a{display:block;text-align:center;background:var(--orange);color:#fff;padding:14px;border-radius:25px;font-family:var(--font-head);font-size:16px;font-weight:700}
-.hero{padding-top:118px;background:#fff}
+.hero{padding-top:110px;background:#fff}
 .hero-inner{max-width:1200px;margin:0 auto;padding:64px 20px 72px;display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
 .hero-badge{display:inline-flex;align-items:center;gap:8px;background:#FEF3E8;border:1px solid #F5C08A;color:var(--orange-dark);padding:7px 14px;border-radius:20px;font-size:13px;font-weight:600;margin-bottom:20px}
 .hero h1{font-size:clamp(2rem,3.8vw,3rem);font-weight:800;color:var(--text);margin-bottom:18px;line-height:1.1}
@@ -465,12 +465,12 @@ if(form){
     e.preventDefault();
     var btn=document.getElementById('submitBtn');
     btn.disabled=true;btn.textContent='Sending...';
-    var d={name:form.querySelector('[name=name]').value,phone:form.querySelector('[name=phone]').value,email:form.querySelector('[name=email]').value,service:form.querySelector('[name=service]').value,city:form.querySelector('[name=city]').value,message:(form.querySelector('[name=message]')||{value:''}).value};
+    var d={name:form.querySelector('[name=name]').value,phone:form.querySelector('[name=phone]').value,email:form.querySelector('[name=email]').value,service:form.querySelector('[name=service]').value,address:(form.querySelector('[name=address]')||{value:''}).value,city:form.querySelector('[name=city]').value,message:(form.querySelector('[name=message]')||{value:''}).value};
     try{
-      var res=await fetch('https://api.resend.com/emails',{method:'POST',headers:{'Authorization':'Bearer re_Psu7DehN_JGbh5dRZWVrVr4p5JbGE8PTq','Content-Type':'application/json'},body:JSON.stringify({from:'website@brazacleaning.com',to:['brazacleaningservices@gmail.com'],subject:'New Quote — '+d.service+' in '+d.city,html:'<h2>New Quote Request</h2><p><b>Name:</b> '+d.name+'</p><p><b>Phone:</b> '+d.phone+'</p><p><b>Email:</b> '+d.email+'</p><p><b>Service:</b> '+d.service+'</p><p><b>City:</b> '+d.city+'</p><p><b>Message:</b> '+d.message+'</p>'})});
-      if(res.ok||res.status===200||res.status===201){document.getElementById('formWrap').style.display='none';document.getElementById('formSuccess').style.display='block';}
-      else throw new Error('fail');
-    }catch(err){btn.disabled=false;btn.textContent='Send My Request →';alert('Something went wrong. Please call us at (689) 242-7469');}
+      var res=await fetch('https://braza-email-proxy.lucianodornfeld18.workers.dev',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(d)});
+      if(res.ok){document.getElementById('formWrap').style.display='none';document.getElementById('formSuccess').style.display='block';}
+      else{var t=await res.text();throw new Error(t);}
+    }catch(err){btn.disabled=false;btn.textContent='Send My Request →';alert('Error: '+err.message+'. Please call us at (689) 242-7469');}
   });
 }
 </script>
