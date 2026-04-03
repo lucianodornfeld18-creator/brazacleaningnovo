@@ -753,16 +753,9 @@ if(form){
     btn.disabled=true;btn.textContent='Sending...';
     var d={name:form.querySelector('[name=name]').value,phone:form.querySelector('[name=phone]').value,email:form.querySelector('[name=email]').value,service:form.querySelector('[name=service]').value,city:form.querySelector('[name=city]').value,message:(form.querySelector('[name=message]')||{value:''}).value};
     try{
-      var res=await fetch('https://braza-email-proxy.lucianodornfeld18-creator.workers.dev',{
-        method:'POST',
-        headers:{'Content-Type':'application/json'},
-        body:JSON.stringify(d)
-      });
-      var resText=await res.text();
-      if(res.ok){
-        document.getElementById('formWrap').style.display='none';
-        document.getElementById('formSuccess').style.display='block';
-      } else throw new Error(resText.substring(0,200));
+      var res=await fetch('https://braza-email-proxy.lucianodornfeld18.workers.dev',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(d)});
+      if(res.ok){document.getElementById('formWrap').style.display='none';document.getElementById('formSuccess').style.display='block';}
+      else{var t=await res.text();throw new Error(t);}
     }catch(err){
       btn.disabled=false;btn.textContent='Send My Request →';
       console.error('Form error:', err);
