@@ -2,901 +2,501 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<meta name="robots" content="noindex,nofollow">
-<script>
-// Block site header/footer injection
-window.addEventListener('DOMContentLoaded', function() {
-  var hp = document.getElementById('header-placeholder');
-  var fp = document.getElementById('footer-placeholder');
-  if(hp) hp.remove();
-  if(fp) fp.remove();
-});
-// Override fetch to block main.js includes if needed
-</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Braza Cleaning — Admin Blog</title>
+<meta name="robots" content="noindex,nofollow">
+<title>Braza Admin</title>
 <style>
-  :root {
-    --bg: #0f1117;
-    --surface: #1a1d27;
-    --surface2: #22263a;
-    --border: rgba(255,255,255,0.08);
-    --border2: rgba(255,255,255,0.14);
-    --text: #e8eaf0;
-    --muted: #8b90a0;
-    --accent: #4f8ef7;
-    --accent2: #3d7de0;
-    --green: #2ec87c;
-    --amber: #f0a830;
-    --red: #e85555;
-    --purple: #9b6ef3;
-    --radius: 10px;
-    --font: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  }
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { background: var(--bg); color: var(--text); font-family: var(--font); font-size: 14px; min-height: 100vh; }
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#f4f6f9;--s1:#ffffff;--s2:#f0f2f5;
+  --b1:#e5e7eb;--b2:#d1d5db;
+  --tx:#111827;--mu:#6b7280;
+  --ac:#2563eb;--ac2:#1d4ed8;
+  --gr:#16a34a;--am:#d97706;--rd:#dc2626;--pu:#7c3aed;
+  --r:10px;
+}
+body{background:var(--bg);color:var(--tx);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-size:14px;min-height:100vh}
 
-  /* Auth screen */
-  #auth-screen {
-    display: flex; align-items: center; justify-content: center;
-    min-height: 100vh; background: var(--bg);
-  }
-  .auth-card {
-    background: var(--surface); border: 1px solid var(--border2);
-    border-radius: 16px; padding: 40px; width: 360px; text-align: center;
-  }
-  .auth-card .logo { font-size: 32px; margin-bottom: 8px; }
-  .auth-card h2 { font-size: 18px; font-weight: 600; margin-bottom: 4px; }
-  .auth-card p { color: var(--muted); font-size: 13px; margin-bottom: 28px; }
-  .auth-card input {
-    width: 100%; padding: 12px 14px; background: var(--surface2);
-    border: 1px solid var(--border2); border-radius: var(--radius);
-    color: var(--text); font-size: 15px; margin-bottom: 14px; outline: none;
-  }
-  .auth-card input:focus { border-color: var(--accent); }
-  .auth-card button {
-    width: 100%; padding: 12px; background: var(--accent); color: #fff;
-    border: none; border-radius: var(--radius); font-size: 15px;
-    font-weight: 600; cursor: pointer; transition: background .2s;
-  }
-  .auth-card button:hover { background: var(--accent2); }
-  .auth-error { color: var(--red); font-size: 13px; margin-top: 10px; display: none; }
+/* AUTH */
+#auth{display:flex;align-items:center;justify-content:center;min-height:100vh;background:linear-gradient(135deg,#eff6ff 0%,#f0fdf4 100%)}
+.acard{background:#fff;border:1px solid var(--b1);border-radius:16px;padding:40px;width:360px;text-align:center;box-shadow:0 4px 24px rgba(0,0,0,0.08)}
+.acard .ico{font-size:40px;margin-bottom:12px}
+.acard h2{font-size:20px;font-weight:700;margin-bottom:4px;color:var(--tx)}
+.acard p{color:var(--mu);font-size:13px;margin-bottom:24px}
+.acard input{width:100%;padding:12px 14px;background:#f9fafb;border:1px solid var(--b2);border-radius:var(--r);color:var(--tx);font-size:15px;margin-bottom:12px;outline:none}
+.acard input:focus{border-color:var(--ac);box-shadow:0 0 0 3px rgba(37,99,235,0.1)}
+.acard button{width:100%;padding:13px;background:var(--ac);color:#fff;border:none;border-radius:var(--r);font-size:15px;font-weight:700;cursor:pointer;transition:background .15s}
+.acard button:hover{background:var(--ac2)}
+.aerr{color:var(--rd);font-size:13px;margin-top:8px;display:none}
 
-  /* App */
-  #app { display: none; }
+/* APP */
+#app{display:none}
+.sidebar{position:fixed;top:0;left:0;bottom:0;width:216px;background:#fff;border-right:1px solid var(--b1);display:flex;flex-direction:column;z-index:100;box-shadow:2px 0 8px rgba(0,0,0,0.04)}
+.slogo{padding:20px 18px 16px;border-bottom:1px solid var(--b1)}
+.slogo .br{font-size:15px;font-weight:800;color:var(--tx)}
+.slogo .sub{font-size:11px;color:var(--mu);margin-top:2px}
+.snav{padding:10px 8px;flex:1}
+.ni{display:flex;align-items:center;gap:10px;padding:9px 12px;border-radius:8px;cursor:pointer;color:var(--mu);font-size:13px;font-weight:500;margin-bottom:2px;transition:all .15s}
+.ni:hover{background:#f0f2f5;color:var(--tx)}
+.ni.active{background:#eff6ff;color:var(--ac);font-weight:600}
+.sfooter{padding:12px 16px;border-top:1px solid var(--b1);font-size:12px;color:var(--mu)}
 
-  /* Sidebar */
-  .sidebar {
-    position: fixed; top: 0; left: 0; bottom: 0; width: 220px;
-    background: var(--surface); border-right: 1px solid var(--border);
-    display: flex; flex-direction: column; z-index: 100;
-  }
-  .sidebar-logo {
-    padding: 20px 18px 16px;
-    border-bottom: 1px solid var(--border);
-  }
-  .sidebar-logo .brand { font-size: 16px; font-weight: 700; color: var(--text); }
-  .sidebar-logo .sub { font-size: 11px; color: var(--muted); margin-top: 2px; }
-  .sidebar-nav { padding: 12px 8px; flex: 1; }
-  .nav-item {
-    display: flex; align-items: center; gap: 10px; padding: 9px 12px;
-    border-radius: 8px; cursor: pointer; color: var(--muted);
-    font-size: 13px; font-weight: 500; transition: all .15s; margin-bottom: 2px;
-    text-decoration: none;
-  }
-  .nav-item:hover { background: var(--surface2); color: var(--text); }
-  .nav-item.active { background: rgba(79,142,247,0.15); color: var(--accent); }
-  .nav-icon { width: 16px; text-align: center; font-size: 15px; }
-  .sidebar-footer {
-    padding: 14px 18px; border-top: 1px solid var(--border);
-    font-size: 12px; color: var(--muted);
-  }
+.main{margin-left:216px;min-height:100vh}
+.topbar{background:#fff;border-bottom:1px solid var(--b1);padding:13px 28px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:50;box-shadow:0 1px 4px rgba(0,0,0,0.05)}
+.topbar h1{font-size:16px;font-weight:700;color:var(--tx)}
+.topbar-right{display:flex;gap:8px}
+.content{padding:28px}
 
-  /* Main */
-  .main { margin-left: 220px; min-height: 100vh; }
-  .topbar {
-    background: var(--surface); border-bottom: 1px solid var(--border);
-    padding: 14px 28px; display: flex; align-items: center;
-    justify-content: space-between; position: sticky; top: 0; z-index: 50;
-  }
-  .topbar h1 { font-size: 16px; font-weight: 600; }
-  .topbar-actions { display: flex; gap: 10px; align-items: center; }
-  .content { padding: 28px; }
+/* STATS */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:28px}
+.sc{background:#fff;border:1px solid var(--b1);border-radius:var(--r);padding:18px 20px;box-shadow:0 1px 3px rgba(0,0,0,0.04)}
+.sc .lbl{font-size:12px;color:var(--mu);margin-bottom:6px;font-weight:500}
+.sc .val{font-size:26px;font-weight:800}
+.val.gr{color:var(--gr)}.val.am{color:var(--am)}.val.ac{color:var(--ac)}.val.pu{color:var(--pu)}
 
-  /* Stats row */
-  .stats-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-bottom: 28px; }
-  .stat-card {
-    background: var(--surface); border: 1px solid var(--border);
-    border-radius: var(--radius); padding: 18px 20px;
-  }
-  .stat-label { font-size: 12px; color: var(--muted); margin-bottom: 6px; }
-  .stat-value { font-size: 26px; font-weight: 700; }
-  .stat-value.green { color: var(--green); }
-  .stat-value.amber { color: var(--amber); }
-  .stat-value.blue { color: var(--accent); }
-  .stat-value.purple { color: var(--purple); }
+/* BTN */
+.btn{padding:8px 16px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;border:none;display:inline-flex;align-items:center;gap:6px;transition:all .15s}
+.bp{background:var(--ac);color:#fff}.bp:hover{background:var(--ac2)}
+.bg{background:#fff;color:var(--mu);border:1px solid var(--b2)}.bg:hover{background:#f9fafb;color:var(--tx)}
+.bs{background:var(--gr);color:#fff}.bs:hover{background:#15803d}
+.sm{padding:6px 12px;font-size:12px}
 
-  /* Buttons */
-  .btn {
-    padding: 8px 16px; border-radius: 8px; font-size: 13px;
-    font-weight: 600; cursor: pointer; border: none; transition: all .15s;
-    display: inline-flex; align-items: center; gap: 6px;
-  }
-  .btn-primary { background: var(--accent); color: #fff; }
-  .btn-primary:hover { background: var(--accent2); }
-  .btn-success { background: var(--green); color: #fff; }
-  .btn-success:hover { opacity: .85; }
-  .btn-ghost {
-    background: transparent; color: var(--muted);
-    border: 1px solid var(--border2);
-  }
-  .btn-ghost:hover { background: var(--surface2); color: var(--text); }
-  .btn-danger { background: rgba(232,85,85,0.15); color: var(--red); border: 1px solid rgba(232,85,85,0.2); }
-  .btn-danger:hover { background: rgba(232,85,85,0.25); }
-  .btn-sm { padding: 5px 10px; font-size: 12px; }
+/* TABLE */
+.tcard{background:#fff;border:1px solid var(--b1);border-radius:var(--r);overflow:hidden;margin-bottom:20px;box-shadow:0 1px 3px rgba(0,0,0,0.04)}
+.thead{padding:14px 20px;border-bottom:1px solid var(--b1);display:flex;align-items:center;justify-content:space-between;gap:12px;background:#fff}
+.thead h2{font-size:14px;font-weight:700;color:var(--tx)}
+.tfilters{display:flex;gap:8px;align-items:center}
+.fsel,.sinp{background:#f9fafb;border:1px solid var(--b2);color:var(--tx);border-radius:7px;padding:6px 10px;font-size:13px;outline:none}
+.fsel:focus,.sinp:focus{border-color:var(--ac);box-shadow:0 0 0 2px rgba(37,99,235,0.1)}
+.sinp{width:190px}
+table{width:100%;border-collapse:collapse}
+th{padding:9px 14px;text-align:left;font-size:11px;font-weight:700;color:var(--mu);text-transform:uppercase;letter-spacing:.5px;border-bottom:1px solid var(--b1);background:#f9fafb}
+td{padding:12px 14px;border-bottom:1px solid var(--b1);vertical-align:middle}
+tr:last-child td{border-bottom:none}
+tr:hover td{background:#f9fafb}
+.tt{font-weight:600;font-size:13px;color:var(--tx)}
+.tk{color:var(--ac);font-size:12px;margin-top:2px}
+.badge{display:inline-block;padding:3px 10px;border-radius:20px;font-size:11px;font-weight:700}
+.bp2{background:#fef3c7;color:#92400e}
+.bpub{background:#dcfce7;color:#166534}
+.pag{padding:12px 20px;display:flex;align-items:center;border-top:1px solid var(--b1);font-size:13px;color:var(--mu);background:#f9fafb}
+.pinfo{flex:1}
+.pbtns{display:flex;gap:4px}
+.pbtn{width:28px;height:28px;border-radius:6px;border:1px solid var(--b2);background:#fff;color:var(--mu);cursor:pointer;font-size:13px;display:flex;align-items:center;justify-content:center;transition:all .15s}
+.pbtn:hover,.pbtn.active{background:var(--ac);color:#fff;border-color:var(--ac)}
 
-  /* Table */
-  .table-card {
-    background: var(--surface); border: 1px solid var(--border);
-    border-radius: var(--radius); overflow: hidden;
-  }
-  .table-header {
-    padding: 16px 20px; border-bottom: 1px solid var(--border);
-    display: flex; align-items: center; justify-content: space-between; gap: 14px;
-  }
-  .table-header h2 { font-size: 14px; font-weight: 600; }
-  .table-filters { display: flex; gap: 8px; align-items: center; }
-  .filter-select, .search-input {
-    background: var(--surface2); border: 1px solid var(--border2);
-    color: var(--text); border-radius: 7px; padding: 6px 10px;
-    font-size: 13px; outline: none;
-  }
-  .filter-select:focus, .search-input:focus { border-color: var(--accent); }
-  .search-input { width: 200px; }
-  table { width: 100%; border-collapse: collapse; }
-  th {
-    padding: 10px 14px; text-align: left; font-size: 11px; font-weight: 600;
-    color: var(--muted); text-transform: uppercase; letter-spacing: .5px;
-    border-bottom: 1px solid var(--border); background: rgba(255,255,255,0.02);
-  }
-  td { padding: 12px 14px; border-bottom: 1px solid var(--border); vertical-align: middle; }
-  tr:last-child td { border-bottom: none; }
-  tr:hover td { background: rgba(255,255,255,0.02); }
-  .topic-title { font-weight: 500; font-size: 13px; max-width: 260px; }
-  .topic-keyword { color: var(--accent); font-size: 12px; margin-top: 2px; }
-  .badge {
-    display: inline-block; padding: 3px 9px; border-radius: 20px;
-    font-size: 11px; font-weight: 600; letter-spacing: .2px;
-  }
-  .badge-pending { background: rgba(240,168,48,0.15); color: var(--amber); }
-  .badge-published { background: rgba(46,200,124,0.15); color: var(--green); }
-  .badge-generating { background: rgba(155,110,243,0.15); color: var(--purple); }
-  .badge-error { background: rgba(232,85,85,0.15); color: var(--red); }
+/* SECTION */
+.sec{display:none}.sec.active{display:block}
 
-  /* Pagination */
-  .pagination {
-    padding: 14px 20px; display: flex; align-items: center;
-    justify-content: between; gap: 8px; border-top: 1px solid var(--border);
-    font-size: 13px; color: var(--muted);
-  }
-  .page-info { flex: 1; }
-  .page-btns { display: flex; gap: 4px; }
-  .page-btn {
-    width: 30px; height: 30px; border-radius: 6px; border: 1px solid var(--border2);
-    background: transparent; color: var(--muted); cursor: pointer; font-size: 13px;
-    display: flex; align-items: center; justify-content: center; transition: all .15s;
-  }
-  .page-btn:hover, .page-btn.active { background: var(--accent); color: #fff; border-color: var(--accent); }
+/* CARDS */
+.pcard{background:#fff;border:1px solid var(--b1);border-radius:var(--r);padding:24px;margin-bottom:18px;box-shadow:0 1px 3px rgba(0,0,0,0.04)}
+.pcard h2{font-size:15px;font-weight:700;margin-bottom:5px;color:var(--tx)}
+.pcard>p{color:var(--mu);font-size:13px;margin-bottom:18px}
+.frow{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px}
+.fg{display:flex;flex-direction:column;gap:5px}
+.fl{font-size:11px;font-weight:700;color:var(--mu);text-transform:uppercase;letter-spacing:.5px}
+.fi,.fsel2{background:#f9fafb;border:1px solid var(--b2);color:var(--tx);border-radius:8px;padding:10px 12px;font-size:14px;outline:none;font-family:inherit;transition:all .15s;width:100%}
+.fi:focus,.fsel2:focus{border-color:var(--ac);background:#fff;box-shadow:0 0 0 2px rgba(37,99,235,0.1)}
 
-  /* Tabs (for sections) */
-  .section { display: none; }
-  .section.active { display: block; }
+/* LOG */
+.logbox{background:#1e293b;border:1px solid var(--b1);border-radius:var(--r);padding:14px;font-family:'Courier New',monospace;font-size:12px;color:#94a3b8;max-height:260px;overflow-y:auto;margin-top:12px;display:none}
+.ll{line-height:1.8}.lok{color:#4ade80}.lerr{color:#f87171}.linf{color:#60a5fa}
 
-  /* Manual publish panel */
-  .publish-card {
-    background: var(--surface); border: 1px solid var(--border);
-    border-radius: var(--radius); padding: 24px; margin-bottom: 20px;
-  }
-  .publish-card h2 { font-size: 15px; font-weight: 600; margin-bottom: 6px; }
-  .publish-card p { color: var(--muted); font-size: 13px; margin-bottom: 20px; }
-  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 14px; }
-  .form-group { display: flex; flex-direction: column; gap: 6px; }
-  .form-label { font-size: 12px; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: .4px; }
-  .form-input, .form-select, .form-textarea {
-    background: var(--surface2); border: 1px solid var(--border2);
-    color: var(--text); border-radius: 8px; padding: 9px 12px;
-    font-size: 14px; outline: none; font-family: var(--font);
-    transition: border-color .15s;
-  }
-  .form-input:focus, .form-select:focus, .form-textarea:focus { border-color: var(--accent); }
-  .form-textarea { resize: vertical; min-height: 100px; }
+/* PROGRESS */
+.pbwrap{background:#e5e7eb;border-radius:4px;height:6px;margin:12px 0;overflow:hidden;display:none}
+.pb{height:100%;background:var(--ac);border-radius:4px;width:0%;transition:width .4s}
 
-  /* Log area */
-  .log-area {
-    background: #0a0c10; border: 1px solid var(--border); border-radius: var(--radius);
-    padding: 16px; font-family: 'Courier New', monospace; font-size: 12px;
-    color: #8b90a0; max-height: 300px; overflow-y: auto; margin-top: 14px;
-  }
-  .log-line { line-height: 1.8; }
-  .log-line.ok { color: var(--green); }
-  .log-line.err { color: var(--red); }
-  .log-line.info { color: var(--accent); }
+/* SPINNER */
+.spin{width:14px;height:14px;border:2px solid rgba(255,255,255,0.3);border-top-color:#fff;border-radius:50%;animation:sp .7s linear infinite;display:inline-block}
+@keyframes sp{to{transform:rotate(360deg)}}
 
-  /* Progress bar */
-  .progress-bar-wrap {
-    background: var(--surface2); border-radius: 4px;
-    height: 6px; margin: 14px 0; overflow: hidden;
-  }
-  .progress-bar {
-    height: 100%; background: var(--accent);
-    border-radius: 4px; width: 0%;
-    transition: width .4s ease;
-  }
+/* CONFIG */
+.cgrid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.ck{display:flex;align-items:center;gap:8px;padding:12px 14px;background:#f9fafb;border:1px solid var(--b1);border-radius:8px}
+.ckl{font-size:12px;color:var(--mu);flex:1;font-weight:500}
+.ckv{font-family:monospace;font-size:12px;color:var(--gr);font-weight:600;max-width:190px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 
-  /* GitHub config section */
-  .config-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-  .config-key {
-    display: flex; align-items: center; gap: 8px; padding: 12px 14px;
-    background: var(--surface2); border: 1px solid var(--border);
-    border-radius: 8px;
-  }
-  .config-key-label { font-size: 12px; color: var(--muted); flex: 1; }
-  .config-key-value {
-    font-family: monospace; font-size: 12px; color: var(--green);
-    max-width: 200px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
-  }
-
-  /* Spinner */
-  .spinner {
-    width: 16px; height: 16px; border: 2px solid rgba(255,255,255,0.2);
-    border-top-color: #fff; border-radius: 50%;
-    animation: spin .7s linear infinite; display: inline-block;
-  }
-  @keyframes spin { to { transform: rotate(360deg); } }
-
-  /* Scroll */
-  ::-webkit-scrollbar { width: 6px; }
-  ::-webkit-scrollbar-track { background: transparent; }
-  ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 3px; }
-
-  /* Empty state */
-  .empty-state { text-align: center; padding: 60px 20px; color: var(--muted); }
-  .empty-state .icon { font-size: 40px; margin-bottom: 12px; }
+::-webkit-scrollbar{width:5px}
+::-webkit-scrollbar-thumb{background:#d1d5db;border-radius:3px}
 </style>
 </head>
 <body>
-<script>
-// Neutralize site header/footer before main.js runs
-document.addEventListener('DOMContentLoaded', function() {
-  ['header-placeholder','footer-placeholder'].forEach(function(id) {
-    var el = document.getElementById(id);
-    if (el) el.remove();
-  });
-});
-// If main.js uses innerHTML on these IDs, override it
-Object.defineProperty(HTMLElement.prototype, '_brazaBlocked', { value: true });
-</script>
 
-<!-- AUTH SCREEN -->
-<div id="auth-screen">
-  <div class="auth-card">
-    <div class="logo">🧹</div>
+<div id="auth">
+  <div class="acard">
+    <div class="ico">🧹</div>
     <h2>Braza Cleaning Admin</h2>
     <p>Blog Automation Dashboard</p>
-    <input type="password" id="pwd-input" placeholder="Senha de acesso" autocomplete="current-password"
-      onkeydown="if(event.key==='Enter')doLogin()">
-    <button onclick="doLogin()">Entrar</button>
-    <div class="auth-error" id="auth-error">Senha incorreta. Tente novamente.</div>
+    <input type="password" id="pwd" placeholder="Senha de acesso" autocomplete="current-password">
+    <button id="loginBtn">Entrar</button>
+    <div class="aerr" id="aerr">Senha incorreta.</div>
   </div>
 </div>
 
-<!-- APP -->
 <div id="app">
-  <!-- Sidebar -->
   <div class="sidebar">
-    <div class="sidebar-logo">
-      <div class="brand">🧹 Braza Admin</div>
-      <div class="sub">Blog Automation v1.0</div>
+    <div class="slogo">
+      <div class="br">🧹 Braza Admin</div>
+      <div class="sub">Blog Automation v2.0</div>
     </div>
-    <nav class="sidebar-nav">
-      <div class="nav-item active" onclick="showSection('dashboard')" id="nav-dashboard">
-        <span class="nav-icon">📊</span> Dashboard
-      </div>
-      <div class="nav-item" onclick="showSection('topics')" id="nav-topics">
-        <span class="nav-icon">📋</span> Tópicos
-      </div>
-      <div class="nav-item" onclick="showSection('publish')" id="nav-publish">
-        <span class="nav-icon">✍️</span> Publicar Agora
-      </div>
-      <div class="nav-item" onclick="showSection('posts')" id="nav-posts">
-        <span class="nav-icon">📰</span> Posts Publicados
-      </div>
-      <div class="nav-item" onclick="showSection('config')" id="nav-config">
-        <span class="nav-icon">⚙️</span> Configurações
-      </div>
+    <nav class="snav">
+      <div class="ni active" id="n-dashboard" onclick="go('dashboard')">📊 Dashboard</div>
+      <div class="ni" id="n-topics" onclick="go('topics')">📋 Tópicos</div>
+      <div class="ni" id="n-publish" onclick="go('publish')">✍️ Publicar</div>
+      <div class="ni" id="n-posts" onclick="go('posts')">📰 Publicados</div>
+      <div class="ni" id="n-keys" onclick="go('keys')">🔑 API Keys</div>
     </nav>
-    <div class="sidebar-footer">
-      <div>brazacleaning.com</div>
-      <div style="margin-top:4px; color: #4f8ef7; font-size:11px;">● Conectado</div>
+    <div class="sfooter">
+      <div style="font-weight:600">brazacleaning.com</div>
+      <div style="color:var(--gr);margin-top:3px;font-size:11px;font-weight:600">● Online</div>
     </div>
   </div>
 
-  <!-- Main -->
   <div class="main">
     <div class="topbar">
-      <h1 id="page-title">Dashboard</h1>
-      <div class="topbar-actions">
-        <button class="btn btn-ghost btn-sm" onclick="refreshData()">🔄 Atualizar</button>
-        <button class="btn btn-primary btn-sm" onclick="showSection('publish')">⚡ Publicar Agora</button>
+      <h1 id="ptitle">Dashboard</h1>
+      <div class="topbar-right">
+        <button class="btn bg sm" onclick="loadTopics()">🔄 Atualizar</button>
+        <button class="btn bp sm" onclick="go('publish')">⚡ Publicar Agora</button>
       </div>
     </div>
 
     <div class="content">
 
       <!-- DASHBOARD -->
-      <div class="section active" id="section-dashboard">
-        <div class="stats-row">
-          <div class="stat-card">
-            <div class="stat-label">Tópicos Pendentes</div>
-            <div class="stat-value amber" id="stat-pending">—</div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-label">Posts Publicados</div>
-            <div class="stat-value green" id="stat-published">—</div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-label">Total de Tópicos</div>
-            <div class="stat-value blue" id="stat-total">—</div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-label">Semanas Restantes</div>
-            <div class="stat-value purple" id="stat-weeks">—</div>
-          </div>
+      <div class="sec active" id="s-dashboard">
+        <div class="stats">
+          <div class="sc"><div class="lbl">Pendentes</div><div class="val am" id="v-pend">—</div></div>
+          <div class="sc"><div class="lbl">Publicados</div><div class="val gr" id="v-pub">—</div></div>
+          <div class="sc"><div class="lbl">Total</div><div class="val ac" id="v-tot">—</div></div>
+          <div class="sc"><div class="lbl">Semanas restantes</div><div class="val pu" id="v-wk">—</div></div>
         </div>
-
-        <div class="table-card">
-          <div class="table-header">
-            <h2>Próximos 10 tópicos para publicar</h2>
-            <button class="btn btn-ghost btn-sm" onclick="showSection('topics')">Ver todos →</button>
-          </div>
-          <table>
-            <thead>
-              <tr>
-                <th>Tópico</th>
-                <th>Cidade</th>
-                <th>Categoria</th>
-                <th>Status</th>
-                <th>Ação</th>
-              </tr>
-            </thead>
-            <tbody id="dashboard-topics-body">
-              <tr><td colspan="5" style="text-align:center;padding:30px;color:var(--muted)">Carregando...</td></tr>
-            </tbody>
-          </table>
+        <div class="tcard">
+          <div class="thead"><h2>Próximos 10 tópicos</h2><button class="btn bg sm" onclick="go('topics')">Ver todos →</button></div>
+          <table><thead><tr><th>Tópico</th><th>Cidade</th><th>Categoria</th><th>Ação</th></tr></thead>
+          <tbody id="dash-body"><tr><td colspan="4" style="text-align:center;padding:28px;color:var(--mu)">Carregando...</td></tr></tbody></table>
         </div>
       </div>
 
       <!-- TOPICS -->
-      <div class="section" id="section-topics">
-        <div class="table-card">
-          <div class="table-header">
+      <div class="sec" id="s-topics">
+        <div class="tcard">
+          <div class="thead">
             <h2>Banco de Tópicos</h2>
-            <div class="table-filters">
-              <input class="search-input" type="text" id="search-input" placeholder="Buscar tópico..." oninput="filterTopics()">
-              <select class="filter-select" id="filter-status" onchange="filterTopics()">
-                <option value="">Todos status</option>
+            <div class="tfilters">
+              <input class="sinp" id="tsearch" type="text" placeholder="Buscar..." oninput="filterT()">
+              <select class="fsel" id="fstatus" onchange="filterT()">
+                <option value="">Todos</option>
                 <option value="pending">Pendente</option>
                 <option value="published">Publicado</option>
               </select>
-              <select class="filter-select" id="filter-city" onchange="filterTopics()">
-                <option value="">Todas cidades</option>
-              </select>
+              <select class="fsel" id="fcity" onchange="filterT()"><option value="">Todas cidades</option></select>
             </div>
           </div>
-          <table>
-            <thead>
-              <tr>
-                <th>#</th>
-                <th>Tópico / Keyword</th>
-                <th>Cidade</th>
-                <th>Categoria</th>
-                <th>Status</th>
-                <th>Ações</th>
-              </tr>
-            </thead>
-            <tbody id="topics-body">
-              <tr><td colspan="6" style="text-align:center;padding:30px;color:var(--muted)">Carregando tópicos...</td></tr>
-            </tbody>
-          </table>
-          <div class="pagination">
-            <span class="page-info" id="page-info"></span>
-            <div class="page-btns" id="page-btns"></div>
-          </div>
+          <table><thead><tr><th>#</th><th>Tópico / Keyword</th><th>Cidade</th><th>Categoria</th><th>Status</th><th>Ação</th></tr></thead>
+          <tbody id="topics-body"></tbody></table>
+          <div class="pag"><span class="pinfo" id="pinfo"></span><div class="pbtns" id="pbtns"></div></div>
         </div>
       </div>
 
-      <!-- PUBLISH NOW -->
-      <div class="section" id="section-publish">
-        <div class="publish-card">
+      <!-- PUBLISH -->
+      <div class="sec" id="s-publish">
+        <div class="pcard">
           <h2>⚡ Publicar Post Agora</h2>
-          <p>Selecione um tópico pendente ou configure manualmente para gerar e publicar um post via Claude API + GitHub.</p>
-
-          <div class="form-row">
-            <div class="form-group">
-              <label class="form-label">Tópico</label>
-              <select class="form-select" id="pub-topic" onchange="fillFromTopic()">
-                <option value="">— Selecionar tópico pendente —</option>
-              </select>
+          <p>Selecione um tópico ou preencha manualmente. O post será gerado pelo Claude e publicado no GitHub automaticamente.</p>
+          <div class="frow">
+            <div class="fg">
+              <label class="fl">Selecionar tópico pendente</label>
+              <select class="fsel2" id="ptopic" onchange="fillTopic()"><option value="">— escolher —</option></select>
             </div>
-            <div class="form-group">
-              <label class="form-label">Keyword Principal</label>
-              <input class="form-input" type="text" id="pub-keyword" placeholder="ex: limpeza residencial Orlando">
+            <div class="fg">
+              <label class="fl">Keyword</label>
+              <input class="fi" id="pkw" type="text" placeholder="ex: airbnb cleaning kissimmee">
             </div>
           </div>
-          <div class="form-row">
-            <div class="form-group">
-              <label class="form-label">Cidade</label>
-              <input class="form-input" type="text" id="pub-city" placeholder="ex: Orlando">
+          <div class="frow">
+            <div class="fg">
+              <label class="fl">Cidade</label>
+              <input class="fi" id="pcity" type="text" placeholder="ex: Kissimmee">
             </div>
-            <div class="form-group">
-              <label class="form-label">Slug do arquivo</label>
-              <input class="form-input" type="text" id="pub-slug" placeholder="ex: limpeza-residencial-orlando">
-            </div>
-          </div>
-          <div class="form-group" style="margin-bottom:14px">
-            <label class="form-label">Título do Post</label>
-            <input class="form-input" type="text" id="pub-title" placeholder="ex: Limpeza Residencial em Orlando: Guia Completo">
-          </div>
-
-          <div style="display:flex;gap:10px;margin-top:4px">
-            <button class="btn btn-primary" onclick="generateAndPublish()" id="pub-btn">
-              🚀 Gerar e Publicar
-            </button>
-            <button class="btn btn-ghost" onclick="previewPrompt()">
-              👁️ Ver Prompt
-            </button>
-          </div>
-
-          <div class="progress-bar-wrap" id="progress-wrap" style="display:none">
-            <div class="progress-bar" id="progress-bar"></div>
-          </div>
-          <div class="log-area" id="pub-log" style="display:none"></div>
-        </div>
-
-        <!-- GitHub Token config for publish -->
-        <div class="publish-card" style="margin-bottom:0">
-          <h2>🔑 Configurar API Keys</h2>
-          <p>As chaves são salvas no localStorage deste browser. Necessárias para publicação direta via painel.</p>
-          <div class="form-row">
-            <div class="form-group">
-              <label class="form-label">Claude API Key</label>
-              <input class="form-input" type="password" id="cfg-claude-key" placeholder="sk-ant-api03-...">
-            </div>
-            <div class="form-group">
-              <label class="form-label">GitHub Token (repo write)</label>
-              <input class="form-input" type="password" id="cfg-github-token" placeholder="ghp_...">
+            <div class="fg">
+              <label class="fl">Slug</label>
+              <input class="fi" id="pslug" type="text" placeholder="ex: airbnb-cleaning-kissimmee">
             </div>
           </div>
-          <button class="btn btn-success btn-sm" onclick="saveKeys()">💾 Salvar chaves</button>
-          <span id="keys-saved" style="font-size:12px;color:var(--green);margin-left:10px;display:none">✓ Salvo!</span>
+          <div class="fg" style="margin-bottom:16px">
+            <label class="fl">Título do Post</label>
+            <input class="fi" id="ptit" type="text" placeholder="ex: Airbnb Cleaning in Kissimmee FL: Complete Guide">
+          </div>
+          <button class="btn bp" id="pubBtn" onclick="doPublish()">🚀 Gerar e Publicar</button>
+          <div class="pbwrap" id="pbwrap"><div class="pb" id="pb"></div></div>
+          <div class="logbox" id="logbox"></div>
         </div>
       </div>
 
-      <!-- POSTS PUBLISHED -->
-      <div class="section" id="section-posts">
-        <div class="table-card">
-          <div class="table-header">
-            <h2>Posts Publicados</h2>
-          </div>
-          <table>
-            <thead>
-              <tr>
-                <th>Título</th>
-                <th>Slug</th>
-                <th>Cidade</th>
-                <th>Data</th>
-                <th>Link</th>
-              </tr>
-            </thead>
-            <tbody id="posts-body">
-              <tr><td colspan="5" style="text-align:center;padding:30px;color:var(--muted)">Carregando posts publicados...</td></tr>
-            </tbody>
-          </table>
+      <!-- POSTS -->
+      <div class="sec" id="s-posts">
+        <div class="tcard">
+          <div class="thead"><h2>Posts Publicados</h2></div>
+          <table><thead><tr><th>Título</th><th>Cidade</th><th>Data</th><th>Link</th></tr></thead>
+          <tbody id="posts-body"><tr><td colspan="4" style="text-align:center;padding:28px;color:var(--mu)">Nenhum post publicado ainda.</td></tr></tbody></table>
         </div>
       </div>
 
-      <!-- CONFIG -->
-      <div class="section" id="section-config">
-        <div class="publish-card">
-          <h2>⚙️ Configurações do Sistema</h2>
-          <p style="margin-bottom:20px">Informações do setup atual de automação.</p>
-          <div class="config-grid">
-            <div class="config-key">
-              <span class="config-key-label">GitHub Repo</span>
-              <span class="config-key-value">lucianodornfeld18-creator/brazacleaningnovo</span>
+      <!-- KEYS -->
+      <div class="sec" id="s-keys">
+        <div class="pcard">
+          <h2>🔑 API Keys</h2>
+          <p>Salvas no localStorage deste browser. Necessárias para publicar posts direto pelo painel.</p>
+          <div class="frow">
+            <div class="fg">
+              <label class="fl">Claude API Key</label>
+              <input class="fi" id="k-claude" type="password" placeholder="sk-ant-api03-...">
             </div>
-            <div class="config-key">
-              <span class="config-key-label">Worker Email</span>
-              <span class="config-key-value">braza-email-proxy.lucianodornfeld18.workers.dev</span>
-            </div>
-            <div class="config-key">
-              <span class="config-key-label">Resend API Key</span>
-              <span class="config-key-value">re_YrhM3jbK_...cfeas</span>
-            </div>
-            <div class="config-key">
-              <span class="config-key-label">Hospedagem</span>
-              <span class="config-key-value">Cloudflare Pages</span>
-            </div>
-            <div class="config-key">
-              <span class="config-key-label">Schedule Make.com</span>
-              <span class="config-key-value">Seg / Qua / Sex — 9:00 AM ET</span>
-            </div>
-            <div class="config-key">
-              <span class="config-key-label">Modelo Claude</span>
-              <span class="config-key-value">claude-opus-4-5 (4000 tokens)</span>
+            <div class="fg">
+              <label class="fl">GitHub Token</label>
+              <input class="fi" id="k-github" type="password" placeholder="ghp_...">
             </div>
           </div>
-
-          <div style="margin-top:24px;padding:16px;background:rgba(79,142,247,0.08);border-radius:8px;border:1px solid rgba(79,142,247,0.2)">
-            <div style="font-size:13px;font-weight:600;color:var(--accent);margin-bottom:8px">📋 Checklist de Setup</div>
-            <div id="checklist" style="font-size:13px;line-height:2;color:var(--muted)">
-              <div>⬜ Importar blueprint Make.com (<a href="#" style="color:var(--accent)" onclick="downloadBlueprint()">baixar JSON</a>)</div>
-              <div>⬜ Adicionar Claude API Key no Make.com (módulo 4)</div>
-              <div>⬜ Adicionar GitHub Token no Make.com (módulos 8 e 9)</div>
-              <div>⬜ Conectar Cloudflare Pages ao GitHub repo</div>
-              <div>⬜ Criar arquivo <code style="background:var(--surface2);padding:1px 6px;border-radius:4px">blog-topics-bank.json</code> no repo</div>
-              <div>⬜ Testar cenário Make.com manualmente (Run once)</div>
-              <div>⬜ Ativar schedule 3x/semana no Make.com</div>
-            </div>
+          <div style="display:flex;align-items:center;gap:12px;margin-top:4px">
+            <button class="btn bs sm" onclick="saveKeys()">💾 Salvar Chaves</button>
+            <span id="ksaved" style="font-size:13px;color:var(--gr);font-weight:600;display:none">✓ Chaves salvas!</span>
+          </div>
+        </div>
+        <div class="pcard">
+          <h2>⚙️ Configuração atual</h2>
+          <div class="cgrid">
+            <div class="ck"><span class="ckl">GitHub Repo</span><span class="ckv">lucianodornfeld18-creator/brazacleaningnovo</span></div>
+            <div class="ck"><span class="ckl">Branch</span><span class="ckv">main</span></div>
+            <div class="ck"><span class="ckl">Pasta do blog</span><span class="ckv">blog/</span></div>
+            <div class="ck"><span class="ckl">Schedule Make.com</span><span class="ckv">Seg / Qua / Sex — 9h</span></div>
+            <div class="ck"><span class="ckl">Hospedagem</span><span class="ckv">Cloudflare Pages</span></div>
+            <div class="ck"><span class="ckl">Modelo IA</span><span class="ckv">claude-sonnet-4-6</span></div>
           </div>
         </div>
       </div>
 
-    </div><!-- /content -->
-  </div><!-- /main -->
-</div><!-- /app -->
+    </div>
+  </div>
+</div>
 
 <script>
+var PASS = 'braza2026admin';
+var REPO = 'lucianodornfeld18-creator/brazacleaningnovo';
+var topics = [];
+var filtered = [];
+var page = 1;
+var PER = 20;
+var claudeKey = localStorage.getItem('bz_ck') || '';
+var ghToken = localStorage.getItem('bz_gh') || '';
 
-// Auto-load keys on page start (before login)
-(function() {
-  var ck = localStorage.getItem('braza_claude_key');
-  var gt = localStorage.getItem('braza_github_token');
-  if (ck) window._preloadClaudeKey = ck;
-  if (gt) window._preloadGithubToken = gt;
-})();
+document.getElementById('loginBtn').onclick = function() { doLogin(); };
+document.getElementById('pwd').onkeydown = function(e) { if(e.key==='Enter') doLogin(); };
 
-const PASS = 'braza2026admin';
-const REPO = 'lucianodornfeld18-creator/brazacleaningnovo';
-const TOPICS_FILE = 'blog-topics-bank.json';
-const BLOG_DIR = 'blog';
-const RESEND_KEY = 're_YrhM3jbK_B1Dzfj22FJGN2r17MDJcfeas';
-
-let allTopics = [];
-let filteredTopics = [];
-let currentPage = 1;
-const PER_PAGE = 20;
-let githubToken = window._preloadGithubToken || '';
-let claudeKey = window._preloadClaudeKey || '';
-
-// ─── Auth ───────────────────────────────────────────────
 function doLogin() {
-  const pwd = document.getElementById('pwd-input').value;
-  if (pwd === PASS) {
-    document.getElementById('auth-screen').style.display = 'none';
+  if(document.getElementById('pwd').value === PASS) {
+    document.getElementById('auth').style.display = 'none';
     document.getElementById('app').style.display = 'block';
     loadKeys();
     loadTopics();
   } else {
-    document.getElementById('auth-error').style.display = 'block';
-    document.getElementById('pwd-input').value = '';
-    document.getElementById('pwd-input').focus();
+    document.getElementById('aerr').style.display = 'block';
+    document.getElementById('pwd').value = '';
+    document.getElementById('pwd').focus();
   }
 }
 
-// ─── Key management ────────────────────────────────────
+function go(name) {
+  document.querySelectorAll('.sec').forEach(function(s){ s.classList.remove('active'); });
+  document.querySelectorAll('.ni').forEach(function(n){ n.classList.remove('active'); });
+  document.getElementById('s-'+name).classList.add('active');
+  document.getElementById('n-'+name).classList.add('active');
+  var titles = {dashboard:'Dashboard',topics:'Banco de Tópicos',publish:'Publicar Agora',posts:'Posts Publicados',keys:'API Keys'};
+  document.getElementById('ptitle').textContent = titles[name] || name;
+}
+
 function loadKeys() {
-  claudeKey = localStorage.getItem('braza_claude_key') || '';
-  githubToken = localStorage.getItem('braza_github_token') || '';
-  var ck = document.getElementById('cfg-claude-key');
-  var gt = document.getElementById('cfg-github-token');
-  if (ck && claudeKey) ck.value = claudeKey;
-  if (gt && githubToken) gt.value = githubToken;
+  claudeKey = localStorage.getItem('bz_ck') || '';
+  ghToken = localStorage.getItem('bz_gh') || '';
+  if(claudeKey) document.getElementById('k-claude').value = claudeKey;
+  if(ghToken) document.getElementById('k-github').value = ghToken;
 }
 
 function saveKeys() {
-  claudeKey = document.getElementById('cfg-claude-key').value.trim();
-  githubToken = document.getElementById('cfg-github-token').value.trim();
-  if (!claudeKey || !githubToken) { alert('Preencha os dois campos antes de salvar.'); return; }
-  localStorage.setItem('braza_claude_key', claudeKey);
-  localStorage.setItem('braza_github_token', githubToken);
-  const saved = document.getElementById('keys-saved');
-  saved.style.display = 'inline';
-  setTimeout(() => saved.style.display = 'none', 3000);
-  addLog('✓ Chaves salvas com sucesso!', 'ok');
+  var ck = document.getElementById('k-claude').value.trim();
+  var gh = document.getElementById('k-github').value.trim();
+  if(!ck || !gh) { alert('Preencha os dois campos antes de salvar.'); return; }
+  claudeKey = ck; ghToken = gh;
+  localStorage.setItem('bz_ck', ck);
+  localStorage.setItem('bz_gh', gh);
+  var el = document.getElementById('ksaved');
+  el.style.display = 'inline';
+  setTimeout(function(){ el.style.display='none'; }, 3000);
 }
 
-function addLog(msg, type) {
-  const log = document.getElementById('pub-log');
-  if (!log) return;
-  log.style.display = 'block';
-  const el = document.createElement('div');
-  el.className = 'log-line' + (type ? ' ' + type : '');
-  el.textContent = '[' + new Date().toLocaleTimeString('pt-BR') + '] ' + msg;
-  log.appendChild(el);
-  log.scrollTop = log.scrollHeight;
-}
-
-// ─── Navigation ─────────────────────────────────────────
-function showSection(name) {
-  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
-  document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
-  document.getElementById('section-' + name).classList.add('active');
-  document.getElementById('nav-' + name).classList.add('active');
-  const titles = { dashboard: 'Dashboard', topics: 'Banco de Tópicos', publish: 'Publicar Agora', posts: 'Posts Publicados', config: 'Configurações' };
-  document.getElementById('page-title').textContent = titles[name] || name;
-}
-
-// ─── Load topics from GitHub ─────────────────────────────
 async function loadTopics() {
   try {
-    const url = `https://raw.githubusercontent.com/${REPO}/main/${TOPICS_FILE}?_=${Date.now()}`;
-    const res = await fetch(url);
-    if (!res.ok) throw new Error('Arquivo não encontrado');
-    const data = await res.json();
-    allTopics = data.topics || data || [];
+    var r = await fetch('https://raw.githubusercontent.com/'+REPO+'/main/blog-topics-bank.json?_='+Date.now());
+    if(!r.ok) throw new Error('HTTP '+r.status);
+    var d = await r.json();
+    topics = d.topics || d || [];
     renderAll();
   } catch(e) {
-    // Use demo data if file not found
-    allTopics = generateDemoTopics();
-    renderAll();
-    logMsg('⚠️ Usando dados demo — crie blog-topics-bank.json no repo', 'err');
+    topics = [];
+    document.getElementById('dash-body').innerHTML = '<tr><td colspan="4" style="text-align:center;padding:28px;color:#dc2626">Erro ao carregar blog-topics-bank.json — verifique se o arquivo existe no repo.</td></tr>';
   }
 }
 
-function generateDemoTopics() {
-  const cities = ['Orlando', 'Kissimmee', 'Clermont', 'Winter Garden', 'The Villages', 'Davenport', 'Ocoee', 'Sanford'];
-  const categories = ['Residencial', 'Comercial', 'Airbnb', 'Pós-Obra', 'Dicas'];
-  const demos = [];
-  const topics = [
-    'Limpeza Residencial', 'Limpeza de Casa', 'Faxina Completa', 'Limpeza Pós-Obra',
-    'Limpeza de Airbnb', 'Limpeza Comercial', 'Limpeza de Escritório', 'Higienização de Sofá',
-    'Limpeza de Carpete', 'Organização de Casa', 'Limpeza Profunda', 'Dicas de Limpeza'
-  ];
-  for (let i = 0; i < 105; i++) {
-    const city = cities[i % cities.length];
-    const topic = topics[i % topics.length];
-    const slug = (topic + '-' + city).toLowerCase().replace(/[áàãâä]/g,'a').replace(/[éêë]/g,'e').replace(/[íì]/g,'i').replace(/[óõôö]/g,'o').replace(/[úü]/g,'u').replace(/[ç]/g,'c').replace(/\s+/g,'-');
-    demos.push({
-      id: i + 1,
-      title: `${topic} em ${city}, FL`,
-      keyword: `${topic.toLowerCase()} ${city.toLowerCase()}`,
-      city: city,
-      category: categories[i % categories.length],
-      slug: slug,
-      status: i < 8 ? 'published' : 'pending',
-      publishedAt: i < 8 ? new Date(Date.now() - i * 86400000 * 3).toISOString() : null
-    });
-  }
-  return demos;
-}
-
-// ─── Render ──────────────────────────────────────────────
 function renderAll() {
   updateStats();
-  renderDashboard();
+  renderDash();
   renderTopics();
   renderPosts();
-  populateFilters();
-  populatePubDropdown();
+  fillCityFilter();
+  fillPubDropdown();
 }
 
 function updateStats() {
-  const pending = allTopics.filter(t => t.status === 'pending').length;
-  const published = allTopics.filter(t => t.status === 'published').length;
-  document.getElementById('stat-pending').textContent = pending;
-  document.getElementById('stat-published').textContent = published;
-  document.getElementById('stat-total').textContent = allTopics.length;
-  document.getElementById('stat-weeks').textContent = Math.ceil(pending / 3);
+  var pend = topics.filter(function(t){ return t.status==='pending'; }).length;
+  var pub = topics.filter(function(t){ return t.status==='published'; }).length;
+  document.getElementById('v-pend').textContent = pend;
+  document.getElementById('v-pub').textContent = pub;
+  document.getElementById('v-tot').textContent = topics.length;
+  document.getElementById('v-wk').textContent = Math.ceil(pend/3);
 }
 
-function renderDashboard() {
-  const pending = allTopics.filter(t => t.status === 'pending').slice(0, 10);
-  const tbody = document.getElementById('dashboard-topics-body');
-  if (!pending.length) {
-    tbody.innerHTML = '<tr><td colspan="5" style="text-align:center;padding:30px;color:var(--muted)">Nenhum tópico pendente 🎉</td></tr>';
-    return;
-  }
-  tbody.innerHTML = pending.map(t => `
-    <tr>
-      <td>
-        <div class="topic-title">${t.title}</div>
-        <div class="topic-keyword">${t.keyword}</div>
-      </td>
-      <td>${t.city}</td>
-      <td><span class="badge badge-pending">${t.category}</span></td>
-      <td><span class="badge badge-pending">Pendente</span></td>
-      <td>
-        <button class="btn btn-primary btn-sm" onclick="quickPublish(${t.id})">⚡ Publicar</button>
-      </td>
-    </tr>
-  `).join('');
+function renderDash() {
+  var pend = topics.filter(function(t){ return t.status==='pending'; }).slice(0,10);
+  var b = document.getElementById('dash-body');
+  if(!pend.length){ b.innerHTML='<tr><td colspan="4" style="text-align:center;padding:28px;color:var(--mu)">Nenhum tópico pendente 🎉</td></tr>'; return; }
+  b.innerHTML = pend.map(function(t){
+    return '<tr><td><div class="tt">'+esc(t.title)+'</div><div class="tk">'+esc(t.keyword)+'</div></td><td>'+esc(t.city)+'</td><td>'+esc(t.category)+'</td><td><button class="btn bp sm" onclick="quickPub('+t.id+')">⚡ Publicar</button></td></tr>';
+  }).join('');
 }
 
 function renderTopics() {
-  const search = (document.getElementById('search-input') ? document.getElementById('search-input').value : '').toLowerCase();
-  const statusFilter = document.getElementById('filter-status') ? document.getElementById('filter-status').value : '';
-  const cityFilter = document.getElementById('filter-city') ? document.getElementById('filter-city').value : '';
-
-  filteredTopics = allTopics.filter(t => {
-    const matchSearch = !search || t.title.toLowerCase().includes(search) || t.keyword.toLowerCase().includes(search);
-    const matchStatus = !statusFilter || t.status === statusFilter;
-    const matchCity = !cityFilter || t.city === cityFilter;
-    return matchSearch && matchStatus && matchCity;
+  var search = document.getElementById('tsearch').value.toLowerCase();
+  var fs = document.getElementById('fstatus').value;
+  var fc = document.getElementById('fcity').value;
+  filtered = topics.filter(function(t){
+    return (!search || t.title.toLowerCase().includes(search) || t.keyword.toLowerCase().includes(search))
+      && (!fs || t.status===fs)
+      && (!fc || t.city===fc);
   });
-
-  const total = filteredTopics.length;
-  const pages = Math.ceil(total / PER_PAGE);
-  currentPage = Math.min(currentPage, pages || 1);
-  const slice = filteredTopics.slice((currentPage - 1) * PER_PAGE, currentPage * PER_PAGE);
-
-  const tbody = document.getElementById('topics-body');
-  if (!slice.length) {
-    tbody.innerHTML = '<tr><td colspan="6" style="text-align:center;padding:30px;color:var(--muted)">Nenhum tópico encontrado</td></tr>';
-  } else {
-    tbody.innerHTML = slice.map(t => `
-      <tr>
-        <td style="color:var(--muted);font-size:12px">${t.id}</td>
-        <td>
-          <div class="topic-title">${t.title}</div>
-          <div class="topic-keyword">${t.keyword}</div>
-        </td>
-        <td>${t.city}</td>
-        <td>${t.category}</td>
-        <td><span class="badge badge-${t.status}">${t.status === 'published' ? 'Publicado' : t.status === 'generating' ? 'Gerando...' : 'Pendente'}</span></td>
-        <td style="display:flex;gap:6px">
-          ${t.status === 'pending' ? `<button class="btn btn-primary btn-sm" onclick="quickPublish(${t.id})">⚡ Pub</button>` : ''}
-          ${t.status === 'published' ? `<a href="https://brazacleaning.com/blog/${t.slug}" target="_blank" class="btn btn-ghost btn-sm">🔗 Ver</a>` : ''}
-          <button class="btn btn-danger btn-sm" onclick="resetTopic(${t.id})">↺</button>
-        </td>
-      </tr>
-    `).join('');
-  }
-
-  document.getElementById('page-info').textContent = `${(currentPage-1)*PER_PAGE+1}–${Math.min(currentPage*PER_PAGE, total)} de ${total}`;
-  const btnContainer = document.getElementById('page-btns');
-  btnContainer.innerHTML = '';
-  if (pages > 1) {
-    for (let i = 1; i <= Math.min(pages, 8); i++) {
-      const b = document.createElement('button');
-      b.className = 'page-btn' + (i === currentPage ? ' active' : '');
-      b.textContent = i;
-      b.onclick = () => { currentPage = i; renderTopics(); };
-      btnContainer.appendChild(b);
-    }
+  var total = filtered.length;
+  var pages = Math.ceil(total/PER) || 1;
+  if(page > pages) page = 1;
+  var slice = filtered.slice((page-1)*PER, page*PER);
+  var b = document.getElementById('topics-body');
+  b.innerHTML = slice.length ? slice.map(function(t){
+    return '<tr>'
+      +'<td style="color:var(--mu);font-size:12px">'+t.id+'</td>'
+      +'<td><div class="tt">'+esc(t.title)+'</div><div class="tk">'+esc(t.keyword)+'</div></td>'
+      +'<td>'+esc(t.city)+'</td>'
+      +'<td>'+esc(t.category)+'</td>'
+      +'<td><span class="badge '+(t.status==='published'?'bpub':'bp2')+'">'+(t.status==='published'?'Publicado':'Pendente')+'</span></td>'
+      +'<td style="display:flex;gap:5px">'
+        +(t.status==='pending'?'<button class="btn bp sm" onclick="quickPub('+t.id+')">⚡</button>':'')
+        +(t.status==='published'?'<a href="https://brazacleaning.com/blog/'+esc(t.slug)+'" target="_blank" class="btn bg sm">🔗</a>':'')
+      +'</td>'
+      +'</tr>';
+  }).join('') : '<tr><td colspan="6" style="text-align:center;padding:28px;color:var(--mu)">Nenhum resultado</td></tr>';
+  document.getElementById('pinfo').textContent = ((page-1)*PER+1)+'-'+Math.min(page*PER,total)+' de '+total;
+  var pb = document.getElementById('pbtns');
+  pb.innerHTML = '';
+  for(var i=1;i<=Math.min(pages,8);i++){
+    (function(n){
+      var b2 = document.createElement('button');
+      b2.className='pbtn'+(n===page?' active':'');
+      b2.textContent=n;
+      b2.onclick=function(){ page=n; renderTopics(); };
+      pb.appendChild(b2);
+    })(i);
   }
 }
 
 function renderPosts() {
-  const published = allTopics.filter(t => t.status === 'published');
-  const tbody = document.getElementById('posts-body');
-  if (!published.length) {
-    tbody.innerHTML = '<tr><td colspan="5" style="text-align:center;padding:30px;color:var(--muted)">Nenhum post publicado ainda</td></tr>';
-    return;
-  }
-  tbody.innerHTML = published.map(t => `
-    <tr>
-      <td class="topic-title">${t.title}</td>
-      <td style="font-size:12px;color:var(--muted);font-family:monospace">${t.slug}</td>
-      <td>${t.city}</td>
-      <td style="font-size:12px;color:var(--muted)">${t.publishedAt ? new Date(t.publishedAt).toLocaleDateString('pt-BR') : '—'}</td>
-      <td><a href="https://brazacleaning.com/blog/${t.slug}" target="_blank" class="btn btn-ghost btn-sm">🔗 Abrir</a></td>
-    </tr>
-  `).join('');
+  var pub = topics.filter(function(t){ return t.status==='published'; });
+  var b = document.getElementById('posts-body');
+  b.innerHTML = pub.length ? pub.map(function(t){
+    return '<tr>'
+      +'<td class="tt">'+esc(t.title)+'</td>'
+      +'<td>'+esc(t.city)+'</td>'
+      +'<td style="font-size:12px;color:var(--mu)">'+(t.publishedAt?new Date(t.publishedAt).toLocaleDateString('pt-BR'):'—')+'</td>'
+      +'<td><a href="https://brazacleaning.com/blog/'+esc(t.slug)+'" target="_blank" class="btn bg sm">🔗 Ver</a></td>'
+      +'</tr>';
+  }).join('') : '<tr><td colspan="4" style="text-align:center;padding:28px;color:var(--mu)">Nenhum post publicado ainda.</td></tr>';
 }
 
-function populateFilters() {
-  const cities = [...new Set(allTopics.map(t => t.city))].sort();
-  const sel = document.getElementById('filter-city');
-  if (!sel) return;
-  sel.innerHTML = '<option value="">Todas cidades</option>' + cities.map(c => `<option value="${c}">${c}</option>`).join('');
+function fillCityFilter() {
+  var cities = [];
+  topics.forEach(function(t){ if(cities.indexOf(t.city)<0) cities.push(t.city); });
+  cities.sort();
+  var s = document.getElementById('fcity');
+  s.innerHTML = '<option value="">Todas cidades</option>'+cities.map(function(c){ return '<option value="'+esc(c)+'">'+esc(c)+'</option>'; }).join('');
 }
 
-function populatePubDropdown() {
-  const sel = document.getElementById('pub-topic');
-  const pending = allTopics.filter(t => t.status === 'pending');
-  sel.innerHTML = '<option value="">— Selecionar tópico pendente —</option>' + pending.map(t => `<option value="${t.id}">${t.title}</option>`).join('');
+function fillPubDropdown() {
+  var pend = topics.filter(function(t){ return t.status==='pending'; });
+  var s = document.getElementById('ptopic');
+  s.innerHTML = '<option value="">— escolher tópico —</option>'+pend.map(function(t){ return '<option value="'+t.id+'">'+esc(t.title)+'</option>'; }).join('');
 }
 
-function filterTopics() { currentPage = 1; renderTopics(); }
+function filterT() { page=1; renderTopics(); }
 
-// ─── Quick publish (from topic list) ────────────────────
-function quickPublish(id) {
-  showSection('publish');
-  document.getElementById('pub-topic').value = id;
-  fillFromTopic();
+function quickPub(id) {
+  go('publish');
+  document.getElementById('ptopic').value = id;
+  fillTopic();
 }
 
-function fillFromTopic() {
-  const id = parseInt(document.getElementById('pub-topic').value);
-  const topic = allTopics.find(t => t.id === id);
-  if (!topic) return;
-  document.getElementById('pub-title').value = topic.title;
-  document.getElementById('pub-keyword').value = topic.keyword;
-  document.getElementById('pub-city').value = topic.city;
-  document.getElementById('pub-slug').value = topic.slug;
+function fillTopic() {
+  var id = parseInt(document.getElementById('ptopic').value);
+  var t = topics.find(function(x){ return x.id===id; });
+  if(!t) return;
+  document.getElementById('ptit').value = t.title;
+  document.getElementById('pkw').value = t.keyword;
+  document.getElementById('pcity').value = t.city;
+  document.getElementById('pslug').value = t.slug;
 }
 
-function resetTopic(id) {
-  const t = allTopics.find(x => x.id === id);
-  if (!t) return;
-  if (!confirm(`Resetar "${t.title}" para pendente?`)) return;
-  t.status = 'pending';
-  t.publishedAt = null;
-  renderAll();
-}
+async function doPublish() {
+  var title = document.getElementById('ptit').value.trim();
+  var kw = document.getElementById('pkw').value.trim();
+  var city = document.getElementById('pcity').value.trim();
+  var slug = document.getElementById('pslug').value.trim();
 
-// ─── Generate & Publish ──────────────────────────────────
-async function generateAndPublish() {
-  const title = document.getElementById('pub-title').value.trim();
-  const keyword = document.getElementById('pub-keyword').value.trim();
-  const city = document.getElementById('pub-city').value.trim();
-  const slug = document.getElementById('pub-slug').value.trim();
+  if(!title||!kw||!city||!slug){ alert('Preencha todos os campos.'); return; }
+  if(!claudeKey){ alert('Configure a Claude API Key em API Keys.'); go('keys'); return; }
+  if(!ghToken){ alert('Configure o GitHub Token em API Keys.'); go('keys'); return; }
 
-  if (!title || !keyword || !city || !slug) {
-    alert('Preencha todos os campos antes de publicar.'); return;
-  }
-  if (!claudeKey) {
-    alert('Configure a Claude API Key na aba "Publicar Agora" (campos de API Keys).'); return;
-  }
-  if (!githubToken) {
-    alert('Configure o GitHub Token na aba "Publicar Agora" (campos de API Keys).'); return;
-  }
-
-  const btn = document.getElementById('pub-btn');
+  var btn = document.getElementById('pubBtn');
   btn.disabled = true;
-  btn.innerHTML = '<span class="spinner"></span> Gerando...';
+  btn.innerHTML = '<span class="spin"></span> Gerando...';
 
-  const log = document.getElementById('pub-log');
-  const progress = document.getElementById('progress-wrap');
-  const bar = document.getElementById('progress-bar');
-  log.style.display = 'block';
-  progress.style.display = 'block';
-  log.innerHTML = '';
-  bar.style.width = '0%';
+  var lbox = document.getElementById('logbox');
+  var pbwrap = document.getElementById('pbwrap');
+  var pb = document.getElementById('pb');
+  lbox.style.display = 'block';
+  pbwrap.style.display = 'block';
+  lbox.innerHTML = '';
+  pb.style.width = '0%';
 
-  const logMsg = (msg, type = '') => {
-    const el = document.createElement('div');
-    el.className = 'log-line' + (type ? ' ' + type : '');
-    el.textContent = `[${new Date().toLocaleTimeString('pt-BR')}] ${msg}`;
-    log.appendChild(el);
-    log.scrollTop = log.scrollHeight;
-  };
+  function lg(msg, cls) {
+    var el = document.createElement('div');
+    el.className = 'll'+(cls?' '+cls:'');
+    el.textContent = '['+new Date().toLocaleTimeString('pt-BR')+'] '+msg;
+    lbox.appendChild(el);
+    lbox.scrollTop = lbox.scrollHeight;
+  }
 
   try {
-    logMsg('Iniciando geração do post via Claude API...', 'info');
-    bar.style.width = '15%';
+    lg('Gerando conteudo via Claude API...','linf');
+    pb.style.width = '15%';
 
-    const prompt = `Você é um especialista em SEO local para empresas de limpeza em Central Florida. Escreva um post de blog completo em HTML para o site brazacleaning.com.
+    var prompt = 'You are an SEO expert for cleaning companies in Central Florida. Write a complete blog post in HTML for brazacleaning.com.\n\nTopic: '+title+'\nTarget keyword: '+kw+'\nFocus city: '+city+'\n\nRULES:\n- Write in ENGLISH\n- H1 with main keyword\n- Engaging intro (150 words)\n- 4-5 H2 sections with practical tips\n- Include tips specific to '+city+', Central Florida\n- CTA at end: call (689) 243-5726\n- 1200-1500 words total\n- JSON-LD Article schema at the end\n- NO DOCTYPE, html, head or body tags\n- Return ONLY the post HTML (H1 to schema)';
 
-Tema: ${title}
-Keyword alvo: ${keyword}
-Cidade foco: ${city}
-
-REGRAS:
-- Post em PORTUGUÊS BRASILEIRO
-- Título H1 com a keyword principal
-- Introdução engajante (150 palavras)
-- 4-5 seções H2 com conteúdo útil e prático
-- Inclua dicas específicas para ${city} e região Central Florida
-- Call-to-action no final pedindo orçamento: ligue (689) 243-5726
-- 1200-1500 palavras no total
-- Schema markup JSON-LD de Article no final
-- Meta description de 155 caracteres no topo (em comentário HTML)
-- Não inclua <!DOCTYPE>, <html>, <head> ou <body>
-- Retorne APENAS o HTML do conteúdo do post (do H1 ao schema)`;
-
-    const claudeRes = await fetch('https://api.anthropic.com/v1/messages', {
+    var cr = await fetch('https://api.anthropic.com/v1/messages', {
       method: 'POST',
       headers: {
         'x-api-key': claudeKey,
@@ -905,155 +505,73 @@ REGRAS:
         'anthropic-dangerous-direct-browser-access': 'true'
       },
       body: JSON.stringify({
-        model: 'claude-opus-4-5',
+        model: 'claude-sonnet-4-6',
         max_tokens: 4000,
         messages: [{ role: 'user', content: prompt }]
       })
     });
 
-    if (!claudeRes.ok) {
-      const err = await claudeRes.json();
-      throw new Error('Claude API: ' + (err.error?.message || claudeRes.status));
+    if(!cr.ok) {
+      var ce = await cr.json();
+      throw new Error('Claude API: '+(ce.error&&ce.error.message?ce.error.message:cr.status));
     }
 
-    const claudeData = await claudeRes.json();
-    const postContent = claudeData.content[0].text;
-    logMsg('✓ Conteúdo gerado com sucesso (' + Math.round(postContent.length / 5) + ' palavras est.)', 'ok');
-    bar.style.width = '40%';
+    var cd = await cr.json();
+    var postContent = cd.content[0].text;
+    lg('Conteudo gerado (~'+Math.round(postContent.length/5)+' palavras)','lok');
+    pb.style.width = '40%';
 
-    const fullHTML = `<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-  <meta charset="UTF-8">
-  <meta name="robots" content="noindex,nofollow">
-<script>
-// Block site header/footer injection
-window.addEventListener('DOMContentLoaded', function() {
-  var hp = document.getElementById('header-placeholder');
-  var fp = document.getElementById('footer-placeholder');
-  if(hp) hp.remove();
-  if(fp) fp.remove();
-});
-// Override fetch to block main.js includes if needed
-</script>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>${title} | Braza Cleaning Services</title>
-  <link rel="stylesheet" href="/css/style.css">
-  <link rel="stylesheet" href="/css/blog.css">
-</head>
-<body>
-  <div id="header-placeholder"></div>
-  <main class="blog-post">
-    <div class="container">
-      <nav class="breadcrumb">
-        <a href="/">Home</a> › <a href="/blog/">Blog</a> › <span>${title}</span>
-      </nav>
-      <article>
-        <div class="post-meta">
-          <span class="post-date">${new Date().toLocaleDateString('pt-BR', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
-        </div>
-        ${postContent}
-      </article>
-      <div class="cta-box">
-        <h3>Precisa de serviço de limpeza em ${city}?</h3>
-        <p>A Braza Cleaning Services atende toda a região de Central Florida. Solicite um orçamento gratuito!</p>
-        <a href="tel:+16892435726" class="btn-primary">📞 (689) 243-5726</a>
-        <a href="/contact.html" class="btn-secondary">Solicitar Orçamento</a>
-      </div>
-    </div>
-  </main>
-  <div id="footer-placeholder"></div>
-  <script src="/js/main.js"><\/script>
-</body>
-</html>`;
+    var date = new Date().toLocaleDateString('en-US', {year:'numeric',month:'long',day:'numeric'});
+    var fullHTML = '<!DOCTYPE html>\n<html lang="en">\n<head>\n<meta charset="UTF-8">\n<meta name="viewport" content="width=device-width, initial-scale=1.0">\n<title>'+title+' | Braza Cleaning Services</title>\n<link rel="stylesheet" href="/css/style.css">\n<link rel="stylesheet" href="/css/blog.css">\n</head>\n<body>\n<div id="header-placeholder"></div>\n<main class="blog-post">\n<div class="container">\n<nav class="breadcrumb"><a href="/">Home</a> | <a href="/blog/">Blog</a> | <span>'+title+'</span></nav>\n<article>\n<div class="post-meta"><span class="post-date">'+date+'</span></div>\n'+postContent+'\n</article>\n<div class="cta-box">\n<h3>Need cleaning service in '+city+'?</h3>\n<p>Braza Cleaning Services covers all of Central Florida. Get a free quote!</p>\n<a href="tel:+16892435726" class="btn-primary">Call (689) 243-5726</a>\n<a href="/contact.html" class="btn-secondary">Get Free Quote</a>\n</div>\n</div>\n</main>\n<div id="footer-placeholder"></div>\n<script src="/js/main.js"><'+'/script>\n</body>\n</html>';
 
-    logMsg('Enviando arquivo ao GitHub...', 'info');
-    bar.style.width = '60%';
+    lg('Enviando para GitHub...','linf');
+    pb.style.width = '60%';
 
-    const filePath = `${BLOG_DIR}/${slug}.html`;
-    const base64Content = btoa(unescape(encodeURIComponent(fullHTML)));
+    var filePath = 'blog/'+slug+'.html';
+    var b64 = btoa(unescape(encodeURIComponent(fullHTML)));
+    var sha = null;
 
-    // Check if file exists (to get SHA for update)
-    let sha = null;
     try {
-      const checkRes = await fetch(`https://api.github.com/repos/${REPO}/contents/${filePath}`, {
-        headers: { 'Authorization': `Bearer ${githubToken}`, 'Accept': 'application/vnd.github+json' }
+      var chk = await fetch('https://api.github.com/repos/'+REPO+'/contents/'+filePath, {
+        headers: {'Authorization':'Bearer '+ghToken,'Accept':'application/vnd.github+json'}
       });
-      if (checkRes.ok) {
-        const existing = await checkRes.json();
-        sha = existing.sha;
-      }
-    } catch(e) {}
+      if(chk.ok){ var ex = await chk.json(); sha = ex.sha; }
+    } catch(e2){}
 
-    const ghBody = {
-      message: `blog: auto-publish ${slug}`,
-      content: base64Content,
-      branch: 'main'
-    };
-    if (sha) ghBody.sha = sha;
+    var body = {message:'blog: publish '+slug, content: b64, branch:'main'};
+    if(sha) body.sha = sha;
 
-    const ghRes = await fetch(`https://api.github.com/repos/${REPO}/contents/${filePath}`, {
+    var gr = await fetch('https://api.github.com/repos/'+REPO+'/contents/'+filePath, {
       method: 'PUT',
-      headers: {
-        'Authorization': `Bearer ${githubToken}`,
-        'Accept': 'application/vnd.github+json',
-        'X-GitHub-Api-Version': '2022-11-28',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(ghBody)
+      headers: {'Authorization':'Bearer '+ghToken,'Accept':'application/vnd.github+json','Content-Type':'application/json'},
+      body: JSON.stringify(body)
     });
 
-    if (!ghRes.ok) {
-      const err = await ghRes.json();
-      throw new Error('GitHub: ' + (err.message || ghRes.status));
-    }
+    if(!gr.ok){ var ge = await gr.json(); throw new Error('GitHub: '+(ge.message||gr.status)); }
 
-    logMsg('✓ Arquivo publicado no GitHub: ' + filePath, 'ok');
-    bar.style.width = '85%';
+    lg('Publicado no GitHub: '+filePath,'lok');
+    pb.style.width = '90%';
 
-    // Mark topic as published
-    const topicId = parseInt(document.getElementById('pub-topic').value);
-    const topic = allTopics.find(t => t.id === topicId);
-    if (topic) {
-      topic.status = 'published';
-      topic.publishedAt = new Date().toISOString();
-    }
+    var tid = parseInt(document.getElementById('ptopic').value);
+    var t2 = topics.find(function(x){ return x.id===tid; });
+    if(t2){ t2.status='published'; t2.publishedAt=new Date().toISOString(); }
 
-    bar.style.width = '100%';
-    logMsg('✓ Post publicado com sucesso! Deploy Cloudflare Pages em ~2 min.', 'ok');
-    logMsg('🔗 URL: https://brazacleaning.com/blog/' + slug, 'ok');
-
+    pb.style.width = '100%';
+    lg('Deploy Cloudflare Pages em ~2 min','lok');
+    lg('https://brazacleaning.com/blog/'+slug,'lok');
     renderAll();
 
-    setTimeout(() => {
-      btn.disabled = false;
-      btn.innerHTML = '🚀 Gerar e Publicar';
-    }, 2000);
-
   } catch(err) {
-    logMsg('✗ Erro: ' + err.message, 'err');
-    bar.style.width = '0%';
-    btn.disabled = false;
-    btn.innerHTML = '🚀 Gerar e Publicar';
+    lg('ERRO: '+err.message,'lerr');
+    pb.style.width = '0%';
   }
+
+  btn.disabled = false;
+  btn.innerHTML = 'Gerar e Publicar';
 }
 
-function previewPrompt() {
-  const title = document.getElementById('pub-title').value || '[Título do Post]';
-  const keyword = document.getElementById('pub-keyword').value || '[keyword]';
-  const city = document.getElementById('pub-city').value || '[Cidade]';
-  alert(`PROMPT QUE SERÁ ENVIADO AO CLAUDE:\n\nEscreva um post de blog completo em HTML para o brazacleaning.com.\n\nTema: ${title}\nKeyword: ${keyword}\nCidade: ${city}\n\n- Post em português brasileiro\n- H1 com keyword\n- 4-5 seções H2\n- 1200-1500 palavras\n- CTA: (689) 243-5726\n- Schema JSON-LD de Article`);
-}
-
-function refreshData() { loadTopics(); }
-
-function logMsg(msg, type) {
-  // global fallback for initial load errors
-  console.log(msg);
-}
-
-function downloadBlueprint() {
-  alert('Baixe o arquivo make-scenario-braza-blog.json gerado pelo Claude e importe no Make.com em:\nCenários > Criar novo cenário > Importar blueprint');
+function esc(s) {
+  return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
 }
 </script>
 </body>
