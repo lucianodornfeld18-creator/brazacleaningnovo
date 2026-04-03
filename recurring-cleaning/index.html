@@ -80,7 +80,7 @@ a{color:inherit;text-decoration:none}
 .topbar-cta{background:var(--orange);padding:5px 16px;border-radius:20px;font-size:13px}
 .nav{position:fixed;top:38px;left:0;right:0;z-index:99;transition:all .3s;background:#fff;box-shadow:0 1px 8px rgba(0,0,0,.07)}
 .nav.scrolled{background:#fff;box-shadow:0 2px 12px rgba(0,0,0,.1)}
-.nav-inner{max-width:1200px;margin:0 auto;padding:0 20px;display:flex;align-items:center;justify-content:space-between;height:80px}
+.nav-inner{max-width:1200px;margin:0 auto;padding:0 20px;display:flex;align-items:center;justify-content:space-between;height:72px}
 .nav-logo{height:52px;width:auto}
 .nav-links{display:flex;align-items:center;gap:28px}
 .nav-links > a,.nav-links > .dropdown > button{font-family:var(--font-head);font-size:15px;font-weight:500;color:#374151;background:none;border:none;cursor:pointer;padding:4px 0;transition:color .2s;white-space:nowrap}
@@ -104,10 +104,10 @@ a{color:inherit;text-decoration:none}
 .mobile-nav{display:none;position:fixed;top:110px;left:0;right:0;bottom:0;background:#fff;z-index:98;overflow-y:auto;padding:0 0 32px}
 .mobile-nav.open{display:block}
 .mobile-nav a,.mobile-nav button{display:block;width:100%;text-align:left;padding:14px 20px;font-family:var(--font-head);font-size:15px;font-weight:500;color:#374151;background:none;border:none;border-bottom:1px solid var(--gray-border);cursor:pointer}
-.mobile-section{padding:10px 20px;font-size:11px;font-weight:700;color:var(--blue);text-transform:uppercase;letter-spacing:.06em;background:var(--gray-light);border-bottom:1px solid var(--gray-border)}
+.mobile-section{padding:12px 20px;font-size:12px;font-weight:700;color:var(--blue);text-transform:uppercase;letter-spacing:.06em;background:var(--gray-light);border-bottom:1px solid var(--gray-border);cursor:pointer;display:flex;align-items:center;justify-content:space-between}.mobile-section::after{content:"›";font-size:16px;transition:transform .2s}.mobile-section.expanded::after{transform:rotate(90deg)}.mobile-submenu{display:none}.mobile-submenu.open{display:block}
 .mobile-cta-wrap{padding:20px}
 .mobile-cta-wrap a{display:block;text-align:center;background:var(--orange);color:#fff;padding:14px;border-radius:25px;font-family:var(--font-head);font-size:16px;font-weight:700}
-.hero{padding-top:118px;background:#fff}
+.hero{padding-top:110px;background:#fff}
 .hero-inner{max-width:1200px;margin:0 auto;padding:64px 20px 72px;display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
 .hero-badge{display:inline-flex;align-items:center;gap:8px;background:#FEF3E8;border:1px solid #F5C08A;color:var(--orange-dark);padding:7px 14px;border-radius:20px;font-size:13px;font-weight:600;margin-bottom:20px}
 .hero h1{font-size:clamp(2rem,3.8vw,3rem);font-weight:800;color:var(--text);margin-bottom:18px;line-height:1.1}
@@ -122,10 +122,10 @@ a{color:inherit;text-decoration:none}
 .hero-trust-item{display:flex;align-items:center;gap:7px;font-size:14px;color:#4B5563;font-weight:500}
 .trust-dot{width:20px;height:20px;background:var(--blue);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0}
 .trust-dot::after{content:'✓';color:#fff;font-size:10px;font-weight:700}
-.carousel{position:relative;border-radius:20px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.15);aspect-ratio:4/3}
+.carousel{position:relative;border-radius:20px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.15);width:100%;height:420px;background:var(--gray-light)}
 .carousel-track{display:flex;transition:transform .5s ease}
-.carousel-slide{min-width:100%}
-.carousel-slide img{width:100%;height:100%;object-fit:cover;display:block;aspect-ratio:4/3}
+.carousel-slide{min-width:100%;height:420px}
+.carousel-slide img{width:100%;height:420px;object-fit:cover;display:block}
 .carousel-btn{position:absolute;top:50%;transform:translateY(-50%);background:rgba(255,255,255,.9);border:none;border-radius:50%;width:40px;height:40px;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:20px;color:var(--text);box-shadow:var(--shadow-lg);z-index:2;transition:all .2s}
 .carousel-btn:hover{background:#fff;transform:translateY(-50%) scale(1.05)}
 .carousel-prev{left:12px}
@@ -149,7 +149,7 @@ a{color:inherit;text-decoration:none}
 .services-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:22px}
 .service-card{background:#fff;border:1px solid var(--gray-border);border-radius:16px;overflow:hidden;transition:all .25s}
 .service-card:hover{box-shadow:var(--shadow-lg);transform:translateY(-3px);border-color:var(--blue)}
-.service-card-img{height:160px;overflow:hidden}
+.service-card-img{height:160px;overflow:hidden;background:var(--blue-light)}
 .service-card-img img{width:100%;height:100%;object-fit:cover;transition:transform .35s}
 .service-card:hover .service-card-img img{transform:scale(1.05)}
 .service-card-body{padding:18px}
@@ -286,25 +286,6 @@ footer{background:#0F172A;color:rgba(255,255,255,.8);padding:64px 16px 32px}
   .page-hero{padding:130px 16px 60px}
 }
 </style>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  "name": "Braza Cleaning Services",
-  "url": "https://brazacleaning.com",
-  "logo": "https://brazacleaning.com/images/logo.png",
-  "telephone": "+1-689-242-7469",
-  "email": "brazacleaningservices@gmail.com",
-  "areaServed": "Central Florida",
-  "sameAs": [
-    "https://www.bbb.org/us/fl/ocoee/profile/cleaning-services/braza-cleaning-services-llc-0733-235978038",
-    "https://www.instagram.com/brazacleaningservicesfl/",
-    "https://www.facebook.com/brazacleaningflorida/",
-    "https://www.yelp.com/biz/braza-cleaning-services-ocoee",
-    "https://share.google/im8ktmN1KQYzJukgW"
-  ]
-}
-</script>
 </head>
 <body>
 <div class="topbar">
@@ -320,7 +301,7 @@ footer{background:#0F172A;color:rgba(255,255,255,.8);padding:64px 16px 32px}
   </div>
 </div><nav class="nav" id="mainNav">
   <div class="nav-inner">
-    <a href="/"><img src="/images/logo.png" alt="Braza Cleaning Services" class="nav-logo" width="156" height="52"></a>
+    <a href="/"><img src="/images/logo.png" alt="Braza Cleaning Services" class="nav-logo" width="156" height="52" onerror="this.style.opacity='0'"></a>
     <div class="nav-links">
       <div class="dropdown">
         <button>Services <span class="dropdown-arrow">▾</span></button>
@@ -369,9 +350,13 @@ footer{background:#0F172A;color:rgba(255,255,255,.8);padding:64px 16px 32px}
   </div>
 </nav>
 <div class="mobile-nav" id="mobileNav">
-  <div class="mobile-section">Services</div><a href="/house-cleaning">House Cleaning</a><a href="/airbnb-cleaning">Airbnb Cleaning</a><a href="/vacation-rental-cleaning">Vacation Rental Cleaning</a><a href="/deep-cleaning">Deep Cleaning</a><a href="/move-out-cleaning">Move-Out Cleaning</a><a href="/move-in-cleaning">Move-In Cleaning</a><a href="/post-construction-cleaning">Post-Construction</a><a href="/recurring-cleaning">Recurring Cleaning</a><a href="/commercial-cleaning">Commercial Cleaning</a>
-  <div class="mobile-section">Residential Areas</div><a href="/cleaning-services/the-villages">The Villages</a><a href="/cleaning-services/minneola">Minneola</a><a href="/cleaning-services/clermont">Clermont</a><a href="/cleaning-services/winter-garden">Winter Garden</a><a href="/cleaning-services/winter-park">Winter Park</a><a href="/cleaning-services/ocoee">Ocoee</a>
-  <div class="mobile-section">Vacation Rental Areas</div><a href="/airbnb-cleaning/kissimmee">Kissimmee</a><a href="/airbnb-cleaning/davenport">Davenport</a><a href="/vacation-rental-cleaning/four-corners">Four Corners</a><a href="/cleaning-services/celebration">Celebration</a><a href="/cleaning-services/orlando">Orlando</a>
+  <a href="/about">About</a>
+  <div class="mobile-section" onclick="toggleSubmenu(this)">Services
+    <div class="mobile-submenu"><a href="/house-cleaning">House Cleaning</a><a href="/airbnb-cleaning">Airbnb Cleaning</a><a href="/vacation-rental-cleaning">Vacation Rental Cleaning</a><a href="/deep-cleaning">Deep Cleaning</a><a href="/move-out-cleaning">Move-Out Cleaning</a><a href="/move-in-cleaning">Move-In Cleaning</a><a href="/post-construction-cleaning">Post-Construction</a><a href="/recurring-cleaning">Recurring Cleaning</a><a href="/commercial-cleaning">Commercial Cleaning</a></div>
+  </div>
+  <div class="mobile-section" onclick="toggleSubmenu(this)">Areas
+    <div class="mobile-submenu"><a href="/cleaning-services/the-villages">The Villages</a><a href="/cleaning-services/minneola">Minneola</a><a href="/cleaning-services/clermont">Clermont</a><a href="/cleaning-services/winter-garden">Winter Garden</a><a href="/cleaning-services/winter-park">Winter Park</a><a href="/cleaning-services/ocoee">Ocoee</a><a href="/airbnb-cleaning/kissimmee">Kissimmee</a><a href="/airbnb-cleaning/davenport">Davenport</a><a href="/vacation-rental-cleaning/four-corners">Four Corners</a><a href="/cleaning-services/celebration">Celebration</a><a href="/cleaning-services/orlando">Orlando</a></div>
+  </div>
   <a href="/#about">About</a>
   <a href="/blog">Blog</a>
   <a href="/#reviews">Reviews</a>
@@ -401,7 +386,7 @@ footer{background:#0F172A;color:rgba(255,255,255,.8);padding:64px 16px 32px}
           <a href="tel:6892427469" style="display:inline-flex;align-items:center;gap:8px;color:var(--blue);font-family:var(--font-head);font-weight:600;font-size:15px;padding:14px 0">📞 (689) 242-7469</a>
         </div>
       </div>
-      <img src="/images/img-deep-clermont.jpg" alt="Recurring cleaning service Clermont FL - consistently clean living room" loading="eager" style="width:100%;height:360px;object-fit:cover;border-radius:16px">
+      <img src="/images/img-deep-clermont.jpg" alt="Recurring cleaning service Clermont FL - consistently clean living room" loading="eager" style="width:100%;height:360px;object-fit:cover;border-radius:16px" onerror="this.style.opacity='0'">
     </div>
   </div>
 </section>
@@ -483,6 +468,7 @@ footer{background:#0F172A;color:rgba(255,255,255,.8);padding:64px 16px 32px}
           <div class="form-row">
             <div class="form-group"><label>Your Name *</label><input type="text" name="name" placeholder="Jane Smith" required></div>
             <div class="form-group"><label>Phone Number *</label><input type="tel" name="phone" placeholder="(321) 555-0100" required></div>
+          <div class="form-group" style="grid-column:1/-1"><label>Property Address</label><input type="text" name="address" placeholder="2143 Calabria Ave, Kissimmee FL"></div>
           </div>
           <div class="form-group"><label>Email Address</label><input type="email" name="email" placeholder="jane@email.com"></div>
           <div class="form-row">
@@ -537,7 +523,7 @@ footer{background:#0F172A;color:rgba(255,255,255,.8);padding:64px 16px 32px}
         <li><span class="check-icon"></span>Free, no-obligation quotes</li>
       </ul>
       <div class="mascot-wrap">
-        <img src="/images/mascot.png" alt="Braza Cleaning team" class="mascot-img">
+        <img src="/images/mascot.png" alt="Braza Cleaning team" class="mascot-img" onerror="this.style.opacity='0'">
         <div class="mascot-bubble">Hi! Ready to make your space shine. Fill out the form and we'll be in touch shortly! &#10024;</div>
       </div>
     </div>
@@ -546,7 +532,7 @@ footer{background:#0F172A;color:rgba(255,255,255,.8);padding:64px 16px 32px}
   <div class="footer-inner">
     <div class="footer-grid">
       <div class="footer-brand">
-        <img src="/images/logo.png" alt="Braza Cleaning Services" width="144" height="48">
+        <img src="/images/logo.png" alt="Braza Cleaning Services" width="144" height="48" onerror="this.style.opacity='0'">
         <p>Professional cleaning services across Central Florida. Licensed, bonded, and insured. Trusted by homeowners, Airbnb hosts, and property managers since 2020.</p>
         <div class="footer-contact">
           <a href="tel:6892427469"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.95 9.8a19.79 19.79 0 01-3.07-8.67A2 2 0 012.88 1h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L7.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>(689) 242-7469</a>
@@ -573,11 +559,6 @@ footer{background:#0F172A;color:rgba(255,255,255,.8);padding:64px 16px 32px}
         <li><a href="/#reviews">Reviews</a></li>
         <li><a href="/#contact">Get a Quote</a></li>
         <li><a href="https://share.google/im8ktmN1KQYzJukgW" target="_blank" rel="noopener">Google Reviews</a></li>
-          <li><a href="https://www.facebook.com/brazacleaningflorida/" target="_blank" rel="noopener">Facebook</a></li>
-          <li><a href="https://www.instagram.com/brazacleaningservicesfl/" target="_blank" rel="noopener">Instagram</a></li>
-          <li><a href="https://www.yelp.com/biz/braza-cleaning-services-ocoee" target="_blank" rel="noopener">Yelp</a></li>
-          <li><a href="https://nextdoor.com/page/braza-cleaning-services-wildwood-fl?share_platform=3&utm_campaign=1775169311117&share_action_id=6e844762-8497-4d77-87f0-c78e0fac530d" target="_blank" rel="noopener">Nextdoor</a></li>
-          <li><a href="https://www.bbb.org/us/fl/ocoee/profile/cleaning-services/braza-cleaning-services-llc-0733-235978038" target="_blank" rel="noopener">BBB Accredited</a></li>
       </ul></div>
     </div>
     <div class="footer-bottom">
@@ -587,6 +568,11 @@ footer{background:#0F172A;color:rgba(255,255,255,.8);padding:64px 16px 32px}
   </div>
 </footer><script>
 window.addEventListener('scroll',function(){document.getElementById('mainNav').classList.toggle('scrolled',window.scrollY>50);});
+function toggleSubmenu(el){
+  el.classList.toggle("expanded");
+  var sub=el.querySelector(".mobile-submenu");
+  if(sub) sub.classList.toggle("open");
+}
 function toggleNav(){document.getElementById('mobileNav').classList.toggle('open');}
 document.querySelectorAll('.mobile-nav a').forEach(function(a){a.addEventListener('click',function(){document.getElementById('mobileNav').classList.remove('open');});});
 document.querySelectorAll('.faq-question').forEach(function(btn){
@@ -607,12 +593,12 @@ if(form){
     e.preventDefault();
     var btn=document.getElementById('submitBtn');
     btn.disabled=true;btn.textContent='Sending...';
-    var d={name:form.querySelector('[name=name]').value,phone:form.querySelector('[name=phone]').value,email:form.querySelector('[name=email]').value,service:form.querySelector('[name=service]').value,city:form.querySelector('[name=city]').value,message:(form.querySelector('[name=message]')||{value:''}).value};
+    var d={name:form.querySelector('[name=name]').value,phone:form.querySelector('[name=phone]').value,email:form.querySelector('[name=email]').value,service:form.querySelector('[name=service]').value,address:(form.querySelector('[name=address]')||{value:''}).value,city:form.querySelector('[name=city]').value,message:(form.querySelector('[name=message]')||{value:''}).value};
     try{
-      var res=await fetch('https://api.resend.com/emails',{method:'POST',headers:{'Authorization':'Bearer re_Psu7DehN_JGbh5dRZWVrVr4p5JbGE8PTq','Content-Type':'application/json'},body:JSON.stringify({from:'website@brazacleaning.com',to:['brazacleaningservices@gmail.com'],subject:'New Quote — '+d.service+' in '+d.city,html:'<h2>New Quote Request</h2><p><b>Name:</b> '+d.name+'</p><p><b>Phone:</b> '+d.phone+'</p><p><b>Email:</b> '+d.email+'</p><p><b>Service:</b> '+d.service+'</p><p><b>City:</b> '+d.city+'</p><p><b>Message:</b> '+d.message+'</p>'})});
-      if(res.ok||res.status===200||res.status===201){document.getElementById('formWrap').style.display='none';document.getElementById('formSuccess').style.display='block';}
-      else throw new Error('fail');
-    }catch(err){btn.disabled=false;btn.textContent='Send My Request →';alert('Something went wrong. Please call us at (689) 242-7469');}
+      var res=await fetch('https://braza-email-proxy.lucianodornfeld18.workers.dev',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(d)});
+      if(res.ok){document.getElementById('formWrap').style.display='none';document.getElementById('formSuccess').style.display='block';}
+      else{var t=await res.text();throw new Error(t);}
+    }catch(err){btn.disabled=false;btn.textContent='Send My Request →';alert('Error: '+err.message+'. Please call us at (689) 242-7469');}
   });
 }
 </script>
