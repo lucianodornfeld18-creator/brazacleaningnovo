@@ -753,10 +753,34 @@ if(form){
     btn.disabled=true;btn.textContent='Sending...';
     var d={name:form.querySelector('[name=name]').value,phone:form.querySelector('[name=phone]').value,email:form.querySelector('[name=email]').value,service:form.querySelector('[name=service]').value,city:form.querySelector('[name=city]').value,message:(form.querySelector('[name=message]')||{value:''}).value};
     try{
-      var res=await fetch('https://braza-email-proxy.lucianodornfeld18-creator.workers.dev',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(d)});
-      if(res.ok||res.status===200||res.status===201){document.getElementById('formWrap').style.display='none';document.getElementById('formSuccess').style.display='block';}
-      else throw new Error('fail');
-    }catch(err){btn.disabled=false;btn.textContent='Send My Request →';alert('Something went wrong. Please call us at (689) 242-7469');}
+      // Using FormSubmit for reliable delivery
+      var formData = new FormData();
+      formData.append('_subject', 'New Quote — ' + d.service + ' in ' + d.city);
+      formData.append('_captcha', 'false');
+      formData.append('_template', 'table');
+      formData.append('name', d.name);
+      formData.append('phone', d.phone);
+      formData.append('email', d.email || 'not provided');
+      formData.append('service', d.service);
+      formData.append('city', d.city);
+      formData.append('message', d.message || 'none');
+      
+      var res=await fetch('https://formsubmit.co/brazacleaningservices@gmail.com',{
+        method:'POST',
+        headers:{'Accept':'application/json'},
+        body:formData
+      });
+      var resJson=await res.json();
+      if(res.ok && resJson.success){
+        document.getElementById('formWrap').style.display='none';
+        document.getElementById('formSuccess').style.display='block';
+      } else throw new Error(JSON.stringify(resJson));
+    }catch(err){
+      btn.disabled=false;btn.textContent='Send My Request →';
+      console.error('Form error:', err);
+      var errMsg = err.message || 'Unknown error';
+      alert('Error: ' + errMsg + '\n\nPlease call us at (689) 242-7469');
+    }
   });
 }
 </script>
