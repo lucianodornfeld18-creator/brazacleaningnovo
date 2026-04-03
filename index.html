@@ -40,6 +40,15 @@
   "priceRange": "$$",
   "areaServed": [{"@type":"City","name":"Orlando"},{"@type":"City","name":"Kissimmee"},{"@type":"City","name":"Davenport"},{"@type":"City","name":"The Villages"},{"@type":"City","name":"Clermont"}],
   "address": {"@type":"PostalAddress","addressRegion":"FL","addressCountry":"US","addressLocality":"Central Florida"},
+  "sameAs": [
+    "https://www.bbb.org/us/fl/ocoee/profile/cleaning-services/braza-cleaning-services-llc-0733-235978038",
+    "https://www.instagram.com/brazacleaningservicesfl/",
+    "https://www.facebook.com/brazacleaningflorida/",
+    "https://www.yelp.com/biz/braza-cleaning-services-ocoee",
+    "https://share.google/im8ktmN1KQYzJukgW",
+    "https://share.google/chrLrGXq5aUmg5UdS",
+    "https://nextdoor.com/page/braza-cleaning-services-wildwood-fl?share_platform=3&utm_campaign=1775169311117&share_action_id=6e844762-8497-4d77-87f0-c78e0fac530d"
+  ],
   "aggregateRating": {"@type":"AggregateRating","ratingValue":"5.0","reviewCount":"47","bestRating":"5"}
 }
 </script>
@@ -703,6 +712,11 @@ footer{background:#0F172A;color:rgba(255,255,255,.8);padding:64px 16px 32px}
         <li><a href="/#reviews">Reviews</a></li>
         <li><a href="/#contact">Get a Quote</a></li>
         <li><a href="https://share.google/im8ktmN1KQYzJukgW" target="_blank" rel="noopener">Google Reviews</a></li>
+        <li><a href="https://www.facebook.com/brazacleaningflorida/" target="_blank" rel="noopener">Facebook</a></li>
+        <li><a href="https://www.instagram.com/brazacleaningservicesfl/" target="_blank" rel="noopener">Instagram</a></li>
+        <li><a href="https://www.yelp.com/biz/braza-cleaning-services-ocoee" target="_blank" rel="noopener">Yelp</a></li>
+        <li><a href="https://www.bbb.org/us/fl/ocoee/profile/cleaning-services/braza-cleaning-services-llc-0733-235978038" target="_blank" rel="noopener">BBB Accredited</a></li>
+        <li><a href="https://nextdoor.com/page/braza-cleaning-services-wildwood-fl?share_platform=3&utm_campaign=1775169311117&share_action_id=6e844762-8497-4d77-87f0-c78e0fac530d" target="_blank" rel="noopener">Nextdoor</a></li>
       </ul></div>
     </div>
     <div class="footer-bottom">
@@ -739,7 +753,7 @@ if(form){
     btn.disabled=true;btn.textContent='Sending...';
     var d={name:form.querySelector('[name=name]').value,phone:form.querySelector('[name=phone]').value,email:form.querySelector('[name=email]').value,service:form.querySelector('[name=service]').value,city:form.querySelector('[name=city]').value,message:(form.querySelector('[name=message]')||{value:''}).value};
     try{
-      var res=await fetch('https://api.resend.com/emails',{method:'POST',headers:{'Authorization':'Bearer re_Psu7DehN_JGbh5dRZWVrVr4p5JbGE8PTq','Content-Type':'application/json'},body:JSON.stringify({from:'website@brazacleaning.com',to:['brazacleaningservices@gmail.com'],subject:'New Quote — '+d.service+' in '+d.city,html:'<h2>New Quote Request</h2><p><b>Name:</b> '+d.name+'</p><p><b>Phone:</b> '+d.phone+'</p><p><b>Email:</b> '+d.email+'</p><p><b>Service:</b> '+d.service+'</p><p><b>City:</b> '+d.city+'</p><p><b>Message:</b> '+d.message+'</p>'})});
+      var res=await fetch('https://braza-email-proxy.lucianodornfeld18-creator.workers.dev',{method:'POST',headers:{'Authorization':'Bearer re_Psu7DehN_JGbh5dRZWVrVr4p5JbGE8PTq','Content-Type':'application/json'},body:JSON.stringify({from:'website@brazacleaning.com',to:['brazacleaningservices@gmail.com'],subject:'New Quote — '+d.service+' in '+d.city,html:'<h2>New Quote Request</h2><p><b>Name:</b> '+d.name+'</p><p><b>Phone:</b> '+d.phone+'</p><p><b>Email:</b> '+d.email+'</p><p><b>Service:</b> '+d.service+'</p><p><b>City:</b> '+d.city+'</p><p><b>Message:</b> '+d.message+'</p>'})});
       if(res.ok||res.status===200||res.status===201){document.getElementById('formWrap').style.display='none';document.getElementById('formSuccess').style.display='block';}
       else throw new Error('fail');
     }catch(err){btn.disabled=false;btn.textContent='Send My Request →';alert('Something went wrong. Please call us at (689) 242-7469');}
