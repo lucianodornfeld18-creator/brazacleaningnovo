@@ -582,7 +582,9 @@ async function doPublish() {
     pb.style.width = '40%';
 
     var date = new Date().toLocaleDateString('en-US', {year:'numeric',month:'long',day:'numeric'});
-    var fullHTML = '<!DOCTYPE html>\n<html lang="en">\n<head>\n<meta charset="UTF-8">\n<meta name="viewport" content="width=device-width, initial-scale=1.0">\n<title>'+title+' | Braza Cleaning Services</title>\n<link rel="stylesheet" href="/css/style.css">\n<link rel="stylesheet" href="/css/blog.css">\n</head>\n<body>\n<div id="header-placeholder"></div>\n<main class="blog-post">\n<div class="container">\n<nav class="breadcrumb"><a href="/">Home</a> | <a href="/blog/">Blog</a> | <span>'+title+'</span></nav>\n<article>\n<div class="post-meta"><span class="post-date">'+date+'</span></div>\n'+postContent+'\n</article>\n<div class="cta-box">\n<h3>Need cleaning service in '+city+'?</h3>\n<p>Braza Cleaning Services covers all of Central Florida. Get a free quote!</p>\n<a href="tel:+16892427469" class="btn-primary">Call (689) 242-7469</a>\n<a href="/contact.html" class="btn-secondary">Get Free Quote</a>\n</div>\n</div>\n</main>\n<div id="footer-placeholder"></div>\n<script src="/js/main.js"><'+'/script>\n</body>\n</html>';
+    var dateISO = new Date().toISOString().split('T')[0];
+    var catLabel = kw.includes('airbnb')||kw.includes('vacation')||kw.includes('turnover') ? 'Airbnb & Vacation Rental' : kw.includes('commercial')||kw.includes('office')||kw.includes('janitorial') ? 'Commercial Cleaning' : kw.includes('move') ? 'Move Cleaning' : kw.includes('deep') ? 'Deep Cleaning' : kw.includes('cost')||kw.includes('price')||kw.includes('pricing') ? 'Pricing & Checklists' : 'House Cleaning Tips';
+    var fullHTML = buildPostHTML(title, slug, city, kw, catLabel, date, dateISO, postContent);
 
     lg('Enviando para GitHub...','linf');
     pb.style.width = '60%';
