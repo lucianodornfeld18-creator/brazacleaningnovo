@@ -22,10 +22,22 @@
 <meta name="geo.region" content="US-FL">
 <meta name="geo.placename" content="Central Florida">
 <link rel="icon" type="image/png" href="/images/logo.png">
+<link rel="preload" as="image" href="/images/img-bed-davenport.jpg" fetchpriority="high">
 <link rel="apple-touch-icon" href="/images/logo.png">
+<style>
+/* Critical: system font fallback while Google Fonts loads */
+:root{--font-head:'Outfit','Segoe UI',Arial,sans-serif;--font-body:'Lato','Segoe UI',Arial,sans-serif}
+</style>
+<link rel="dns-prefetch" href="https://fonts.googleapis.com">
+<style>
+/* Critical: system font fallback while Google Fonts loads */
+:root{--font-head:'Outfit','Segoe UI',Arial,sans-serif;--font-body:'Lato','Segoe UI',Arial,sans-serif}
+</style>
+<link rel="dns-prefetch" href="https://fonts.gstatic.com">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+<link rel="preload" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Lato:wght@400;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Lato:wght@400;700&display=swap" rel="stylesheet"></noscript>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -400,7 +412,7 @@ footer{background:#0F172A;color:rgba(255,255,255,.8);padding:64px 16px 32px}
 </div>
 <div class="hero-visual">
 <div class="carousel" id="heroCarousel" style="height:460px;border-radius:20px;overflow:hidden;position:relative;box-shadow:0 20px 60px rgba(0,0,0,.15)">
-<div class="carousel-track" id="carouselTrack" style="display:flex;height:100%;transition:transform .5s ease"><div class="carousel-slide"><img alt="Airbnb bedroom cleaning Davenport FL" loading="eager" src="/images/img-bed-davenport.jpg" style="width:100%;height:100%;object-fit:cover"/></div><div class="carousel-slide"><img alt="Living room cleaning Winter Garden FL" loading="lazy" src="/images/img-living-wintergarden.jpg" style="width:100%;height:100%;object-fit:cover"/></div><div class="carousel-slide"><img alt="Vacation rental cleaning Kissimmee FL" loading="lazy" src="/images/img-airbnb-kissimmee.jpg" style="width:100%;height:100%;object-fit:cover"/></div><div class="carousel-slide"><img alt="Bathroom deep cleaning Clermont FL" loading="lazy" src="/images/img-bathroom-clermont.jpg" style="width:100%;height:100%;object-fit:cover"/></div><div class="carousel-slide"><img alt="Kitchen cleaning Orlando FL" loading="lazy" src="/images/img-kitchen-orlando.jpg" style="width:100%;height:100%;object-fit:cover"/></div><div class="carousel-slide"><img alt="House cleaning Winter Garden FL" loading="lazy" src="/images/img-house-winter-garden.jpg" style="width:100%;height:100%;object-fit:cover"/></div></div>
+<div class="carousel-track" id="carouselTrack" style="display:flex;height:100%;transition:transform .5s ease"><div class="carousel-slide"><img alt="Airbnb bedroom cleaning Davenport FL" loading="eager" fetchpriority="high" width="800" height="500" src="/images/img-bed-davenport.jpg" style="width:100%;height:100%;object-fit:cover"/></div><div class="carousel-slide"><img alt="Living room cleaning Winter Garden FL" loading="lazy" src="/images/img-living-wintergarden.jpg" style="width:100%;height:100%;object-fit:cover"/></div><div class="carousel-slide"><img alt="Vacation rental cleaning Kissimmee FL" loading="lazy" src="/images/img-airbnb-kissimmee.jpg" style="width:100%;height:100%;object-fit:cover"/></div><div class="carousel-slide"><img alt="Bathroom deep cleaning Clermont FL" loading="lazy" src="/images/img-bathroom-clermont.jpg" style="width:100%;height:100%;object-fit:cover"/></div><div class="carousel-slide"><img alt="Kitchen cleaning Orlando FL" loading="lazy" src="/images/img-kitchen-orlando.jpg" style="width:100%;height:100%;object-fit:cover"/></div><div class="carousel-slide"><img alt="House cleaning Winter Garden FL" loading="lazy" src="/images/img-house-winter-garden.jpg" style="width:100%;height:100%;object-fit:cover"/></div></div>
 <button aria-label="Previous" class="carousel-btn carousel-prev" onclick="prevSlide()">‹</button>
 <button aria-label="Next" class="carousel-btn carousel-next" onclick="nextSlide()">›</button>
 <div class="carousel-dots" style="position:absolute;bottom:12px;left:50%;transform:translateX(-50%);display:flex;gap:6px"><button aria-label="Slide 1" class="carousel-dot active" onclick="goTo(0)"></button><button aria-label="Slide 2" class="carousel-dot" onclick="goTo(1)"></button><button aria-label="Slide 3" class="carousel-dot" onclick="goTo(2)"></button><button aria-label="Slide 4" class="carousel-dot" onclick="goTo(3)"></button><button aria-label="Slide 5" class="carousel-dot" onclick="goTo(4)"></button><button aria-label="Slide 6" class="carousel-dot" onclick="goTo(5)"></button></div>
@@ -423,7 +435,7 @@ footer{background:#0F172A;color:rgba(255,255,255,.8);padding:64px 16px 32px}
 </div>
 <div class="services-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:20px"><a class="service-card" href="/house-cleaning" onmouseout="this.style.boxShadow='0 1px 3px rgba(0,0,0,.06)';this.style.transform='translateY(0)'" onmouseover="this.style.boxShadow='0 10px 30px rgba(0,0,0,.12)';this.style.transform='translateY(-4px)'" style="text-decoration:none;display:flex;flex-direction:column;background:#fff;border:1px solid var(--gray-border);border-radius:16px;overflow:hidden;transition:all .25s;box-shadow:0 1px 3px rgba(0,0,0,.06)">
 <div style="height:180px;overflow:hidden;background:var(--blue-light)">
-<img alt="House cleaning Central Florida" loading="lazy" onerror="this.parentElement.style.background='var(--blue-light)';this.style.display='none'" onmouseout="this.style.transform='scale(1)'" onmouseover="this.style.transform='scale(1.05)'" src="/images/img-living-wintergarden.jpg" style="width:100%;height:180px;object-fit:cover;transition:transform .35s;display:block"/>
+<img alt="House cleaning Central Florida" loading="lazy" onerror="this.parentElement.style.background='var(--blue-light)';this.style.display='none'"  src="/images/img-living-wintergarden.jpg" style="width:100%;height:180px;object-fit:cover;transition:transform .35s;display:block"/>
 </div>
 <div style="padding:20px 22px 24px">
 <h3 style="font-family:var(--font-head);font-size:17px;font-weight:700;color:var(--text);margin-bottom:8px">House Cleaning</h3>
@@ -432,7 +444,7 @@ footer{background:#0F172A;color:rgba(255,255,255,.8);padding:64px 16px 32px}
 </div>
 </a><a class="service-card" href="/airbnb-cleaning" onmouseout="this.style.boxShadow='0 1px 3px rgba(0,0,0,.06)';this.style.transform='translateY(0)'" onmouseover="this.style.boxShadow='0 10px 30px rgba(0,0,0,.12)';this.style.transform='translateY(-4px)'" style="text-decoration:none;display:flex;flex-direction:column;background:#fff;border:1px solid var(--gray-border);border-radius:16px;overflow:hidden;transition:all .25s;box-shadow:0 1px 3px rgba(0,0,0,.06)">
 <div style="height:180px;overflow:hidden;background:var(--blue-light)">
-<img alt="Airbnb cleaning Kissimmee FL" loading="lazy" onerror="this.parentElement.style.background='var(--blue-light)';this.style.display='none'" onmouseout="this.style.transform='scale(1)'" onmouseover="this.style.transform='scale(1.05)'" src="/images/img-airbnb-kissimmee.jpg" style="width:100%;height:180px;object-fit:cover;transition:transform .35s;display:block"/>
+<img alt="Airbnb cleaning Kissimmee FL" loading="lazy" onerror="this.parentElement.style.background='var(--blue-light)';this.style.display='none'"  src="/images/img-airbnb-kissimmee.jpg" style="width:100%;height:180px;object-fit:cover;transition:transform .35s;display:block"/>
 </div>
 <div style="padding:20px 22px 24px">
 <h3 style="font-family:var(--font-head);font-size:17px;font-weight:700;color:var(--text);margin-bottom:8px">Airbnb Cleaning</h3>
@@ -441,7 +453,7 @@ footer{background:#0F172A;color:rgba(255,255,255,.8);padding:64px 16px 32px}
 </div>
 </a><a class="service-card" href="/vacation-rental-cleaning" onmouseout="this.style.boxShadow='0 1px 3px rgba(0,0,0,.06)';this.style.transform='translateY(0)'" onmouseover="this.style.boxShadow='0 10px 30px rgba(0,0,0,.12)';this.style.transform='translateY(-4px)'" style="text-decoration:none;display:flex;flex-direction:column;background:#fff;border:1px solid var(--gray-border);border-radius:16px;overflow:hidden;transition:all .25s;box-shadow:0 1px 3px rgba(0,0,0,.06)">
 <div style="height:180px;overflow:hidden;background:var(--blue-light)">
-<img alt="Vacation rental cleaning Davenport FL" loading="lazy" onerror="this.parentElement.style.background='var(--blue-light)';this.style.display='none'" onmouseout="this.style.transform='scale(1)'" onmouseover="this.style.transform='scale(1.05)'" src="/images/img-vacation-davenport.jpg" style="width:100%;height:180px;object-fit:cover;transition:transform .35s;display:block"/>
+<img alt="Vacation rental cleaning Davenport FL" loading="lazy" onerror="this.parentElement.style.background='var(--blue-light)';this.style.display='none'"  src="/images/img-vacation-davenport.jpg" style="width:100%;height:180px;object-fit:cover;transition:transform .35s;display:block"/>
 </div>
 <div style="padding:20px 22px 24px">
 <h3 style="font-family:var(--font-head);font-size:17px;font-weight:700;color:var(--text);margin-bottom:8px">Vacation Rental Cleaning</h3>
@@ -450,7 +462,7 @@ footer{background:#0F172A;color:rgba(255,255,255,.8);padding:64px 16px 32px}
 </div>
 </a><a class="service-card" href="/deep-cleaning" onmouseout="this.style.boxShadow='0 1px 3px rgba(0,0,0,.06)';this.style.transform='translateY(0)'" onmouseover="this.style.boxShadow='0 10px 30px rgba(0,0,0,.12)';this.style.transform='translateY(-4px)'" style="text-decoration:none;display:flex;flex-direction:column;background:#fff;border:1px solid var(--gray-border);border-radius:16px;overflow:hidden;transition:all .25s;box-shadow:0 1px 3px rgba(0,0,0,.06)">
 <div style="height:180px;overflow:hidden;background:var(--blue-light)">
-<img alt="Deep cleaning Clermont FL" loading="lazy" onerror="this.parentElement.style.background='var(--blue-light)';this.style.display='none'" onmouseout="this.style.transform='scale(1)'" onmouseover="this.style.transform='scale(1.05)'" src="/images/img-bathroom-clermont.jpg" style="width:100%;height:180px;object-fit:cover;transition:transform .35s;display:block"/>
+<img alt="Deep cleaning Clermont FL" loading="lazy" onerror="this.parentElement.style.background='var(--blue-light)';this.style.display='none'"  src="/images/img-bathroom-clermont.jpg" style="width:100%;height:180px;object-fit:cover;transition:transform .35s;display:block"/>
 </div>
 <div style="padding:20px 22px 24px">
 <h3 style="font-family:var(--font-head);font-size:17px;font-weight:700;color:var(--text);margin-bottom:8px">Deep Cleaning</h3>
@@ -459,7 +471,7 @@ footer{background:#0F172A;color:rgba(255,255,255,.8);padding:64px 16px 32px}
 </div>
 </a><a class="service-card" href="/move-out-cleaning" onmouseout="this.style.boxShadow='0 1px 3px rgba(0,0,0,.06)';this.style.transform='translateY(0)'" onmouseover="this.style.boxShadow='0 10px 30px rgba(0,0,0,.12)';this.style.transform='translateY(-4px)'" style="text-decoration:none;display:flex;flex-direction:column;background:#fff;border:1px solid var(--gray-border);border-radius:16px;overflow:hidden;transition:all .25s;box-shadow:0 1px 3px rgba(0,0,0,.06)">
 <div style="height:180px;overflow:hidden;background:var(--blue-light)">
-<img alt="Move out cleaning The Villages FL" loading="lazy" onerror="this.parentElement.style.background='var(--blue-light)';this.style.display='none'" onmouseout="this.style.transform='scale(1)'" onmouseover="this.style.transform='scale(1.05)'" src="/images/img-moveout-villages.jpg" style="width:100%;height:180px;object-fit:cover;transition:transform .35s;display:block"/>
+<img alt="Move out cleaning The Villages FL" loading="lazy" onerror="this.parentElement.style.background='var(--blue-light)';this.style.display='none'"  src="/images/img-moveout-villages.jpg" style="width:100%;height:180px;object-fit:cover;transition:transform .35s;display:block"/>
 </div>
 <div style="padding:20px 22px 24px">
 <h3 style="font-family:var(--font-head);font-size:17px;font-weight:700;color:var(--text);margin-bottom:8px">Move-Out Cleaning</h3>
@@ -468,7 +480,7 @@ footer{background:#0F172A;color:rgba(255,255,255,.8);padding:64px 16px 32px}
 </div>
 </a><a class="service-card" href="/move-in-cleaning" onmouseout="this.style.boxShadow='0 1px 3px rgba(0,0,0,.06)';this.style.transform='translateY(0)'" onmouseover="this.style.boxShadow='0 10px 30px rgba(0,0,0,.12)';this.style.transform='translateY(-4px)'" style="text-decoration:none;display:flex;flex-direction:column;background:#fff;border:1px solid var(--gray-border);border-radius:16px;overflow:hidden;transition:all .25s;box-shadow:0 1px 3px rgba(0,0,0,.06)">
 <div style="height:180px;overflow:hidden;background:var(--blue-light)">
-<img alt="Move in cleaning Orlando FL" loading="lazy" onerror="this.parentElement.style.background='var(--blue-light)';this.style.display='none'" onmouseout="this.style.transform='scale(1)'" onmouseover="this.style.transform='scale(1.05)'" src="/images/img-kitchen-orlando.jpg" style="width:100%;height:180px;object-fit:cover;transition:transform .35s;display:block"/>
+<img alt="Move in cleaning Orlando FL" loading="lazy" onerror="this.parentElement.style.background='var(--blue-light)';this.style.display='none'"  src="/images/img-kitchen-orlando.jpg" style="width:100%;height:180px;object-fit:cover;transition:transform .35s;display:block"/>
 </div>
 <div style="padding:20px 22px 24px">
 <h3 style="font-family:var(--font-head);font-size:17px;font-weight:700;color:var(--text);margin-bottom:8px">Move-In Cleaning</h3>
@@ -477,7 +489,7 @@ footer{background:#0F172A;color:rgba(255,255,255,.8);padding:64px 16px 32px}
 </div>
 </a><a class="service-card" href="/post-construction-cleaning" onmouseout="this.style.boxShadow='0 1px 3px rgba(0,0,0,.06)';this.style.transform='translateY(0)'" onmouseover="this.style.boxShadow='0 10px 30px rgba(0,0,0,.12)';this.style.transform='translateY(-4px)'" style="text-decoration:none;display:flex;flex-direction:column;background:#fff;border:1px solid var(--gray-border);border-radius:16px;overflow:hidden;transition:all .25s;box-shadow:0 1px 3px rgba(0,0,0,.06)">
 <div style="height:180px;overflow:hidden;background:var(--blue-light)">
-<img alt="Post construction cleaning Winter Garden FL" loading="lazy" onerror="this.parentElement.style.background='var(--blue-light)';this.style.display='none'" onmouseout="this.style.transform='scale(1)'" onmouseover="this.style.transform='scale(1.05)'" src="/images/img-house-winter-garden.jpg" style="width:100%;height:180px;object-fit:cover;transition:transform .35s;display:block"/>
+<img alt="Post construction cleaning Winter Garden FL" loading="lazy" onerror="this.parentElement.style.background='var(--blue-light)';this.style.display='none'"  src="/images/img-house-winter-garden.jpg" style="width:100%;height:180px;object-fit:cover;transition:transform .35s;display:block"/>
 </div>
 <div style="padding:20px 22px 24px">
 <h3 style="font-family:var(--font-head);font-size:17px;font-weight:700;color:var(--text);margin-bottom:8px">Post-Construction</h3>
@@ -486,7 +498,7 @@ footer{background:#0F172A;color:rgba(255,255,255,.8);padding:64px 16px 32px}
 </div>
 </a><a class="service-card" href="/recurring-cleaning" onmouseout="this.style.boxShadow='0 1px 3px rgba(0,0,0,.06)';this.style.transform='translateY(0)'" onmouseover="this.style.boxShadow='0 10px 30px rgba(0,0,0,.12)';this.style.transform='translateY(-4px)'" style="text-decoration:none;display:flex;flex-direction:column;background:#fff;border:1px solid var(--gray-border);border-radius:16px;overflow:hidden;transition:all .25s;box-shadow:0 1px 3px rgba(0,0,0,.06)">
 <div style="height:180px;overflow:hidden;background:var(--blue-light)">
-<img alt="Recurring cleaning Minneola FL" loading="lazy" onerror="this.parentElement.style.background='var(--blue-light)';this.style.display='none'" onmouseout="this.style.transform='scale(1)'" onmouseover="this.style.transform='scale(1.05)'" src="/images/img-bathroom-minneola.jpg" style="width:100%;height:180px;object-fit:cover;transition:transform .35s;display:block"/>
+<img alt="Recurring cleaning Minneola FL" loading="lazy" onerror="this.parentElement.style.background='var(--blue-light)';this.style.display='none'"  src="/images/img-bathroom-minneola.jpg" style="width:100%;height:180px;object-fit:cover;transition:transform .35s;display:block"/>
 </div>
 <div style="padding:20px 22px 24px">
 <h3 style="font-family:var(--font-head);font-size:17px;font-weight:700;color:var(--text);margin-bottom:8px">Recurring Cleaning</h3>
@@ -495,7 +507,7 @@ footer{background:#0F172A;color:rgba(255,255,255,.8);padding:64px 16px 32px}
 </div>
 </a><a class="service-card" href="/commercial-cleaning" onmouseout="this.style.boxShadow='0 1px 3px rgba(0,0,0,.06)';this.style.transform='translateY(0)'" onmouseover="this.style.boxShadow='0 10px 30px rgba(0,0,0,.12)';this.style.transform='translateY(-4px)'" style="text-decoration:none;display:flex;flex-direction:column;background:#fff;border:1px solid var(--gray-border);border-radius:16px;overflow:hidden;transition:all .25s;box-shadow:0 1px 3px rgba(0,0,0,.06)">
 <div style="height:180px;overflow:hidden;background:var(--blue-light)">
-<img alt="Commercial cleaning Orlando FL" loading="lazy" onerror="this.parentElement.style.background='var(--blue-light)';this.style.display='none'" onmouseout="this.style.transform='scale(1)'" onmouseover="this.style.transform='scale(1.05)'" src="/images/img-office-orlando.jpg" style="width:100%;height:180px;object-fit:cover;transition:transform .35s;display:block"/>
+<img alt="Commercial cleaning Orlando FL" loading="lazy" onerror="this.parentElement.style.background='var(--blue-light)';this.style.display='none'"  src="/images/img-office-orlando.jpg" style="width:100%;height:180px;object-fit:cover;transition:transform .35s;display:block"/>
 </div>
 <div style="padding:20px 22px 24px">
 <h3 style="font-family:var(--font-head);font-size:17px;font-weight:700;color:var(--text);margin-bottom:8px">Commercial Cleaning</h3>
@@ -797,7 +809,7 @@ footer{background:#0F172A;color:rgba(255,255,255,.8);padding:64px 16px 32px}
 </div>
 </footer>
 <script>
-window.addEventListener('scroll',function(){document.getElementById('mainNav').classList.toggle('scrolled',window.scrollY>50);});
+window.addEventListener('scroll',function(){document.getElementById('mainNav').classList.toggle('scrolled',window.scrollY>50);},{passive:true});
 function toggleSubmenu(el){
   el.classList.toggle("expanded");
   var sub=el.querySelector(".mobile-submenu");
@@ -812,11 +824,12 @@ document.querySelectorAll('.faq-question').forEach(function(btn){
     if(!isOpen){this.classList.add('open');ans.classList.add('open');}
   });
 });
-var _ci=0,_ct=document.getElementById('carouselTrack'),_cd=document.querySelectorAll('.carousel-dot'),_total=_cd.length;
+var _ci=0,_ct,_cd,_total;function initCarousel(){_ct=document.getElementById('carouselTrack');_cd=document.querySelectorAll('.carousel-dot');_total=_cd.length;
 function goTo(n){_ci=n;if(_ct)_ct.style.transform='translateX(-'+(_ci*100)+'%)';_cd.forEach(function(d,i){d.classList.toggle('active',i===_ci);});}
 function nextSlide(){goTo((_ci+1)%(_total||1));}
 function prevSlide(){goTo((_ci-1+(_total||1))%(_total||1));}
-if(_total>0)setInterval(nextSlide,4500);
+if(_total>0)setInterval(nextSlide,4500);}
+if('requestIdleCallback' in window){requestIdleCallback(initCarousel)}else{setTimeout(initCarousel,200)}
 var form=document.getElementById('quoteForm');
 if(form){
   form.addEventListener('submit',async function(e){
