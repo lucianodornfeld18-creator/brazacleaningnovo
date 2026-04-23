@@ -1,0 +1,23 @@
+# Cloudflare Pages _redirects
+# brazacleaning.com — atualizado 2026-04-06
+
+# WWW to non-www
+https://www.brazacleaning.com/* https://brazacleaning.com/:splat 301!
+
+# HTTP to HTTPS
+http://brazacleaning.com/* https://brazacleaning.com/:splat 301!
+http://www.brazacleaning.com/* https://brazacleaning.com/:splat 301!
+
+# Fix 404: typo de crawl do Google (davenpor sem o t)
+/airbnb-cleaning/davenpor https://brazacleaning.com/airbnb-cleaning/davenport/ 301!
+
+# Fix 404: resíduo de URL antiga /ola-mundo/
+/ola-mundo/ https://brazacleaning.com/ 301!
+/ola-mundo https://brazacleaning.com/ 301!
+
+# Fix 404: /category/office-cleaning/ era estrutura antiga
+/category/office-cleaning/ https://brazacleaning.com/blog/category/office-cleaning/ 301!
+/category/office-cleaning https://brazacleaning.com/blog/category/office-cleaning/ 301!
+
+# Custom 404
+/* /404.html 404
