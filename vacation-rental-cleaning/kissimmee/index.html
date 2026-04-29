@@ -319,6 +319,52 @@ footer{background:#0F172A;color:rgba(255,255,255,.8);padding:64px 16px 32px}
 <meta property="og:image" content="https://brazacleaning.com/images/img-airbnb-kissimmee.jpg">
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="Braza Cleaning Services">
+<style>
+/* ── Braza Price Table ─────────────────────────── */
+.braza-pricing-section{margin:2.5rem 0;font-family:var(--font-body,'Lato',sans-serif)}
+.braza-pricing-header{margin-bottom:1rem}
+.braza-pricing-label{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--blue,#2B6CB0);background:var(--blue-light,#EBF4FF);padding:3px 10px;border-radius:20px;margin-bottom:.5rem}
+.braza-pricing-title{font-family:var(--font-head,'Outfit',sans-serif);font-size:1.6rem;font-weight:700;color:var(--text,#1F2937);margin:.25rem 0 .4rem;line-height:1.2}
+.braza-pricing-sub{font-size:.9rem;color:var(--gray,#6B7280);margin:0}
+.braza-stat-badge{display:flex;align-items:center;gap:14px;background:linear-gradient(135deg,#f0faf0,#dcf5dc);border:1.5px solid #68c268;border-radius:12px;padding:1rem 1.25rem;margin:1rem 0 1.25rem;flex-wrap:wrap}
+.braza-stat-icon{font-size:2rem;flex-shrink:0}
+.braza-stat-main{margin:0 0 3px;font-size:.95rem;color:#1a4a1a;line-height:1.5}
+.braza-stat-sub{margin:0;font-size:.8rem;color:#2d6e2d}
+.braza-table-wrap{overflow-x:auto;border-radius:12px;border:1.5px solid var(--gray-border,#E5E7EB);box-shadow:0 2px 8px rgba(0,0,0,.06)}
+.braza-table{width:100%;border-collapse:collapse;font-size:.92rem}
+.braza-table thead tr{background:var(--blue,#2B6CB0)}
+.braza-table th{padding:12px 16px;text-align:left;color:#fff;font-family:var(--font-head,'Outfit',sans-serif);font-weight:600;font-size:.85rem;letter-spacing:.02em;white-space:nowrap}
+.braza-table th:first-child{border-radius:10px 0 0 0}
+.braza-table th:last-child{border-radius:0 10px 0 0}
+.braza-table td{padding:11px 16px;color:var(--text,#1F2937);border-bottom:1px solid var(--gray-border,#E5E7EB);vertical-align:middle}
+.braza-table td:first-child{font-weight:600;color:var(--text,#1F2937)}
+.braza-table tr.braza-alt{background:var(--gray-light,#F8FAFC)}
+.braza-table tbody tr:last-child td{border-bottom:none}
+.braza-table tbody tr:last-child td:first-child{border-radius:0 0 0 10px}
+.braza-table tbody tr:last-child td:last-child{border-radius:0 0 10px 0}
+.braza-price{font-weight:700;color:var(--blue,#2B6CB0);white-space:nowrap}
+.braza-custom{color:var(--orange,#C67B3C)!important}
+.braza-incl{font-size:.82rem;color:var(--gray,#6B7280)}
+.braza-bed{font-size:.85rem;margin-right:4px;opacity:.7}
+.braza-table-note{font-size:.8rem;color:var(--gray,#6B7280);margin:.75rem 0 0;line-height:1.5}
+@media(max-width:600px){.braza-th-hide{display:none}.braza-pricing-title{font-size:1.3rem}}
+
+/* ── Braza 57-Point Checklist ─────────────────── */
+.braza-checklist-section{margin:2.5rem 0}
+.braza-checklist-header{margin-bottom:1.25rem}
+.braza-checklist-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:1rem;margin-bottom:1rem}
+.braza-checklist-card{background:#fff;border:1.5px solid var(--gray-border,#E5E7EB);border-radius:12px;overflow:hidden;box-shadow:0 2px 6px rgba(0,0,0,.05);transition:box-shadow .2s}
+.braza-checklist-card:hover{box-shadow:0 4px 14px rgba(43,108,176,.12)}
+.braza-checklist-card-head{background:var(--blue,#2B6CB0);padding:.75rem 1rem;display:flex;align-items:center;gap:.75rem}
+.braza-checklist-icon{font-size:1.5rem;flex-shrink:0}
+.braza-checklist-cat{margin:0;font-family:var(--font-head,'Outfit',sans-serif);font-weight:700;color:#fff;font-size:.95rem;line-height:1.2}
+.braza-checklist-count{margin:0;font-size:.75rem;color:rgba(255,255,255,.75);font-weight:500}
+.braza-checklist-final .braza-checklist-card-head{background:var(--orange,#C67B3C)}
+.braza-checklist-list{margin:0;padding:.75rem 1rem .75rem 1.75rem;list-style:decimal;counter-reset:none}
+.braza-checklist-list li{font-size:.82rem;color:var(--text,#1F2937);line-height:1.6;padding:.1rem 0;border-bottom:1px solid #f3f4f6}
+.braza-checklist-list li:last-child{border-bottom:none}
+.braza-checklist-footer{font-size:.88rem;color:var(--gray,#6B7280);text-align:center;padding:.75rem 1rem;background:var(--gray-light,#F8FAFC);border-radius:8px;line-height:1.6}
+</style>
 </head>
 <body>
 <nav class="nav" id="mainNav">
@@ -615,138 +661,113 @@ footer{background:#0F172A;color:rgba(255,255,255,.8);padding:64px 16px 32px}
 </div>
 <p style="font-size:.9rem;color:var(--color-text-secondary)">Don't see your community? <a href="/contact/" style="color:var(--blue)">Contact us</a> — we likely serve it. We cover all of Osceola County, ZIP codes 34741, 34743, 34746, 34747.</p>
 </div></div>
-<div class="section" style="padding:2rem 0 0">
-<div class="section-inner">
-<div class="section-head"><span class="section-label">OUR PROCESS</span>
-<h2 class="section-title">The Braza 57-Point Cleaning Checklist</h2></div>
-<p style="color:var(--color-text-secondary);margin:0 0 1.5rem">Every Braza clean follows a rigorous 57-point checklist — so nothing is ever missed. Our team is trained on each point before their first job.</p>
-<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem">
-
-<div style="background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:1rem">
-<p style="margin:0 0 .5rem;font-size:12px;font-weight:600;color:var(--color-text-primary)">🛏️ Bedrooms (12 points)</p>
-<ol style="margin:0;padding-left:1.2rem;font-size:11px;color:var(--color-text-secondary);line-height:1.8">
-<li>Change and make all beds with fresh linens</li>
-<li>Dust all furniture tops and surfaces</li>
-<li>Wipe down nightstands and lamps</li>
-<li>Clean mirrors streak-free</li>
-<li>Vacuum carpet or mop hard floors</li>
-<li>Check under beds for lost items</li>
-<li>Empty and wipe trash cans</li>
-<li>Dust ceiling fans and light fixtures</li>
-<li>Wipe baseboards and door frames</li>
-<li>Check closets and organize if needed</li>
-<li>Inspect for damage and missing items</li>
-<li>Final walk-through + photo documentation</li>
-</ol></div>
-
-<div style="background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:1rem">
-<p style="margin:0 0 .5rem;font-size:12px;font-weight:600;color:var(--color-text-primary)">🚿 Bathrooms (13 points)</p>
-<ol style="margin:0;padding-left:1.2rem;font-size:11px;color:var(--color-text-secondary);line-height:1.8">
-<li>Scrub and disinfect toilet inside and out</li>
-<li>Clean and shine sink and faucets</li>
-<li>Scrub shower/tub — grout and tiles</li>
-<li>Clean shower glass streak-free</li>
-<li>Polish mirrors and chrome fixtures</li>
-<li>Wipe vanity and counter surfaces</li>
-<li>Mop and disinfect floor</li>
-<li>Replace towels with fresh set</li>
-<li>Restock toiletries and toilet paper</li>
-<li>Empty and sanitize trash can</li>
-<li>Wipe light switches and door handles</li>
-<li>Check for mold and soap residue</li>
-<li>Deodorize and ventilate</li>
-</ol></div>
-
-<div style="background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:1rem">
-<p style="margin:0 0 .5rem;font-size:12px;font-weight:600;color:var(--color-text-primary)">🍳 Kitchen (14 points)</p>
-<ol style="margin:0;padding-left:1.2rem;font-size:11px;color:var(--color-text-secondary);line-height:1.8">
-<li>Wipe all countertops and backsplash</li>
-<li>Clean stovetop — burners and grates</li>
-<li>Wipe outside of oven and microwave</li>
-<li>Clean inside microwave</li>
-<li>Wipe refrigerator outside and handles</li>
-<li>Check and clean refrigerator inside</li>
-<li>Wash, dry, and put away dishes</li>
-<li>Wipe cabinet fronts and handles</li>
-<li>Clean and sanitize sink</li>
-<li>Degrease exhaust fan/hood</li>
-<li>Empty and sanitize trash cans</li>
-<li>Sweep and mop floors</li>
-<li>Restock dish soap and sponge</li>
-<li>Check for expired food and remove</li>
-</ol></div>
-
-<div style="background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:1rem">
-<p style="margin:0 0 .5rem;font-size:12px;font-weight:600;color:var(--color-text-primary)">🛋️ Living Areas (10 points)</p>
-<ol style="margin:0;padding-left:1.2rem;font-size:11px;color:var(--color-text-secondary);line-height:1.8">
-<li>Dust all surfaces, shelves, and decor</li>
-<li>Wipe TV screens and remotes</li>
-<li>Clean glass tables and windows</li>
-<li>Fluff and arrange sofa cushions</li>
-<li>Vacuum upholstery and rugs</li>
-<li>Sweep and mop hard floors</li>
-<li>Wipe light switches and outlets</li>
-<li>Dust baseboards and skirting</li>
-<li>Empty trash cans</li>
-<li>Arrange décor to guest-ready standard</li>
-</ol></div>
-
-<div style="background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:1rem">
-<p style="margin:0 0 .5rem;font-size:12px;font-weight:600;color:var(--color-text-primary)">✅ Final Check (8 points)</p>
-<ol style="margin:0;padding-left:1.2rem;font-size:11px;color:var(--color-text-secondary);line-height:1.8">
-<li>Full property walk-through</li>
-<li>Photo documentation — every room</li>
-<li>Damage and missing items report</li>
-<li>Restock notification to host</li>
-<li>Lock and secure property</li>
-<li>WhatsApp report sent within 15 min</li>
-<li>Host confirmation received</li>
-<li>Quality score logged internally</li>
-</ol></div>
-
+<div class="braza-checklist-section">
+<div class="braza-checklist-header">
+  <span class="braza-pricing-label">OUR PROCESS</span>
+  <h2 class="braza-pricing-title">The Braza 57-Point Cleaning Checklist</h2>
+  <p class="braza-pricing-sub">Every clean follows all 57 points — nothing is optional, nothing is skipped.</p>
 </div>
-<p style="font-size:11px;color:var(--color-text-secondary);margin:1rem 0 0">Our 57-point checklist is the reason Braza hosts see an average <strong>0.9-point boost</strong> in their Airbnb cleanliness rating within 3 months.</p>
-</div></div>
-<div class="section" style="padding:2rem 0 0">
-<div class="section-inner">
-<div class="section-head"><span class="section-label">PRICING</span>
-<h2 class="section-title">Airbnb Cleaning Prices in Kissimmee</h2></div>
-<p style="color:var(--color-text-secondary);margin:0 0 1rem">Transparent pricing based on property size. No hidden fees. Free quote in under 2 hours — call or text <a href="tel:+16892427469" style="color:var(--blue)">(689) 242-7469</a>.</p>
-<div style="background:linear-gradient(135deg,#EAF3DE,#D4EDBD);border:0.5px solid #8BB832;border-radius:var(--border-radius-lg);padding:1rem 1.25rem;margin:1.5rem 0;display:flex;align-items:center;gap:12px;flex-wrap:wrap">
-  <span style="font-size:2rem">⭐</span>
-  <div>
-    <p style="margin:0;font-size:14px;font-weight:600;color:#27500A">Braza Cleaning hosts increased their Airbnb cleanliness rating by an average of 0.9 points — in just 3 months.</p>
-    <p style="margin:2px 0 0;font-size:12px;color:#3B6D11">Based on 40+ active hosts · 5.0 ⭐ Google Rating · 60 verified reviews</p>
+<div class="braza-checklist-grid">
+  <div class="braza-checklist-card">
+    <div class="braza-checklist-card-head">
+      <span class="braza-checklist-icon">🛏️</span>
+      <div><p class="braza-checklist-cat">Bedrooms</p><p class="braza-checklist-count">12 points</p></div>
+    </div>
+    <ol class="braza-checklist-list">
+      <li>Change &amp; make all beds with fresh linens</li>
+      <li>Dust all furniture tops &amp; surfaces</li>
+      <li>Wipe nightstands, lamps &amp; headboards</li>
+      <li>Clean mirrors streak-free</li>
+      <li>Vacuum carpet or mop hard floors</li>
+      <li>Check under beds for lost items</li>
+      <li>Empty &amp; wipe trash cans</li>
+      <li>Dust ceiling fans &amp; light fixtures</li>
+      <li>Wipe baseboards &amp; door frames</li>
+      <li>Check closets &amp; organize if needed</li>
+      <li>Inspect for damage &amp; missing items</li>
+      <li>Final walk-through + photo documentation</li>
+    </ol>
+  </div>
+  <div class="braza-checklist-card">
+    <div class="braza-checklist-card-head">
+      <span class="braza-checklist-icon">🚿</span>
+      <div><p class="braza-checklist-cat">Bathrooms</p><p class="braza-checklist-count">13 points</p></div>
+    </div>
+    <ol class="braza-checklist-list">
+      <li>Scrub &amp; disinfect toilet inside &amp; out</li>
+      <li>Clean &amp; shine sink and faucets</li>
+      <li>Scrub shower/tub — grout &amp; tiles</li>
+      <li>Clean shower glass streak-free</li>
+      <li>Polish mirrors &amp; chrome fixtures</li>
+      <li>Wipe vanity &amp; counter surfaces</li>
+      <li>Mop &amp; disinfect floor</li>
+      <li>Replace towels with fresh set</li>
+      <li>Restock toiletries &amp; toilet paper</li>
+      <li>Empty &amp; sanitize trash can</li>
+      <li>Wipe light switches &amp; door handles</li>
+      <li>Check for mold &amp; soap residue</li>
+      <li>Deodorize &amp; ventilate</li>
+    </ol>
+  </div>
+  <div class="braza-checklist-card">
+    <div class="braza-checklist-card-head">
+      <span class="braza-checklist-icon">🍳</span>
+      <div><p class="braza-checklist-cat">Kitchen</p><p class="braza-checklist-count">14 points</p></div>
+    </div>
+    <ol class="braza-checklist-list">
+      <li>Wipe all countertops &amp; backsplash</li>
+      <li>Clean stovetop — burners &amp; grates</li>
+      <li>Wipe outside of oven &amp; microwave</li>
+      <li>Clean inside microwave</li>
+      <li>Wipe refrigerator outside &amp; handles</li>
+      <li>Check &amp; clean refrigerator inside</li>
+      <li>Wash, dry &amp; put away dishes</li>
+      <li>Wipe cabinet fronts &amp; handles</li>
+      <li>Clean &amp; sanitize sink</li>
+      <li>Degrease exhaust fan/hood</li>
+      <li>Empty &amp; sanitize trash cans</li>
+      <li>Sweep &amp; mop floors</li>
+      <li>Restock dish soap &amp; sponge</li>
+      <li>Check for expired food &amp; remove</li>
+    </ol>
+  </div>
+  <div class="braza-checklist-card">
+    <div class="braza-checklist-card-head">
+      <span class="braza-checklist-icon">🛋️</span>
+      <div><p class="braza-checklist-cat">Living Areas</p><p class="braza-checklist-count">10 points</p></div>
+    </div>
+    <ol class="braza-checklist-list">
+      <li>Dust all surfaces, shelves &amp; decor</li>
+      <li>Wipe TV screens &amp; remotes</li>
+      <li>Clean glass tables &amp; windows</li>
+      <li>Fluff &amp; arrange sofa cushions</li>
+      <li>Vacuum upholstery &amp; rugs</li>
+      <li>Sweep &amp; mop hard floors</li>
+      <li>Wipe light switches &amp; outlets</li>
+      <li>Dust baseboards &amp; skirting</li>
+      <li>Empty trash cans</li>
+      <li>Arrange décor to guest-ready standard</li>
+    </ol>
+  </div>
+  <div class="braza-checklist-card braza-checklist-final">
+    <div class="braza-checklist-card-head">
+      <span class="braza-checklist-icon">✅</span>
+      <div><p class="braza-checklist-cat">Final Check</p><p class="braza-checklist-count">8 points</p></div>
+    </div>
+    <ol class="braza-checklist-list">
+      <li>Full property walk-through</li>
+      <li>Photo documentation — every room</li>
+      <li>Damage &amp; missing items report</li>
+      <li>Restock notification to host</li>
+      <li>Lock &amp; secure property</li>
+      <li>WhatsApp report sent within 15 min</li>
+      <li>Host confirmation received</li>
+      <li>Quality score logged internally</li>
+    </ol>
   </div>
 </div>
-<div style="overflow-x:auto">
-<table style="width:100%;border-collapse:collapse;font-size:.9rem">
-<thead><tr style="background:var(--color-background-secondary)">
-<th style="padding:10px 14px;text-align:left;border-bottom:2px solid var(--color-border-tertiary);font-weight:600">Bedrooms</th>
-<th style="padding:10px 14px;text-align:left;border-bottom:2px solid var(--color-border-tertiary);font-weight:600">Standard Turnover</th>
-<th style="padding:10px 14px;text-align:left;border-bottom:2px solid var(--color-border-tertiary);font-weight:600">Deep Clean</th>
-<th style="padding:10px 14px;text-align:left;border-bottom:2px solid var(--color-border-tertiary);font-weight:600">Includes</th>
-</tr></thead>
-<tbody>
-<tr><td style="padding:9px 14px;border-bottom:1px solid var(--color-border-tertiary)">1 Bedroom</td><td style="padding:9px 14px;border-bottom:1px solid var(--color-border-tertiary)">$80 – $130</td><td style="padding:9px 14px;border-bottom:1px solid var(--color-border-tertiary)">$140 – $180</td><td style="padding:9px 14px;border-bottom:1px solid var(--color-border-tertiary);color:var(--color-text-secondary);font-size:.85rem">Linen change, kitchen, 1 bath</td></tr>
-<tr style="background:var(--color-background-secondary)"><td style="padding:9px 14px;border-bottom:1px solid var(--color-border-tertiary)">2 Bedrooms</td><td style="padding:9px 14px;border-bottom:1px solid var(--color-border-tertiary)">$110 – $160</td><td style="padding:9px 14px;border-bottom:1px solid var(--color-border-tertiary)">$175 – $230</td><td style="padding:9px 14px;border-bottom:1px solid var(--color-border-tertiary);color:var(--color-text-secondary);font-size:.85rem">Full linen, kitchen, 2 baths</td></tr>
-<tr><td style="padding:9px 14px;border-bottom:1px solid var(--color-border-tertiary)">3 Bedrooms</td><td style="padding:9px 14px;border-bottom:1px solid var(--color-border-tertiary)">$145 – $205</td><td style="padding:9px 14px;border-bottom:1px solid var(--color-border-tertiary)">$220 – $290</td><td style="padding:9px 14px;border-bottom:1px solid var(--color-border-tertiary);color:var(--color-text-secondary);font-size:.85rem">Full linen, kitchen, 3 baths</td></tr>
-<tr style="background:var(--color-background-secondary)"><td style="padding:9px 14px;border-bottom:1px solid var(--color-border-tertiary)">4 Bedrooms</td><td style="padding:9px 14px;border-bottom:1px solid var(--color-border-tertiary)">$155 – $225</td><td style="padding:9px 14px;border-bottom:1px solid var(--color-border-tertiary)">$245 – $320</td><td style="padding:9px 14px;border-bottom:1px solid var(--color-border-tertiary);color:var(--color-text-secondary);font-size:.85rem">Full service + laundry on-site</td></tr>
-<tr><td style="padding:9px 14px;border-bottom:1px solid var(--color-border-tertiary)">5 Bedrooms</td><td style="padding:9px 14px;border-bottom:1px solid var(--color-border-tertiary)">$180 – $270</td><td style="padding:9px 14px;border-bottom:1px solid var(--color-border-tertiary)">$280 – $370</td><td style="padding:9px 14px;border-bottom:1px solid var(--color-border-tertiary);color:var(--color-text-secondary);font-size:.85rem">Full service + laundry + restock</td></tr>
-<tr style="background:var(--color-background-secondary)"><td style="padding:9px 14px;border-bottom:1px solid var(--color-border-tertiary)">6 Bedrooms</td><td style="padding:9px 14px;border-bottom:1px solid var(--color-border-tertiary)">$210 – $320</td><td style="padding:9px 14px;border-bottom:1px solid var(--color-border-tertiary)">$320 – $430</td><td style="padding:9px 14px;border-bottom:1px solid var(--color-border-tertiary);color:var(--color-text-secondary);font-size:.85rem">Full service + laundry + restock</td></tr>
-<tr><td style="padding:9px 14px;border-bottom:1px solid var(--color-border-tertiary)">7 Bedrooms</td><td style="padding:9px 14px;border-bottom:1px solid var(--color-border-tertiary)">$245 – $360</td><td style="padding:9px 14px;border-bottom:1px solid var(--color-border-tertiary)">$360 – $480</td><td style="padding:9px 14px;border-bottom:1px solid var(--color-border-tertiary);color:var(--color-text-secondary);font-size:.85rem">Full service + laundry + restock</td></tr>
-<tr style="background:var(--color-background-secondary)"><td style="padding:9px 14px">8+ Bedrooms</td><td style="padding:9px 14px">Custom quote</td><td style="padding:9px 14px">Custom quote</td><td style="padding:9px 14px;color:var(--color-text-secondary);font-size:.85rem">Contact us for large properties</td></tr>
-</tbody></table></div>
-<p style="font-size:.82rem;color:var(--color-text-secondary);margin:.75rem 0 0">* All turnovers include photo report via WhatsApp, damage check, and restocking notification. Prices vary by property condition. <a href="/contact/" style="color:var(--blue)">Get a free custom quote →</a></p>
-</div></div>
-<section class="section" id="reviews" style="background:var(--gray-light)">
-<div class="section-inner">
-<div class="section-head center">
-<span class="section-label">Client Reviews</span>
-<h2 class="section-title">What Our Clients Say</h2>
-<p class="section-desc">Hundreds of happy clients across Central Florida trust Braza Cleaning.</p>
-</div>
-<div class="reviews-grid"><div class="review-card"><div class="review-stars">★★★★★</div><p class="review-text">“Absolutely amazing service! Luana and her team did an incredible job with my deep cleaning. Every corner was spotless and they were so professional. Highly recommend!”</p><div class="review-author"><div class="review-avatar">EJ</div><div><div class="review-name">Emily Johnson</div><div class="review-location">The Villages, FL</div></div></div></div><div class="review-card"><div class="review-stars">★★★★★</div><p class="review-text">“Best cleaning service in Central Florida! They cleaned my home before we moved in and it was perfect. Very thorough and reliable. Will definitely use again!”</p><div class="review-author"><div class="review-avatar">RM</div><div><div class="review-name">Robert Martinez</div><div class="review-location">Orlando, FL</div></div></div></div><div class="review-card"><div class="review-stars">★★★★★</div><p class="review-text">“I manage several Airbnb properties and BRAZA handles all my turnovers. My guests always comment on how clean the place is. 5 stars every time! Thank you!”</p><div class="review-author"><div class="review-avatar">AW</div><div><div class="review-name">Amanda Williams</div><div class="review-location">Clermont, FL</div></div></div></div><div class="review-card"><div class="review-stars">★★★★★</div><p class="review-text">“Had them do a post-construction cleanup after our renovation. They handled all the dust and debris perfectly. Our new kitchen looks amazing! Very professional team.”</p><div class="review-author"><div class="review-avatar">DT</div><div><div class="review-name">David Thompson</div><div class="review-location">Winter Park, FL</div></div></div></div></div>
+<p class="braza-checklist-footer">Our 57-point checklist is the reason Braza hosts see an average <strong>0.9-point boost</strong> in their Airbnb cleanliness rating within 3 months.</p>
+</div></div><div class="review-card"><div class="review-stars">★★★★★</div><p class="review-text">“I manage several Airbnb properties and BRAZA handles all my turnovers. My guests always comment on how clean the place is. 5 stars every time! Thank you!”</p><div class="review-author"><div class="review-avatar">AW</div><div><div class="review-name">Amanda Williams</div><div class="review-location">Clermont, FL</div></div></div></div><div class="review-card"><div class="review-stars">★★★★★</div><p class="review-text">“Had them do a post-construction cleanup after our renovation. They handled all the dust and debris perfectly. Our new kitchen looks amazing! Very professional team.”</p><div class="review-author"><div class="review-avatar">DT</div><div><div class="review-name">David Thompson</div><div class="review-location">Winter Park, FL</div></div></div></div></div>
 <div style="text-align:center;margin-top:24px">
 <a class="google-link" href="https://share.google/im8ktmN1KQYzJukgW" rel="noopener" target="_blank">
 <svg fill="none" height="18" viewbox="0 0 24 24" width="18"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"></path><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"></path><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"></path><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"></path></svg>

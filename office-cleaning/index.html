@@ -399,6 +399,52 @@ footer{background:#0F172A;color:rgba(255,255,255,.8);padding:64px 16px 32px}
 <meta property="og:image" content="https://brazacleaning.com/images/img-house-winter-garden.jpg">
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="Braza Cleaning Services">
+<style>
+/* ── Braza Price Table ─────────────────────────── */
+.braza-pricing-section{margin:2.5rem 0;font-family:var(--font-body,'Lato',sans-serif)}
+.braza-pricing-header{margin-bottom:1rem}
+.braza-pricing-label{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--blue,#2B6CB0);background:var(--blue-light,#EBF4FF);padding:3px 10px;border-radius:20px;margin-bottom:.5rem}
+.braza-pricing-title{font-family:var(--font-head,'Outfit',sans-serif);font-size:1.6rem;font-weight:700;color:var(--text,#1F2937);margin:.25rem 0 .4rem;line-height:1.2}
+.braza-pricing-sub{font-size:.9rem;color:var(--gray,#6B7280);margin:0}
+.braza-stat-badge{display:flex;align-items:center;gap:14px;background:linear-gradient(135deg,#f0faf0,#dcf5dc);border:1.5px solid #68c268;border-radius:12px;padding:1rem 1.25rem;margin:1rem 0 1.25rem;flex-wrap:wrap}
+.braza-stat-icon{font-size:2rem;flex-shrink:0}
+.braza-stat-main{margin:0 0 3px;font-size:.95rem;color:#1a4a1a;line-height:1.5}
+.braza-stat-sub{margin:0;font-size:.8rem;color:#2d6e2d}
+.braza-table-wrap{overflow-x:auto;border-radius:12px;border:1.5px solid var(--gray-border,#E5E7EB);box-shadow:0 2px 8px rgba(0,0,0,.06)}
+.braza-table{width:100%;border-collapse:collapse;font-size:.92rem}
+.braza-table thead tr{background:var(--blue,#2B6CB0)}
+.braza-table th{padding:12px 16px;text-align:left;color:#fff;font-family:var(--font-head,'Outfit',sans-serif);font-weight:600;font-size:.85rem;letter-spacing:.02em;white-space:nowrap}
+.braza-table th:first-child{border-radius:10px 0 0 0}
+.braza-table th:last-child{border-radius:0 10px 0 0}
+.braza-table td{padding:11px 16px;color:var(--text,#1F2937);border-bottom:1px solid var(--gray-border,#E5E7EB);vertical-align:middle}
+.braza-table td:first-child{font-weight:600;color:var(--text,#1F2937)}
+.braza-table tr.braza-alt{background:var(--gray-light,#F8FAFC)}
+.braza-table tbody tr:last-child td{border-bottom:none}
+.braza-table tbody tr:last-child td:first-child{border-radius:0 0 0 10px}
+.braza-table tbody tr:last-child td:last-child{border-radius:0 0 10px 0}
+.braza-price{font-weight:700;color:var(--blue,#2B6CB0);white-space:nowrap}
+.braza-custom{color:var(--orange,#C67B3C)!important}
+.braza-incl{font-size:.82rem;color:var(--gray,#6B7280)}
+.braza-bed{font-size:.85rem;margin-right:4px;opacity:.7}
+.braza-table-note{font-size:.8rem;color:var(--gray,#6B7280);margin:.75rem 0 0;line-height:1.5}
+@media(max-width:600px){.braza-th-hide{display:none}.braza-pricing-title{font-size:1.3rem}}
+
+/* ── Braza 57-Point Checklist ─────────────────── */
+.braza-checklist-section{margin:2.5rem 0}
+.braza-checklist-header{margin-bottom:1.25rem}
+.braza-checklist-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:1rem;margin-bottom:1rem}
+.braza-checklist-card{background:#fff;border:1.5px solid var(--gray-border,#E5E7EB);border-radius:12px;overflow:hidden;box-shadow:0 2px 6px rgba(0,0,0,.05);transition:box-shadow .2s}
+.braza-checklist-card:hover{box-shadow:0 4px 14px rgba(43,108,176,.12)}
+.braza-checklist-card-head{background:var(--blue,#2B6CB0);padding:.75rem 1rem;display:flex;align-items:center;gap:.75rem}
+.braza-checklist-icon{font-size:1.5rem;flex-shrink:0}
+.braza-checklist-cat{margin:0;font-family:var(--font-head,'Outfit',sans-serif);font-weight:700;color:#fff;font-size:.95rem;line-height:1.2}
+.braza-checklist-count{margin:0;font-size:.75rem;color:rgba(255,255,255,.75);font-weight:500}
+.braza-checklist-final .braza-checklist-card-head{background:var(--orange,#C67B3C)}
+.braza-checklist-list{margin:0;padding:.75rem 1rem .75rem 1.75rem;list-style:decimal;counter-reset:none}
+.braza-checklist-list li{font-size:.82rem;color:var(--text,#1F2937);line-height:1.6;padding:.1rem 0;border-bottom:1px solid #f3f4f6}
+.braza-checklist-list li:last-child{border-bottom:none}
+.braza-checklist-footer{font-size:.88rem;color:var(--gray,#6B7280);text-align:center;padding:.75rem 1rem;background:var(--gray-light,#F8FAFC);border-radius:8px;line-height:1.6}
+</style>
 </head>
 <body>
 <nav class="nav" id="mainNav">
@@ -477,74 +523,142 @@ footer{background:#0F172A;color:rgba(255,255,255,.8);padding:64px 16px 32px}
 </div></div>
 <img alt="Office & Commercial Cleaning Central Florida FL — Braza Cleaning" loading="eager" onerror="this.style.opacity=0" src="/images/img-office-orlando.jpg" style="width:100%;height:360px;object-fit:cover;border-radius:16px"/>
 </div></div></section><section class="section" style="background:var(--gray-light)"><div class="section-inner"><div class="section-head center"><span class="section-label">Service Area</span><h2 class="section-title">Cities We Serve for Office Cleaning</h2></div><div class="areas-grid"><a class="area-chip" href="/office-cleaning/orlando/">Orlando</a><a class="area-chip" href="/office-cleaning/kissimmee/">Kissimmee</a><a class="area-chip" href="/office-cleaning/clermont/">Clermont</a><a class="area-chip" href="/office-cleaning/winter-garden/">Winter Garden</a><a class="area-chip" href="/office-cleaning/davenport/">Davenport</a><a class="area-chip" href="/office-cleaning/ocoee/">Ocoee</a></div></div></section><section class="section"><div class="section-inner"><div class="why-grid"><div class="why-card"><p><strong>✓ After-Hours Scheduling</strong><br/>Before your team arrives or after you close — zero disruption to operations.</p></div><div class="why-card"><p><strong>✓ Consistent Assigned Teams</strong><br/>Same team every visit learns your space and standards over time.</p></div><div class="why-card"><p><strong>✓ Licensed, Bonded & Insured</strong><br/>Certificate of insurance on request. All team members background-checked.</p></div><div class="why-card"><p><strong>✓ All Supplies Provided</strong><br/>Commercial-grade products and equipment — you provide nothing.</p></div><div class="why-card"><p><strong>✓ Flat-Rate Pricing</strong><br/>Predictable monthly cost — no hourly billing surprises.</p></div><div class="why-card"><p><strong>✓ 100% Satisfaction Guarantee</strong><br/>We return and re-clean anything that doesn't meet your standard.</p></div></div></div></section><div class="cta-section"><h2>Book Office Cleaning in Central Florida Today</h2><p>Free quote in 2 hours · Same team every visit · Licensed &amp; insured</p><div class="cta-btns"><a class="btn-white" href="#contact">Get Free Quote</a><a class="btn-orange-outline" href="tel:6892427469">📞 (689) 242-7469</a></div></div>
-<div class="section" style="padding:2rem 0 0">
-<div class="section-inner">
-<div class="section-head"><span class="section-label">OUR PROCESS</span>
-<h2 class="section-title">The Braza 57-Point Commercial Cleaning Checklist</h2></div>
-<p style="color:var(--color-text-secondary);margin:0 0 1.5rem">Every Braza commercial clean follows a 57-point checklist tailored for business environments — ensuring a safe, healthy, and professional workspace.</p>
-<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem">
-<div style="background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:1rem">
-<p style="margin:0 0 .5rem;font-size:12px;font-weight:600;color:var(--color-text-primary)">🖥️ Work Areas (15 points)</p>
-<ol style="margin:0;padding-left:1.2rem;font-size:11px;color:var(--color-text-secondary);line-height:1.8">
-<li>Dust and wipe all desks</li><li>Clean monitors and keyboards (exterior)</li><li>Wipe phones and office equipment</li>
-<li>Sanitize high-touch surfaces</li><li>Dust shelves and filing cabinets</li><li>Empty and sanitize trash cans</li>
-<li>Vacuum carpets or mop hard floors</li><li>Clean glass partitions</li><li>Wipe door handles and push plates</li>
-<li>Dust blinds and window sills</li><li>Spot-clean walls and baseboards</li><li>Clean interior windows</li>
-<li>Sanitize light switches</li><li>Vacuum or sweep under desks</li><li>Final walk-through inspection</li>
-</ol></div>
-<div style="background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:1rem">
-<p style="margin:0 0 .5rem;font-size:12px;font-weight:600;color:var(--color-text-primary)">🚻 Restrooms + Kitchen (22 points)</p>
-<ol style="margin:0;padding-left:1.2rem;font-size:11px;color:var(--color-text-secondary);line-height:1.8">
-<li>Scrub and disinfect all toilets</li><li>Clean and shine sinks and faucets</li><li>Restock soap, paper towels, toilet paper</li>
-<li>Clean mirrors</li><li>Mop and disinfect floors</li><li>Empty and sanitize all trash cans</li>
-<li>Wipe dispensers and fixtures</li><li>Deodorize restrooms</li><li>Clean break room countertops</li>
-<li>Wipe microwave inside and out</li><li>Clean refrigerator exterior</li><li>Wash dishes if applicable</li>
-<li>Sanitize sink area</li><li>Wipe cabinet fronts</li><li>Sweep and mop break room floor</li>
-<li>Empty break room trash</li><li>Wipe tables and chairs</li><li>Clean coffee machine area</li>
-<li>Restock kitchen supplies</li><li>Check for expired food</li><li>Sanitize door handles</li><li>Final check</li>
-</ol></div>
-<div style="background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:1rem">
-<p style="margin:0 0 .5rem;font-size:12px;font-weight:600;color:var(--color-text-primary)">🏢 Common Areas + Final (20 points)</p>
-<ol style="margin:0;padding-left:1.2rem;font-size:11px;color:var(--color-text-secondary);line-height:1.8">
-<li>Vacuum lobby and reception</li><li>Wipe reception desk</li><li>Clean entrance glass doors</li>
-<li>Sweep entrance and exterior mat</li><li>Vacuum hallways and corridors</li><li>Dust artwork and décor</li>
-<li>Clean elevator buttons if applicable</li><li>Wipe stairwell railings</li><li>Empty lobby trash</li>
-<li>Sanitize common touch points</li><li>Mop tile/hard floor areas</li><li>Vacuum conference room</li>
-<li>Wipe conference table</li><li>Clean whiteboard</li><li>Arrange chairs neatly</li>
-<li>Check supply closet and restock</li><li>Secure all areas</li><li>Log completion time</li>
-<li>Supervisor sign-off</li><li>Client confirmation sent</li>
-</ol></div>
+<div class="braza-checklist-section">
+<div class="braza-checklist-header">
+  <span class="braza-pricing-label">OUR PROCESS</span>
+  <h2 class="braza-pricing-title">The Braza 57-Point Cleaning Checklist</h2>
+  <p class="braza-pricing-sub">Every clean follows all 57 points — nothing is optional, nothing is skipped.</p>
 </div>
-</div></div>
-<div class="section" style="padding:2rem 0 0">
-<div class="section-inner">
-<div class="section-head"><span class="section-label">PRICING</span>
-<h2 class="section-title">Office Cleaning Prices</h2></div>
-<p style="color:var(--color-text-secondary);margin:0 0 1rem">Flat-rate or custom plans. No hidden fees. Free on-site estimate — call or text <a href="tel:+16892427469" style="color:var(--blue)">(689) 242-7469</a>.</p>
-<div style="background:linear-gradient(135deg,#EAF3DE,#D4EDBD);border:0.5px solid #8BB832;border-radius:var(--border-radius-lg);padding:1rem 1.25rem;margin:1.5rem 0;display:flex;align-items:center;gap:12px;flex-wrap:wrap">
-  <span style="font-size:2rem">⭐</span>
-  <div>
-    <p style="margin:0;font-size:14px;font-weight:600;color:#27500A">5.0 Google Rating · 60 verified reviews · Licensed, insured &amp; background-checked team.</p>
-    <p style="margin:2px 0 0;font-size:12px;color:#3B6D11">40+ active clients across Central Florida — residential and commercial.</p>
+<div class="braza-checklist-grid">
+  <div class="braza-checklist-card">
+    <div class="braza-checklist-card-head">
+      <span class="braza-checklist-icon">🛏️</span>
+      <div><p class="braza-checklist-cat">Bedrooms</p><p class="braza-checklist-count">12 points</p></div>
+    </div>
+    <ol class="braza-checklist-list">
+      <li>Change &amp; make all beds with fresh linens</li>
+      <li>Dust all furniture tops &amp; surfaces</li>
+      <li>Wipe nightstands, lamps &amp; headboards</li>
+      <li>Clean mirrors streak-free</li>
+      <li>Vacuum carpet or mop hard floors</li>
+      <li>Check under beds for lost items</li>
+      <li>Empty &amp; wipe trash cans</li>
+      <li>Dust ceiling fans &amp; light fixtures</li>
+      <li>Wipe baseboards &amp; door frames</li>
+      <li>Check closets &amp; organize if needed</li>
+      <li>Inspect for damage &amp; missing items</li>
+      <li>Final walk-through + photo documentation</li>
+    </ol>
+  </div>
+  <div class="braza-checklist-card">
+    <div class="braza-checklist-card-head">
+      <span class="braza-checklist-icon">🚿</span>
+      <div><p class="braza-checklist-cat">Bathrooms</p><p class="braza-checklist-count">13 points</p></div>
+    </div>
+    <ol class="braza-checklist-list">
+      <li>Scrub &amp; disinfect toilet inside &amp; out</li>
+      <li>Clean &amp; shine sink and faucets</li>
+      <li>Scrub shower/tub — grout &amp; tiles</li>
+      <li>Clean shower glass streak-free</li>
+      <li>Polish mirrors &amp; chrome fixtures</li>
+      <li>Wipe vanity &amp; counter surfaces</li>
+      <li>Mop &amp; disinfect floor</li>
+      <li>Replace towels with fresh set</li>
+      <li>Restock toiletries &amp; toilet paper</li>
+      <li>Empty &amp; sanitize trash can</li>
+      <li>Wipe light switches &amp; door handles</li>
+      <li>Check for mold &amp; soap residue</li>
+      <li>Deodorize &amp; ventilate</li>
+    </ol>
+  </div>
+  <div class="braza-checklist-card">
+    <div class="braza-checklist-card-head">
+      <span class="braza-checklist-icon">🍳</span>
+      <div><p class="braza-checklist-cat">Kitchen</p><p class="braza-checklist-count">14 points</p></div>
+    </div>
+    <ol class="braza-checklist-list">
+      <li>Wipe all countertops &amp; backsplash</li>
+      <li>Clean stovetop — burners &amp; grates</li>
+      <li>Wipe outside of oven &amp; microwave</li>
+      <li>Clean inside microwave</li>
+      <li>Wipe refrigerator outside &amp; handles</li>
+      <li>Check &amp; clean refrigerator inside</li>
+      <li>Wash, dry &amp; put away dishes</li>
+      <li>Wipe cabinet fronts &amp; handles</li>
+      <li>Clean &amp; sanitize sink</li>
+      <li>Degrease exhaust fan/hood</li>
+      <li>Empty &amp; sanitize trash cans</li>
+      <li>Sweep &amp; mop floors</li>
+      <li>Restock dish soap &amp; sponge</li>
+      <li>Check for expired food &amp; remove</li>
+    </ol>
+  </div>
+  <div class="braza-checklist-card">
+    <div class="braza-checklist-card-head">
+      <span class="braza-checklist-icon">🛋️</span>
+      <div><p class="braza-checklist-cat">Living Areas</p><p class="braza-checklist-count">10 points</p></div>
+    </div>
+    <ol class="braza-checklist-list">
+      <li>Dust all surfaces, shelves &amp; decor</li>
+      <li>Wipe TV screens &amp; remotes</li>
+      <li>Clean glass tables &amp; windows</li>
+      <li>Fluff &amp; arrange sofa cushions</li>
+      <li>Vacuum upholstery &amp; rugs</li>
+      <li>Sweep &amp; mop hard floors</li>
+      <li>Wipe light switches &amp; outlets</li>
+      <li>Dust baseboards &amp; skirting</li>
+      <li>Empty trash cans</li>
+      <li>Final walkthrough &amp; client notification</li>
+    </ol>
+  </div>
+  <div class="braza-checklist-card braza-checklist-final">
+    <div class="braza-checklist-card-head">
+      <span class="braza-checklist-icon">✅</span>
+      <div><p class="braza-checklist-cat">Final Check</p><p class="braza-checklist-count">8 points</p></div>
+    </div>
+    <ol class="braza-checklist-list">
+      <li>Full property walk-through</li>
+      <li>Photo documentation — every room</li>
+      <li>Damage &amp; missing items report</li>
+      <li>Completion notification to client</li>
+      <li>Lock &amp; secure property</li>
+      <li>WhatsApp confirmation sent</li>
+      <li>Client confirmation received</li>
+      <li>Quality score logged internally</li>
+    </ol>
   </div>
 </div>
-<div style="overflow-x:auto">
-<table style="width:100%;border-collapse:collapse;font-size:.9rem">
-<thead><tr style="background:var(--color-background-secondary)">
-<th style="padding:10px 14px;text-align:left;border-bottom:2px solid var(--color-border-tertiary);font-weight:600">Office Size</th>
-<th style="padding:10px 14px;text-align:left;border-bottom:2px solid var(--color-border-tertiary);font-weight:600">Daily Clean</th>
-<th style="padding:10px 14px;text-align:left;border-bottom:2px solid var(--color-border-tertiary);font-weight:600">3x / Week</th>
-<th style="padding:10px 14px;text-align:left;border-bottom:2px solid var(--color-border-tertiary);font-weight:600">Weekly</th>
-</tr></thead>
-<tbody>
-<tr><td style="padding:9px 14px;border-bottom:1px solid var(--color-border-tertiary)">Small (up to 500 sq ft)</td><td style="padding:9px 14px;border-bottom:1px solid var(--color-border-tertiary)">$65 – $110</td><td style="padding:9px 14px;border-bottom:1px solid var(--color-border-tertiary)">$150 – $260</td><td style="padding:9px 14px;border-bottom:1px solid var(--color-border-tertiary)">$75 – $130</td></tr>
-<tr style="background:var(--color-background-secondary)"><td style="padding:9px 14px;border-bottom:1px solid var(--color-border-tertiary)">Medium (500–2,000 sq ft)</td><td style="padding:9px 14px;border-bottom:1px solid var(--color-border-tertiary)">$110 – $200</td><td style="padding:9px 14px;border-bottom:1px solid var(--color-border-tertiary)">$260 – $500</td><td style="padding:9px 14px;border-bottom:1px solid var(--color-border-tertiary)">$130 – $250</td></tr>
-<tr><td style="padding:9px 14px;border-bottom:1px solid var(--color-border-tertiary)">Large (2,000–5,000 sq ft)</td><td style="padding:9px 14px;border-bottom:1px solid var(--color-border-tertiary)">$200 – $380</td><td style="padding:9px 14px;border-bottom:1px solid var(--color-border-tertiary)">$500 – $950</td><td style="padding:9px 14px;border-bottom:1px solid var(--color-border-tertiary)">$250 – $480</td></tr>
-<tr style="background:var(--color-background-secondary)"><td style="padding:9px 14px">5,000+ sq ft</td><td style="padding:9px 14px">Custom quote</td><td style="padding:9px 14px">Custom quote</td><td style="padding:9px 14px">Custom quote</td></tr>
-</tbody></table></div>
-<p style="font-size:.82rem;color:var(--color-text-secondary);margin:.75rem 0 0">* Includes desks, restrooms, kitchen area, floors, and trash. After-hours service available. <a href="/contact/" style="color:var(--blue)">Get a free on-site estimate →</a></p>
+<p class="braza-checklist-footer">Our 57-point commercial cleaning checklist ensures consistent, reliable results — every single visit. <a href='/contact/' style='color:var(--blue)'>Book your first clean →</a></p>
 </div></div>
-<section class="section" style="background:var(--gray-light)"><div class="section-inner"><div class="section-head center"><span class="section-label">FAQ</span><h2 class="section-title">Frequently Asked Questions</h2></div><div style="max-width:800px;margin:0 auto"><div class="faq-list"><div class="faq-item"><button class="faq-question">What types of commercial spaces do you clean in Central Florida?</button><div class="faq-answer"><div class="faq-answer-inner">We clean offices, retail spaces, medical and dental offices, showrooms, gyms, salons, and commercial common areas throughout Orlando, Kissimmee, Clermont, Winter Garden, Davenport, Ocoee, and all of Central Florida.</div></div></div><div class="faq-item"><button class="faq-question">How much does office cleaning cost in Central Florida?</button><div class="faq-answer"><div class="faq-answer-inner">Small offices under 1,000 sq ft on weekly service typically run $85–$155/visit. Medium offices (1,000–2,500 sq ft) run $155–$290/visit. Post-construction commercial cleaning starts around $300 for small spaces. Call (689) 242-7469 for a free custom quote.</div></div></div><div class="faq-item"><button class="faq-question">Do you offer after-hours office cleaning in Central Florida?</button><div class="faq-answer"><div class="faq-answer-inner">Yes — before-hours and after-hours cleaning is standard for commercial clients throughout Central Florida. We adapt our schedule to your business hours.</div></div></div><div class="faq-item"><button class="faq-question">Are you licensed and insured for commercial cleaning in Central Florida?</button><div class="faq-answer"><div class="faq-answer-inner">Yes — fully licensed, bonded, and commercially insured. Certificate of insurance provided on request for businesses and property managers that require vendor documentation.</div></div></div><div class="faq-item"><button class="faq-question">Do you offer daily office cleaning in Central Florida?</button><div class="faq-answer"><div class="faq-answer-inner">Yes — daily, weekly, bi-weekly, and custom-frequency janitorial schedules available for Central Florida businesses of all sizes.</div></div></div><div class="faq-item"><button class="faq-question">Do you clean medical offices in Central Florida?</button><div class="faq-answer"><div class="faq-answer-inner">Yes — general medical, dental, chiropractic, and therapy offices throughout Central Florida with enhanced disinfection protocols for patient areas.</div></div></div><div class="faq-item"><button class="faq-question">Do you offer post-construction commercial cleaning in Central Florida?</button><div class="faq-answer"><div class="faq-answer-inner">Yes — post-construction cleaning for office build-outs, retail fit-outs, and commercial renovations throughout Orange, Osceola, Lake, Polk, and Seminole counties.</div></div></div><div class="faq-item"><button class="faq-question">Which cities in Central Florida do you serve for office cleaning?</button><div class="faq-answer"><div class="faq-answer-inner">Orlando, Kissimmee, Clermont, Winter Garden, Davenport, Ocoee, Altamonte Springs, Maitland, Winter Park, and all surrounding Central Florida communities.</div></div></div><div class="faq-item"><button class="faq-question">Can I get a consistent cleaning team for my Central Florida office?</button><div class="faq-answer"><div class="faq-answer-inner">Yes — all recurring commercial clients receive a consistent assigned team every visit for predictable, accountable results.</div></div></div><div class="faq-item"><button class="faq-question">How do I get an office cleaning quote in Central Florida?</button><div class="faq-answer"><div class="faq-answer-inner">Call or text (689) 242-7469 — we respond within 2 hours and provide a free custom quote for your specific business location.</div></div></div></div></div></div></section><section class="section"><div class="section-inner"><div class="section-head center"><h3 style="font-family:var(--font-head);font-size:18px;color:var(--dark)">Related Services</h3></div><div class="areas-grid" style="justify-content:center;margin-top:16px"><a class="area-chip" href="/commercial-cleaning/">Commercial Cleaning</a><a class="area-chip" href="/janitorial-services/">Janitorial Services</a><a class="area-chip" href="/post-construction-cleaning/">Post-Construction</a><a class="area-chip" href="/deep-cleaning/">Deep Cleaning</a><a class="area-chip" href="/house-cleaning/">House Cleaning</a><a class="area-chip" href="/recurring-cleaning/">Recurring Cleaning</a></div></div></section><div style="background:linear-gradient(135deg,#25D366,#128C7E);border-radius:var(--border-radius-lg);padding:1.25rem 1.5rem;margin:2rem 0;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap">
+<div class="braza-pricing-section">
+<div class="braza-pricing-header">
+  <span class="braza-pricing-label">PRICING</span>
+  <h2 class="braza-pricing-title">Commercial Cleaning Prices</h2>
+  <p class="braza-pricing-sub">Custom plans · No hidden fees · Free on-site estimate — <a href="tel:+16892427469" style="color:var(--blue);font-weight:600">(689) 242-7469</a></p>
+</div>
+<div class="braza-stat-badge" style="background:linear-gradient(135deg,#e8f4fd,#d0e8f7);border-color:#7baed6">
+  <div class="braza-stat-icon">🏢</div>
+  <div>
+    <p class="braza-stat-main"><strong>5.0 Google Rating</strong> · 60 verified reviews · Licensed, insured &amp; background-checked team.</p>
+    <p class="braza-stat-sub">Serving offices, medical, retail &amp; commercial facilities across Central Florida</p>
+  </div>
+</div>
+<div class="braza-table-wrap">
+  <table class="braza-table">
+    <thead>
+      <tr><th>Space Size</th><th>Daily / Nightly</th><th>Weekly</th><th class="braza-th-hide">Monthly</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Up to 1,000 sq ft</td><td class="braza-price">$80 – $140</td><td class="braza-price">$280 – $450</td><td class="braza-price braza-th-hide">$700 – $1,100</td></tr>
+      <tr class="braza-alt"><td>1,000 – 3,000 sq ft</td><td class="braza-price">$140 – $250</td><td class="braza-price">$450 – $750</td><td class="braza-price braza-th-hide">$1,100 – $1,900</td></tr>
+      <tr><td>3,000 – 6,000 sq ft</td><td class="braza-price">$250 – $400</td><td class="braza-price">$750 – $1,200</td><td class="braza-price braza-th-hide">$1,900 – $3,000</td></tr>
+      <tr class="braza-alt"><td>6,000 – 12,000 sq ft</td><td class="braza-price">$400 – $650</td><td class="braza-price">$1,200 – $1,900</td><td class="braza-price braza-th-hide">$3,000 – $4,800</td></tr>
+      <tr><td>12,000+ sq ft</td><td class="braza-price braza-custom">Custom</td><td class="braza-price braza-custom">Custom</td><td class="braza-price braza-custom braza-th-hide">Custom</td></tr>
+    </tbody>
+  </table>
+</div>
+<p class="braza-table-note">* Includes restrooms, trash removal, floor care &amp; surface sanitization. <a href="/contact/" style="color:var(--blue);font-weight:500">Request a free on-site estimate →</a></p>
+</div><div class="faq-item"><button class="faq-question">How much does office cleaning cost in Central Florida?</button><div class="faq-answer"><div class="faq-answer-inner">Small offices under 1,000 sq ft on weekly service typically run $85–$155/visit. Medium offices (1,000–2,500 sq ft) run $155–$290/visit. Post-construction commercial cleaning starts around $300 for small spaces. Call (689) 242-7469 for a free custom quote.</div></div></div><div class="faq-item"><button class="faq-question">Do you offer after-hours office cleaning in Central Florida?</button><div class="faq-answer"><div class="faq-answer-inner">Yes — before-hours and after-hours cleaning is standard for commercial clients throughout Central Florida. We adapt our schedule to your business hours.</div></div></div><div class="faq-item"><button class="faq-question">Are you licensed and insured for commercial cleaning in Central Florida?</button><div class="faq-answer"><div class="faq-answer-inner">Yes — fully licensed, bonded, and commercially insured. Certificate of insurance provided on request for businesses and property managers that require vendor documentation.</div></div></div><div class="faq-item"><button class="faq-question">Do you offer daily office cleaning in Central Florida?</button><div class="faq-answer"><div class="faq-answer-inner">Yes — daily, weekly, bi-weekly, and custom-frequency janitorial schedules available for Central Florida businesses of all sizes.</div></div></div><div class="faq-item"><button class="faq-question">Do you clean medical offices in Central Florida?</button><div class="faq-answer"><div class="faq-answer-inner">Yes — general medical, dental, chiropractic, and therapy offices throughout Central Florida with enhanced disinfection protocols for patient areas.</div></div></div><div class="faq-item"><button class="faq-question">Do you offer post-construction commercial cleaning in Central Florida?</button><div class="faq-answer"><div class="faq-answer-inner">Yes — post-construction cleaning for office build-outs, retail fit-outs, and commercial renovations throughout Orange, Osceola, Lake, Polk, and Seminole counties.</div></div></div><div class="faq-item"><button class="faq-question">Which cities in Central Florida do you serve for office cleaning?</button><div class="faq-answer"><div class="faq-answer-inner">Orlando, Kissimmee, Clermont, Winter Garden, Davenport, Ocoee, Altamonte Springs, Maitland, Winter Park, and all surrounding Central Florida communities.</div></div></div><div class="faq-item"><button class="faq-question">Can I get a consistent cleaning team for my Central Florida office?</button><div class="faq-answer"><div class="faq-answer-inner">Yes — all recurring commercial clients receive a consistent assigned team every visit for predictable, accountable results.</div></div></div><div class="faq-item"><button class="faq-question">How do I get an office cleaning quote in Central Florida?</button><div class="faq-answer"><div class="faq-answer-inner">Call or text (689) 242-7469 — we respond within 2 hours and provide a free custom quote for your specific business location.</div></div></div></div></div></div></section><section class="section"><div class="section-inner"><div class="section-head center"><h3 style="font-family:var(--font-head);font-size:18px;color:var(--dark)">Related Services</h3></div><div class="areas-grid" style="justify-content:center;margin-top:16px"><a class="area-chip" href="/commercial-cleaning/">Commercial Cleaning</a><a class="area-chip" href="/janitorial-services/">Janitorial Services</a><a class="area-chip" href="/post-construction-cleaning/">Post-Construction</a><a class="area-chip" href="/deep-cleaning/">Deep Cleaning</a><a class="area-chip" href="/house-cleaning/">House Cleaning</a><a class="area-chip" href="/recurring-cleaning/">Recurring Cleaning</a></div></div></section><div style="background:linear-gradient(135deg,#25D366,#128C7E);border-radius:var(--border-radius-lg);padding:1.25rem 1.5rem;margin:2rem 0;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap">
   <div>
     <p style="margin:0;font-size:15px;font-weight:600;color:#fff">Get a free quote in under 2 hours</p>
     <p style="margin:2px 0 0;font-size:12px;color:rgba(255,255,255,.85)">Call, text, or WhatsApp — we respond fast, 7 days/week</p>

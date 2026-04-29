@@ -344,6 +344,52 @@ footer{background:#0F172A;color:rgba(255,255,255,.8);padding:64px 16px 32px}
 <meta property="og:image" content="https://brazacleaning.com/images/img-moveout-villages.jpg">
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="Braza Cleaning Services">
+<style>
+/* ── Braza Price Table ─────────────────────────── */
+.braza-pricing-section{margin:2.5rem 0;font-family:var(--font-body,'Lato',sans-serif)}
+.braza-pricing-header{margin-bottom:1rem}
+.braza-pricing-label{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--blue,#2B6CB0);background:var(--blue-light,#EBF4FF);padding:3px 10px;border-radius:20px;margin-bottom:.5rem}
+.braza-pricing-title{font-family:var(--font-head,'Outfit',sans-serif);font-size:1.6rem;font-weight:700;color:var(--text,#1F2937);margin:.25rem 0 .4rem;line-height:1.2}
+.braza-pricing-sub{font-size:.9rem;color:var(--gray,#6B7280);margin:0}
+.braza-stat-badge{display:flex;align-items:center;gap:14px;background:linear-gradient(135deg,#f0faf0,#dcf5dc);border:1.5px solid #68c268;border-radius:12px;padding:1rem 1.25rem;margin:1rem 0 1.25rem;flex-wrap:wrap}
+.braza-stat-icon{font-size:2rem;flex-shrink:0}
+.braza-stat-main{margin:0 0 3px;font-size:.95rem;color:#1a4a1a;line-height:1.5}
+.braza-stat-sub{margin:0;font-size:.8rem;color:#2d6e2d}
+.braza-table-wrap{overflow-x:auto;border-radius:12px;border:1.5px solid var(--gray-border,#E5E7EB);box-shadow:0 2px 8px rgba(0,0,0,.06)}
+.braza-table{width:100%;border-collapse:collapse;font-size:.92rem}
+.braza-table thead tr{background:var(--blue,#2B6CB0)}
+.braza-table th{padding:12px 16px;text-align:left;color:#fff;font-family:var(--font-head,'Outfit',sans-serif);font-weight:600;font-size:.85rem;letter-spacing:.02em;white-space:nowrap}
+.braza-table th:first-child{border-radius:10px 0 0 0}
+.braza-table th:last-child{border-radius:0 10px 0 0}
+.braza-table td{padding:11px 16px;color:var(--text,#1F2937);border-bottom:1px solid var(--gray-border,#E5E7EB);vertical-align:middle}
+.braza-table td:first-child{font-weight:600;color:var(--text,#1F2937)}
+.braza-table tr.braza-alt{background:var(--gray-light,#F8FAFC)}
+.braza-table tbody tr:last-child td{border-bottom:none}
+.braza-table tbody tr:last-child td:first-child{border-radius:0 0 0 10px}
+.braza-table tbody tr:last-child td:last-child{border-radius:0 0 10px 0}
+.braza-price{font-weight:700;color:var(--blue,#2B6CB0);white-space:nowrap}
+.braza-custom{color:var(--orange,#C67B3C)!important}
+.braza-incl{font-size:.82rem;color:var(--gray,#6B7280)}
+.braza-bed{font-size:.85rem;margin-right:4px;opacity:.7}
+.braza-table-note{font-size:.8rem;color:var(--gray,#6B7280);margin:.75rem 0 0;line-height:1.5}
+@media(max-width:600px){.braza-th-hide{display:none}.braza-pricing-title{font-size:1.3rem}}
+
+/* ── Braza 57-Point Checklist ─────────────────── */
+.braza-checklist-section{margin:2.5rem 0}
+.braza-checklist-header{margin-bottom:1.25rem}
+.braza-checklist-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:1rem;margin-bottom:1rem}
+.braza-checklist-card{background:#fff;border:1.5px solid var(--gray-border,#E5E7EB);border-radius:12px;overflow:hidden;box-shadow:0 2px 6px rgba(0,0,0,.05);transition:box-shadow .2s}
+.braza-checklist-card:hover{box-shadow:0 4px 14px rgba(43,108,176,.12)}
+.braza-checklist-card-head{background:var(--blue,#2B6CB0);padding:.75rem 1rem;display:flex;align-items:center;gap:.75rem}
+.braza-checklist-icon{font-size:1.5rem;flex-shrink:0}
+.braza-checklist-cat{margin:0;font-family:var(--font-head,'Outfit',sans-serif);font-weight:700;color:#fff;font-size:.95rem;line-height:1.2}
+.braza-checklist-count{margin:0;font-size:.75rem;color:rgba(255,255,255,.75);font-weight:500}
+.braza-checklist-final .braza-checklist-card-head{background:var(--orange,#C67B3C)}
+.braza-checklist-list{margin:0;padding:.75rem 1rem .75rem 1.75rem;list-style:decimal;counter-reset:none}
+.braza-checklist-list li{font-size:.82rem;color:var(--text,#1F2937);line-height:1.6;padding:.1rem 0;border-bottom:1px solid #f3f4f6}
+.braza-checklist-list li:last-child{border-bottom:none}
+.braza-checklist-footer{font-size:.88rem;color:var(--gray,#6B7280);text-align:center;padding:.75rem 1rem;background:var(--gray-light,#F8FAFC);border-radius:8px;line-height:1.6}
+</style>
 </head>
 <body>
 <nav class="nav" id="mainNav">
@@ -436,28 +482,28 @@ footer{background:#0F172A;color:rgba(255,255,255,.8);padding:64px 16px 32px}
       <p>We serve all neighborhoods in The Villages including Spanish Springs, Lake Sumter Landing, Brownwood, Eastport, and all ZIP codes 32163, 32162, 32159. Get a free quote in under 2 hours — call or text <a href="tel:+16892427469">(689) 242-7469</a>.</p>
 
       
-        <div class="feature-card" style="background:var(--color-background-secondary);border-radius:var(--border-radius-lg);padding:1.5rem;margin:2rem 0;border:0.5px solid var(--color-border-tertiary)">
+        <div class="feature-card" style="background:var(--gray-light,#F8FAFC);border-radius:12px;padding:1.5rem;margin:2rem 0;border:0.5px solid var(--gray-border,#E5E7EB)">
           <h3 style="margin:0 0 .5rem">Senior-Friendly Maid Service in The Villages</h3>
-          <p style="margin:0;color:var(--color-text-secondary);font-size:.95rem">We understand the unique needs of The Villages's 55+ residents. Our maid service offers flexible scheduling, the same trusted cleaner every visit, gentle eco-friendly products safe for sensitive health needs, and simple communication by phone or text — no apps required. We're proud to serve The Villages retirement community with the care and respect your home deserves.</p>
+          <p style="margin:0;color:var(--gray,#6B7280);font-size:.95rem">We understand the unique needs of The Villages's 55+ residents. Our maid service offers flexible scheduling, the same trusted cleaner every visit, gentle eco-friendly products safe for sensitive health needs, and simple communication by phone or text — no apps required. We're proud to serve The Villages retirement community with the care and respect your home deserves.</p>
         </div>
 
       <h2 class="section-title">Our Maid Services in The Villages</h2>
       <div class="services-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem;margin:1rem 0">
-        <div style="border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:1rem">
+        <div style="border:0.5px solid var(--gray-border,#E5E7EB);border-radius:12px;padding:1rem">
           <h3 style="margin:0 0 .5rem;font-size:1rem">Recurring Maid Service</h3>
-          <p style="margin:0;font-size:.9rem;color:var(--color-text-secondary)">Weekly, bi-weekly, or monthly visits. Same trusted cleaner every time. Priority scheduling for recurring clients.</p>
+          <p style="margin:0;font-size:.9rem;color:var(--gray,#6B7280)">Weekly, bi-weekly, or monthly visits. Same trusted cleaner every time. Priority scheduling for recurring clients.</p>
         </div>
-        <div style="border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:1rem">
+        <div style="border:0.5px solid var(--gray-border,#E5E7EB);border-radius:12px;padding:1rem">
           <h3 style="margin:0 0 .5rem;font-size:1rem">Deep Cleaning</h3>
-          <p style="margin:0;font-size:.9rem;color:var(--color-text-secondary)">Top-to-bottom intensive clean. Inside appliances, baseboards, ceiling fans, grout scrubbing, and all hard-to-reach areas.</p>
+          <p style="margin:0;font-size:.9rem;color:var(--gray,#6B7280)">Top-to-bottom intensive clean. Inside appliances, baseboards, ceiling fans, grout scrubbing, and all hard-to-reach areas.</p>
         </div>
-        <div style="border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:1rem">
+        <div style="border:0.5px solid var(--gray-border,#E5E7EB);border-radius:12px;padding:1rem">
           <h3 style="margin:0 0 .5rem;font-size:1rem">Move-In / Move-Out</h3>
-          <p style="margin:0;font-size:.9rem;color:var(--color-text-secondary)">Thorough cleaning for property transitions. Ideal for renters, homeowners, and real estate professionals in The Villages.</p>
+          <p style="margin:0;font-size:.9rem;color:var(--gray,#6B7280)">Thorough cleaning for property transitions. Ideal for renters, homeowners, and real estate professionals in The Villages.</p>
         </div>
-        <div style="border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:1rem">
+        <div style="border:0.5px solid var(--gray-border,#E5E7EB);border-radius:12px;padding:1rem">
           <h3 style="margin:0 0 .5rem;font-size:1rem">Post-Construction</h3>
-          <p style="margin:0;font-size:.9rem;color:var(--color-text-secondary)">Dust, debris, and residue removal after renovations or new construction. Available throughout The Villages and Sumter/Marion County.</p>
+          <p style="margin:0;font-size:.9rem;color:var(--gray,#6B7280)">Dust, debris, and residue removal after renovations or new construction. Available throughout The Villages and Sumter/Marion County.</p>
         </div>
       </div>
 
@@ -465,25 +511,25 @@ footer{background:#0F172A;color:rgba(255,255,255,.8);padding:64px 16px 32px}
         <h2 class="section-title">Maid Service Pricing in The Villages</h2>
         <div style="overflow-x:auto;margin:1rem 0">
           <table style="width:100%;border-collapse:collapse;font-size:.9rem">
-            <thead><tr style="background:var(--color-background-secondary)">
-              <th style="padding:10px 14px;text-align:left;border-bottom:1px solid var(--color-border-tertiary)">Home Size</th>
-              <th style="padding:10px 14px;text-align:left;border-bottom:1px solid var(--color-border-tertiary)">Regular Clean</th>
-              <th style="padding:10px 14px;text-align:left;border-bottom:1px solid var(--color-border-tertiary)">Deep Clean</th>
+            <thead><tr style="background:var(--gray-light,#F8FAFC)">
+              <th style="padding:10px 14px;text-align:left;border-bottom:1px solid var(--gray-border,#E5E7EB)">Home Size</th>
+              <th style="padding:10px 14px;text-align:left;border-bottom:1px solid var(--gray-border,#E5E7EB)">Regular Clean</th>
+              <th style="padding:10px 14px;text-align:left;border-bottom:1px solid var(--gray-border,#E5E7EB)">Deep Clean</th>
             </tr></thead>
             <tbody>
-              <tr><td style="padding:9px 14px;border-bottom:1px solid var(--color-border-tertiary)">1 Bedroom</td><td style="padding:9px 14px;border-bottom:1px solid var(--color-border-tertiary)">$90 – $130</td><td style="padding:9px 14px;border-bottom:1px solid var(--color-border-tertiary)">$140 – $180</td></tr>
-              <tr><td style="padding:9px 14px;border-bottom:1px solid var(--color-border-tertiary)">2 Bedrooms</td><td style="padding:9px 14px;border-bottom:1px solid var(--color-border-tertiary)">$120 – $165</td><td style="padding:9px 14px;border-bottom:1px solid var(--color-border-tertiary)">$175 – $230</td></tr>
-              <tr><td style="padding:9px 14px;border-bottom:1px solid var(--color-border-tertiary)">3 Bedrooms</td><td style="padding:9px 14px;border-bottom:1px solid var(--color-border-tertiary)">$155 – $205</td><td style="padding:9px 14px;border-bottom:1px solid var(--color-border-tertiary)">$220 – $290</td></tr>
-              <tr><td style="padding:9px 14px;border-bottom:1px solid var(--color-border-tertiary)">4 Bedrooms</td><td style="padding:9px 14px;border-bottom:1px solid var(--color-border-tertiary)">$170 – $230</td><td style="padding:9px 14px;border-bottom:1px solid var(--color-border-tertiary)">$250 – $330</td></tr>
-              <tr><td style="padding:9px 14px;border-bottom:1px solid var(--color-border-tertiary)">5+ Bedrooms</td><td style="padding:9px 14px;border-bottom:1px solid var(--color-border-tertiary)">$230+</td><td style="padding:9px 14px;border-bottom:1px solid var(--color-border-tertiary)">$320+</td></tr>
+              <tr><td style="padding:9px 14px;border-bottom:1px solid var(--gray-border,#E5E7EB)">1 Bedroom</td><td style="padding:9px 14px;border-bottom:1px solid var(--gray-border,#E5E7EB)">$90 – $130</td><td style="padding:9px 14px;border-bottom:1px solid var(--gray-border,#E5E7EB)">$140 – $180</td></tr>
+              <tr><td style="padding:9px 14px;border-bottom:1px solid var(--gray-border,#E5E7EB)">2 Bedrooms</td><td style="padding:9px 14px;border-bottom:1px solid var(--gray-border,#E5E7EB)">$120 – $165</td><td style="padding:9px 14px;border-bottom:1px solid var(--gray-border,#E5E7EB)">$175 – $230</td></tr>
+              <tr><td style="padding:9px 14px;border-bottom:1px solid var(--gray-border,#E5E7EB)">3 Bedrooms</td><td style="padding:9px 14px;border-bottom:1px solid var(--gray-border,#E5E7EB)">$155 – $205</td><td style="padding:9px 14px;border-bottom:1px solid var(--gray-border,#E5E7EB)">$220 – $290</td></tr>
+              <tr><td style="padding:9px 14px;border-bottom:1px solid var(--gray-border,#E5E7EB)">4 Bedrooms</td><td style="padding:9px 14px;border-bottom:1px solid var(--gray-border,#E5E7EB)">$170 – $230</td><td style="padding:9px 14px;border-bottom:1px solid var(--gray-border,#E5E7EB)">$250 – $330</td></tr>
+              <tr><td style="padding:9px 14px;border-bottom:1px solid var(--gray-border,#E5E7EB)">5+ Bedrooms</td><td style="padding:9px 14px;border-bottom:1px solid var(--gray-border,#E5E7EB)">$230+</td><td style="padding:9px 14px;border-bottom:1px solid var(--gray-border,#E5E7EB)">$320+</td></tr>
             </tbody>
           </table>
         </div>
-        <p style="font-size:.85rem;color:var(--color-text-secondary);margin:.5rem 0 0">Prices vary by home condition and add-ons. <a href="/contact/" style="color:var(--blue)">Get a free quote</a> in under 2 hours.</p>
+        <p style="font-size:.85rem;color:var(--gray,#6B7280);margin:.5rem 0 0">Prices vary by home condition and add-ons. <a href="/contact/" style="color:var(--blue)">Get a free quote</a> in under 2 hours.</p>
 
 
       <h2 class="section-title">Why The Villages Residents Choose Braza Cleaning</h2>
-      <ul style="color:var(--color-text-secondary);line-height:1.8;padding-left:1.2rem">
+      <ul style="color:var(--gray,#6B7280);line-height:1.8;padding-left:1.2rem">
         <li>Same cleaner every visit — builds trust and consistency</li>
         <li>Background-checked, licensed &amp; fully insured team</li>
         <li>Eco-friendly, family- and pet-safe products</li>
@@ -493,39 +539,39 @@ footer{background:#0F172A;color:rgba(255,255,255,.8);padding:64px 16px 32px}
         <li>Free quote in under 2 hours — call or text (689) 242-7469</li>
       </ul>
 
-      <div style="background:var(--color-background-secondary);border-radius:var(--border-radius-lg);padding:1.5rem;margin:2rem 0;text-align:center">
+      <div style="background:var(--gray-light,#F8FAFC);border-radius:12px;padding:1.5rem;margin:2rem 0;text-align:center">
         <h2 style="margin:0 0 .5rem">Ready to Book Maid Service in The Villages?</h2>
-        <p style="margin:0 0 1rem;color:var(--color-text-secondary)">Call or text us now. Free quote in under 2 hours.</p>
-        <a href="tel:+16892427469" style="display:inline-block;background:var(--blue);color:#fff;padding:.75rem 2rem;border-radius:var(--border-radius-md);font-weight:600;text-decoration:none;margin-right:.5rem">(689) 242-7469</a>
-        <a href="/contact/" style="display:inline-block;background:var(--color-background-primary);color:var(--color-text-primary);padding:.75rem 2rem;border-radius:var(--border-radius-md);font-weight:600;text-decoration:none;border:1px solid var(--color-border-tertiary)">Get Free Quote</a>
+        <p style="margin:0 0 1rem;color:var(--gray,#6B7280)">Call or text us now. Free quote in under 2 hours.</p>
+        <a href="tel:+16892427469" style="display:inline-block;background:var(--blue);color:#fff;padding:.75rem 2rem;border-radius:8px;font-weight:600;text-decoration:none;margin-right:.5rem">(689) 242-7469</a>
+        <a href="/contact/" style="display:inline-block;background:var(--white,#fff);color:var(--text,#1F2937);padding:.75rem 2rem;border-radius:8px;font-weight:600;text-decoration:none;border:1px solid var(--gray-border,#E5E7EB)">Get Free Quote</a>
       </div>
 
       <h2 class="section-title">Frequently Asked Questions — Maid Service The Villages, FL</h2>
       <div class="faq-list" style="display:flex;flex-direction:column;gap:1rem">
-        <details style="border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-md);padding:1rem">
+        <details style="border:0.5px solid var(--gray-border,#E5E7EB);border-radius:8px;padding:1rem">
           <summary style="font-weight:500;cursor:pointer">How much does maid service cost in The Villages?</summary>
-          <p style="margin:.75rem 0 0;color:var(--color-text-secondary)">Maid service in The Villages ranges from $90–$130 for a 1-bedroom to $230+ for 5+ bedrooms. Deep cleaning runs higher. Contact us for a free custom quote based on your home size.</p>
+          <p style="margin:.75rem 0 0;color:var(--gray,#6B7280)">Maid service in The Villages ranges from $90–$130 for a 1-bedroom to $230+ for 5+ bedrooms. Deep cleaning runs higher. Contact us for a free custom quote based on your home size.</p>
         </details>
-        <details style="border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-md);padding:1rem">
+        <details style="border:0.5px solid var(--gray-border,#E5E7EB);border-radius:8px;padding:1rem">
           <summary style="font-weight:500;cursor:pointer">Do you offer recurring maid service in The Villages?</summary>
-          <p style="margin:.75rem 0 0;color:var(--color-text-secondary)">Yes — weekly, bi-weekly, and monthly plans available. Recurring clients get priority scheduling and the same trusted cleaner every visit.</p>
+          <p style="margin:.75rem 0 0;color:var(--gray,#6B7280)">Yes — weekly, bi-weekly, and monthly plans available. Recurring clients get priority scheduling and the same trusted cleaner every visit.</p>
         </details>
-        <details style="border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-md);padding:1rem">
+        <details style="border:0.5px solid var(--gray-border,#E5E7EB);border-radius:8px;padding:1rem">
           <summary style="font-weight:500;cursor:pointer">Are your cleaners background-checked and insured?</summary>
-          <p style="margin:.75rem 0 0;color:var(--color-text-secondary)">Yes. All Braza Cleaning team members pass background checks and are fully licensed and insured. Your home is always protected.</p>
+          <p style="margin:.75rem 0 0;color:var(--gray,#6B7280)">Yes. All Braza Cleaning team members pass background checks and are fully licensed and insured. Your home is always protected.</p>
         </details>
-        <details style="border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-md);padding:1rem">
+        <details style="border:0.5px solid var(--gray-border,#E5E7EB);border-radius:8px;padding:1rem">
           <summary style="font-weight:500;cursor:pointer">Do I need to sign a contract for maid service?</summary>
-          <p style="margin:.75rem 0 0;color:var(--color-text-secondary)">No contracts. Schedule one-time or recurring service with full flexibility to pause or cancel anytime.</p>
+          <p style="margin:.75rem 0 0;color:var(--gray,#6B7280)">No contracts. Schedule one-time or recurring service with full flexibility to pause or cancel anytime.</p>
         </details>
-        <details style="border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-md);padding:1rem">
+        <details style="border:0.5px solid var(--gray-border,#E5E7EB);border-radius:8px;padding:1rem">
           <summary style="font-weight:500;cursor:pointer">What areas of The Villages do you serve?</summary>
-          <p style="margin:.75rem 0 0;color:var(--color-text-secondary)">We serve all The Villages neighborhoods including Spanish Springs, Lake Sumter Landing, Brownwood, Eastport and all ZIP codes 32163, 32162, 32159.</p>
+          <p style="margin:.75rem 0 0;color:var(--gray,#6B7280)">We serve all The Villages neighborhoods including Spanish Springs, Lake Sumter Landing, Brownwood, Eastport and all ZIP codes 32163, 32162, 32159.</p>
         </details>
       </div>
     </div>
   </section>
-<div style="background:linear-gradient(135deg,#25D366,#128C7E);border-radius:var(--border-radius-lg);padding:1.25rem 1.5rem;margin:2rem 0;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap">
+<div style="background:linear-gradient(135deg,#25D366,#128C7E);border-radius:12px;padding:1.25rem 1.5rem;margin:2rem 0;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap">
   <div>
     <p style="margin:0;font-size:15px;font-weight:600;color:#fff">Get a free quote in under 2 hours</p>
     <p style="margin:2px 0 0;font-size:12px;color:rgba(255,255,255,.85)">Call, text, or WhatsApp — we respond fast, 7 days/week</p>
@@ -614,27 +660,27 @@ footer{background:#0F172A;color:rgba(255,255,255,.8);padding:64px 16px 32px}
 <div class="section-inner">
 <div class="section-head"><span class="section-label">LOCAL EXPERTISE</span>
 <h2 class="section-title">Maid Service Built for The Villages</h2></div>
-<p style="color:var(--color-text-secondary);margin:0 0 1rem">The Villages is a 55+ community — and we treat every home with the respect and care that seasoned homeowners deserve. Same trusted cleaner every visit, eco-friendly products, flexible scheduling, and no contracts ever.</p>
-<div style="background:linear-gradient(135deg,#E6F1FB,#D0E8FA);border:0.5px solid #7BAED6;border-radius:var(--border-radius-lg);padding:1.25rem;margin:1rem 0">
+<p style="color:var(--gray,#6B7280);margin:0 0 1rem">The Villages is a 55+ community — and we treat every home with the respect and care that seasoned homeowners deserve. Same trusted cleaner every visit, eco-friendly products, flexible scheduling, and no contracts ever.</p>
+<div style="background:linear-gradient(135deg,#E6F1FB,#D0E8FA);border:0.5px solid #7BAED6;border-radius:12px;padding:1.25rem;margin:1rem 0">
   <p style="margin:0 0 .5rem;font-size:14px;font-weight:600;color:#185FA5">👴👵 Senior-Friendly Maid Service in The Villages</p>
   <p style="margin:0;font-size:12px;color:#1A4A7A;line-height:1.6">We understand the unique needs of The Villages' 55+ residents. Our maid service is designed with seniors in mind: the same trusted cleaner at every visit, gentle eco-friendly products safe for sensitive health needs, flexible scheduling that adapts to your routine, and simple communication by phone or text — no apps or complicated online booking required. We're proud to serve The Villages retirement community with the care and respect your home deserves.</p>
 </div>
 <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:.75rem;margin:1.25rem 0">
-  <div style="background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:1rem">
-    <p style="margin:0 0 .25rem;font-size:13px;font-weight:600;color:var(--color-text-primary)">🔄 Same Cleaner Every Visit</p>
-    <p style="margin:0;font-size:11px;color:var(--color-text-secondary)">You'll always have the same trusted team member — no strangers in your home.</p>
+  <div style="background:var(--gray-light,#F8FAFC);border-radius:8px;padding:1rem">
+    <p style="margin:0 0 .25rem;font-size:13px;font-weight:600;color:var(--text,#1F2937)">🔄 Same Cleaner Every Visit</p>
+    <p style="margin:0;font-size:11px;color:var(--gray,#6B7280)">You'll always have the same trusted team member — no strangers in your home.</p>
   </div>
-  <div style="background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:1rem">
-    <p style="margin:0 0 .25rem;font-size:13px;font-weight:600;color:var(--color-text-primary)">📋 57-Point Checklist</p>
-    <p style="margin:0;font-size:11px;color:var(--color-text-secondary)">Every clean follows our 57-point checklist — nothing is ever missed or skipped.</p>
+  <div style="background:var(--gray-light,#F8FAFC);border-radius:8px;padding:1rem">
+    <p style="margin:0 0 .25rem;font-size:13px;font-weight:600;color:var(--text,#1F2937)">📋 57-Point Checklist</p>
+    <p style="margin:0;font-size:11px;color:var(--gray,#6B7280)">Every clean follows our 57-point checklist — nothing is ever missed or skipped.</p>
   </div>
-  <div style="background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:1rem">
-    <p style="margin:0 0 .25rem;font-size:13px;font-weight:600;color:var(--color-text-primary)">🌿 Eco-Friendly Products</p>
-    <p style="margin:0;font-size:11px;color:var(--color-text-secondary)">Safe for kids, pets, and sensitive health needs. No harsh chemicals.</p>
+  <div style="background:var(--gray-light,#F8FAFC);border-radius:8px;padding:1rem">
+    <p style="margin:0 0 .25rem;font-size:13px;font-weight:600;color:var(--text,#1F2937)">🌿 Eco-Friendly Products</p>
+    <p style="margin:0;font-size:11px;color:var(--gray,#6B7280)">Safe for kids, pets, and sensitive health needs. No harsh chemicals.</p>
   </div>
-  <div style="background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:1rem">
-    <p style="margin:0 0 .25rem;font-size:13px;font-weight:600;color:var(--color-text-primary)">📞 No Contracts</p>
-    <p style="margin:0;font-size:11px;color:var(--color-text-secondary)">Weekly, bi-weekly, or monthly — pause or cancel anytime. No lock-in.</p>
+  <div style="background:var(--gray-light,#F8FAFC);border-radius:8px;padding:1rem">
+    <p style="margin:0 0 .25rem;font-size:13px;font-weight:600;color:var(--text,#1F2937)">📞 No Contracts</p>
+    <p style="margin:0;font-size:11px;color:var(--gray,#6B7280)">Weekly, bi-weekly, or monthly — pause or cancel anytime. No lock-in.</p>
   </div>
 </div>
 </div></div>
@@ -643,146 +689,128 @@ footer{background:#0F172A;color:rgba(255,255,255,.8);padding:64px 16px 32px}
 <div class="section-inner">
 <div class="section-head"><span class="section-label">NEIGHBORHOODS</span>
 <h2 class="section-title">Neighborhoods We Serve in The Villages</h2></div>
-<p style="color:var(--color-text-secondary);margin:0 0 1rem">Our maid service team covers all The Villages neighborhoods, including:</p>
+<p style="color:var(--gray,#6B7280);margin:0 0 1rem">Our maid service team covers all The Villages neighborhoods, including:</p>
 <div style="display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:1rem">
-<span style="background:var(--color-background-secondary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-md);padding:4px 10px;font-size:12px;color:var(--color-text-secondary)">Spanish Springs</span>
-<span style="background:var(--color-background-secondary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-md);padding:4px 10px;font-size:12px;color:var(--color-text-secondary)">Lake Sumter Landing</span>
-<span style="background:var(--color-background-secondary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-md);padding:4px 10px;font-size:12px;color:var(--color-text-secondary)">Brownwood Paddock Square</span>
-<span style="background:var(--color-background-secondary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-md);padding:4px 10px;font-size:12px;color:var(--color-text-secondary)">Eastport</span>
-<span style="background:var(--color-background-secondary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-md);padding:4px 10px;font-size:12px;color:var(--color-text-secondary)">Sawgrass Grove</span>
-<span style="background:var(--color-background-secondary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-md);padding:4px 10px;font-size:12px;color:var(--color-text-secondary)">Fenney</span>
-<span style="background:var(--color-background-secondary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-md);padding:4px 10px;font-size:12px;color:var(--color-text-secondary)">Dabney</span>
-<span style="background:var(--color-background-secondary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-md);padding:4px 10px;font-size:12px;color:var(--color-text-secondary)">Osceola Hills</span>
-<span style="background:var(--color-background-secondary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-md);padding:4px 10px;font-size:12px;color:var(--color-text-secondary)">Sabal Chase</span>
-<span style="background:var(--color-background-secondary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-md);padding:4px 10px;font-size:12px;color:var(--color-text-secondary)">Buttonwood</span>
+<span style="background:var(--gray-light,#F8FAFC);border:0.5px solid var(--gray-border,#E5E7EB);border-radius:8px;padding:4px 10px;font-size:12px;color:var(--gray,#6B7280)">Spanish Springs</span>
+<span style="background:var(--gray-light,#F8FAFC);border:0.5px solid var(--gray-border,#E5E7EB);border-radius:8px;padding:4px 10px;font-size:12px;color:var(--gray,#6B7280)">Lake Sumter Landing</span>
+<span style="background:var(--gray-light,#F8FAFC);border:0.5px solid var(--gray-border,#E5E7EB);border-radius:8px;padding:4px 10px;font-size:12px;color:var(--gray,#6B7280)">Brownwood Paddock Square</span>
+<span style="background:var(--gray-light,#F8FAFC);border:0.5px solid var(--gray-border,#E5E7EB);border-radius:8px;padding:4px 10px;font-size:12px;color:var(--gray,#6B7280)">Eastport</span>
+<span style="background:var(--gray-light,#F8FAFC);border:0.5px solid var(--gray-border,#E5E7EB);border-radius:8px;padding:4px 10px;font-size:12px;color:var(--gray,#6B7280)">Sawgrass Grove</span>
+<span style="background:var(--gray-light,#F8FAFC);border:0.5px solid var(--gray-border,#E5E7EB);border-radius:8px;padding:4px 10px;font-size:12px;color:var(--gray,#6B7280)">Fenney</span>
+<span style="background:var(--gray-light,#F8FAFC);border:0.5px solid var(--gray-border,#E5E7EB);border-radius:8px;padding:4px 10px;font-size:12px;color:var(--gray,#6B7280)">Dabney</span>
+<span style="background:var(--gray-light,#F8FAFC);border:0.5px solid var(--gray-border,#E5E7EB);border-radius:8px;padding:4px 10px;font-size:12px;color:var(--gray,#6B7280)">Osceola Hills</span>
+<span style="background:var(--gray-light,#F8FAFC);border:0.5px solid var(--gray-border,#E5E7EB);border-radius:8px;padding:4px 10px;font-size:12px;color:var(--gray,#6B7280)">Sabal Chase</span>
+<span style="background:var(--gray-light,#F8FAFC);border:0.5px solid var(--gray-border,#E5E7EB);border-radius:8px;padding:4px 10px;font-size:12px;color:var(--gray,#6B7280)">Buttonwood</span>
 </div>
-<p style="font-size:.9rem;color:var(--color-text-secondary)">Not sure if we cover your neighborhood? <a href="/contact/" style="color:var(--blue)">Contact us</a> — we serve all of Sumter/Marion County, ZIP codes 32162, 32163, 32159, 32162.</p>
+<p style="font-size:.9rem;color:var(--gray,#6B7280)">Not sure if we cover your neighborhood? <a href="/contact/" style="color:var(--blue)">Contact us</a> — we serve all of Sumter/Marion County, ZIP codes 32162, 32163, 32159, 32162.</p>
 </div></div>
-<div class="section" style="padding:2rem 0 0">
-<div class="section-inner">
-<div class="section-head"><span class="section-label">OUR PROCESS</span>
-<h2 class="section-title">The Braza 57-Point Cleaning Checklist</h2></div>
-<p style="color:var(--color-text-secondary);margin:0 0 1.5rem">Every Braza clean follows a rigorous 57-point checklist. Our trained team covers every corner — so you never have to check behind us.</p>
-<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem">
-
-<div style="background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:1rem">
-<p style="margin:0 0 .5rem;font-size:12px;font-weight:600;color:var(--color-text-primary)">🛏️ Bedrooms (12 points)</p>
-<ol style="margin:0;padding-left:1.2rem;font-size:11px;color:var(--color-text-secondary);line-height:1.8">
-<li>Change linens or make beds neatly</li>
-<li>Dust all furniture and surfaces</li>
-<li>Wipe nightstands, lamps, and headboards</li>
-<li>Clean mirrors streak-free</li>
-<li>Vacuum carpet or mop hard floors</li>
-<li>Check under beds</li>
-<li>Empty and wipe trash cans</li>
-<li>Dust ceiling fans and fixtures</li>
-<li>Wipe baseboards and door frames</li>
-<li>Organize visible clutter</li>
-<li>Wipe light switches and outlets</li>
-<li>Final check and photo if requested</li>
-</ol></div>
-
-<div style="background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:1rem">
-<p style="margin:0 0 .5rem;font-size:12px;font-weight:600;color:var(--color-text-primary)">🚿 Bathrooms (13 points)</p>
-<ol style="margin:0;padding-left:1.2rem;font-size:11px;color:var(--color-text-secondary);line-height:1.8">
-<li>Scrub and disinfect toilet</li>
-<li>Clean sink and faucets</li>
-<li>Scrub shower/tub and tiles</li>
-<li>Clean shower glass</li>
-<li>Polish mirrors and chrome</li>
-<li>Wipe vanity and surfaces</li>
-<li>Mop and disinfect floor</li>
-<li>Fold towels neatly</li>
-<li>Restock toilet paper</li>
-<li>Empty and sanitize trash</li>
-<li>Wipe light switches</li>
-<li>Check for mold and soap buildup</li>
-<li>Deodorize</li>
-</ol></div>
-
-<div style="background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:1rem">
-<p style="margin:0 0 .5rem;font-size:12px;font-weight:600;color:var(--color-text-primary)">🍳 Kitchen (14 points)</p>
-<ol style="margin:0;padding-left:1.2rem;font-size:11px;color:var(--color-text-secondary);line-height:1.8">
-<li>Wipe all countertops</li>
-<li>Clean stovetop and burners</li>
-<li>Wipe outside of appliances</li>
-<li>Clean inside microwave</li>
-<li>Wipe refrigerator exterior</li>
-<li>Wash and put away dishes</li>
-<li>Wipe cabinet fronts</li>
-<li>Clean and sanitize sink</li>
-<li>Degrease exhaust hood</li>
-<li>Empty and sanitize trash</li>
-<li>Sweep and mop floors</li>
-<li>Wipe backsplash</li>
-<li>Wipe light switches</li>
-<li>Organize visible counter items</li>
-</ol></div>
-
-<div style="background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:1rem">
-<p style="margin:0 0 .5rem;font-size:12px;font-weight:600;color:var(--color-text-primary)">🛋️ Living Areas + Final (18 points)</p>
-<ol style="margin:0;padding-left:1.2rem;font-size:11px;color:var(--color-text-secondary);line-height:1.8">
-<li>Dust all surfaces and shelves</li>
-<li>Wipe TV and electronics</li>
-<li>Clean glass surfaces</li>
-<li>Fluff sofa cushions</li>
-<li>Vacuum upholstery and rugs</li>
-<li>Sweep and mop floors</li>
-<li>Wipe switches and outlets</li>
-<li>Dust baseboards</li>
-<li>Empty trash cans</li>
-<li>Vacuum stairs if applicable</li>
-<li>Clean front door exterior</li>
-<li>Wipe door handles throughout</li>
-<li>Check laundry area</li>
-<li>Wipe washer/dryer exterior</li>
-<li>Spot-clean walls if needed</li>
-<li>Full property walk-through</li>
-<li>Lock and secure home</li>
-<li>Confirmation sent to client</li>
-</ol></div>
-
+<div class="braza-checklist-section">
+<div class="braza-checklist-header">
+  <span class="braza-pricing-label">OUR PROCESS</span>
+  <h2 class="braza-pricing-title">The Braza 57-Point Cleaning Checklist</h2>
+  <p class="braza-pricing-sub">Every clean follows all 57 points — nothing is optional, nothing is skipped.</p>
 </div>
-<p style="font-size:11px;color:var(--color-text-secondary);margin:1rem 0 0">Our 57-point checklist ensures consistent, reliable results — every single visit. <a href="/contact/" style="color:var(--blue)">Book your first clean →</a></p>
-</div></div>
-<div class="section" style="padding:2rem 0 0">
-<div class="section-inner">
-<div class="section-head"><span class="section-label">PRICING</span>
-<h2 class="section-title">Maid Services Prices in The Villages</h2></div>
-<p style="color:var(--color-text-secondary);margin:0 0 1rem">No hidden fees. No contracts. Free quote in under 2 hours — call or text <a href="tel:+16892427469" style="color:var(--blue)">(689) 242-7469</a>.</p>
-<div style="background:linear-gradient(135deg,#EAF3DE,#D4EDBD);border:0.5px solid #8BB832;border-radius:var(--border-radius-lg);padding:1rem 1.25rem;margin:1.5rem 0;display:flex;align-items:center;gap:12px;flex-wrap:wrap">
-  <span style="font-size:2rem">⭐</span>
-  <div>
-    <p style="margin:0;font-size:14px;font-weight:600;color:#27500A">Braza Cleaning hosts increased their Airbnb cleanliness rating by an average of 0.9 points — in just 3 months.</p>
-    <p style="margin:2px 0 0;font-size:12px;color:#3B6D11">Based on 40+ active hosts · 5.0 ⭐ Google Rating · 60 verified reviews</p>
+<div class="braza-checklist-grid">
+  <div class="braza-checklist-card">
+    <div class="braza-checklist-card-head">
+      <span class="braza-checklist-icon">🛏️</span>
+      <div><p class="braza-checklist-cat">Bedrooms</p><p class="braza-checklist-count">12 points</p></div>
+    </div>
+    <ol class="braza-checklist-list">
+      <li>Change &amp; make all beds with fresh linens</li>
+      <li>Dust all furniture tops &amp; surfaces</li>
+      <li>Wipe nightstands, lamps &amp; headboards</li>
+      <li>Clean mirrors streak-free</li>
+      <li>Vacuum carpet or mop hard floors</li>
+      <li>Check under beds for lost items</li>
+      <li>Empty &amp; wipe trash cans</li>
+      <li>Dust ceiling fans &amp; light fixtures</li>
+      <li>Wipe baseboards &amp; door frames</li>
+      <li>Check closets &amp; organize if needed</li>
+      <li>Inspect for damage &amp; missing items</li>
+      <li>Final walk-through + photo documentation</li>
+    </ol>
+  </div>
+  <div class="braza-checklist-card">
+    <div class="braza-checklist-card-head">
+      <span class="braza-checklist-icon">🚿</span>
+      <div><p class="braza-checklist-cat">Bathrooms</p><p class="braza-checklist-count">13 points</p></div>
+    </div>
+    <ol class="braza-checklist-list">
+      <li>Scrub &amp; disinfect toilet inside &amp; out</li>
+      <li>Clean &amp; shine sink and faucets</li>
+      <li>Scrub shower/tub — grout &amp; tiles</li>
+      <li>Clean shower glass streak-free</li>
+      <li>Polish mirrors &amp; chrome fixtures</li>
+      <li>Wipe vanity &amp; counter surfaces</li>
+      <li>Mop &amp; disinfect floor</li>
+      <li>Replace towels with fresh set</li>
+      <li>Restock toiletries &amp; toilet paper</li>
+      <li>Empty &amp; sanitize trash can</li>
+      <li>Wipe light switches &amp; door handles</li>
+      <li>Check for mold &amp; soap residue</li>
+      <li>Deodorize &amp; ventilate</li>
+    </ol>
+  </div>
+  <div class="braza-checklist-card">
+    <div class="braza-checklist-card-head">
+      <span class="braza-checklist-icon">🍳</span>
+      <div><p class="braza-checklist-cat">Kitchen</p><p class="braza-checklist-count">14 points</p></div>
+    </div>
+    <ol class="braza-checklist-list">
+      <li>Wipe all countertops &amp; backsplash</li>
+      <li>Clean stovetop — burners &amp; grates</li>
+      <li>Wipe outside of oven &amp; microwave</li>
+      <li>Clean inside microwave</li>
+      <li>Wipe refrigerator outside &amp; handles</li>
+      <li>Check &amp; clean refrigerator inside</li>
+      <li>Wash, dry &amp; put away dishes</li>
+      <li>Wipe cabinet fronts &amp; handles</li>
+      <li>Clean &amp; sanitize sink</li>
+      <li>Degrease exhaust fan/hood</li>
+      <li>Empty &amp; sanitize trash cans</li>
+      <li>Sweep &amp; mop floors</li>
+      <li>Restock dish soap &amp; sponge</li>
+      <li>Check for expired food &amp; remove</li>
+    </ol>
+  </div>
+  <div class="braza-checklist-card">
+    <div class="braza-checklist-card-head">
+      <span class="braza-checklist-icon">🛋️</span>
+      <div><p class="braza-checklist-cat">Living Areas</p><p class="braza-checklist-count">10 points</p></div>
+    </div>
+    <ol class="braza-checklist-list">
+      <li>Dust all surfaces, shelves &amp; decor</li>
+      <li>Wipe TV screens &amp; remotes</li>
+      <li>Clean glass tables &amp; windows</li>
+      <li>Fluff &amp; arrange sofa cushions</li>
+      <li>Vacuum upholstery &amp; rugs</li>
+      <li>Sweep &amp; mop hard floors</li>
+      <li>Wipe light switches &amp; outlets</li>
+      <li>Dust baseboards &amp; skirting</li>
+      <li>Empty trash cans</li>
+      <li>Final walkthrough &amp; client notification</li>
+    </ol>
+  </div>
+  <div class="braza-checklist-card braza-checklist-final">
+    <div class="braza-checklist-card-head">
+      <span class="braza-checklist-icon">✅</span>
+      <div><p class="braza-checklist-cat">Final Check</p><p class="braza-checklist-count">8 points</p></div>
+    </div>
+    <ol class="braza-checklist-list">
+      <li>Full property walk-through</li>
+      <li>Photo documentation — every room</li>
+      <li>Damage &amp; missing items report</li>
+      <li>Completion notification to client</li>
+      <li>Lock &amp; secure property</li>
+      <li>WhatsApp confirmation sent</li>
+      <li>Client confirmation received</li>
+      <li>Quality score logged internally</li>
+    </ol>
   </div>
 </div>
-<div style="overflow-x:auto">
-<table style="width:100%;border-collapse:collapse;font-size:.9rem">
-<thead><tr style="background:var(--color-background-secondary)">
-<th style="padding:10px 14px;text-align:left;border-bottom:2px solid var(--color-border-tertiary);font-weight:600">Home Size</th>
-<th style="padding:10px 14px;text-align:left;border-bottom:2px solid var(--color-border-tertiary);font-weight:600">Regular Clean</th>
-<th style="padding:10px 14px;text-align:left;border-bottom:2px solid var(--color-border-tertiary);font-weight:600">Deep Clean</th>
-<th style="padding:10px 14px;text-align:left;border-bottom:2px solid var(--color-border-tertiary);font-weight:600">Move-In/Out</th>
-</tr></thead>
-<tbody>
-<tr><td style="padding:9px 14px;border-bottom:1px solid var(--color-border-tertiary)">1 Bedroom / Studio</td><td style="padding:9px 14px;border-bottom:1px solid var(--color-border-tertiary)">$90 – $130</td><td style="padding:9px 14px;border-bottom:1px solid var(--color-border-tertiary)">$140 – $180</td><td style="padding:9px 14px;border-bottom:1px solid var(--color-border-tertiary)">$160 – $210</td></tr>
-<tr style="background:var(--color-background-secondary)"><td style="padding:9px 14px;border-bottom:1px solid var(--color-border-tertiary)">2 Bedrooms</td><td style="padding:9px 14px;border-bottom:1px solid var(--color-border-tertiary)">$120 – $165</td><td style="padding:9px 14px;border-bottom:1px solid var(--color-border-tertiary)">$175 – $230</td><td style="padding:9px 14px;border-bottom:1px solid var(--color-border-tertiary)">$200 – $265</td></tr>
-<tr><td style="padding:9px 14px;border-bottom:1px solid var(--color-border-tertiary)">3 Bedrooms</td><td style="padding:9px 14px;border-bottom:1px solid var(--color-border-tertiary)">$155 – $205</td><td style="padding:9px 14px;border-bottom:1px solid var(--color-border-tertiary)">$220 – $290</td><td style="padding:9px 14px;border-bottom:1px solid var(--color-border-tertiary)">$250 – $330</td></tr>
-<tr style="background:var(--color-background-secondary)"><td style="padding:9px 14px;border-bottom:1px solid var(--color-border-tertiary)">4 Bedrooms</td><td style="padding:9px 14px;border-bottom:1px solid var(--color-border-tertiary)">$170 – $230</td><td style="padding:9px 14px;border-bottom:1px solid var(--color-border-tertiary)">$250 – $330</td><td style="padding:9px 14px;border-bottom:1px solid var(--color-border-tertiary)">$280 – $370</td></tr>
-<tr><td style="padding:9px 14px;border-bottom:1px solid var(--color-border-tertiary)">5 Bedrooms</td><td style="padding:9px 14px;border-bottom:1px solid var(--color-border-tertiary)">$205 – $270</td><td style="padding:9px 14px;border-bottom:1px solid var(--color-border-tertiary)">$290 – $380</td><td style="padding:9px 14px;border-bottom:1px solid var(--color-border-tertiary)">$330 – $420</td></tr>
-<tr style="background:var(--color-background-secondary)"><td style="padding:9px 14px">5+ Bedrooms</td><td style="padding:9px 14px">$240+</td><td style="padding:9px 14px">$340+</td><td style="padding:9px 14px">$380+</td></tr>
-</tbody></table></div>
-<p style="font-size:.82rem;color:var(--color-text-secondary);margin:.75rem 0 0">* Recurring clients (weekly/bi-weekly) receive a discount. Prices vary by home condition. <a href="/contact/" style="color:var(--blue)">Get a free custom quote →</a></p>
-</div></div>
-<section class="section" id="reviews" style="background:var(--gray-light)">
-<div class="section-inner">
-<div class="section-head center">
-<span class="section-label">Client Reviews</span>
-<h2 class="section-title">What Our Clients Say</h2>
-<p class="section-desc">Hundreds of happy clients across Central Florida trust Braza Cleaning.</p>
-</div>
-<div class="reviews-grid"><div class="review-card"><div class="review-stars">★★★★★</div><p class="review-text">“Absolutely amazing service! Luana and her team did an incredible job with my deep cleaning. Every corner was spotless and they were so professional. Highly recommend!”</p><div class="review-author"><div class="review-avatar">EJ</div><div><div class="review-name">Emily Johnson</div><div class="review-location">The Villages, FL</div></div></div></div><div class="review-card"><div class="review-stars">★★★★★</div><p class="review-text">“Best cleaning service in Central Florida! They cleaned my home before we moved in and it was perfect. Very thorough and reliable. Will definitely use again!”</p><div class="review-author"><div class="review-avatar">RM</div><div><div class="review-name">Robert Martinez</div><div class="review-location">Orlando, FL</div></div></div></div><div class="review-card"><div class="review-stars">★★★★★</div><p class="review-text">“I manage several Airbnb properties and BRAZA handles all my turnovers. My guests always comment on how clean the place is. 5 stars every time! Thank you!”</p><div class="review-author"><div class="review-avatar">AW</div><div><div class="review-name">Amanda Williams</div><div class="review-location">Clermont, FL</div></div></div></div><div class="review-card"><div class="review-stars">★★★★★</div><p class="review-text">“Had them do a post-construction cleanup after our renovation. They handled all the dust and debris perfectly. Our new kitchen looks amazing! Very professional team.”</p><div class="review-author"><div class="review-avatar">DT</div><div><div class="review-name">David Thompson</div><div class="review-location">Winter Park, FL</div></div></div></div></div>
+<p class="braza-checklist-footer">Our 57-point checklist ensures consistent, reliable results — every single visit. <a href='/contact/' style='color:var(--blue)'>Book your first clean →</a></p>
+</div></div><div class="review-card"><div class="review-stars">★★★★★</div><p class="review-text">“I manage several Airbnb properties and BRAZA handles all my turnovers. My guests always comment on how clean the place is. 5 stars every time! Thank you!”</p><div class="review-author"><div class="review-avatar">AW</div><div><div class="review-name">Amanda Williams</div><div class="review-location">Clermont, FL</div></div></div></div><div class="review-card"><div class="review-stars">★★★★★</div><p class="review-text">“Had them do a post-construction cleanup after our renovation. They handled all the dust and debris perfectly. Our new kitchen looks amazing! Very professional team.”</p><div class="review-author"><div class="review-avatar">DT</div><div><div class="review-name">David Thompson</div><div class="review-location">Winter Park, FL</div></div></div></div></div>
 <div style="text-align:center;margin-top:24px">
 <a class="google-link" href="https://share.google/im8ktmN1KQYzJukgW" rel="noopener" target="_blank">
 <svg fill="none" height="18" viewbox="0 0 24 24" width="18"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"></path><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"></path><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"></path><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"></path></svg>

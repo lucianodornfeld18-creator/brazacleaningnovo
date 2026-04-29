@@ -301,6 +301,52 @@ footer{background:#0F172A;color:rgba(255,255,255,.8);padding:64px 16px 32px}
 }
 
 </style>
+<style>
+/* ── Braza Price Table ─────────────────────────── */
+.braza-pricing-section{margin:2.5rem 0;font-family:var(--font-body,'Lato',sans-serif)}
+.braza-pricing-header{margin-bottom:1rem}
+.braza-pricing-label{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--blue,#2B6CB0);background:var(--blue-light,#EBF4FF);padding:3px 10px;border-radius:20px;margin-bottom:.5rem}
+.braza-pricing-title{font-family:var(--font-head,'Outfit',sans-serif);font-size:1.6rem;font-weight:700;color:var(--text,#1F2937);margin:.25rem 0 .4rem;line-height:1.2}
+.braza-pricing-sub{font-size:.9rem;color:var(--gray,#6B7280);margin:0}
+.braza-stat-badge{display:flex;align-items:center;gap:14px;background:linear-gradient(135deg,#f0faf0,#dcf5dc);border:1.5px solid #68c268;border-radius:12px;padding:1rem 1.25rem;margin:1rem 0 1.25rem;flex-wrap:wrap}
+.braza-stat-icon{font-size:2rem;flex-shrink:0}
+.braza-stat-main{margin:0 0 3px;font-size:.95rem;color:#1a4a1a;line-height:1.5}
+.braza-stat-sub{margin:0;font-size:.8rem;color:#2d6e2d}
+.braza-table-wrap{overflow-x:auto;border-radius:12px;border:1.5px solid var(--gray-border,#E5E7EB);box-shadow:0 2px 8px rgba(0,0,0,.06)}
+.braza-table{width:100%;border-collapse:collapse;font-size:.92rem}
+.braza-table thead tr{background:var(--blue,#2B6CB0)}
+.braza-table th{padding:12px 16px;text-align:left;color:#fff;font-family:var(--font-head,'Outfit',sans-serif);font-weight:600;font-size:.85rem;letter-spacing:.02em;white-space:nowrap}
+.braza-table th:first-child{border-radius:10px 0 0 0}
+.braza-table th:last-child{border-radius:0 10px 0 0}
+.braza-table td{padding:11px 16px;color:var(--text,#1F2937);border-bottom:1px solid var(--gray-border,#E5E7EB);vertical-align:middle}
+.braza-table td:first-child{font-weight:600;color:var(--text,#1F2937)}
+.braza-table tr.braza-alt{background:var(--gray-light,#F8FAFC)}
+.braza-table tbody tr:last-child td{border-bottom:none}
+.braza-table tbody tr:last-child td:first-child{border-radius:0 0 0 10px}
+.braza-table tbody tr:last-child td:last-child{border-radius:0 0 10px 0}
+.braza-price{font-weight:700;color:var(--blue,#2B6CB0);white-space:nowrap}
+.braza-custom{color:var(--orange,#C67B3C)!important}
+.braza-incl{font-size:.82rem;color:var(--gray,#6B7280)}
+.braza-bed{font-size:.85rem;margin-right:4px;opacity:.7}
+.braza-table-note{font-size:.8rem;color:var(--gray,#6B7280);margin:.75rem 0 0;line-height:1.5}
+@media(max-width:600px){.braza-th-hide{display:none}.braza-pricing-title{font-size:1.3rem}}
+
+/* ── Braza 57-Point Checklist ─────────────────── */
+.braza-checklist-section{margin:2.5rem 0}
+.braza-checklist-header{margin-bottom:1.25rem}
+.braza-checklist-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:1rem;margin-bottom:1rem}
+.braza-checklist-card{background:#fff;border:1.5px solid var(--gray-border,#E5E7EB);border-radius:12px;overflow:hidden;box-shadow:0 2px 6px rgba(0,0,0,.05);transition:box-shadow .2s}
+.braza-checklist-card:hover{box-shadow:0 4px 14px rgba(43,108,176,.12)}
+.braza-checklist-card-head{background:var(--blue,#2B6CB0);padding:.75rem 1rem;display:flex;align-items:center;gap:.75rem}
+.braza-checklist-icon{font-size:1.5rem;flex-shrink:0}
+.braza-checklist-cat{margin:0;font-family:var(--font-head,'Outfit',sans-serif);font-weight:700;color:#fff;font-size:.95rem;line-height:1.2}
+.braza-checklist-count{margin:0;font-size:.75rem;color:rgba(255,255,255,.75);font-weight:500}
+.braza-checklist-final .braza-checklist-card-head{background:var(--orange,#C67B3C)}
+.braza-checklist-list{margin:0;padding:.75rem 1rem .75rem 1.75rem;list-style:decimal;counter-reset:none}
+.braza-checklist-list li{font-size:.82rem;color:var(--text,#1F2937);line-height:1.6;padding:.1rem 0;border-bottom:1px solid #f3f4f6}
+.braza-checklist-list li:last-child{border-bottom:none}
+.braza-checklist-footer{font-size:.88rem;color:var(--gray,#6B7280);text-align:center;padding:.75rem 1rem;background:var(--gray-light,#F8FAFC);border-radius:8px;line-height:1.6}
+</style>
 </head>
 <body>
 <nav class="nav" id="mainNav">
@@ -490,132 +536,113 @@ footer{background:#0F172A;color:rgba(255,255,255,.8);padding:64px 16px 32px}
 
 <!-- FAQ -->
 
-<div class="section" style="padding:2rem 0 0">
-<div class="section-inner">
-<div class="section-head"><span class="section-label">OUR PROCESS</span>
-<h2 class="section-title">The Braza 57-Point Cleaning Checklist</h2></div>
-<p style="color:var(--color-text-secondary);margin:0 0 1.5rem">Every Braza clean follows a rigorous 57-point checklist. Our trained team covers every corner — so you never have to check behind us.</p>
-<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem">
-
-<div style="background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:1rem">
-<p style="margin:0 0 .5rem;font-size:12px;font-weight:600;color:var(--color-text-primary)">🛏️ Bedrooms (12 points)</p>
-<ol style="margin:0;padding-left:1.2rem;font-size:11px;color:var(--color-text-secondary);line-height:1.8">
-<li>Change linens or make beds neatly</li>
-<li>Dust all furniture and surfaces</li>
-<li>Wipe nightstands, lamps, and headboards</li>
-<li>Clean mirrors streak-free</li>
-<li>Vacuum carpet or mop hard floors</li>
-<li>Check under beds</li>
-<li>Empty and wipe trash cans</li>
-<li>Dust ceiling fans and fixtures</li>
-<li>Wipe baseboards and door frames</li>
-<li>Organize visible clutter</li>
-<li>Wipe light switches and outlets</li>
-<li>Final check and photo if requested</li>
-</ol></div>
-
-<div style="background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:1rem">
-<p style="margin:0 0 .5rem;font-size:12px;font-weight:600;color:var(--color-text-primary)">🚿 Bathrooms (13 points)</p>
-<ol style="margin:0;padding-left:1.2rem;font-size:11px;color:var(--color-text-secondary);line-height:1.8">
-<li>Scrub and disinfect toilet</li>
-<li>Clean sink and faucets</li>
-<li>Scrub shower/tub and tiles</li>
-<li>Clean shower glass</li>
-<li>Polish mirrors and chrome</li>
-<li>Wipe vanity and surfaces</li>
-<li>Mop and disinfect floor</li>
-<li>Fold towels neatly</li>
-<li>Restock toilet paper</li>
-<li>Empty and sanitize trash</li>
-<li>Wipe light switches</li>
-<li>Check for mold and soap buildup</li>
-<li>Deodorize</li>
-</ol></div>
-
-<div style="background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:1rem">
-<p style="margin:0 0 .5rem;font-size:12px;font-weight:600;color:var(--color-text-primary)">🍳 Kitchen (14 points)</p>
-<ol style="margin:0;padding-left:1.2rem;font-size:11px;color:var(--color-text-secondary);line-height:1.8">
-<li>Wipe all countertops</li>
-<li>Clean stovetop and burners</li>
-<li>Wipe outside of appliances</li>
-<li>Clean inside microwave</li>
-<li>Wipe refrigerator exterior</li>
-<li>Wash and put away dishes</li>
-<li>Wipe cabinet fronts</li>
-<li>Clean and sanitize sink</li>
-<li>Degrease exhaust hood</li>
-<li>Empty and sanitize trash</li>
-<li>Sweep and mop floors</li>
-<li>Wipe backsplash</li>
-<li>Wipe light switches</li>
-<li>Organize visible counter items</li>
-</ol></div>
-
-<div style="background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:1rem">
-<p style="margin:0 0 .5rem;font-size:12px;font-weight:600;color:var(--color-text-primary)">🛋️ Living Areas + Final (18 points)</p>
-<ol style="margin:0;padding-left:1.2rem;font-size:11px;color:var(--color-text-secondary);line-height:1.8">
-<li>Dust all surfaces and shelves</li>
-<li>Wipe TV and electronics</li>
-<li>Clean glass surfaces</li>
-<li>Fluff sofa cushions</li>
-<li>Vacuum upholstery and rugs</li>
-<li>Sweep and mop floors</li>
-<li>Wipe switches and outlets</li>
-<li>Dust baseboards</li>
-<li>Empty trash cans</li>
-<li>Vacuum stairs if applicable</li>
-<li>Clean front door exterior</li>
-<li>Wipe door handles throughout</li>
-<li>Check laundry area</li>
-<li>Wipe washer/dryer exterior</li>
-<li>Spot-clean walls if needed</li>
-<li>Full property walk-through</li>
-<li>Lock and secure home</li>
-<li>Confirmation sent to client</li>
-</ol></div>
-
+<div class="braza-checklist-section">
+<div class="braza-checklist-header">
+  <span class="braza-pricing-label">OUR PROCESS</span>
+  <h2 class="braza-pricing-title">The Braza 57-Point Cleaning Checklist</h2>
+  <p class="braza-pricing-sub">Every clean follows all 57 points — nothing is optional, nothing is skipped.</p>
 </div>
-<p style="font-size:11px;color:var(--color-text-secondary);margin:1rem 0 0">Our 57-point checklist ensures consistent, reliable results — every single visit. <a href="/contact/" style="color:var(--blue)">Book your first clean →</a></p>
-</div></div>
-<div class="section" style="padding:2rem 0 0">
-<div class="section-inner">
-<div class="section-head"><span class="section-label">PRICING</span>
-<h2 class="section-title">Cleaning Services Prices in Davenport</h2></div>
-<p style="color:var(--color-text-secondary);margin:0 0 1rem">No hidden fees. No contracts. Free quote in under 2 hours — call or text <a href="tel:+16892427469" style="color:var(--blue)">(689) 242-7469</a>.</p>
-<div style="background:linear-gradient(135deg,#EAF3DE,#D4EDBD);border:0.5px solid #8BB832;border-radius:var(--border-radius-lg);padding:1rem 1.25rem;margin:1.5rem 0;display:flex;align-items:center;gap:12px;flex-wrap:wrap">
-  <span style="font-size:2rem">⭐</span>
-  <div>
-    <p style="margin:0;font-size:14px;font-weight:600;color:#27500A">Braza Cleaning hosts increased their Airbnb cleanliness rating by an average of 0.9 points — in just 3 months.</p>
-    <p style="margin:2px 0 0;font-size:12px;color:#3B6D11">Based on 40+ active hosts · 5.0 ⭐ Google Rating · 60 verified reviews</p>
+<div class="braza-checklist-grid">
+  <div class="braza-checklist-card">
+    <div class="braza-checklist-card-head">
+      <span class="braza-checklist-icon">🛏️</span>
+      <div><p class="braza-checklist-cat">Bedrooms</p><p class="braza-checklist-count">12 points</p></div>
+    </div>
+    <ol class="braza-checklist-list">
+      <li>Change &amp; make all beds with fresh linens</li>
+      <li>Dust all furniture tops &amp; surfaces</li>
+      <li>Wipe nightstands, lamps &amp; headboards</li>
+      <li>Clean mirrors streak-free</li>
+      <li>Vacuum carpet or mop hard floors</li>
+      <li>Check under beds for lost items</li>
+      <li>Empty &amp; wipe trash cans</li>
+      <li>Dust ceiling fans &amp; light fixtures</li>
+      <li>Wipe baseboards &amp; door frames</li>
+      <li>Check closets &amp; organize if needed</li>
+      <li>Inspect for damage &amp; missing items</li>
+      <li>Final walk-through + photo documentation</li>
+    </ol>
+  </div>
+  <div class="braza-checklist-card">
+    <div class="braza-checklist-card-head">
+      <span class="braza-checklist-icon">🚿</span>
+      <div><p class="braza-checklist-cat">Bathrooms</p><p class="braza-checklist-count">13 points</p></div>
+    </div>
+    <ol class="braza-checklist-list">
+      <li>Scrub &amp; disinfect toilet inside &amp; out</li>
+      <li>Clean &amp; shine sink and faucets</li>
+      <li>Scrub shower/tub — grout &amp; tiles</li>
+      <li>Clean shower glass streak-free</li>
+      <li>Polish mirrors &amp; chrome fixtures</li>
+      <li>Wipe vanity &amp; counter surfaces</li>
+      <li>Mop &amp; disinfect floor</li>
+      <li>Replace towels with fresh set</li>
+      <li>Restock toiletries &amp; toilet paper</li>
+      <li>Empty &amp; sanitize trash can</li>
+      <li>Wipe light switches &amp; door handles</li>
+      <li>Check for mold &amp; soap residue</li>
+      <li>Deodorize &amp; ventilate</li>
+    </ol>
+  </div>
+  <div class="braza-checklist-card">
+    <div class="braza-checklist-card-head">
+      <span class="braza-checklist-icon">🍳</span>
+      <div><p class="braza-checklist-cat">Kitchen</p><p class="braza-checklist-count">14 points</p></div>
+    </div>
+    <ol class="braza-checklist-list">
+      <li>Wipe all countertops &amp; backsplash</li>
+      <li>Clean stovetop — burners &amp; grates</li>
+      <li>Wipe outside of oven &amp; microwave</li>
+      <li>Clean inside microwave</li>
+      <li>Wipe refrigerator outside &amp; handles</li>
+      <li>Check &amp; clean refrigerator inside</li>
+      <li>Wash, dry &amp; put away dishes</li>
+      <li>Wipe cabinet fronts &amp; handles</li>
+      <li>Clean &amp; sanitize sink</li>
+      <li>Degrease exhaust fan/hood</li>
+      <li>Empty &amp; sanitize trash cans</li>
+      <li>Sweep &amp; mop floors</li>
+      <li>Restock dish soap &amp; sponge</li>
+      <li>Check for expired food &amp; remove</li>
+    </ol>
+  </div>
+  <div class="braza-checklist-card">
+    <div class="braza-checklist-card-head">
+      <span class="braza-checklist-icon">🛋️</span>
+      <div><p class="braza-checklist-cat">Living Areas</p><p class="braza-checklist-count">10 points</p></div>
+    </div>
+    <ol class="braza-checklist-list">
+      <li>Dust all surfaces, shelves &amp; decor</li>
+      <li>Wipe TV screens &amp; remotes</li>
+      <li>Clean glass tables &amp; windows</li>
+      <li>Fluff &amp; arrange sofa cushions</li>
+      <li>Vacuum upholstery &amp; rugs</li>
+      <li>Sweep &amp; mop hard floors</li>
+      <li>Wipe light switches &amp; outlets</li>
+      <li>Dust baseboards &amp; skirting</li>
+      <li>Empty trash cans</li>
+      <li>Final walkthrough &amp; client notification</li>
+    </ol>
+  </div>
+  <div class="braza-checklist-card braza-checklist-final">
+    <div class="braza-checklist-card-head">
+      <span class="braza-checklist-icon">✅</span>
+      <div><p class="braza-checklist-cat">Final Check</p><p class="braza-checklist-count">8 points</p></div>
+    </div>
+    <ol class="braza-checklist-list">
+      <li>Full property walk-through</li>
+      <li>Photo documentation — every room</li>
+      <li>Damage &amp; missing items report</li>
+      <li>Completion notification to client</li>
+      <li>Lock &amp; secure property</li>
+      <li>WhatsApp confirmation sent</li>
+      <li>Client confirmation received</li>
+      <li>Quality score logged internally</li>
+    </ol>
   </div>
 </div>
-<div style="overflow-x:auto">
-<table style="width:100%;border-collapse:collapse;font-size:.9rem">
-<thead><tr style="background:var(--color-background-secondary)">
-<th style="padding:10px 14px;text-align:left;border-bottom:2px solid var(--color-border-tertiary);font-weight:600">Home Size</th>
-<th style="padding:10px 14px;text-align:left;border-bottom:2px solid var(--color-border-tertiary);font-weight:600">Standard</th>
-<th style="padding:10px 14px;text-align:left;border-bottom:2px solid var(--color-border-tertiary);font-weight:600">Deep Clean</th>
-<th style="padding:10px 14px;text-align:left;border-bottom:2px solid var(--color-border-tertiary);font-weight:600">Move-In/Out</th>
-</tr></thead>
-<tbody>
-<tr><td style="padding:9px 14px;border-bottom:1px solid var(--color-border-tertiary)">1–2 Bedrooms</td><td style="padding:9px 14px;border-bottom:1px solid var(--color-border-tertiary)">$90 – $165</td><td style="padding:9px 14px;border-bottom:1px solid var(--color-border-tertiary)">$140 – $230</td><td style="padding:9px 14px;border-bottom:1px solid var(--color-border-tertiary)">$160 – $265</td></tr>
-<tr style="background:var(--color-background-secondary)"><td style="padding:9px 14px;border-bottom:1px solid var(--color-border-tertiary)">3 Bedrooms</td><td style="padding:9px 14px;border-bottom:1px solid var(--color-border-tertiary)">$155 – $205</td><td style="padding:9px 14px;border-bottom:1px solid var(--color-border-tertiary)">$220 – $290</td><td style="padding:9px 14px;border-bottom:1px solid var(--color-border-tertiary)">$250 – $330</td></tr>
-<tr><td style="padding:9px 14px;border-bottom:1px solid var(--color-border-tertiary)">4 Bedrooms</td><td style="padding:9px 14px;border-bottom:1px solid var(--color-border-tertiary)">$170 – $230</td><td style="padding:9px 14px;border-bottom:1px solid var(--color-border-tertiary)">$250 – $330</td><td style="padding:9px 14px;border-bottom:1px solid var(--color-border-tertiary)">$280 – $370</td></tr>
-<tr style="background:var(--color-background-secondary)"><td style="padding:9px 14px">5+ Bedrooms</td><td style="padding:9px 14px">$230+</td><td style="padding:9px 14px">$330+</td><td style="padding:9px 14px">$380+</td></tr>
-</tbody></table></div>
-<p style="font-size:.82rem;color:var(--color-text-secondary);margin:.75rem 0 0">* Prices vary by home condition and add-ons. <a href="/contact/" style="color:var(--blue)">Get a free custom quote →</a></p>
-</div></div>
-<section class="section" style="background:var(--gray-light)">
-<div class="section-inner">
-<div class="section-head center">
-<span class="section-label">FAQ</span>
-<h2 class="section-title">Frequently Asked Questions — Vacation Rental Cleaning in Davenport, FL</h2>
-<p class="section-desc">Everything Davenport hosts ask before booking their first turnover cleaning with Braza.</p>
+<p class="braza-checklist-footer">Our 57-point checklist ensures consistent, reliable results — every single visit. <a href='/contact/' style='color:var(--blue)'>Book your first clean →</a></p>
 </div>
-<div style="max-width:800px;margin:0 auto">
-<div class="faq-list">
-<div class="faq-item"><button class="faq-question">How much does vacation rental cleaning cost in Davenport, FL?</button><div class="faq-answer"><div class="faq-answer-inner">Vacation rental turnover cleaning in Davenport FL typically ranges from $140–$200 for a 3-bedroom home, $200–$300 for 4–5 bedroom resort properties, and $300–$500+ for large 6–10 bedroom ChampionsGate or Solterra homes. Pricing depends on home size, number of bathrooms, and add-on services. We offer flat-rate turnover pricing for recurring hosts. Call (689) 242-7469 for a free quote specific to your Davenport property.</div></div></div>
-<div class="faq-item"><button class="faq-question">Do you offer same-day Airbnb turnover cleaning in Davenport?</button><div class="faq-answer"><div class="faq-answer-inner">Yes — same-day turnover service is available for Davenport vacation rental hosts. We recommend 24–48 hours notice when possible, but can often accommodate same-day requests with 2–3 hours notice depending on our schedule. For peak season and high-volume hosts, we recommend setting up a priority recurring arrangement to guarantee your slots in advance, especially during Disney peak periods.</div></div></div>
 <div class="faq-item"><button class="faq-question">Which Davenport resort communities do you serve?</button><div class="faq-answer"><div class="faq-answer-inner">We serve all major Davenport vacation rental communities including ChampionsGate Resort (33896), Providence Golf and Country Club, Solterra Resort, Highlands Reserve, Sandy Ridge, Hampton Lakes, Windwood Bay, and all residential neighborhoods throughout Davenport ZIP codes 33836, 33837, and 33896. We also serve adjacent communities in the Four Corners and Kissimmee areas.</div></div></div>
 <div class="faq-item"><button class="faq-question">Are you available for Davenport vacation rental turnovers on weekends?</button><div class="faq-answer"><div class="faq-answer-inner">Yes — we are fully staffed 7 days a week including Saturdays, Sundays, and Florida holidays. Weekend availability is essential for the Davenport short-term rental market and we treat weekend turnovers with the same priority as weekday cleanings. We also maintain full staffing during Florida peak seasons: spring break, summer, Thanksgiving week, Christmas, and New Year's.</div></div></div>
 <div class="faq-item"><button class="faq-question">Do you work with property managers in Davenport?</button><div class="faq-answer"><div class="faq-answer-inner">Yes — we work with individual Airbnb and VRBO hosts, co-hosts, and professional property management companies throughout Davenport and Polk County. We can coordinate with your key holder or co-host for property access, adapt to booking calendar-based scheduling, and manage multi-property portfolios efficiently. We are experienced with high-volume turnover operations for Davenport vacation rental management companies.</div></div></div>
@@ -645,7 +672,26 @@ footer{background:#0F172A;color:rgba(255,255,255,.8);padding:64px 16px 32px}
 </div>
 </div>
 </section>
-<div style="background:linear-gradient(135deg,#25D366,#128C7E);border-radius:var(--border-radius-lg);padding:1.25rem 1.5rem;margin:2rem 0;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap">
+<div style="<div class="braza-pricing-section">
+<div class="braza-pricing-header">
+  <span class="braza-pricing-label">PRICING</span>
+  <h2 class="braza-pricing-title">Cleaning Services Prices in Davenport</h2>
+  <p class="braza-pricing-sub">No contracts · No hidden fees · Free quote in 2 hours — <a href="tel:+16892427469" style="color:var(--blue,#2B6CB0);font-weight:600">(689) 242-7469</a></p>
+</div>
+<div class="braza-table-wrap">
+  <table class="braza-table">
+    <thead><tr><th>Home Size</th><th>Standard</th><th>Deep Clean</th><th class="braza-th-hide">Move-In/Out</th></tr></thead>
+    <tbody>
+      <tr><td>1–2 Bedrooms</td><td class="braza-price">$90 – $165</td><td class="braza-price">$140 – $230</td><td class="braza-price braza-th-hide">$160 – $265</td></tr>
+      <tr class="braza-alt"><td>3 Bedrooms</td><td class="braza-price">$155 – $205</td><td class="braza-price">$220 – $290</td><td class="braza-price braza-th-hide">$250 – $330</td></tr>
+      <tr><td>4 Bedrooms</td><td class="braza-price">$170 – $230</td><td class="braza-price">$250 – $330</td><td class="braza-price braza-th-hide">$280 – $370</td></tr>
+      <tr class="braza-alt"><td>5+ Bedrooms</td><td class="braza-price braza-custom">$240+</td><td class="braza-price braza-custom">$340+</td><td class="braza-price braza-custom braza-th-hide">$380+</td></tr>
+    </tbody>
+  </table>
+</div>
+<p class="braza-table-note"><a href="/contact/" style="color:var(--blue,#2B6CB0);font-weight:500">Get a free custom quote →</a></p>
+</div>
+background:linear-gradient(135deg,#25D366,#128C7E);border-radius:var(--border-radius-lg);padding:1.25rem 1.5rem;margin:2rem 0;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap">
   <div>
     <p style="margin:0;font-size:15px;font-weight:600;color:#fff">Get a free quote in under 2 hours</p>
     <p style="margin:2px 0 0;font-size:12px;color:rgba(255,255,255,.85)">Call, text, or WhatsApp — we respond fast, 7 days/week</p>
