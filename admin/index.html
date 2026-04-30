@@ -293,6 +293,8 @@ tr:hover td{background:#f9fafb}
 
 <script>
 var PASS_HASH = '167905d667862adcdfa18a7acaf5ee9516df1a310f048b3e5bd7415dfb50b5f9'; // password hash
+// Corrige username antigo salvo no localStorage
+(function(){var r=localStorage.getItem('bz_repo');if(r&&r==='lucianodornfeld18/brazacleaningnovo'){localStorage.setItem('bz_repo','lucianodornfeld18-creator/brazacleaningnovo');}})();
 var REPO = localStorage.getItem('bz_repo') || 'lucianodornfeld18-creator/brazacleaningnovo';
 var topics = [];
 var filtered = [];
