@@ -1,5 +1,5 @@
 # Cloudflare Pages _redirects
-# brazacleaning.com — atualizado 2026-04-06
+# brazacleaning.com — atualizado 2026-05-05
 
 # WWW to non-www
 https://www.brazacleaning.com/* https://brazacleaning.com/:splat 301!
@@ -19,9 +19,18 @@ http://www.brazacleaning.com/* https://brazacleaning.com/:splat 301!
 /category/office-cleaning/ https://brazacleaning.com/blog/category/office-cleaning/ 301!
 /category/office-cleaning https://brazacleaning.com/blog/category/office-cleaning/ 301!
 
-# Custom 404
-/* /404.html 404
-
 # Orlando Airbnb - redirect old URL to canonical
 /airbnb-cleaning-orlando-fl/ https://brazacleaning.com/airbnb-cleaning/orlando/ 301!
 /airbnb-cleaning-orlando-fl https://brazacleaning.com/airbnb-cleaning/orlando/ 301!
+
+# Geographic correction (May 2026): vacation-rental pages removed for cities outside the
+# legitimate Disney STR corridor. Redirected to residential cleaning equivalents.
+/vacation-rental-cleaning/the-villages/ https://brazacleaning.com/cleaning-services/the-villages/ 301!
+/vacation-rental-cleaning/the-villages https://brazacleaning.com/cleaning-services/the-villages/ 301!
+/vacation-rental-cleaning/minneola/ https://brazacleaning.com/cleaning-services/minneola/ 301!
+/vacation-rental-cleaning/minneola https://brazacleaning.com/cleaning-services/minneola/ 301!
+/vacation-rental-cleaning/windermere/ https://brazacleaning.com/cleaning-services/windermere/ 301!
+/vacation-rental-cleaning/windermere https://brazacleaning.com/cleaning-services/windermere/ 301!
+
+# Custom 404 (must be last)
+/* /404.html 404

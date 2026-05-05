@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
 
   <!-- Homepage -->
   <url>
@@ -884,11 +884,8 @@
 <url><loc>https://brazacleaning.com/blog/vacation-rental-cleaning-cost-davenport-fl/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
 <url><loc>https://brazacleaning.com/blog/house-cleaning-cost-winter-garden-fl-2026/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
 <url><loc>https://brazacleaning.com/blog/airbnb-cleaning-service-winter-garden-fl/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-<url><loc>https://brazacleaning.com/vacation-rental-cleaning/the-villages/</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
 <url><loc>https://brazacleaning.com/vacation-rental-cleaning/clermont/</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
-<url><loc>https://brazacleaning.com/vacation-rental-cleaning/minneola/</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
 <url><loc>https://brazacleaning.com/vacation-rental-cleaning/winter-garden/</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
-<url><loc>https://brazacleaning.com/vacation-rental-cleaning/windermere/</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
 <url><loc>https://brazacleaning.com/blog/airbnb-cleaning-the-villages-fl/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
 <url><loc>https://brazacleaning.com/blog/maid-service-winter-garden-fl-recurring/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
 <url><loc>https://brazacleaning.com/blog/vacation-rental-cleaning-clermont-fl/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
@@ -902,4 +899,67 @@
 <url><loc>https://brazacleaning.com/cleaning-services/windermere/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
 <url><loc>https://brazacleaning.com/airbnb-cleaning/four-corners/</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
 <url><loc>https://brazacleaning.com/house-cleaning/orlando/</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+
+  <!-- Missing: residential cleaning hub parent -->
+  <url>
+    <loc>https://brazacleaning.com/cleaning-services/</loc>
+    <lastmod>2026-05-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Missing: blog post -->
+  <url>
+    <loc>https://brazacleaning.com/blog/house-cleaning-frequency-the-villages-fl/</loc>
+    <lastmod>2026-05-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+
+  <!-- New posts (Sprint 2 — May 2026) -->
+  <url>
+    <loc>https://brazacleaning.com/blog/airbnb-vs-long-term-rental-cleaning-cost-kissimmee-fl/</loc>
+    <lastmod>2026-05-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://brazacleaning.com/blog/how-often-deep-clean-vacation-rental-kissimmee-fl/</loc>
+    <lastmod>2026-05-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://brazacleaning.com/blog/move-out-vs-standard-cleaning-orlando-fl/</loc>
+    <lastmod>2026-05-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://brazacleaning.com/blog/airbnb-cohost-cleaning-pricing-davenport-fl/</loc>
+    <lastmod>2026-05-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+
+  <!-- Portuguese (pt-BR) pages -->
+  <url>
+    <loc>https://brazacleaning.com/pt/</loc>
+    <lastmod>2026-05-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://brazacleaning.com/"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://brazacleaning.com/pt/"/>
+  </url>
+  <url>
+    <loc>https://brazacleaning.com/pt/limpeza-airbnb-kissimmee/</loc>
+    <lastmod>2026-05-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://brazacleaning.com/airbnb-cleaning/kissimmee/"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://brazacleaning.com/pt/limpeza-airbnb-kissimmee/"/>
+  </url>
+
 </urlset>
