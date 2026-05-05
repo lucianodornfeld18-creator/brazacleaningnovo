@@ -185,12 +185,12 @@ tr:hover td{background:#f9fafb}
             <h2>Banco de Tópicos</h2>
             <div class="tfilters">
               <input class="sinp" id="tsearch" type="text" placeholder="Buscar..." oninput="filterT()">
-              <select class="fsel" id="fstatus" onchange="filterT()">
+              <select class="fsel" id="fstatus" onchange="filterT()" aria-label="Fstatus">
                 <option value="">Todos</option>
                 <option value="pending">Pendente</option>
                 <option value="published">Publicado</option>
               </select>
-              <select class="fsel" id="fcity" onchange="filterT()"><option value="">Todas cidades</option></select>
+              <select class="fsel" id="fcity" onchange="filterT()" aria-label="Select a city"><option value="">Todas cidades</option></select>
             </div>
           </div>
           <table><thead><tr><th>#</th><th>Tópico / Keyword</th><th>Cidade</th><th>Categoria</th><th>Status</th><th>Ação</th></tr></thead>
@@ -207,7 +207,7 @@ tr:hover td{background:#f9fafb}
           <div class="frow">
             <div class="fg">
               <label class="fl">Selecionar tópico pendente</label>
-              <select class="fsel2" id="ptopic" onchange="fillTopic()"><option value="">— escolher —</option></select>
+              <select class="fsel2" id="ptopic" onchange="fillTopic()" aria-label="Ptopic"><option value="">— escolher —</option></select>
             </div>
             <div class="fg">
               <label class="fl">Keyword</label>
@@ -682,7 +682,7 @@ Fonts: Outfit (headings) + Lato (body).
 Fundo azul (#2B6CB0), fixo no topo, phone (689) 242-7469 + "Call Now" button laranja.
 
 [SEÇÃO 5: NAV]
-Logo /images/logo.png, links: Services (dropdown), Areas (dropdown),
+Logo /images/logo.webp, links: Services (dropdown), Areas (dropdown),
 About, Blog, Reviews, Contact, Get Free Quote (laranja).
 Mobile: hamburger menu com submenus expansíveis.
 
@@ -745,7 +745,7 @@ Estrutura interna:
 [H2 6] FAQs — usar <details> tags, mínimo 4 perguntas, MESMAS do FAQPage schema:
 <details style="border:0.5px solid #E5E7EB;border-radius:8px;padding:.875rem 1rem;margin-bottom:.5rem">
   <summary style="font-weight:600;cursor:pointer;font-size:14px">[PERGUNTA]</summary>
-  <p style="margin:.75rem 0 0;color:#6B7280;line-height:1.7;font-size:14px">[RESPOSTA]</p>
+  <p style="margin:.75rem 0 0;color:#4B5563;line-height:1.7;font-size:14px">[RESPOSTA]</p>
 </details>
 
 [LINK INTERNO OBRIGATÓRIO]:
@@ -784,7 +784,7 @@ Move-In → /move-in-cleaning/
 <div style="background:linear-gradient(135deg,#1a56db,#1e40af);border-radius:12px;padding:1.25rem 1.5rem;margin:2rem 0;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap">
   <div>
     <p style="margin:0;font-size:15px;font-weight:600;color:#fff">Get a free quote in under 2 hours</p>
-    <p style="margin:2px 0 0;font-size:12px;color:rgba(255,255,255,.85)">7 days/week · Licensed &amp; insured · 5.0 ⭐ Google Rating</p>
+    <p style="margin:2px 0 0;font-size:12px;color:rgba(255,255,255,.95)">7 days/week · Licensed &amp; insured · 5.0 ⭐ Google Rating</p>
   </div>
   <div style="display:flex;gap:10px;flex-wrap:wrap;flex-shrink:0">
     <a href="tel:16892427469" style="display:flex;align-items:center;gap:7px;background:#fff;color:#1a56db;padding:10px 18px;border-radius:50px;text-decoration:none;font-size:13px;font-weight:700;white-space:nowrap">📞 Call Now</a>
