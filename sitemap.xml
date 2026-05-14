@@ -61,12 +61,6 @@
     <priority>0.95</priority>
   </url>
   <url>
-    <loc>https://brazacleaning.com/office-cleaning/</loc>
-    <lastmod>2026-05-14</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.95</priority>
-  </url>
-  <url>
     <loc>https://brazacleaning.com/janitorial-services/</loc>
     <lastmod>2026-05-14</lastmod>
     <changefreq>monthly</changefreq>
@@ -276,42 +270,11 @@
     <changefreq>monthly</changefreq>
     <priority>0.90</priority>
   </url>
-  <url>
-    <loc>https://brazacleaning.com/office-cleaning/orlando/</loc>
-    <lastmod>2026-05-14</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.90</priority>
-  </url>
-  <url>
-    <loc>https://brazacleaning.com/office-cleaning/kissimmee/</loc>
-    <lastmod>2026-05-14</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.90</priority>
-  </url>
-  <url>
-    <loc>https://brazacleaning.com/office-cleaning/davenport/</loc>
-    <lastmod>2026-05-14</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.90</priority>
-  </url>
-  <url>
-    <loc>https://brazacleaning.com/office-cleaning/clermont/</loc>
-    <lastmod>2026-05-14</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.90</priority>
-  </url>
-  <url>
-    <loc>https://brazacleaning.com/office-cleaning/winter-garden/</loc>
-    <lastmod>2026-05-14</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.90</priority>
-  </url>
-  <url>
-    <loc>https://brazacleaning.com/office-cleaning/ocoee/</loc>
-    <lastmod>2026-05-14</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.90</priority>
-  </url>
+
+
+
+
+
   <url>
     <loc>https://brazacleaning.com/janitorial-services/orlando/</loc>
     <lastmod>2026-05-14</lastmod>
