@@ -32,5 +32,26 @@ http://www.brazacleaning.com/* https://brazacleaning.com/:splat 301!
 /vacation-rental-cleaning/windermere/ https://brazacleaning.com/cleaning-services/windermere/ 301!
 /vacation-rental-cleaning/windermere https://brazacleaning.com/cleaning-services/windermere/ 301!
 
+
+# WP legacy URLs (added 2026-05-14 based on GSC 404 report)
+/maid-service/davenport/ https://brazacleaning.com/airbnb-cleaning/davenport/ 301!
+/maid-service/davenport https://brazacleaning.com/airbnb-cleaning/davenport/ 301!
+/services/ https://brazacleaning.com/ 301!
+/services https://brazacleaning.com/ 301!
+/get-a-quote-2/ https://brazacleaning.com/contact/ 301!
+/get-a-quote-2 https://brazacleaning.com/contact/ 301!
+/about-1/ https://brazacleaning.com/about/ 301!
+/about-1 https://brazacleaning.com/about/ 301!
+/orlando-cleaning-service/ https://brazacleaning.com/cleaning-services/orlando/ 301!
+/orlando-cleaning-service https://brazacleaning.com/cleaning-services/orlando/ 301!
+/the-villages-cleaning-service/ https://brazacleaning.com/cleaning-services/the-villages/ 301!
+/the-villages-cleaning-service https://brazacleaning.com/cleaning-services/the-villages/ 301!
+/author/suzana/ https://brazacleaning.com/about/ 301!
+/author/suzana https://brazacleaning.com/about/ 301!
+/cart/ https://brazacleaning.com/contact/ 301!
+/cart https://brazacleaning.com/contact/ 301!
+/checkout/ https://brazacleaning.com/contact/ 301!
+/checkout https://brazacleaning.com/contact/ 301!
+
 # Custom 404 (must be last)
 /* /404.html 404
