@@ -53,5 +53,9 @@ http://www.brazacleaning.com/* https://brazacleaning.com/:splat 301!
 /checkout/ https://brazacleaning.com/contact/ 301!
 /checkout https://brazacleaning.com/contact/ 301!
 
+# Consolida blog dupe WG (Onda 2): antigo -> -2026
+/blog/house-cleaning-cost-winter-garden-fl/ https://brazacleaning.com/blog/house-cleaning-cost-winter-garden-fl-2026/ 301!
+/blog/house-cleaning-cost-winter-garden-fl https://brazacleaning.com/blog/house-cleaning-cost-winter-garden-fl-2026/ 301!
+
 # Custom 404 (must be last)
 /* /404.html 404
