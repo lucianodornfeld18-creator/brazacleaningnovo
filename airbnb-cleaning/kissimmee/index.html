@@ -795,6 +795,8 @@ html{scroll-padding-top:120px}
 <option value="Four Corners">Four Corners</option></select></div>
 </div>
 <div class="form-group"><label>Additional Details</label><textarea name="message" placeholder="Home size, frequency, special requests..." rows="3"></textarea></div>
+<div class="form-group"><label>How Did You Hear About Us?</label><select name="referral"><option value="">Select...</option><option value="Google Search">Google Search</option><option value="Google Maps">Google Maps</option><option value="Friend/Family Referral">Friend or family referral</option><option value="Instagram">Instagram</option><option value="Facebook">Facebook</option><option value="Nextdoor">Nextdoor</option><option value="Returning Customer">Returning customer</option><option value="Other">Other</option></select></div>
+
 <button class="form-submit" id="submitBtn" type="submit">Send My Request →</button>
 </form>
 </div>
@@ -920,7 +922,7 @@ if(form){
     e.preventDefault();
     var btn=document.getElementById('submitBtn');
     btn.disabled=true;btn.textContent='Sending...';
-    var d={name:form.querySelector('[name=name]').value,phone:form.querySelector('[name=phone]').value,email:form.querySelector('[name=email]').value,service:form.querySelector('[name=service]').value,address:(form.querySelector('[name=address]')||{value:''}).value,city:form.querySelector('[name=city]').value,message:(form.querySelector('[name=message]')||{value:''}).value};
+    var d={name:form.querySelector('[name=name]').value,phone:form.querySelector('[name=phone]').value,email:form.querySelector('[name=email]').value,service:form.querySelector('[name=service]').value,address:(form.querySelector('[name=address]')||{value:''}).value,city:form.querySelector('[name=city]').value,message:(form.querySelector('[name=message]')||{value:''}).value,referral:(form.querySelector('[name=referral]')||{value:''}).value};
     try{
       var res=await fetch('https://braza-email-proxy.lucianodornfeld18.workers.dev',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(d)});
       if(res.ok){document.getElementById('formWrap').style.display='none';document.getElementById('formSuccess').style.display='block';}
