@@ -410,22 +410,7 @@ html{scroll-padding-top:120px}
   gtag('js', new Date());
   gtag('config', 'G-5YVG8BKPSD');
 </script>
-<!-- CTA conversion tracking (call / whatsapp / lead form) -->
-<script>
-(function(){
-  function ev(name, params){ try{ if(typeof gtag==='function') gtag('event', name, params); }catch(e){} }
-  document.addEventListener('click', function(e){
-    var a = e.target.closest && e.target.closest('a'); if(!a) return;
-    var href = (a.getAttribute('href')||'');
-    var txt = (a.innerText||a.textContent||'').replace(/\s+/g,' ').trim().slice(0,60);
-    if (href.indexOf('tel:')===0) ev('call_click', {button_text:txt, page_path:location.pathname});
-    else if (href.indexOf('wa.me')>-1 || href.indexOf('whatsapp')>-1) ev('whatsapp_quote_click', {button_text:txt, page_path:location.pathname});
-  }, true);
-  document.addEventListener('submit', function(e){
-    if (e.target && e.target.tagName==='FORM') ev('generate_lead', {form_id:(e.target.id||'form'), page_path:location.pathname});
-  }, true);
-})();
-</script>
+
 </head>
 <body>
 <nav class="nav" id="mainNav">
@@ -969,5 +954,6 @@ if(form){
 <div style="position:fixed;bottom:20px;right:20px;z-index:9999">
   <a href="https://wa.me/16892427469?text=Hi%2C%20I%20would%20like%20a%20free%20quote%21" target="_blank" rel="noopener" aria-label="Chat on WhatsApp" style="display:flex;align-items:center;gap:8px;background:#25D366;color:#fff;padding:12px 18px;border-radius:50px;text-decoration:none;font-size:14px;font-weight:600;box-shadow:0 4px 12px rgba(37,211,102,.4)">Free Quote</a>
 </div>
+<script src="/js/track.js" defer></script>
 </body>
 </html>
