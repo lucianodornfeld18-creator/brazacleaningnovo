@@ -280,6 +280,7 @@ footer{background:#0F172A;color:rgba(255,255,255,.8);padding:64px 16px 32px}
   gtag('js', new Date());
   gtag('config', 'G-5YVG8BKPSD');
 </script>
+<script>(function(){function ev(n,p){try{if(typeof gtag==='function')gtag('event',n,p)}catch(e){}}document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a');if(!a)return;var h=a.getAttribute('href')||'';var t=(a.innerText||a.textContent||'').replace(/s+/g,' ').trim().slice(0,60);if(h.indexOf('tel:')===0)ev('call_click',{button_text:t,page_path:location.pathname});else if(h.indexOf('wa.me')>-1||h.indexOf('whatsapp')>-1)ev('whatsapp_quote_click',{button_text:t,page_path:location.pathname})},true);document.addEventListener('submit',function(e){if(e.target&&e.target.tagName==='FORM')ev('generate_lead',{form_id:(e.target.id||'form'),page_path:location.pathname})},true)})();</script>
 </head>
 <body>
 <div class="topbar">
@@ -378,7 +379,7 @@ footer{background:#0F172A;color:rgba(255,255,255,.8);padding:64px 16px 32px}
         <p>Professional cleaning services across Central Florida. Licensed, bonded, and insured. Trusted by homeowners, Airbnb hosts, and property managers since 2024.</p>
         <div class="footer-contact">
           <a href="tel:6892427469"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.95 9.8a19.79 19.79 0 01-3.07-8.67A2 2 0 012.88 1h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L7.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>(689) 242-7469</a>
-          <a href="mailto:brazacleaningservices@gmail.com"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>brazacleaningservices@gmail.com</a>
+          <a href="mailto:brazacleaningflorida@gmail.com"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>brazacleaningflorida@gmail.com</a>
         </div>
       </div>
       <div class="footer-col"><h4>Services</h4><ul><li><a href="/house-cleaning/">House Cleaning</a></li>
@@ -437,7 +438,7 @@ if(form){
     btn.disabled=true;btn.textContent='Sending...';
     var d={name:form.querySelector('[name=name]').value,phone:form.querySelector('[name=phone]').value,email:form.querySelector('[name=email]').value,service:form.querySelector('[name=service]').value,city:form.querySelector('[name=city]').value,message:(form.querySelector('[name=message]')||{value:''}).value,referral:(form.querySelector('[name=referral]')||{value:''}).value};var _em=(d.email||'').trim();if(_em&&!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(_em)){d.message=(d.message?d.message+' | ':'')+'[Email entered (invalid format): '+_em+']';d.email='';}else{d.email=_em;}
     try{
-      var res=await fetch('https://api.resend.com/emails',{method:'POST',headers:{'Authorization':'Bearer re_Psu7DehN_JGbh5dRZWVrVr4p5JbGE8PTq','Content-Type':'application/json'},body:JSON.stringify({from:'website@brazacleaning.com',to:['brazacleaningservices@gmail.com'],subject:'New Quote — '+d.service+' in '+d.city,html:'<h2>New Quote Request</h2><p><b>Name:</b> '+d.name+'</p><p><b>Phone:</b> '+d.phone+'</p><p><b>Email:</b> '+d.email+'</p><p><b>Service:</b> '+d.service+'</p><p><b>City:</b> '+d.city+'</p><p><b>Message:</b> '+d.message+'</p>'})});
+      var res=await fetch('https://api.resend.com/emails',{method:'POST',headers:{'Authorization':'Bearer re_Psu7DehN_JGbh5dRZWVrVr4p5JbGE8PTq','Content-Type':'application/json'},body:JSON.stringify({from:'website@brazacleaning.com',to:['brazacleaningflorida@gmail.com'],subject:'New Quote — '+d.service+' in '+d.city,html:'<h2>New Quote Request</h2><p><b>Name:</b> '+d.name+'</p><p><b>Phone:</b> '+d.phone+'</p><p><b>Email:</b> '+d.email+'</p><p><b>Service:</b> '+d.service+'</p><p><b>City:</b> '+d.city+'</p><p><b>Message:</b> '+d.message+'</p>'})});
       if(res.ok||res.status===200||res.status===201){document.getElementById('formWrap').style.display='none';document.getElementById('formSuccess').style.display='block';}
       else throw new Error('fail');
     }catch(err){btn.disabled=false;btn.textContent='Send My Request →';alert('Something went wrong. Please call us at (689) 242-7469');}
