@@ -50,8 +50,8 @@
   "description": "Professional house cleaning, Airbnb cleaning, vacation rental cleaning, and commercial cleaning throughout Central Florida. Serving The Villages, Kissimmee, Clermont, Davenport, Winter Garden, Orlando, and all surrounding communities. Licensed, bonded, and insured.",
   "image": "https://brazacleaning.com/images/logo.webp",
   "logo": "https://brazacleaning.com/images/logo.webp",
-  "telephone": "+1-689-242-7469",
-  "email": "brazacleaningservices@gmail.com",
+  "telephone": "+16892427469",
+  "email": "brazacleaningflorida@gmail.com",
   "url": "https://brazacleaning.com",
   "priceRange": "$$",
   "areaServed": [
@@ -70,7 +70,13 @@
     {"@type":"City","name":"Winter Park","containedInPlace":{"@type":"State","name":"Florida"}},
     {"@type":"City","name":"Maitland","containedInPlace":{"@type":"State","name":"Florida"}}
   ],
-  "address": {"@type":"PostalAddress","addressRegion":"FL","addressCountry":"US","addressLocality":"Central Florida"},
+  "address": {"@type":"PostalAddress","addressRegion":"FL","addressCountry":"US"},
+  "sameAs": [
+    "https://www.facebook.com/brazacleaningflorida/",
+    "https://www.instagram.com/brazacleaningservicesfl/",
+    "https://www.yelp.com/biz/braza-cleaning-services-ocoee",
+    "https://www.thumbtack.com/fl/ocoee/house-cleaning/braza-cleaning-services/service/508112741687074822"
+  ],
   "openingHoursSpecification": [
     {"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday"],"opens":"08:00","closes":"18:00"},
     {"@type":"OpeningHoursSpecification","dayOfWeek":["Saturday"],"opens":"08:00","closes":"16:00"},
@@ -340,13 +346,10 @@ html{scroll-padding-top:120px}
   "image": "https://brazacleaning.com/images/img-airbnb-kissimmee.jpg",
   "description": "Professional house cleaning, Airbnb turnover, and vacation rental cleaning across Central Florida. Licensed, insured, and background-checked. 5.0 Google Rating with 60 verified reviews.",
   "telephone": "+16892427469",
-  "email": "website@brazacleaning.com",
+  "email": "brazacleaningflorida@gmail.com",
   "address": {
     "@type": "PostalAddress",
-    "streetAddress": "Ocoee",
-    "addressLocality": "Ocoee",
     "addressRegion": "FL",
-    "postalCode": "34761",
     "addressCountry": "US"
   },
   "areaServed": [
@@ -393,20 +396,9 @@ html{scroll-padding-top:120px}
     "https://share.google/oSwfxsUi5jLu7G3WJ"
   ],
   "openingHoursSpecification": [
-    {
-      "@type": "OpeningHoursSpecification",
-      "dayOfWeek": [
-        "Monday",
-        "Tuesday",
-        "Wednesday",
-        "Thursday",
-        "Friday",
-        "Saturday",
-        "Sunday"
-      ],
-      "opens": "07:00",
-      "closes": "20:00"
-    }
+    {"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday"],"opens":"08:00","closes":"18:00"},
+    {"@type":"OpeningHoursSpecification","dayOfWeek":["Saturday"],"opens":"08:00","closes":"16:00"},
+    {"@type":"OpeningHoursSpecification","dayOfWeek":["Sunday"],"opens":"09:00","closes":"14:00"}
   ],
   "priceRange": "$$"
 }</script>
@@ -417,6 +409,22 @@ html{scroll-padding-top:120px}
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-5YVG8BKPSD');
+</script>
+<!-- CTA conversion tracking (call / whatsapp / lead form) -->
+<script>
+(function(){
+  function ev(name, params){ try{ if(typeof gtag==='function') gtag('event', name, params); }catch(e){} }
+  document.addEventListener('click', function(e){
+    var a = e.target.closest && e.target.closest('a'); if(!a) return;
+    var href = (a.getAttribute('href')||'');
+    var txt = (a.innerText||a.textContent||'').replace(/\s+/g,' ').trim().slice(0,60);
+    if (href.indexOf('tel:')===0) ev('call_click', {button_text:txt, page_path:location.pathname});
+    else if (href.indexOf('wa.me')>-1 || href.indexOf('whatsapp')>-1) ev('whatsapp_quote_click', {button_text:txt, page_path:location.pathname});
+  }, true);
+  document.addEventListener('submit', function(e){
+    if (e.target && e.target.tagName==='FORM') ev('generate_lead', {form_id:(e.target.id||'form'), page_path:location.pathname});
+  }, true);
+})();
 </script>
 </head>
 <body>
@@ -876,7 +884,7 @@ html{scroll-padding-top:120px}
 <p>Professional cleaning services across Central Florida. Licensed, bonded, and insured. Trusted by homeowners, Airbnb hosts, and property managers since 2024.</p>
 <div class="footer-contact">
 <a href="tel:6892427469"><svg fill="none" height="14" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="14"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.95 9.8a19.79 19.79 0 01-3.07-8.67A2 2 0 012.88 1h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L7.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"></path></svg>(689) 242-7469</a>
-<span>brazacleaningservices@gmail.com</span>
+<span>brazacleaningflorida@gmail.com</span>
 </div>
 </div>
 <div class="footer-col"><h4>Services</h4><ul><li><a href="/house-cleaning/">House Cleaning</a></li>

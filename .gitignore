@@ -1,6 +1,12 @@
 # Documentos internos — NÃO devem ir pro site público (Cloudflare Pages serve todo o repo)
 CLAUDE.md
 SEO-GEO-AUDIT-FINDINGS.md
+SOCIAL-AUTOMATION.md
 _audit/
 _gsc_perf/
 _gsc_cov/
+
+# Workers de social (deploy separado via wrangler, NÃO fazem parte do site)
+social-renderer/
+social-uploader/
+social/
