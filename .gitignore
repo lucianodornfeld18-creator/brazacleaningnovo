@@ -12,3 +12,6 @@ _gsc_cov/
 social-renderer/
 social-uploader/
 social/
+
+# Prototipo do portal Opus (nao faz parte do site Braza)
+opus-portal/
