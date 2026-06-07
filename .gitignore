@@ -15,3 +15,7 @@ social/
 
 # Prototipo do portal Opus (nao faz parte do site Braza)
 opus-portal/
+
+# Python bytecode
+automation/__pycache__/
+*.pyc
