@@ -14,7 +14,7 @@ Usage:
   py automation/notify.py --weekly [--dry]     # send/print the weekly digest
   py automation/notify.py --log <slug>         # (internal) append a post to the log
 """
-import sys, os, io, re, json, urllib.request, datetime
+import sys, os, io, re, json, urllib.request, urllib.error, datetime
 
 # force UTF-8 stdout on Windows so non-ascii never crashes
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8', errors='replace')
@@ -93,6 +93,17 @@ def weekly(dry=False):
     try:
         with urllib.request.urlopen(req, timeout=20) as r:
             print(f'digest enviado (HTTP {r.status})')
+    except urllib.error.HTTPError as e:
+        body = ''
+        try:
+            body = e.read().decode('utf-8', 'replace')
+        except Exception:
+            pass
+        print(f'FALHA ao enviar digest: HTTP {e.code}. Resposta do Resend: {body}')
+        if e.code == 403:
+            print('DICA 403: provavelmente o dominio brazacleaning.com NAO esta verificado no Resend '
+                  '(Domains -> Add Domain -> DNS no Cloudflare), ou a API key nao tem permissao de envio.')
+        sys.exit(1)
     except Exception as e:
         print('FALHA ao enviar digest:', e); sys.exit(1)
 
