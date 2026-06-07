@@ -2,14 +2,17 @@
 
 Documento de retomada. Leia isto pra continuar de onde paramos.
 
-## ⏳ PRÓXIMA AÇÃO QUANDO VOLTAR: setup do cron (estávamos NO MEIO disso)
-O usuário ia fazer os 4 passos no navegador (guia completo em `automation/SETUP-CRON.md`):
-1. Secret `ANTHROPIC_API_KEY` no GitHub (Settings → Secrets and variables → Actions)
-2. Secret `RESEND_API_KEY` (mesma tela)
-3. Settings → Actions → General → Workflow permissions → "Read and write permissions" → Save
-4. Resend → Domains → verificar `brazacleaning.com` (DNS no Cloudflare)
-Depois: testar via aba **Actions → "Auto Blog Post" → "Run workflow"** (a gente confere juntos
-o 1º post antes de confiar no cron seg/qua/sex). Perguntar ao usuário se já fez algum passo.
+## ✅ CRON ATIVO — setup concluído em 2026-06-07
+O blog automático está NO AR e funcionando de ponta a ponta. Os 4 passos de setup foram feitos
+(secrets `ANTHROPIC_API_KEY` + `RESEND_API_KEY`, permissão de escrita do Actions, Resend).
+Teste manual via "Run workflow" passou VERDE e publicou o 1º post real do cron:
+`/blog/move-in-cleaning-cost-in-windermere-fl/` (8 FAQs, 5 schemas, 2 tabelas, 5 interlinks, preços ≥ $120).
+Cron rodando sozinho: seg/qua/sex 13:00 UTC + digest sexta 14:00 UTC.
+
+### Correção aplicada nessa sessão (commit `1291780`)
+`agent_run.py` agora REGENERA o post (até `MAX_TRIES=3`) quando o modelo viola o piso de $120,
+em vez de falhar a execução inteira. O prompt de preço também foi reforçado. Antes disso, o 1º
+teste real falhou exatamente por isso (modelo cotou $40/$100 em "deep cleaning cost").
 
 ## TL;DR do que foi feito
 1. **Auditoria reconciliada** (prompt v2 dos Downloads × SEO-GEO-AUDIT-FINDINGS.md).
@@ -73,7 +76,7 @@ Seguir `automation/SETUP-CRON.md`:
 - **Não estragar o formulário de lead** — automação não chama o worker de leads nem o track.js.
 
 ## Itens em ABERTO (não feitos ainda — decidir na volta)
-1. **Setup do cron** (ver topo) — É O PRÓXIMO PASSO. Usuário estava fazendo no navegador.
+1. ✅ ~~Setup do cron~~ — FEITO em 2026-06-07 (ver topo). Cron ativo e 1º post publicado.
 2. **aggregateRating 5.0/68 fabricado** ainda em ~140 páginas ANTIGAS do site (achado nº1 da
    auditoria, risco de penalidade Google). Posts NOVOS já nascem sem ele. Falta limpar o legado.
 3. **Outros docs internos JÁ expostos** no repo/deploy (pré-existentes, não criados por nós):
