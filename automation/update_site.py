@@ -21,6 +21,7 @@ BLOG_INDEX = os.path.join(ROOT, 'blog', 'index.html')
 SITEMAP = os.path.join(ROOT, 'sitemap.xml')
 CMAP = os.path.join(ROOT, '_content_map.json')
 BASE = 'https://brazacleaning.com'
+DEFAULT_HERO = '/images/img-living-wintergarden.jpg'  # safe fallback (always exists)
 
 def read(p):
     with open(p, encoding='utf-8') as f: return f.read()
@@ -53,6 +54,13 @@ def extract_post(slug):
         src = re.sub(r'^https?://[^/]+', '', og)  # to site-relative path
     if not alt:
         alt = title
+    # never reference a 404 image: try the .jpg sibling, then a safe default
+    if src and not os.path.isfile(os.path.join(ROOT, src.lstrip('/'))):
+        alt_jpg = re.sub(r'\.webp$', '.jpg', src)
+        if os.path.isfile(os.path.join(ROOT, alt_jpg.lstrip('/'))):
+            src = alt_jpg
+        else:
+            src = DEFAULT_HERO
     # excerpt: prefer the answer-first block, then first <p>, then meta description
     excerpt = grab(h, r'<div class="answer-first"[^>]*>(.*?)</div>') \
         or grab(h, r'<div class="blog-content">\s*<p[^>]*>(.*?)</p>')
