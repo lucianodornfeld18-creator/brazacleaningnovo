@@ -21,6 +21,7 @@ RUNBOOK = os.path.join(ROOT, 'automation', 'RUNBOOK.md')
 EXAMPLE = os.path.join(ROOT, 'automation', 'queue', '_example.json')
 CMAP = os.path.join(ROOT, '_content_map.json')
 MODEL = 'claude-opus-4-8'
+MAX_TRIES = 3  # regenerate this many times if the $120 price floor is violated
 
 # focus rotation by weekday (Mon=0)
 ROTATION = {
@@ -42,7 +43,7 @@ def existing_topics():
 def pick_focus(d):
     return ROTATION.get(d.weekday(), ROTATION[4])
 
-def build_messages(d):
+def build_messages(d, correction=None):
     runbook = open(RUNBOOK, encoding='utf-8').read()
     example = open(EXAMPLE, encoding='utf-8').read()
     focus, cities = pick_focus(d)
@@ -54,7 +55,9 @@ def build_messages(d):
         "matches the schema of automation/queue/_example.json EXACTLY (same keys). Rules:\n"
         "- Follow the RUNBOOK quality standard: ~1200-1500 words across the `sections`, >=6 question-style H2s, "
         ">=2 comparison tables (as HTML inside section `html`), 8 FAQs, a 40-60 word `answer_first`.\n"
-        "- NEVER use any price below $120. Ranges may go high; the floor is $120.\n"
+        "- PRICE FLOOR: never write ANY dollar figure below $120 anywhere in the post — not even when "
+        "citing market averages, hourly rates, competitor pricing, or low-end estimates. If real-world data "
+        "is lower, omit the number or state Braza's $120 minimum instead. Ranges may go high; the floor is $120.\n"
         "- `interlinks` (3-6) MUST point to real existing URLs from the provided site list, reciprocal where possible.\n"
         "- `hero_img` MUST be an existing /images/ path (pick a plausible one already on the site).\n"
         "- title < 60 chars, meta_desc < 155 chars, both unique vs existing.\n"
@@ -69,6 +72,8 @@ def build_messages(d):
         "\n\nResearch real 2026 pricing/questions for the chosen service+city with web search, "
         "pick the best gap that pushes a high-margin service, then output the post JSON."
     )
+    if correction:
+        user += ("\n\n## CORRECTION — your previous draft was REJECTED, fix it now\n" + correction)
     return system, user
 
 def call_api(system, user):
@@ -115,31 +120,63 @@ def main():
         print(f"[dry] {len(existing_topics())} existing posts in ledger; would call {MODEL} + web_search.")
         return
 
-    system, user = build_messages(d)
     print(f"== agent_run {d.isoformat()} ({d.strftime('%A')}) | focus: {focus} ==")
-    data = extract_json(call_api(system, user))
-    data.setdefault('date', d.isoformat())
-    slug = data.get('slug') or slugify(data['title'])
-    data['slug'] = slug
+    correction = None
+    last_price_err = None
+    for attempt in range(1, MAX_TRIES + 1):
+        if correction:
+            print(f"== retry {attempt}/{MAX_TRIES}: regenerating with price correction ==")
+        system, user = build_messages(d, correction)
+        data = extract_json(call_api(system, user))
+        data.setdefault('date', d.isoformat())
+        slug = data.get('slug') or slugify(data['title'])
+        data['slug'] = slug
 
-    # canibalization gate
-    chk = subprocess.run([sys.executable, os.path.join(ROOT, 'automation', 'check_canib.py'),
-                          data.get('keyword_primary', data['title']), data['title']])
-    if chk.returncode == 3:
-        raise SystemExit("BLOQUEADO pelo gate de canibalizacao (REJECT). Nada publicado hoje.")
+        # canibalization gate (REJECT = hard stop, "nada publicado hoje" — not retryable)
+        chk = subprocess.run([sys.executable, os.path.join(ROOT, 'automation', 'check_canib.py'),
+                              data.get('keyword_primary', data['title']), data['title']])
+        if chk.returncode == 3:
+            raise SystemExit("BLOQUEADO pelo gate de canibalizacao (REJECT). Nada publicado hoje.")
 
-    qf = os.path.join(ROOT, 'automation', 'queue', slug + '.json')
-    json.dump(data, open(qf, 'w', encoding='utf-8'), ensure_ascii=False, indent=1)
-    print(f"  wrote queue/{slug}.json")
+        qf = os.path.join(ROOT, 'automation', 'queue', slug + '.json')
+        json.dump(data, open(qf, 'w', encoding='utf-8'), ensure_ascii=False, indent=1)
+        print(f"  wrote queue/{slug}.json")
 
-    run([sys.executable, os.path.join(ROOT, 'automation', 'build_post.py'), slug])   # price guard enforced here
-    run([sys.executable, os.path.join(ROOT, 'automation', 'update_site.py'), slug])
-    print(f"PUBLISHED slug={slug}")
-    # expose slug to the workflow
-    gh_out = os.environ.get('GITHUB_OUTPUT')
-    if gh_out:
-        with open(gh_out, 'a', encoding='utf-8') as f:
-            f.write(f"slug={slug}\n")
+        # build_post.py enforces the $120 price floor; capture output so a violation can be retried
+        bp = subprocess.run([sys.executable, os.path.join(ROOT, 'automation', 'build_post.py'), slug],
+                            capture_output=True, text=True)
+        sys.stdout.write(bp.stdout)
+        sys.stderr.write(bp.stderr)
+        if bp.returncode == 0:
+            run([sys.executable, os.path.join(ROOT, 'automation', 'update_site.py'), slug])
+            print(f"PUBLISHED slug={slug}")
+            # expose slug to the workflow
+            gh_out = os.environ.get('GITHUB_OUTPUT')
+            if gh_out:
+                with open(gh_out, 'a', encoding='utf-8') as f:
+                    f.write(f"slug={slug}\n")
+            return
+
+        combined = bp.stdout + bp.stderr
+        if 'BLOQUEADO: preco' in combined:
+            # price-floor violation is the model's mistake — feed it back and regenerate
+            last_price_err = combined.strip().splitlines()[-1]
+            print(f"  price floor violated, will retry: {last_price_err}")
+            correction = ("Your previous draft contained a dollar amount below the $120 floor and was rejected. "
+                          "Rewrite EVERY price so no figure anywhere is below $120 (including market averages, "
+                          "hourly rates, competitor or low-end mentions). Omit sub-$120 numbers or use Braza's "
+                          "$120 minimum instead. Rejection detail: " + last_price_err)
+            try:
+                os.remove(qf)  # discard the rejected draft before retrying
+            except OSError:
+                pass
+            continue
+
+        # any other build error is a real failure — surface it
+        raise SystemExit(f"build_post.py falhou (nao foi preco):\n{combined.strip()[-800:]}")
+
+    raise SystemExit(f"Esgotou {MAX_TRIES} tentativas no piso de preco. Ultimo erro: {last_price_err}. "
+                     f"Nada publicado hoje.")
 
 if __name__ == '__main__':
     main()
