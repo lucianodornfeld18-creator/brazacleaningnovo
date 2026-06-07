@@ -57,5 +57,8 @@ http://www.brazacleaning.com/* https://brazacleaning.com/:splat 301!
 /blog/house-cleaning-cost-winter-garden-fl/ https://brazacleaning.com/blog/house-cleaning-cost-winter-garden-fl-2026/ 301!
 /blog/house-cleaning-cost-winter-garden-fl https://brazacleaning.com/blog/house-cleaning-cost-winter-garden-fl-2026/ 301!
 
+# Block internal automation scripts/docs from public serving (kept in repo for GitHub Actions)
+/automation/* /404.html 404
+
 # Custom 404 (must be last)
 /* /404.html 404
