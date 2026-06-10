@@ -1,9 +1,10 @@
 # Robots.txt for brazacleaning.com
 User-agent: *
 Allow: /
-Disallow: /thank-you
+Disallow: /thank-you/
 Disallow: /404
-Disallow: /admin
+Disallow: /admin/
+Disallow: /office-cleaning/
 
 # Block query parameters
 Disallow: /*?*

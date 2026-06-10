@@ -27,7 +27,7 @@ No GitHub → aba **Actions** → **Auto Blog Post** → botão **"Run workflow"
 Vê o log, confere o commit/post gerado. Mesma coisa pra **Weekly Blog Digest**.
 
 ## Horários (UTC)
-- Posts: `0 13 * * 1,3,5` → seg/qua/sex 13:00 UTC (~9h da manhã na Flórida).
+- Posts: `0 13 * * 1,3` → seg/qua 13:00 UTC (~9h da manhã na Flórida). 2x/semana com Sonnet para manter custo ≤ $1/semana.
 - Digest: `0 14 * * 5` → sexta 14:00 UTC (depois do post de sexta).
 Pra mudar, edite o `cron:` nos arquivos `.github/workflows/blog-*.yml`.
 

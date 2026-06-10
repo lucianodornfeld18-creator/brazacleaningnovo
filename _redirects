@@ -25,8 +25,6 @@ http://www.brazacleaning.com/* https://brazacleaning.com/:splat 301!
 
 # Geographic correction (May 2026): vacation-rental pages removed for cities outside the
 # legitimate Disney STR corridor. Redirected to residential cleaning equivalents.
-/vacation-rental-cleaning/the-villages/ https://brazacleaning.com/cleaning-services/the-villages/ 301!
-/vacation-rental-cleaning/the-villages https://brazacleaning.com/cleaning-services/the-villages/ 301!
 /vacation-rental-cleaning/minneola/ https://brazacleaning.com/cleaning-services/minneola/ 301!
 /vacation-rental-cleaning/minneola https://brazacleaning.com/cleaning-services/minneola/ 301!
 /vacation-rental-cleaning/windermere/ https://brazacleaning.com/cleaning-services/windermere/ 301!

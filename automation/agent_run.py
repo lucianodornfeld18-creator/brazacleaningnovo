@@ -20,7 +20,7 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 RUNBOOK = os.path.join(ROOT, 'automation', 'RUNBOOK.md')
 EXAMPLE = os.path.join(ROOT, 'automation', 'queue', '_example.json')
 CMAP = os.path.join(ROOT, '_content_map.json')
-MODEL = 'claude-opus-4-8'
+MODEL = 'claude-sonnet-4-6'
 MAX_TRIES = 3  # regenerate this many times if the $120 price floor is violated
 
 # focus rotation by weekday (Mon=0)
@@ -149,6 +149,11 @@ def main():
         sys.stderr.write(bp.stderr)
         if bp.returncode == 0:
             run([sys.executable, os.path.join(ROOT, 'automation', 'update_site.py'), slug])
+            try:
+                run([sys.executable, os.path.join(ROOT, 'automation', 'indexnow_ping.py'),
+                     f"https://brazacleaning.com/blog/{slug}/"])
+            except Exception as e:
+                print(f"  indexnow ping falhou (nao-fatal): {e}")
             print(f"PUBLISHED slug={slug}")
             # expose slug to the workflow
             gh_out = os.environ.get('GITHUB_OUTPUT')
