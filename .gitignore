@@ -19,3 +19,11 @@ opus-portal/
 # Python bytecode
 automation/__pycache__/
 *.pyc
+
+# Artefatos internos de auditoria (nao deployar)
+AUDIT_BRAZA_*.md
+AUDIT_BRAZA_*.html
+audit.json
+targets.json
+summary.txt
+fix_faq.py
