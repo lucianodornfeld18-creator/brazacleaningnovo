@@ -89,7 +89,10 @@ def weekly(dry=False):
     data = json.dumps({'from': FROM, 'to': [TO], 'subject': subject, 'html': body}).encode()
     req = urllib.request.Request('https://api.resend.com/emails', data=data, method='POST',
                                  headers={'Content-Type': 'application/json',
-                                          'Authorization': f'Bearer {key}'})
+                                          'Authorization': f'Bearer {key}',
+                                          # Cloudflare na frente da api.resend.com bloqueia o UA padrao
+                                          # do urllib (Python-urllib) com 403 "error code: 1010"
+                                          'User-Agent': 'braza-blog-digest/1.0'})
     try:
         with urllib.request.urlopen(req, timeout=20) as r:
             print(f'digest enviado (HTTP {r.status})')
