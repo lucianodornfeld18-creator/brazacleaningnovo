@@ -14,15 +14,13 @@ Cron rodando sozinho: seg/qua/sex 13:00 UTC + digest sexta 14:00 UTC.
 em vez de falhar a execução inteira. O prompt de preço também foi reforçado. Antes disso, o 1º
 teste real falhou exatamente por isso (modelo cotou $40/$100 em "deep cleaning cost").
 
-### ⚠️ DIGEST DE E-MAIL PENDENTE (decisão do usuário: deixar pra depois)
-O teste manual do "Weekly Blog Digest" montou os 2 posts certos mas o Resend retornou **HTTP 403**
-— quase certo: domínio `brazacleaning.com` NÃO verificado no Resend (passo 4 do setup não concluído
-ou DNS não propagado). `notify.py` foi melhorado (commit `4fce5b4`) pra imprimir o corpo da resposta
-do Resend e uma dica no 403. Destino atual fixo: `brazacleaningservices@gmail.com` (confirmar se é esse
-o inbox). CONSEQUÊNCIA: o cron do digest vai falhar VERMELHO toda sexta até resolver (só barulho; não
-afeta a publicação dos posts). Opções quando voltar: (a) verificar domínio no Resend + DNS Cloudflare;
-(b) caminho rápido `onboarding@resend.dev` (só envia pro e-mail dono da conta Resend); (c) desativar o
-workflow do digest ou fazer `notify.py` sair 0 sem enviar pra parar o vermelho semanal.
+### ✅ DIGEST DE E-MAIL RESOLVIDO (2026-06-11, commit `c4af47c`)
+O 403 NÃO era domínio: `brazacleaning.com` está VERIFICADO no Resend (us-east-1). A causa real era o
+**Cloudflare na frente da api.resend.com bloqueando o User-Agent padrão do urllib** (`Python-urllib`)
+com corpo `error code: 1010`. Fix: header `User-Agent: braza-blog-digest/1.0` no request do `notify.py`.
+Testado de ponta a ponta em 2026-06-11: digest com 4 posts enviado **HTTP 200** pra
+`brazacleaningservices@gmail.com`. O cron de sexta deve passar verde a partir de 2026-06-12 (obs.: o
+digest de sexta vai repetir os mesmos posts do teste — duplicata única, esperada).
 
 ## TL;DR do que foi feito
 1. **Auditoria reconciliada** (prompt v2 dos Downloads × SEO-GEO-AUDIT-FINDINGS.md).
