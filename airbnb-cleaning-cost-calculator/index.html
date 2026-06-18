@@ -187,7 +187,7 @@ body.embed .embed-bar{display:block;text-align:center;padding:12px 14px;font-siz
         <a href="/contact/">Contact</a>
       </nav>
       <a href="tel:+16892427469" class="nav-phone">(689) 242-7469</a>
-      <a href="https://wa.me/16892427469" class="btn btn-orange" target="_blank" rel="noopener">Free Quote</a>
+      <a href="/contact/" class="btn btn-orange">Free Quote</a>
     </div>
   </div>
 </header>
@@ -251,8 +251,9 @@ body.embed .embed-bar{display:block;text-align:center;padding:12px 14px;font-siz
       <div class="result-range" id="range">Typical range: $150–$195</div>
       <div class="breakdown" id="breakdown"></div>
       <div class="result-note">Estimate based on Central Florida 2026 pricing. $120 minimum. Your exact flat rate is confirmed with a quick walkthrough or photos.</div>
-      <a id="waBtn" href="https://wa.me/16892427469" class="btn btn-wa" target="_blank" rel="noopener">Get my exact quote on WhatsApp</a>
+      <a id="smsBtn" href="sms:+16892427469" class="btn btn-orange">Text us my estimate</a>
       <a href="tel:+16892427469" class="btn btn-blue">Call (689) 242-7469</a>
+      <a id="waBtn" href="https://wa.me/16892427469" class="btn btn-wa" target="_blank" rel="noopener">WhatsApp (optional)</a>
     </div>
   </div>
 </div>
@@ -332,8 +333,9 @@ body.embed .embed-bar{display:block;text-align:center;padding:12px 14px;font-siz
       <h2>Get your exact flat rate today</h2>
       <p>Send us your property size and checkout time — we respond within 2 hours with a locked-in turnover price.</p>
       <div class="cta-row">
-        <a href="https://wa.me/16892427469?text=Hi%20Braza!%20I%20want%20an%20Airbnb%20turnover%20quote." class="btn btn-wa" target="_blank" rel="noopener">WhatsApp us</a>
-        <a href="tel:+16892427469" class="btn btn-orange">Call (689) 242-7469</a>
+        <a href="sms:+16892427469?body=Hi%20Braza!%20I%20want%20an%20Airbnb%20turnover%20quote." class="btn btn-orange">Text us</a>
+        <a href="tel:+16892427469" class="btn btn-blue">Call (689) 242-7469</a>
+        <a href="https://wa.me/16892427469?text=Hi%20Braza!%20I%20want%20an%20Airbnb%20turnover%20quote." class="btn btn-wa" target="_blank" rel="noopener">WhatsApp</a>
       </div>
     </div>
   </div>
@@ -385,7 +387,7 @@ body.embed .embed-bar{display:block;text-align:center;padding:12px 14px;font-siz
   var bedVal=document.getElementById('bedVal'), bathVal=document.getElementById('bathVal'),
       amount=document.getElementById('amount'),
       rangeEl=document.getElementById('range'), breakdown=document.getElementById('breakdown'),
-      waBtn=document.getElementById('waBtn');
+      waBtn=document.getElementById('waBtn'), smsBtn=document.getElementById('smsBtn');
 
   function money(n){ return '$'+Math.round(n).toLocaleString('en-US'); }
   function round5(n){ return Math.round(n/5)*5; }
@@ -400,7 +402,9 @@ body.embed .embed-bar{display:block;text-align:center;padding:12px 14px;font-siz
       amount.textContent = 'By quote';
       rangeEl.textContent = '9+ bedrooms — custom pricing';
       breakdown.innerHTML = '';
-      waBtn.href = 'https://wa.me/16892427469?text=' + encodeURIComponent('Hi Braza! I have a 9+ bedroom property in '+marketTxt+'. I need an Airbnb turnover quote.');
+      var msg9 = 'Hi Braza! I have a 9+ bedroom property in '+marketTxt+'. I need an Airbnb turnover quote.';
+      smsBtn.href = 'sms:+16892427469?body=' + encodeURIComponent(msg9);
+      waBtn.href = 'https://wa.me/16892427469?text=' + encodeURIComponent(msg9);
       return;
     }
 
@@ -433,8 +437,9 @@ body.embed .embed-bar{display:block;text-align:center;padding:12px 14px;font-siz
       (addTotal? '<div class="line"><span>Add-ons</span><span>+'+money(addTotal)+'</span></div>':'')+
       (deep? '<div class="line"><span>Seasonal deep clean</span><span>2×</span></div>':'');
 
-    waBtn.href = 'https://wa.me/16892427469?text=' + encodeURIComponent(
-      'Hi Braza! '+b+' bed / '+ba+' bath Airbnb in '+marketTxt+'. Calculator estimate ~'+money(est)+'. I want a turnover quote.');
+    var msg = 'Hi Braza! '+b+' bed / '+ba+' bath Airbnb in '+marketTxt+'. Calculator estimate ~'+money(est)+'. I want a turnover quote.';
+    smsBtn.href = 'sms:+16892427469?body=' + encodeURIComponent(msg);
+    waBtn.href = 'https://wa.me/16892427469?text=' + encodeURIComponent(msg);
   }
 
   [bed,bath,market].forEach(function(el){ el.addEventListener('input',calc); el.addEventListener('change',calc); });
