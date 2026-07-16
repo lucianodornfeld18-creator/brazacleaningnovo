@@ -904,9 +904,9 @@ if(form){
     e.preventDefault();
     var btn=document.getElementById('submitBtn');
     btn.disabled=true;btn.textContent='Sending...';
-    var d={name:form.querySelector('[name=name]').value,phone:form.querySelector('[name=phone]').value,email:form.querySelector('[name=email]').value,service:form.querySelector('[name=service]').value,address:(form.querySelector('[name=address]')||{value:''}).value,city:form.querySelector('[name=city]').value,message:(form.querySelector('[name=message]')||{value:''}).value,referral:(form.querySelector('[name=referral]')||{value:''}).value};var _em=(d.email||'').trim();if(_em&&!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(_em)){d.message=(d.message?d.message+' | ':'')+'[Email entered (invalid format): '+_em+']';d.email='';}else{d.email=_em;}
+    var d={access_key:'b9aaee81-6717-4c66-ae45-d77d43ccef76',subject:'New Lead - Braza Cleaning Services',name:form.querySelector('[name=name]').value,phone:form.querySelector('[name=phone]').value,email:form.querySelector('[name=email]').value,service:form.querySelector('[name=service]').value,address:(form.querySelector('[name=address]')||{value:''}).value,city:form.querySelector('[name=city]').value,message:(form.querySelector('[name=message]')||{value:''}).value,referral:(form.querySelector('[name=referral]')||{value:''}).value};var _em=(d.email||'').trim();if(_em&&!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(_em)){d.message=(d.message?d.message+' | ':'')+'[Email entered (invalid format): '+_em+']';d.email='';}else{d.email=_em;}
     try{
-      var res=await fetch('https://braza-email-proxy.lucianodornfeld18.workers.dev',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(d)});
+      var res=await fetch('https://api.web3forms.com/submit',{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},body:JSON.stringify(d)});
       if(res.ok){document.getElementById('formWrap').style.display='none';document.getElementById('formSuccess').style.display='block';}
       else{var t=await res.text();throw new Error(t);}
     }catch(err){btn.disabled=false;btn.textContent='Send My Request →';alert('Error: '+err.message+'. Please call us at (689) 336-3208');}
