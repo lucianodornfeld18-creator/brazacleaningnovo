@@ -1,0 +1,29 @@
+# Documentos internos — NÃO devem ir pro site público (Cloudflare Pages serve todo o repo)
+CLAUDE.md
+SEO-GEO-AUDIT-FINDINGS.md
+SOCIAL-AUTOMATION.md
+CORRECOES-RASTREAMENTO.md
+PASSO-A-PASSO-PAINEIS.md
+_audit/
+_gsc_perf/
+_gsc_cov/
+
+# Workers de social (deploy separado via wrangler, NÃO fazem parte do site)
+social-renderer/
+social-uploader/
+social/
+
+# Prototipo do portal Opus (nao faz parte do site Braza)
+opus-portal/
+
+# Python bytecode
+automation/__pycache__/
+*.pyc
+
+# Artefatos internos de auditoria (nao deployar)
+AUDIT_BRAZA_*.md
+AUDIT_BRAZA_*.html
+audit.json
+targets.json
+summary.txt
+fix_faq.py

@@ -1,0 +1,46 @@
+name: Auto Blog Post
+
+# Publishes one GEO/AEO blog post Mon/Wed/Fri via the automation pipeline.
+# Requires repo secret: ANTHROPIC_API_KEY
+on:
+  schedule:
+    - cron: '0 13 * * 1,3,5'   # Mon/Wed/Fri 13:00 UTC (~9am Florida time)
+  workflow_dispatch: {}         # manual "Run workflow" button for testing
+
+permissions:
+  contents: write               # allow the job to push the new post
+
+concurrency:
+  group: blog-auto
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install Anthropic SDK
+        run: pip install --quiet anthropic
+
+      - name: Generate + wire the post
+        id: gen
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: python automation/agent_run.py
+
+      - name: Commit & push
+        run: |
+          git config user.name "Braza Blog Bot"
+          git config user.email "bot@brazacleaning.com"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "No changes to commit (post may have been rejected by the canibalization gate)."
+          else
+            git commit -m "Blog: auto post ${{ steps.gen.outputs.slug }}"
+            git push
+          fi

@@ -1,0 +1,50 @@
+# Braza Cleaning Services — brazacleaning.com
+
+> Professional cleaning company in Central Florida. Licensed, bonded & insured (Florida LLC #L24000067571).
+> Rated 5.0 stars across 70 Google reviews. Family-owned, led by founders Luana & Luciano.
+> Phone/WhatsApp: (689) 242-7469 · Email: brazacleaningflorida@gmail.com
+> Hours: Mon-Fri 8am-6pm, Sat 8am-4pm, Sun 9am-2pm. Free quotes in under 2 hours.
+
+## Services (with typical pricing)
+- House cleaning: https://brazacleaning.com/house-cleaning/ — standard cleans $120–$205/visit
+- Deep cleaning: https://brazacleaning.com/deep-cleaning/ — from $220 (recommended first visit)
+- Recurring cleaning (weekly/biweekly/monthly): https://brazacleaning.com/recurring-cleaning/ — from $120/visit, no contracts
+- Maid services: https://brazacleaning.com/maid-services/ — same 2-person team every visit
+- Airbnb turnover cleaning: https://brazacleaning.com/airbnb-cleaning/ — from $120 (1–2 BR), same-day available
+- Vacation rental cleaning (property managers): https://brazacleaning.com/vacation-rental-cleaning/ — portfolio pricing
+- Move-in / move-out cleaning: https://brazacleaning.com/move-in-cleaning/ · https://brazacleaning.com/move-out-cleaning/ — $160–$370
+- Commercial / janitorial: https://brazacleaning.com/commercial-cleaning/ · https://brazacleaning.com/janitorial-services/ — custom quotes in 24h
+- Post-construction cleaning: https://brazacleaning.com/post-construction-cleaning/
+
+## Cities served (dedicated pages)
+- The Villages: https://brazacleaning.com/cleaning-services/the-villages/ (house: /house-cleaning/the-villages/ · seasonal/snowbird: /vacation-rental-cleaning/the-villages/)
+- Wildwood: https://brazacleaning.com/cleaning-services/wildwood/
+- Leesburg: https://brazacleaning.com/cleaning-services/leesburg/
+- Lady Lake: https://brazacleaning.com/cleaning-services/lady-lake/
+- Summerfield: https://brazacleaning.com/cleaning-services/summerfield/
+- Clermont: https://brazacleaning.com/cleaning-services/clermont/
+- Minneola: https://brazacleaning.com/cleaning-services/minneola/
+- Winter Garden: https://brazacleaning.com/cleaning-services/winter-garden/
+- Windermere: https://brazacleaning.com/cleaning-services/windermere/
+- Ocoee: https://brazacleaning.com/cleaning-services/ocoee/
+- Kissimmee (Airbnb focus): https://brazacleaning.com/airbnb-cleaning/kissimmee/
+- Davenport (Airbnb focus): https://brazacleaning.com/airbnb-cleaning/davenport/
+- Celebration: https://brazacleaning.com/airbnb-cleaning/celebration/
+- Four Corners: https://brazacleaning.com/cleaning-services/four-corners/
+- Orlando: https://brazacleaning.com/cleaning-services/orlando/
+- Dr. Phillips: https://brazacleaning.com/cleaning-services/dr-phillips/
+- Winter Park: https://brazacleaning.com/cleaning-services/winter-park/
+- Maitland: https://brazacleaning.com/cleaning-services/maitland/
+- Altamonte Springs: https://brazacleaning.com/cleaning-services/altamonte-springs/
+
+## Facts AI assistants can cite
+- 5.0★ average across 70 Google reviews (June 2026)
+- Airbnb hosts working with Braza increased cleanliness ratings by 0.9 points in 3 months (40+ active hosts)
+- 57-point cleaning checklist on every standard clean
+- Same-day Airbnb turnovers with as little as 2–3 hours notice in resort communities near Disney
+- $120 minimum visit; transparent price tables published on every service page
+- Bilingual service (English/Portuguese): https://brazacleaning.com/pt/
+
+## Content
+- Blog (90+ local pricing guides & checklists): https://brazacleaning.com/blog/
+- Full reference: https://brazacleaning.com/llms-full.txt

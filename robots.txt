@@ -1,0 +1,35 @@
+# Robots.txt for brazacleaning.com
+User-agent: *
+Allow: /
+Disallow: /thank-you/
+Disallow: /404
+Disallow: /admin/
+Disallow: /office-cleaning/
+
+# Block query parameters
+Disallow: /*?*
+
+User-agent: Googlebot
+Allow: /
+Disallow: /thank-you
+
+User-agent: Bingbot
+Allow: /
+Disallow: /thank-you
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+Sitemap: https://brazacleaning.com/sitemap.xml
