@@ -106,6 +106,29 @@ for (const location of locations) {
   }
 }
 
+const redirectsFile = path.join(root, '_redirects');
+const allowedRedirectStatuses = new Set(['200', '301', '302', '303', '307', '308']);
+if (!fs.existsSync(redirectsFile)) {
+  errors.push('_redirects: file is missing.');
+} else {
+  fs.readFileSync(redirectsFile, 'utf8').split(/\r?\n/).forEach((line, index) => {
+    const trimmed = line.trim();
+    if (!trimmed || trimmed.startsWith('#')) return;
+    const fields = trimmed.split(/\s+/);
+    if (fields.length !== 3) {
+      errors.push(`_redirects:${index + 1}: expected source, destination and status.`);
+      return;
+    }
+    const [source, destination, status] = fields;
+    if (!source.startsWith('/') || !destination.startsWith('/')) {
+      errors.push(`_redirects:${index + 1}: Pages redirects must use relative source and destination paths.`);
+    }
+    if (!allowedRedirectStatuses.has(status)) {
+      errors.push(`_redirects:${index + 1}: unsupported status ${status}.`);
+    }
+  });
+}
+
 if (errors.length) {
   console.error(`SEO validation failed with ${errors.length} issue(s):`);
   errors.forEach((error) => console.error(`- ${error}`));

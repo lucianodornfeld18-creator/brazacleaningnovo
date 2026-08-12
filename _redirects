@@ -2,69 +2,62 @@
 # brazacleaning.com — atualizado 2026-05-05
 
 # WWW to non-www
-https://www.brazacleaning.com/* https://brazacleaning.com/:splat 301!
 
 # HTTP to HTTPS
-http://brazacleaning.com/* https://brazacleaning.com/:splat 301!
-http://www.brazacleaning.com/* https://brazacleaning.com/:splat 301!
+
+# Host redirects (www/HTTP) must be managed as Cloudflare zone Redirect Rules; Pages accepts only relative paths.
 
 # Fix 404: typo de crawl do Google (davenpor sem o t)
-/airbnb-cleaning/davenpor https://brazacleaning.com/airbnb-cleaning/davenport/ 301!
+/airbnb-cleaning/davenpor /airbnb-cleaning/davenport/ 301
 
 # Fix 404: resíduo de URL antiga /ola-mundo/
-/ola-mundo/ https://brazacleaning.com/ 301!
-/ola-mundo https://brazacleaning.com/ 301!
+/ola-mundo/ / 301
+/ola-mundo / 301
 
 # Fix 404: /category/office-cleaning/ era estrutura antiga
-/category/office-cleaning/ https://brazacleaning.com/blog/category/office-cleaning/ 301!
-/category/office-cleaning https://brazacleaning.com/blog/category/office-cleaning/ 301!
+/category/office-cleaning/ /blog/category/office-cleaning/ 301
+/category/office-cleaning /blog/category/office-cleaning/ 301
 
 # Orlando Airbnb - redirect old URL to canonical
-/airbnb-cleaning-orlando-fl/ https://brazacleaning.com/airbnb-cleaning/orlando/ 301!
-/airbnb-cleaning-orlando-fl https://brazacleaning.com/airbnb-cleaning/orlando/ 301!
+/airbnb-cleaning-orlando-fl/ /airbnb-cleaning/orlando/ 301
+/airbnb-cleaning-orlando-fl /airbnb-cleaning/orlando/ 301
 
 # Consolidate the duplicate root maid-services page into the residential owner URL.
-/maid-services/ https://brazacleaning.com/house-cleaning/ 301!
-/maid-services https://brazacleaning.com/house-cleaning/ 301!
+/maid-services/ /house-cleaning/ 301
+/maid-services /house-cleaning/ 301
 
 # Geographic correction (May 2026): vacation-rental pages removed for cities outside the
 # legitimate Disney STR corridor. Redirected to residential cleaning equivalents.
-/vacation-rental-cleaning/minneola/ https://brazacleaning.com/cleaning-services/minneola/ 301!
-/vacation-rental-cleaning/minneola https://brazacleaning.com/cleaning-services/minneola/ 301!
-/vacation-rental-cleaning/windermere/ https://brazacleaning.com/cleaning-services/windermere/ 301!
-/vacation-rental-cleaning/windermere https://brazacleaning.com/cleaning-services/windermere/ 301!
+/vacation-rental-cleaning/minneola/ /cleaning-services/minneola/ 301
+/vacation-rental-cleaning/minneola /cleaning-services/minneola/ 301
+/vacation-rental-cleaning/windermere/ /cleaning-services/windermere/ 301
+/vacation-rental-cleaning/windermere /cleaning-services/windermere/ 301
 
 
 # WP legacy URLs (added 2026-05-14 based on GSC 404 report)
-/maid-service/davenport/ https://brazacleaning.com/airbnb-cleaning/davenport/ 301!
-/maid-service/davenport https://brazacleaning.com/airbnb-cleaning/davenport/ 301!
-/services/ https://brazacleaning.com/ 301!
-/services https://brazacleaning.com/ 301!
-/get-a-quote-2/ https://brazacleaning.com/contact/ 301!
-/get-a-quote-2 https://brazacleaning.com/contact/ 301!
-/about-1/ https://brazacleaning.com/about/ 301!
-/about-1 https://brazacleaning.com/about/ 301!
-/orlando-cleaning-service/ https://brazacleaning.com/cleaning-services/orlando/ 301!
-/orlando-cleaning-service https://brazacleaning.com/cleaning-services/orlando/ 301!
-/the-villages-cleaning-service/ https://brazacleaning.com/cleaning-services/the-villages/ 301!
-/the-villages-cleaning-service https://brazacleaning.com/cleaning-services/the-villages/ 301!
-/author/suzana/ https://brazacleaning.com/about/ 301!
-/author/suzana https://brazacleaning.com/about/ 301!
-/cart/ https://brazacleaning.com/contact/ 301!
-/cart https://brazacleaning.com/contact/ 301!
-/checkout/ https://brazacleaning.com/contact/ 301!
-/checkout https://brazacleaning.com/contact/ 301!
+/maid-service/davenport/ /airbnb-cleaning/davenport/ 301
+/maid-service/davenport /airbnb-cleaning/davenport/ 301
+/services/ / 301
+/services / 301
+/get-a-quote-2/ /contact/ 301
+/get-a-quote-2 /contact/ 301
+/about-1/ /about/ 301
+/about-1 /about/ 301
+/orlando-cleaning-service/ /cleaning-services/orlando/ 301
+/orlando-cleaning-service /cleaning-services/orlando/ 301
+/the-villages-cleaning-service/ /cleaning-services/the-villages/ 301
+/the-villages-cleaning-service /cleaning-services/the-villages/ 301
+/author/suzana/ /about/ 301
+/author/suzana /about/ 301
+/cart/ /contact/ 301
+/cart /contact/ 301
+/checkout/ /contact/ 301
+/checkout /contact/ 301
 
 # Consolida blog dupe WG (Onda 2): antigo -> -2026
-/blog/house-cleaning-cost-winter-garden-fl/ https://brazacleaning.com/blog/house-cleaning-cost-winter-garden-fl-2026/ 301!
-/blog/house-cleaning-cost-winter-garden-fl https://brazacleaning.com/blog/house-cleaning-cost-winter-garden-fl-2026/ 301!
-
-# Block internal automation scripts/docs from public serving (kept in repo for GitHub Actions)
-/automation/* /404.html 404
+/blog/house-cleaning-cost-winter-garden-fl/ /blog/house-cleaning-cost-winter-garden-fl-2026/ 301
+/blog/house-cleaning-cost-winter-garden-fl /blog/house-cleaning-cost-winter-garden-fl-2026/ 301
 
 # HighLevel chat page removed (Jul 2026)
-/chat/ https://brazacleaning.com/contact/ 301!
-/chat https://brazacleaning.com/contact/ 301!
-
-# Custom 404 (must be last)
-/* /404.html 404
+/chat/ /contact/ 301
+/chat /contact/ 301
