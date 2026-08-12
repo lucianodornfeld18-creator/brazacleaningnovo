@@ -482,7 +482,7 @@ html{scroll-padding-top:120px}
 <h2 class="section-title">Professional House Cleaning in Winter Park, FL</h2>
 <p style="color:var(--gray);line-height:1.8;margin-bottom:16px;font-size:15px">Winter Park's iconic brick streets, world-class Park Avenue shopping, Rollins College campus, and the stunning chain of lakes that define its lakefront estates make it one of Florida's most distinctive and prestigious residential communities. Homes throughout Winter Park require a cleaning service that matches their character. Braza brings professional, consistent, detail-focused cleaning to Winter Park's homes throughout 32789 and 32792 — from historic lakefront estates to newer communities like Windsong and Valhalla.</p>
 <p style="color:var(--gray);line-height:1.8;margin-bottom:16px;font-size:15px">Braza Cleaning Services is a licensed, bonded, and fully insured professional cleaning company serving Winter Park and Orange County. We are a family-owned local business specializing in residential house cleaning, recurring maid service, deep cleaning, and move-in/move-out cleaning. Our Winter Park clients include families, working professionals, active adults, and property owners throughout Park Avenue, Isle of Sicily, Via Tuscany, Windsong, Valhalla, Maitland.</p>
-<p style="color:var(--gray);line-height:1.8;font-size:15px">We have served over 200 clients across Central Florida and maintain a 5.0 average rating. Every cleaning comes with our 100% satisfaction guarantee. To book cleaning in Winter Park, call or text <strong>(689) 242-7469</strong> — we respond within 2 hours and can typically schedule within the same week.</p>
+<p style="color:var(--gray);line-height:1.8;font-size:15px">We have served over 200 clients across Central Florida and maintain a a strong reputation for quality. Every cleaning comes with our 100% satisfaction guarantee. To book cleaning in Winter Park, call or text <strong>(689) 242-7469</strong> — we respond within 2 hours and can typically schedule within the same week.</p>
 </div>
 <div>
 <span class="section-label">Why Choose Braza in Winter Park</span>
@@ -659,6 +659,7 @@ html{scroll-padding-top:120px}
 <h3>Get Your Free Quote</h3>
 <p>We'll get back to you within 2 hours during business hours.</p>
 <form id="quoteForm" novalidate="">
+  <div aria-hidden="true" style="position:absolute;left:-9999px;overflow:hidden;width:1px;height:1px"><label>Leave this field empty<input autocomplete="off" tabindex="-1" type="checkbox" name="botcheck"></label></div>
 <input name="source" type="hidden" value="/cleaning-services/winter-park"/>
 <div class="form-row">
 <div class="form-group"><label>Your Name *</label><input name="name" placeholder="Jane Smith" required="" type="text"/></div>
@@ -820,13 +821,15 @@ var form=document.getElementById('quoteForm');
 if(form){
   form.addEventListener('submit',async function(e){
     e.preventDefault();
+    if(!form.checkValidity()){form.reportValidity();return;}
     var btn=document.getElementById('submitBtn');
     btn.disabled=true;btn.textContent='Sending...';
     var d={access_key:'b9aaee81-6717-4c66-ae45-d77d43ccef76',subject:'New Lead - Braza Cleaning Services',name:form.querySelector('[name=name]').value,phone:form.querySelector('[name=phone]').value,email:form.querySelector('[name=email]').value,service:form.querySelector('[name=service]').value,address:(form.querySelector('[name=address]')||{value:''}).value,city:form.querySelector('[name=city]').value,message:(form.querySelector('[name=message]')||{value:''}).value,referral:(form.querySelector('[name=referral]')||{value:''}).value};var _em=(d.email||'').trim();if(_em&&!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(_em)){d.message=(d.message?d.message+' | ':'')+'[Email entered (invalid format): '+_em+']';d.email='';}else{d.email=_em;}
     try{
       var res=await fetch('https://api.web3forms.com/submit',{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},body:JSON.stringify(d)});
-      if(res.ok){document.getElementById('formWrap').style.display='none';document.getElementById('formSuccess').style.display='block';}
-      else{var t=await res.text();throw new Error(t);}
+      var result=await res.json();
+      if(res.ok&&result&&result.success===true){document.getElementById('formWrap').style.display='none';document.getElementById('formSuccess').style.display='block';}
+      else{throw new Error((result&&result.message)||'Unable to send request');}
     }catch(err){btn.disabled=false;btn.textContent='Send My Request →';alert('Error: '+err.message+'. Please call us at (689) 242-7469');}
   });
 }

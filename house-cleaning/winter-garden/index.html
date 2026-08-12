@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>House Cleaning Winter Garden FL | Horizon West | Braza</title>
-<meta name="description" content="House cleaning Winter Garden FL — Horizon West, Waterleigh & Stoneybrook West. 5.0 ⭐ · 70 reviews. Same cleaner, no contracts. Free quote.">
+<meta name="description" content="House cleaning Winter Garden FL — Horizon West, Waterleigh & Stoneybrook West. Customer reviews on Google. Same cleaner, no contracts. Free quote.">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://brazacleaning.com/house-cleaning/winter-garden/">
 <link rel="icon" type="image/png" href="/images/logo.webp">
@@ -375,7 +375,7 @@ footer{background:#0F172A;color:rgba(255,255,255,.8);padding:64px 16px 32px}
 <meta property="og:image" content="https://brazacleaning.com/images/img-house-winter-garden.jpg">
 <meta property="og:type" content="website">
 <meta property="og:title" content="House Cleaning Winter Garden FL | Horizon West | Braza">
-<meta property="og:description" content="House cleaning Winter Garden FL — Horizon West, Waterleigh & Stoneybrook West. 5.0 ⭐ · 70 reviews. Same cleaner, no contracts. Free quote.">
+<meta property="og:description" content="House cleaning Winter Garden FL — Horizon West, Waterleigh & Stoneybrook West. Customer reviews on Google. Same cleaner, no contracts. Free quote.">
 <meta property="og:url" content="https://brazacleaning.com/house-cleaning/winter-garden/">
 <meta property="og:image" content="https://brazacleaning.com/images/img-house-winter-garden.jpg">
 <meta property="og:locale" content="en_US">
@@ -591,8 +591,8 @@ html{scroll-padding-top:120px}
     <div style="font-size:.8rem;color:var(--gray)">Median Home Value</div>
   </div>
   <div style="background:var(--gray-light);border-radius:12px;padding:1rem;text-align:center">
-    <div style="font-size:1.5rem;font-weight:700;color:var(--blue)">5.0 ⭐</div>
-    <div style="font-size:.8rem;color:var(--gray)">Braza Google Rating</div>
+    <div style="font-size:1.5rem;font-weight:700;color:var(--blue)">Trusted Local Service</div>
+    <div style="font-size:.8rem;color:var(--gray)">Customer reviews on Google</div>
   </div>
 </div>
 </div></div>
@@ -711,7 +711,7 @@ html{scroll-padding-top:120px}
 <div class="braza-stat-badge">
   <div class="braza-stat-icon">⭐</div>
   <div>
-    <p class="braza-stat-main"><strong>5.0 Google Rating</strong> with 70 verified reviews · Licensed, insured &amp; background-checked.</p>
+    <p class="braza-stat-main"><strong>Customer reviews on Google</strong> · Licensed, insured &amp; background-checked.</p>
     <p class="braza-stat-sub">40+ active clients across Central Florida · Re-clean guarantee within 24h</p>
   </div>
 </div>
@@ -757,6 +757,7 @@ html{scroll-padding-top:120px}
 <h3>Get Your Free Quote</h3>
 <p>We'll get back to you within 2 hours during business hours.</p>
 <form id="quoteForm" novalidate="">
+  <div aria-hidden="true" style="position:absolute;left:-9999px;overflow:hidden;width:1px;height:1px"><label>Leave this field empty<input autocomplete="off" tabindex="-1" type="checkbox" name="botcheck"></label></div>
 <input name="source" type="hidden" value="/house-cleaning/winter-garden"/>
 <div class="form-row">
 <div class="form-group"><label>Your Name *</label><input name="name" placeholder="Jane Smith" required="" type="text"/></div>
@@ -918,13 +919,15 @@ var form=document.getElementById('quoteForm');
 if(form){
   form.addEventListener('submit',async function(e){
     e.preventDefault();
+    if(!form.checkValidity()){form.reportValidity();return;}
     var btn=document.getElementById('submitBtn');
     btn.disabled=true;btn.textContent='Sending...';
     var d={access_key:'b9aaee81-6717-4c66-ae45-d77d43ccef76',subject:'New Lead - Braza Cleaning Services',name:form.querySelector('[name=name]').value,phone:form.querySelector('[name=phone]').value,email:form.querySelector('[name=email]').value,service:form.querySelector('[name=service]').value,address:(form.querySelector('[name=address]')||{value:''}).value,city:form.querySelector('[name=city]').value,message:(form.querySelector('[name=message]')||{value:''}).value,referral:(form.querySelector('[name=referral]')||{value:''}).value};var _em=(d.email||'').trim();if(_em&&!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(_em)){d.message=(d.message?d.message+' | ':'')+'[Email entered (invalid format): '+_em+']';d.email='';}else{d.email=_em;}
     try{
       var res=await fetch('https://api.web3forms.com/submit',{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},body:JSON.stringify(d)});
-      if(res.ok){document.getElementById('formWrap').style.display='none';document.getElementById('formSuccess').style.display='block';}
-      else{var t=await res.text();throw new Error(t);}
+      var result=await res.json();
+      if(res.ok&&result&&result.success===true){document.getElementById('formWrap').style.display='none';document.getElementById('formSuccess').style.display='block';}
+      else{throw new Error((result&&result.message)||'Unable to send request');}
     }catch(err){btn.disabled=false;btn.textContent='Send My Request →';alert('Error: '+err.message+'. Please call us at (689) 242-7469');}
   });
 }

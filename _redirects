@@ -23,6 +23,10 @@ http://www.brazacleaning.com/* https://brazacleaning.com/:splat 301!
 /airbnb-cleaning-orlando-fl/ https://brazacleaning.com/airbnb-cleaning/orlando/ 301!
 /airbnb-cleaning-orlando-fl https://brazacleaning.com/airbnb-cleaning/orlando/ 301!
 
+# Consolidate the duplicate root maid-services page into the residential owner URL.
+/maid-services/ https://brazacleaning.com/house-cleaning/ 301!
+/maid-services https://brazacleaning.com/house-cleaning/ 301!
+
 # Geographic correction (May 2026): vacation-rental pages removed for cities outside the
 # legitimate Disney STR corridor. Redirected to residential cleaning equivalents.
 /vacation-rental-cleaning/minneola/ https://brazacleaning.com/cleaning-services/minneola/ 301!
