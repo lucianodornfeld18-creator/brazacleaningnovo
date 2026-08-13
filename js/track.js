@@ -1,5 +1,5 @@
 /* Braza Cleaning conversion tracking (GA4 + Meta-ready)
-   Tracks successful Web3Forms leads plus phone and WhatsApp contacts.
+   Tracks successful Web3Forms leads plus contact/quote intent.
    Adds page and UTM attribution to Web3Forms submissions without changing
    the form markup duplicated across the static site. */
 (function () {
@@ -89,15 +89,27 @@
     return params;
   }
 
-  function trackContact(method, href) {
-    var params = eventParams({ contact_method: method, link_url: href });
+  function trackContact(method) {
+    // Do not send tel:, sms:, mailto: or WhatsApp URLs to analytics: each can
+    // contain a phone number, e-mail address, prefilled message, or other PII.
+    var params = eventParams({ contact_method: method });
     safeGtag('event', 'contact_attempt', params);
     metaTrack('Contact', { method: method });
   }
 
-  function isQuoteCta(href) {
-    return href === '#contact' || href === '/#contact' ||
-      href.indexOf('/contact/') === 0 || href.indexOf('brazacleaning.com/contact/') !== -1;
+  function quoteCtaTarget(href) {
+    href = (href || '').trim();
+    if (href === '#contact' || href === '/#contact') return 'contact_anchor';
+
+    try {
+      var url = new URL(href, window.location.origin);
+      var isInternal = url.origin === window.location.origin ||
+        url.hostname === 'brazacleaning.com' || url.hostname === 'www.brazacleaning.com';
+      var path = url.pathname.replace(/\/+$/, '') || '/';
+      if (isInternal && path === '/contact') return 'contact_page';
+    } catch (e) {}
+
+    return '';
   }
 
   document.addEventListener('click', function (event) {
@@ -106,15 +118,20 @@
 
     var href = link.getAttribute('href') || '';
     if (href.indexOf('tel:') === 0) {
-      trackContact('phone', href);
+      trackContact('phone');
     } else if (href.indexOf('wa.me') !== -1 || href.indexOf('whatsapp') !== -1) {
-      trackContact('whatsapp', href);
+      trackContact('whatsapp');
     } else if (href.indexOf('sms:') === 0) {
-      trackContact('sms', href);
+      trackContact('sms');
     } else if (href.indexOf('mailto:') === 0) {
-      trackContact('email', href);
-    } else if (isQuoteCta(href)) {
-      safeGtag('event', 'quote_cta_click', eventParams({ link_url: href }));
+      trackContact('email');
+    } else {
+      var ctaTarget = quoteCtaTarget(href);
+      if (ctaTarget) {
+        // A fixed target label preserves useful attribution without passing
+        // query strings or any arbitrary destination into GA4.
+        safeGtag('event', 'quote_cta_click', eventParams({ cta_target: ctaTarget }));
+      }
     }
   }, true);
 
