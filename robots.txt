@@ -1,20 +1,11 @@
 # Robots.txt for brazacleaning.com
 User-agent: *
 Allow: /
-Disallow: /thank-you/
-Disallow: /404
 Disallow: /admin/
 
-# Block query parameters
-Disallow: /*?*
-
-User-agent: Googlebot
-Allow: /
-Disallow: /thank-you
-
-User-agent: Bingbot
-Allow: /
-Disallow: /thank-you
+# Keep noindex URLs crawlable so search engines can process their noindex headers.
+# Query variants are also crawlable so their canonical tags can consolidate signals.
+Disallow: /404
 
 User-agent: GPTBot
 Allow: /

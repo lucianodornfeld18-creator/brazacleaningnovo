@@ -61,3 +61,11 @@
 # HighLevel chat page removed (Jul 2026)
 /chat/ /contact/ 301
 /chat /contact/ 301
+
+# Legacy URLs observed in Search Console (Aug 2026)
+/house-cleaning-orlando-fl/ /house-cleaning/orlando/ 301
+/house-cleaning-orlando-fl /house-cleaning/orlando/ 301
+/maid-service/ocoee/ /cleaning-services/ocoee/ 301
+/maid-service/ocoee /cleaning-services/ocoee/ 301
+/house-cleaning/sumterville/ /cleaning-services/the-villages/ 301
+/house-cleaning/sumterville /cleaning-services/the-villages/ 301

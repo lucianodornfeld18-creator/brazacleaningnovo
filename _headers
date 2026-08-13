@@ -33,6 +33,19 @@
 
 /thank-you/*
   X-Robots-Tag: noindex
+
+# Deployment-only operational files must remain out of search results.
+/automation/*
+  X-Robots-Tag: noindex, nofollow
+
+/SPRINT-2-ACTION-CHECKLIST.md
+  X-Robots-Tag: noindex, nofollow
+
+/blog-topics-bank.json
+  X-Robots-Tag: noindex, nofollow
+
+/_content_map.json
+  X-Robots-Tag: noindex, nofollow
 /*.html
   Cache-Control: public, max-age=3600, must-revalidate
 
