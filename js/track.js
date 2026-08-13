@@ -5,9 +5,37 @@
 (function () {
   'use strict';
 
+  // Keep all tracker state on window so an accidental duplicate script include
+  // cannot install a second set of listeners or send a second conversion.
+  var trackerState = window.__brazaConversionTrackingState;
+  if (!trackerState || typeof trackerState !== 'object') {
+    trackerState = {};
+    window.__brazaConversionTrackingState = trackerState;
+  }
+  if (trackerState.initialized) return;
+  trackerState.initialized = true;
+
   function safeGtag() {
-    if (typeof gtag === 'function') {
-      try { gtag.apply(null, arguments); } catch (e) {}
+    var args = arguments;
+    if (typeof window.gtag === 'function') {
+      try {
+        window.gtag.apply(window, args);
+        return true;
+      } catch (e) {}
+    }
+
+    // The inline Google tag normally creates this queue before this file loads.
+    // Create/use it defensively so events are retained if gtag.js is still loading.
+    try {
+      var queue = window.dataLayer;
+      if (!queue || typeof queue.push !== 'function') {
+        queue = [];
+        window.dataLayer = queue;
+      }
+      queue.push(args);
+      return true;
+    } catch (e) {
+      return false;
     }
   }
 
@@ -50,7 +78,9 @@
   function eventParams(extra) {
     var params = {
       page_path: window.location.pathname,
-      page_location: window.location.href,
+      // Do not pass arbitrary query-string values to GA. Campaign values below
+      // are intentionally allow-listed instead.
+      page_location: (window.location.origin || '') + window.location.pathname,
       page_title: document.title
     };
     var campaign = campaignParams();
@@ -98,13 +128,66 @@
   document.addEventListener('submit', function (event) {
     var form = event.target && event.target.matches && event.target.matches('form#quoteForm') ? event.target : null;
     if (!form) return;
+    // This is the only form_submit_attempt listener. The initialization guard
+    // above prevents a duplicated track.js include from adding another one.
     safeGtag('event', 'form_submit_attempt', eventParams({ form_id: 'quoteForm' }));
   }, true);
+
+  function emitLeadOnce() {
+    if (trackerState.generateLeadEmitted) return false;
+    trackerState.generateLeadEmitted = true;
+
+    // Deliberately exclude all submitted form fields: GA receives only fixed
+    // conversion metadata plus the allow-listed attribution in eventParams().
+    safeGtag('event', 'generate_lead', eventParams({
+      lead_type: 'quote_form',
+      form_id: 'quoteForm',
+      form_provider: 'web3forms'
+    }));
+    metaTrack('Lead', { content_name: 'quote_form' });
+    return true;
+  }
+
+  function isVisibleInlineSuccess(element) {
+    if (!element || element.hidden || element.getAttribute('aria-hidden') === 'true') return false;
+    if (!window.getComputedStyle) return element.style.display !== 'none';
+
+    var style = window.getComputedStyle(element);
+    return style.display !== 'none' && style.visibility !== 'hidden';
+  }
+
+  function observeInlineSuccess() {
+    function checkForSuccess() {
+      var success = document.getElementById('formSuccess');
+      if (isVisibleInlineSuccess(success)) emitLeadOnce();
+    }
+
+    checkForSuccess();
+    if (typeof window.MutationObserver !== 'function' || !document.documentElement) return;
+
+    var observer = new window.MutationObserver(function () {
+      checkForSuccess();
+      if (trackerState.generateLeadEmitted) observer.disconnect();
+    });
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ['aria-hidden', 'class', 'hidden', 'style'],
+      childList: true,
+      subtree: true
+    });
+  }
+
+  // Some pages display #formSuccess after consuming the response themselves.
+  // Observing it complements the fetch wrapper and uses the same once-per-page
+  // emitter, so the two confirmation signals cannot double-count a lead.
+  observeInlineSuccess();
 
   var originalFetch = window.fetch;
   if (!originalFetch) return;
 
-  window.fetch = function (input, init) {
+  if (originalFetch.__brazaWeb3FormsTracking) return;
+
+  var trackedFetch = function (input, init) {
     var url = (typeof input === 'string') ? input : (input && input.url) || '';
     var isWeb3FormsLead = url.indexOf('api.web3forms.com/submit') !== -1;
     var requestInit = init;
@@ -137,16 +220,14 @@
         if (!response || !response.ok || !response.clone) return;
         return response.clone().json().then(function (payload) {
           if (!payload || payload.success !== true) return;
-          safeGtag('event', 'generate_lead', eventParams({
-            lead_type: 'quote_form',
-            form_id: 'quoteForm',
-            form_provider: 'web3forms'
-          }));
-          metaTrack('Lead', { content_name: 'quote_form' });
+          emitLeadOnce();
         }).catch(function () {});
       }).catch(function () {});
     }
 
     return request;
   };
+
+  trackedFetch.__brazaWeb3FormsTracking = true;
+  window.fetch = trackedFetch;
 })();

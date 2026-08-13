@@ -54,7 +54,11 @@ def localbusiness_schema():
     return {"@context": "https://schema.org", "@type": "LocalBusiness",
             "@id": BASE + "/#organization", "name": "Braza Cleaning Services",
             "description": "Professional house cleaning, Airbnb cleaning, vacation rental cleaning and commercial cleaning in Central Florida.",
-            "telephone": "+1-689-242-7469", "url": BASE, "priceRange": "$$",
+            "telephone": "+16892427469", "email": "brazacleaningflorida@gmail.com",
+            "url": BASE, "priceRange": "$$",
+            "openingHoursSpecification": [{"@type": "OpeningHoursSpecification",
+                                           "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+                                           "opens": "00:00", "closes": "23:59"}],
             "areaServed": "Central Florida",
             "address": {"@type": "PostalAddress", "addressLocality": "Ocoee",
                         "addressRegion": "FL", "postalCode": "34761", "addressCountry": "US"}}
@@ -129,7 +133,7 @@ def render(d):
     # CTA (phone + form link — WhatsApp deprioritized per v2)
     cta = (f'<div class="cta-section" style="margin-top:40px;border-radius:16px">'
            f'<h2>Ready for a Professional Clean?</h2>'
-           f'<p>Serving Central Florida 7 days a week. Free quote in 2 hours.</p>'
+           f'<p>Available 24/7 across Central Florida. Free quote in 2 hours.</p>'
            f'<div class="cta-btns"><a href="/#contact" class="btn-white">Get Free Quote</a>'
            f'<a href="tel:{PHONE_TEL}" class="btn-orange-outline">📞 {PHONE_DISPLAY}</a></div></div>')
 
