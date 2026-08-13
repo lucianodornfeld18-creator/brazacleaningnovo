@@ -34,26 +34,19 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": ["LocalBusiness","HomeAndConstructionBusiness"],
-  "@id": "https://brazacleaning.com/airbnb-cleaning/#service",
-  "name": "Braza Cleaning Services — Airbnb Cleaning Services",
-  "description": "Airbnb cleaning and vacation rental turnover service in Central Florida, including Kissimmee, Davenport, Celebration, ChampionsGate and Orlando. Same-day turnover, linens, restocking and photo documentation.",
+  "@type": "Organization",
+  "@id": "https://brazacleaning.com/#organization",
+  "name": "Braza Cleaning Services",
+  "url": "https://brazacleaning.com/",
   "telephone": "+16892427469",
-  "url": "https://brazacleaning.com/airbnb-cleaning/",
-  "priceRange": "$$",
-  "image": "https://brazacleaning.com/images/logo.webp",
-  "areaServed": {"@type":"State","name":"Florida","containedInPlace":{"@type":"Country","name":"United States"}},
-  "geo": {"@type":"GeoCoordinates","latitude":28.2919,"longitude":-81.4076},
-  "address": {"@type":"PostalAddress","addressLocality":"Central Florida","addressRegion":"FL","postalCode":"34741","addressCountry":"US"},
-  "openingHoursSpecification": [
-    {"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],"opens":"00:00","closes":"23:59"}
-  ],
-  "sameAs": [
-    "https://www.facebook.com/brazacleaningflorida/",
-    "https://www.instagram.com/brazacleaningservicesfl/",
-    "https://www.yelp.com/biz/braza-cleaning-services-ocoee",
-    "https://www.thumbtack.com/fl/ocoee/house-cleaning/braza-cleaning-services/service/508112741687074822"
-  ]
+  "email": "brazacleaningflorida@gmail.com",
+  "logo": "https://brazacleaning.com/images/logo.webp",
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "contactType": "customer service",
+    "telephone": "+16892427469",
+    "email": "brazacleaningflorida@gmail.com"
+  }
 }
 </script>
 <script type="application/ld+json">
@@ -369,12 +362,25 @@ html{scroll-padding-top:120px}
   "@type": "Service",
   "@id": "https://brazacleaning.com/airbnb-cleaning/#airbnb-service",
   "name": "Airbnb Cleaning Service — Vacation Rental & Short-Term Rental Turnovers",
-  "provider": {"@id": "https://brazacleaning.com/airbnb-cleaning/#service"},
+  "provider": {
+    "@id": "https://brazacleaning.com/#organization"
+  },
   "areaServed": {
     "@type": "AdministrativeArea",
     "name": "Central Florida"
   },
-  "offers": {"@type": "AggregateOffer", "priceCurrency": "USD", "lowPrice": "120", "highPrice": "480", "offerCount": "8"}, "serviceType": ["Airbnb Cleaning","Vacation Rental Cleaning","Short-Term Rental Cleaning"],
+  "offers": {
+    "@type": "AggregateOffer",
+    "priceCurrency": "USD",
+    "lowPrice": "120",
+    "highPrice": "480",
+    "offerCount": "8"
+  },
+  "serviceType": [
+    "Airbnb Cleaning",
+    "Vacation Rental Cleaning",
+    "Short-Term Rental Cleaning"
+  ],
   "url": "https://brazacleaning.com/airbnb-cleaning/"
 }
 </script>

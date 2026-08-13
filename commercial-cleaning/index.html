@@ -29,27 +29,19 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": ["LocalBusiness","CleaningService"],
-  "@id": "https://brazacleaning.com/commercial-cleaning/#business",
-  "name": "Braza Cleaning Services — Commercial Cleaning",
-  "description": "Professional commercial cleaning services throughout Central Florida. Serving offices, retail spaces, medical offices, gyms, restaurants, and commercial properties in Orlando, Kissimmee, Clermont, Winter Garden, The Villages, and all surrounding areas. Daily, weekly, and custom commercial cleaning schedules available.",
+  "@type": "Organization",
+  "@id": "https://brazacleaning.com/#organization",
+  "name": "Braza Cleaning Services",
+  "url": "https://brazacleaning.com/",
   "telephone": "+16892427469",
-  "url": "https://brazacleaning.com/commercial-cleaning/",
-  "priceRange": "$$",
-  "image": "https://brazacleaning.com/images/logo.webp",
+  "email": "brazacleaningflorida@gmail.com",
   "logo": "https://brazacleaning.com/images/logo.webp",
-  "areaServed": [
-    {"@type":"City","name":"Orlando","containedInPlace":{"@type":"State","name":"Florida"}},
-    {"@type":"City","name":"Kissimmee","containedInPlace":{"@type":"State","name":"Florida"}},
-    {"@type":"City","name":"Clermont","containedInPlace":{"@type":"State","name":"Florida"}},
-    {"@type":"City","name":"Winter Garden","containedInPlace":{"@type":"State","name":"Florida"}},
-    {"@type":"City","name":"The Villages","containedInPlace":{"@type":"State","name":"Florida"}}
-  ],
-  "address": {"@type":"PostalAddress","addressRegion":"FL","addressCountry":"US"},
-  "openingHoursSpecification": [
-    {"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],"opens":"00:00","closes":"23:59"}
-  ]
-  
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "contactType": "customer service",
+    "telephone": "+16892427469",
+    "email": "brazacleaningflorida@gmail.com"
+  }
 }
 </script>
 <script type="application/ld+json">
@@ -365,23 +357,15 @@ html{scroll-padding-top:120px}
   "@type": "Service",
   "name": "Commercial Cleaning in Central Florida",
   "provider": {
-    "@type": "LocalBusiness",
-    "name": "Braza Cleaning Services",
-    "telephone": "+16892427469",
-    "url": "https://brazacleaning.com",
-    "sameAs": [
-    "https://www.facebook.com/brazacleaningflorida/",
-    "https://www.instagram.com/brazacleaningservicesfl/",
-    "https://www.yelp.com/biz/braza-cleaning-services-ocoee",
-    "https://www.thumbtack.com/fl/ocoee/house-cleaning/braza-cleaning-services/service/508112741687074822"
-  ]
+    "@id": "https://brazacleaning.com/#organization"
   },
   "areaServed": {
     "@type": "AdministrativeArea",
     "name": "Central Florida"
   },
   "serviceType": "Commercial Cleaning",
-  "url": "https://brazacleaning.com/commercial-cleaning/"
+  "url": "https://brazacleaning.com/commercial-cleaning/",
+  "@id": "https://brazacleaning.com/commercial-cleaning/#service"
 }
 </script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","url":"https://brazacleaning.com/commercial-cleaning/","speakable":{"@type":"SpeakableSpecification","cssSelector":["h1",".section-title"]}}</script>

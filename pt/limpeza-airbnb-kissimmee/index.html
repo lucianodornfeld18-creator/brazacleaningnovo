@@ -23,24 +23,19 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": ["LocalBusiness", "HomeAndConstructionBusiness"],
-  "@id": "https://brazacleaning.com/pt/limpeza-airbnb-kissimmee/#business",
-  "name": "Braza Cleaning Services — Limpeza de Airbnb Kissimmee",
-  "description": "Limpeza turnover de Airbnb e VRBO em Kissimmee, FL — empresa brasileira, atendimento bilíngue.",
+  "@type": "Organization",
+  "@id": "https://brazacleaning.com/#organization",
+  "name": "Braza Cleaning Services",
+  "url": "https://brazacleaning.com/",
   "telephone": "+16892427469",
-  "url": "https://brazacleaning.com/pt/limpeza-airbnb-kissimmee/",
-  "image": "https://brazacleaning.com/images/airbnb_kissimmee.webp",
-  "priceRange": "$$",
-  "address": {
-    "@type": "PostalAddress",
-    "addressLocality": "Kissimmee",
-    "addressRegion": "FL",
-    "postalCode": "34747",
-    "addressCountry": "US"
-  },
-  "areaServed": {"@type": "City", "name": "Kissimmee"},
-  "knowsLanguage": ["en", "pt"]
-  
+  "email": "brazacleaningflorida@gmail.com",
+  "logo": "https://brazacleaning.com/images/logo.webp",
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "contactType": "customer service",
+    "telephone": "+16892427469",
+    "email": "brazacleaningflorida@gmail.com"
+  }
 }
 </script>
 <script type="application/ld+json">
@@ -53,6 +48,23 @@
     {"@type":"Question","name":"Vocês atendem no mesmo dia em Kissimmee?","acceptedAnswer":{"@type":"Answer","text":"Sim — atendemos turnovers no mesmo dia (checkout 11h, check-in 16h) com equipe de 2-3 pessoas, 7 dias por semana, incluindo feriados."}},
     {"@type":"Question","name":"O que está incluído no turnover?","acceptedAnswer":{"@type":"Answer","text":"Troca completa de roupa de cama estilo hotel, banheiros higienizados, cozinha completa, áreas comuns, varrição da varanda da piscina, checklist final com fotos com horário enviadas pelo WhatsApp."}}
   ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "@id": "https://brazacleaning.com/pt/limpeza-airbnb-kissimmee/#service",
+  "name": "Limpeza de Airbnb em Kissimmee, FL",
+  "serviceType": "Limpeza de Airbnb",
+  "provider": {
+    "@id": "https://brazacleaning.com/#organization"
+  },
+  "areaServed": {
+    "@type": "City",
+    "name": "Kissimmee"
+  },
+  "url": "https://brazacleaning.com/pt/limpeza-airbnb-kissimmee/"
 }
 </script>
 <style>

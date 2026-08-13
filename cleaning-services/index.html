@@ -30,27 +30,19 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": ["LocalBusiness", "HomeAndConstructionBusiness"],
-  "@id": "https://brazacleaning.com/cleaning-services/central-florida/#business",
-  "name": "Braza Cleaning Services — Central Florida, FL",
-  "description": "Professional Airbnb and vacation rental turnover cleaning in Central Florida FL. Serving Reunion Resort, Storey Lake, Windsor Hills, Windsor at Westside, Solterra, Emerald Island, Celebration and all Disney-area short-term rental communities. Same-day turnover service available. Residential house cleaning also available throughout Osceola County.",
+  "@type": "Organization",
+  "@id": "https://brazacleaning.com/#organization",
+  "name": "Braza Cleaning Services",
+  "url": "https://brazacleaning.com/",
   "telephone": "+16892427469",
-  "url": "https://brazacleaning.com/cleaning-services/",
-  "priceRange": "$$",
-  "image": "https://brazacleaning.com/images/logo.webp",
+  "email": "brazacleaningflorida@gmail.com",
   "logo": "https://brazacleaning.com/images/logo.webp",
-  "areaServed": [
-    {"@type":"City","name":"Central Florida","containedInPlace":{"@type":"State","name":"Florida"}},
-    {"@type":"City","name":"Celebration","containedInPlace":{"@type":"State","name":"Florida"}},
-    {"@type":"City","name":"Davenport","containedInPlace":{"@type":"State","name":"Florida"}},
-    {"@type":"City","name":"Four Corners","containedInPlace":{"@type":"State","name":"Florida"}}
-  ],
-  "geo": {"@type":"GeoCoordinates","latitude":28.2919,"longitude":-81.4076},
-  "address": {"@type":"PostalAddress","addressLocality": "Ocoee","addressRegion":"FL","postalCode":"34741","addressCountry":"US"},
-  "openingHoursSpecification": [
-    {"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],"opens":"00:00","closes":"23:59"}
-  ]
-  
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "contactType": "customer service",
+    "telephone": "+16892427469",
+    "email": "brazacleaningflorida@gmail.com"
+  }
 }
 </script>
 <script type="application/ld+json">
@@ -366,23 +358,21 @@ html{scroll-padding-top:120px}
   "@type": "Service",
   "name": "Residential Cleaning in Central Florida",
   "provider": {
-    "@type": "LocalBusiness",
-    "name": "Braza Cleaning Services",
-    "telephone": "+16892427469",
-    "url": "https://brazacleaning.com",
-    "sameAs": [
-    "https://www.facebook.com/brazacleaningflorida/",
-    "https://www.instagram.com/brazacleaningservicesfl/",
-    "https://www.yelp.com/biz/braza-cleaning-services-ocoee",
-    "https://www.thumbtack.com/fl/ocoee/house-cleaning/braza-cleaning-services/service/508112741687074822"
-  ]
+    "@id": "https://brazacleaning.com/#organization"
   },
   "areaServed": {
     "@type": "AdministrativeArea",
     "name": "Central Florida"
   },
-  "offers": {"@type": "AggregateOffer", "priceCurrency": "USD", "lowPrice": "120", "highPrice": "380"}, "serviceType": "Residential Cleaning",
-  "url": "https://brazacleaning.com/cleaning-services/"
+  "offers": {
+    "@type": "AggregateOffer",
+    "priceCurrency": "USD",
+    "lowPrice": "120",
+    "highPrice": "380"
+  },
+  "serviceType": "Residential Cleaning",
+  "url": "https://brazacleaning.com/cleaning-services/",
+  "@id": "https://brazacleaning.com/cleaning-services/#service"
 }
 </script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","url":"https://brazacleaning.com/cleaning-services/","speakable":{"@type":"SpeakableSpecification","cssSelector":["h1",".section-title"]}}</script>

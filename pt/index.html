@@ -23,31 +23,58 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": ["LocalBusiness", "HomeAndConstructionBusiness"],
-  "@id": "https://brazacleaning.com/pt/#business",
+  "@type": "Organization",
+  "@id": "https://brazacleaning.com/#organization",
   "name": "Braza Cleaning Services",
-  "alternateName": "Braza Limpeza",
-  "description": "Empresa brasileira de limpeza profissional servindo Flórida Central — residencial, Airbnb e comercial.",
+  "url": "https://brazacleaning.com/",
   "telephone": "+16892427469",
-  "url": "https://brazacleaning.com/pt/",
-  "image": "https://brazacleaning.com/images/logo.webp",
-  "priceRange": "$$",
-  "address": {
-    "@type": "PostalAddress",
-    "addressLocality": "Ocoee",
-    "addressRegion": "FL",
-    "addressCountry": "US"
+  "email": "brazacleaningflorida@gmail.com",
+  "logo": "https://brazacleaning.com/images/logo.webp",
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "contactType": "customer service",
+    "telephone": "+16892427469",
+    "email": "brazacleaningflorida@gmail.com"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "@id": "https://brazacleaning.com/pt/#service",
+  "name": "Limpeza Profissional na Fl\u00f3rida Central",
+  "serviceType": "Limpeza profissional",
+  "provider": {
+    "@id": "https://brazacleaning.com/#organization"
   },
   "areaServed": [
-    {"@type": "City", "name": "Orlando"},
-    {"@type": "City", "name": "Kissimmee"},
-    {"@type": "City", "name": "Davenport"},
-    {"@type": "City", "name": "Winter Garden"},
-    {"@type": "City", "name": "Ocoee"},
-    {"@type": "City", "name": "Clermont"}
+    {
+      "@type": "City",
+      "name": "Orlando"
+    },
+    {
+      "@type": "City",
+      "name": "Kissimmee"
+    },
+    {
+      "@type": "City",
+      "name": "Davenport"
+    },
+    {
+      "@type": "City",
+      "name": "Winter Garden"
+    },
+    {
+      "@type": "City",
+      "name": "Ocoee"
+    },
+    {
+      "@type": "City",
+      "name": "Clermont"
+    }
   ],
-  
-  "knowsLanguage": ["en", "pt"]
+  "url": "https://brazacleaning.com/pt/"
 }
 </script>
 <style>

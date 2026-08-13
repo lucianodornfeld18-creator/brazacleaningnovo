@@ -34,25 +34,19 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": ["LocalBusiness","HomeAndConstructionBusiness"],
-  "@id": "https://brazacleaning.com/airbnb-cleaning/champions-gate/#business",
-  "name": "Braza Cleaning Services — Airbnb Cleaning ChampionsGate FL",
-  "description": "Professional Airbnb, vacation rental and short-term rental turnover cleaning in ChampionsGate FL. Serving ChampionsGate Resort, Oasis Club, The Retreat, The Vistas, Stoneybrook South, Country Club at ChampionsGate, Reunion Resort, Solterra and the Disney-area vacation rental corridor. Same-day turnovers available 7 days a week.",
+  "@type": "Organization",
+  "@id": "https://brazacleaning.com/#organization",
+  "name": "Braza Cleaning Services",
+  "url": "https://brazacleaning.com/",
   "telephone": "+16892427469",
-  "url": "https://brazacleaning.com/airbnb-cleaning/champions-gate/",
-  "priceRange": "$$",
-  "image": "https://brazacleaning.com/images/logo.webp",
-  "areaServed": [
-    {"@type":"Place","name":"ChampionsGate, FL"},
-    {"@type":"Place","name":"Reunion, FL"},
-    {"@type":"Place","name":"Davenport, FL"},
-    {"@type":"Place","name":"Four Corners, FL"}
-  ],
-  "geo": {"@type":"GeoCoordinates","latitude":28.2589,"longitude":-81.6234},
-  "address": {"@type":"PostalAddress","addressLocality":"ChampionsGate","addressRegion":"FL","postalCode":"33896","addressCountry":"US"},
-  "openingHoursSpecification": [
-    {"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],"opens":"00:00","closes":"23:59"}
-  ]
+  "email": "brazacleaningflorida@gmail.com",
+  "logo": "https://brazacleaning.com/images/logo.webp",
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "contactType": "customer service",
+    "telephone": "+16892427469",
+    "email": "brazacleaningflorida@gmail.com"
+  }
 }
 </script>
 <script type="application/ld+json">
@@ -60,15 +54,22 @@
   "@context": "https://schema.org",
   "@type": "Service",
   "serviceType": "Airbnb and vacation rental turnover cleaning",
-  "provider": {"@type":"LocalBusiness","name":"Braza Cleaning Services","telephone":"+16892427469"},
-  "areaServed": {"@type":"Place","name":"ChampionsGate, FL"},
+  "provider": {
+    "@id": "https://brazacleaning.com/#organization"
+  },
+  "areaServed": {
+    "@type": "Place",
+    "name": "ChampionsGate, FL"
+  },
   "offers": {
     "@type": "AggregateOffer",
     "priceCurrency": "USD",
     "lowPrice": "120",
     "highPrice": "500",
     "offerCount": "8"
-  }
+  },
+  "url": "https://brazacleaning.com/airbnb-cleaning/champions-gate/",
+  "@id": "https://brazacleaning.com/airbnb-cleaning/champions-gate/#service"
 }
 </script>
 <script type="application/ld+json">

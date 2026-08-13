@@ -31,11 +31,7 @@
   "@context": "https://schema.org",
   "@type": "AboutPage",
   "mainEntity": {
-    "@type": "LocalBusiness",
-    "name": "Braza Cleaning Services",
-    "description": "A young entrepreneurial couple building Central Florida's most trusted cleaning company — one spotless home at a time.",
-    "foundingDate": "2024"
-    
+    "@id": "https://brazacleaning.com/#organization"
   }
 }
 </script>
@@ -47,16 +43,7 @@
   "url": "https://brazacleaning.com/about",
   "description": "Braza Cleaning Services is a locally owned cleaning company serving Central Florida since 2024.",
   "mainEntity": {
-    "@type": "LocalBusiness",
-    "@id": "https://brazacleaning.com/#organization",
-    "name": "Braza Cleaning Services",
-    "foundingDate": "2024",
-    "founder": {"@type": "Person", "name": "Luana Braza"},
-    "description": "Professional house cleaning, Airbnb cleaning, vacation rental cleaning, commercial cleaning, and janitorial services throughout Central Florida.",
-    "areaServed": "Central Florida",
-    "telephone": "+16892427469",
-    "address": {"@type": "PostalAddress", "addressRegion": "FL", "addressCountry": "US"}
-    
+    "@id": "https://brazacleaning.com/#organization"
   }
 }
 </script>
@@ -315,27 +302,60 @@ html{scroll-padding-top:120px}
 {
   "@context": "https://schema.org",
   "@type": "Organization",
+  "@id": "https://brazacleaning.com/#organization",
   "name": "Braza Cleaning Services",
-  "url": "https://brazacleaning.com",
-  "logo": "https://brazacleaning.com/images/logo.webp",
+  "url": "https://brazacleaning.com/",
   "telephone": "+16892427469",
   "email": "brazacleaningflorida@gmail.com",
-  "areaServed": "Central Florida",
-  "sameAs": [
-    "https://www.facebook.com/brazacleaningflorida/",
-    "https://www.instagram.com/brazacleaningservicesfl/",
-    "https://www.yelp.com/biz/braza-cleaning-services-ocoee",
-    "https://www.thumbtack.com/fl/ocoee/house-cleaning/braza-cleaning-services/service/508112741687074822"
-  ]
+  "logo": "https://brazacleaning.com/images/logo.webp",
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "contactType": "customer service",
+    "telephone": "+16892427469",
+    "email": "brazacleaningflorida@gmail.com"
+  }
 }
 </script>
 <!-- v2 -->
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "JobPosting", "title": "Professional House Cleaner / Airbnb Turnover Specialist", "description": "Join the Braza Cleaning team! We're hiring professional house cleaners and Airbnb turnover specialists across Central Florida. Flexible schedules, competitive pay, and consistent work.", "datePosted": "2026-04-01", "validThrough": "2026-12-31", "employmentType": "CONTRACTOR", "hiringOrganization": {"@type": "Organization", "name": "Braza Cleaning Services", "sameAs": [
-    "https://www.facebook.com/brazacleaningflorida/",
-    "https://www.instagram.com/brazacleaningservicesfl/",
-    "https://www.yelp.com/biz/braza-cleaning-services-ocoee",
-    "https://www.thumbtack.com/fl/ocoee/house-cleaning/braza-cleaning-services/service/508112741687074822"
-  ], "logo": "https://brazacleaning.com/images/logo.webp"}, "jobLocation": {"@type": "Place", "address": {"@type": "PostalAddress", "addressLocality": "Ocoee", "addressRegion": "FL", "addressCountry": "US"}}, "baseSalary": {"@type": "MonetaryAmount", "currency": "USD", "value": {"@type": "QuantitativeValue", "minValue": 18, "maxValue": 28, "unitText": "HOUR"}}, "applicantLocationRequirements": {"@type": "State", "name": "Florida"}}</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "JobPosting",
+  "title": "Professional House Cleaner / Airbnb Turnover Specialist",
+  "description": "Join the Braza Cleaning team! We're hiring professional house cleaners and Airbnb turnover specialists across Central Florida. Flexible schedules, competitive pay, and consistent work.",
+  "datePosted": "2026-04-01",
+  "validThrough": "2026-12-31",
+  "employmentType": "CONTRACTOR",
+  "hiringOrganization": {
+    "@id": "https://brazacleaning.com/#organization",
+    "@type": "Organization",
+    "name": "Braza Cleaning Services"
+  },
+  "jobLocation": {
+    "@type": "Place",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Ocoee",
+      "addressRegion": "FL",
+      "addressCountry": "US"
+    }
+  },
+  "baseSalary": {
+    "@type": "MonetaryAmount",
+    "currency": "USD",
+    "value": {
+      "@type": "QuantitativeValue",
+      "minValue": 18,
+      "maxValue": 28,
+      "unitText": "HOUR"
+    }
+  },
+  "applicantLocationRequirements": {
+    "@type": "State",
+    "name": "Florida"
+  }
+}
+</script>
 <!-- Google Analytics 4 -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-5YVG8BKPSD"></script>
 <script>

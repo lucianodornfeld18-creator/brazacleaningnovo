@@ -23,24 +23,19 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": ["LocalBusiness", "HomeAndConstructionBusiness"],
-  "@id": "https://brazacleaning.com/pt/limpeza-residencial-orlando/#business",
-  "name": "Braza Cleaning Services — Limpeza Residencial Orlando",
-  "description": "Limpeza residencial de casas em Orlando, FL — empresa brasileira, atendimento bilíngue. Faxina recorrente, limpeza pesada e de mudança.",
+  "@type": "Organization",
+  "@id": "https://brazacleaning.com/#organization",
+  "name": "Braza Cleaning Services",
+  "url": "https://brazacleaning.com/",
   "telephone": "+16892427469",
-  "url": "https://brazacleaning.com/pt/limpeza-residencial-orlando/",
-  "image": "https://brazacleaning.com/images/img-house-winter-garden.jpg",
-  "priceRange": "$$",
-  "address": {
-    "@type": "PostalAddress",
-    "addressLocality": "Orlando",
-    "addressRegion": "FL",
-    "postalCode": "32819",
-    "addressCountry": "US"
-  },
-  "areaServed": {"@type": "City", "name": "Orlando"},
-  "knowsLanguage": ["en", "pt"]
-  
+  "email": "brazacleaningflorida@gmail.com",
+  "logo": "https://brazacleaning.com/images/logo.webp",
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "contactType": "customer service",
+    "telephone": "+16892427469",
+    "email": "brazacleaningflorida@gmail.com"
+  }
 }
 </script>
 <script type="application/ld+json">
@@ -53,6 +48,23 @@
     {"@type":"Question","name":"Posso ter sempre a mesma equipe de limpeza?","acceptedAnswer":{"@type":"Answer","text":"Sim — clientes recorrentes recebem uma equipe fixa de 2 pessoas que conhece sua casa, suas preferências e seu horário. É um dos nossos principais compromissos."}},
     {"@type":"Question","name":"Vocês são licenciados e segurados?","acceptedAnswer":{"@type":"Answer","text":"Sim — a Braza Cleaning Services é licenciada, bonded e totalmente segurada na Flórida. Toda a equipe passa por verificação de antecedentes antes da contratação."}}
   ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "@id": "https://brazacleaning.com/pt/limpeza-residencial-orlando/#service",
+  "name": "Limpeza Residencial em Orlando, FL",
+  "serviceType": "Limpeza residencial",
+  "provider": {
+    "@id": "https://brazacleaning.com/#organization"
+  },
+  "areaServed": {
+    "@type": "City",
+    "name": "Orlando"
+  },
+  "url": "https://brazacleaning.com/pt/limpeza-residencial-orlando/"
 }
 </script>
 <style>

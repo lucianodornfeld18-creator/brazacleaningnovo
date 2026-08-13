@@ -46,41 +46,19 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "HomeAndConstructionBusiness",
-  "@id": "https://brazacleaning.com/#business",
-  "name": "Braza Cleaning Services LLC",
-  "image": "https://brazacleaning.com/images/img-airbnb-kissimmee.jpg",
+  "@type": "Organization",
+  "@id": "https://brazacleaning.com/#organization",
+  "name": "Braza Cleaning Services",
   "url": "https://brazacleaning.com/",
   "telephone": "+16892427469",
-  "priceRange": "$$",
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "Ocoee",
-    "addressLocality": "Ocoee",
-    "addressRegion": "FL",
-    "postalCode": "34761",
-    "addressCountry": "US"
-  },
-  "geo": {"@type": "GeoCoordinates", "latitude": 28.5692, "longitude": -81.5440},
-  "openingHoursSpecification": [
-    {"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],"opens":"00:00","closes":"23:59"}
-  ],
-  "areaServed": [
-    {"@type": "City", "name": "Orlando"},
-    {"@type": "City", "name": "Kissimmee"},
-    {"@type": "City", "name": "Davenport"},
-    {"@type": "City", "name": "Celebration"},
-    {"@type": "City", "name": "Clermont"},
-    {"@type": "City", "name": "Winter Garden"},
-    {"@type": "City", "name": "Windermere"},
-    {"@type": "City", "name": "Ocoee"},
-    {"@type": "City", "name": "The Villages"}
-  ],
-  "sameAs": [
-    "https://www.google.com/maps?cid=brazacleaning",
-    "https://www.facebook.com/brazacleaning",
-    "https://www.instagram.com/brazacleaning"
-  ]
+  "email": "brazacleaningflorida@gmail.com",
+  "logo": "https://brazacleaning.com/images/logo.webp",
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "contactType": "customer service",
+    "telephone": "+16892427469",
+    "email": "brazacleaningflorida@gmail.com"
+  }
 }
 </script>
 <script type="application/ld+json">
@@ -89,14 +67,36 @@
   "@type": "Service",
   "name": "Airbnb Turnover Cleaning",
   "serviceType": "Vacation rental turnover cleaning",
-  "provider": {"@id": "https://brazacleaning.com/#business"},
+  "provider": {
+    "@id": "https://brazacleaning.com/#organization"
+  },
   "areaServed": [
-    {"@type": "City", "name": "Kissimmee"},
-    {"@type": "City", "name": "Davenport"},
-    {"@type": "City", "name": "Celebration"},
-    {"@type": "City", "name": "Orlando"}
+    {
+      "@type": "City",
+      "name": "Kissimmee"
+    },
+    {
+      "@type": "City",
+      "name": "Davenport"
+    },
+    {
+      "@type": "City",
+      "name": "Celebration"
+    },
+    {
+      "@type": "City",
+      "name": "Orlando"
+    }
   ],
-  "offers": {"@type": "AggregateOffer", "lowPrice": "120", "highPrice": "500", "priceCurrency": "USD", "offerCount": "9"}
+  "offers": {
+    "@type": "AggregateOffer",
+    "lowPrice": "120",
+    "highPrice": "500",
+    "priceCurrency": "USD",
+    "offerCount": "9"
+  },
+  "url": "https://brazacleaning.com/airbnb-cleaning-cost-calculator/",
+  "@id": "https://brazacleaning.com/airbnb-cleaning-cost-calculator/#service"
 }
 </script>
 <script type="application/ld+json">
@@ -105,15 +105,40 @@
   "@type": "Service",
   "name": "House Cleaning",
   "serviceType": "Residential house cleaning, deep cleaning, move-out cleaning, recurring maid service",
-  "provider": {"@id": "https://brazacleaning.com/#business"},
+  "provider": {
+    "@id": "https://brazacleaning.com/#organization"
+  },
   "areaServed": [
-    {"@type": "City", "name": "Orlando"},
-    {"@type": "City", "name": "Clermont"},
-    {"@type": "City", "name": "Winter Garden"},
-    {"@type": "City", "name": "Windermere"},
-    {"@type": "City", "name": "The Villages"}
+    {
+      "@type": "City",
+      "name": "Orlando"
+    },
+    {
+      "@type": "City",
+      "name": "Clermont"
+    },
+    {
+      "@type": "City",
+      "name": "Winter Garden"
+    },
+    {
+      "@type": "City",
+      "name": "Windermere"
+    },
+    {
+      "@type": "City",
+      "name": "The Villages"
+    }
   ],
-  "offers": {"@type": "AggregateOffer", "lowPrice": "120", "highPrice": "500", "priceCurrency": "USD", "offerCount": "9"}
+  "offers": {
+    "@type": "AggregateOffer",
+    "lowPrice": "120",
+    "highPrice": "500",
+    "priceCurrency": "USD",
+    "offerCount": "9"
+  },
+  "url": "https://brazacleaning.com/airbnb-cleaning-cost-calculator/",
+  "@id": "https://brazacleaning.com/airbnb-cleaning-cost-calculator/#service-residential-house-cleaning-deep-cleaning-move-out-cleaning-recurring-mai"
 }
 </script>
 <script type="application/ld+json">

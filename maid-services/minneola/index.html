@@ -247,32 +247,19 @@ footer{background:#0F172A;color:rgba(255,255,255,.8);padding:64px 16px 32px}
   "@context": "https://schema.org",
   "@graph": [
     {
-      "@type": [
-        "LocalBusiness",
-        "HomeAndConstructionBusiness"
-      ],
-      "@id": "https://brazacleaning.com/maid-services/minneola/#business",
+      "@type": "Organization",
+      "@id": "https://brazacleaning.com/#organization",
       "name": "Braza Cleaning Services",
-      "description": "Professional maid services in Minneola, FL. Recurring house cleaning, deep cleaning, and move-out services for Lake County. Licensed, insured, background-checked.",
-      "url": "https://brazacleaning.com/maid-services/minneola/",
+      "url": "https://brazacleaning.com/",
       "telephone": "+16892427469",
-      "image": "https://brazacleaning.com/images/img-bathroom-minneola.jpg",
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Minneola",
-        "addressRegion": "FL",
-        "addressCountry": "US"
-      },
-      "areaServed": {
-        "@type": "City",
-        "name": "Minneola"
-      },
-      
-      "priceRange": "$$",
-      "openingHoursSpecification": [
-        {"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],"opens":"00:00","closes":"23:59"}
-      ]
-      
+      "email": "brazacleaningflorida@gmail.com",
+      "logo": "https://brazacleaning.com/images/logo.webp",
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "customer service",
+        "telephone": "+16892427469",
+        "email": "brazacleaningflorida@gmail.com"
+      }
     },
     {
       "@type": "FAQPage",
@@ -282,7 +269,7 @@ footer{background:#0F172A;color:rgba(255,255,255,.8);padding:64px 16px 32px}
           "name": "How much does maid service cost in Minneola?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Maid service in Minneola typically ranges from $90\u2013$130 for a 1-bedroom to $230+ for 5+ bedrooms for a regular clean. Deep cleaning runs higher. Contact Braza Cleaning for a free custom quote."
+            "text": "Maid service in Minneola typically ranges from $90–$130 for a 1-bedroom to $230+ for 5+ bedrooms for a regular clean. Deep cleaning runs higher. Contact Braza Cleaning for a free custom quote."
           }
         },
         {
@@ -290,7 +277,7 @@ footer{background:#0F172A;color:rgba(255,255,255,.8);padding:64px 16px 32px}
           "name": "Do you offer recurring maid service in Minneola?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Yes \u2014 we offer weekly, bi-weekly, and monthly recurring maid service in Minneola, FL. Recurring clients receive priority scheduling and consistent cleaning teams."
+            "text": "Yes — we offer weekly, bi-weekly, and monthly recurring maid service in Minneola, FL. Recurring clients receive priority scheduling and consistent cleaning teams."
           }
         },
         {
@@ -306,7 +293,7 @@ footer{background:#0F172A;color:rgba(255,255,255,.8);padding:64px 16px 32px}
           "name": "Do you serve all Minneola neighborhoods?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Yes \u2014 we serve all Minneola neighborhoods including Kings Ridge, Minneola Hills, Hills of Minneola, South Lake Trail and all surrounding ZIP codes 34715."
+            "text": "Yes — we serve all Minneola neighborhoods including Kings Ridge, Minneola Hills, Hills of Minneola, South Lake Trail and all surrounding ZIP codes 34715."
           }
         },
         {
@@ -394,16 +381,7 @@ html{scroll-padding-top:120px}
   "@type": "Service",
   "name": "Maid Service in Minneola, FL",
   "provider": {
-    "@type": "LocalBusiness",
-    "name": "Braza Cleaning Services",
-    "telephone": "+16892427469",
-    "url": "https://brazacleaning.com",
-    "sameAs": [
-    "https://www.facebook.com/brazacleaningflorida/",
-    "https://www.instagram.com/brazacleaningservicesfl/",
-    "https://www.yelp.com/biz/braza-cleaning-services-ocoee",
-    "https://www.thumbtack.com/fl/ocoee/house-cleaning/braza-cleaning-services/service/508112741687074822"
-  ]
+    "@id": "https://brazacleaning.com/#organization"
   },
   "areaServed": {
     "@type": "City",
@@ -413,8 +391,15 @@ html{scroll-padding-top:120px}
       "name": "Florida"
     }
   },
-  "offers": {"@type": "AggregateOffer", "priceCurrency": "USD", "lowPrice": "120", "highPrice": "380"}, "serviceType": "Maid Service",
-  "url": "https://brazacleaning.com/maid-services/minneola/"
+  "offers": {
+    "@type": "AggregateOffer",
+    "priceCurrency": "USD",
+    "lowPrice": "120",
+    "highPrice": "380"
+  },
+  "serviceType": "Maid Service",
+  "url": "https://brazacleaning.com/maid-services/minneola/",
+  "@id": "https://brazacleaning.com/maid-services/minneola/#service"
 }
 </script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","url":"https://brazacleaning.com/maid-services/minneola/","speakable":{"@type":"SpeakableSpecification","cssSelector":["h1",".section-title"]}}</script>

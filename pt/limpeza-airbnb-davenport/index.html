@@ -23,24 +23,19 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": ["LocalBusiness", "HomeAndConstructionBusiness"],
-  "@id": "https://brazacleaning.com/pt/limpeza-airbnb-davenport/#business",
-  "name": "Braza Cleaning Services — Limpeza de Airbnb Davenport",
-  "description": "Limpeza turnover de Airbnb e VRBO em Davenport, FL — empresa brasileira, atendimento bilíngue.",
+  "@type": "Organization",
+  "@id": "https://brazacleaning.com/#organization",
+  "name": "Braza Cleaning Services",
+  "url": "https://brazacleaning.com/",
   "telephone": "+16892427469",
-  "url": "https://brazacleaning.com/pt/limpeza-airbnb-davenport/",
-  "image": "https://brazacleaning.com/images/img-bed-davenport.jpg",
-  "priceRange": "$$",
-  "address": {
-    "@type": "PostalAddress",
-    "addressLocality": "Davenport",
-    "addressRegion": "FL",
-    "postalCode": "33897",
-    "addressCountry": "US"
-  },
-  "areaServed": {"@type": "City", "name": "Davenport"},
-  "knowsLanguage": ["en", "pt"]
-  
+  "email": "brazacleaningflorida@gmail.com",
+  "logo": "https://brazacleaning.com/images/logo.webp",
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "contactType": "customer service",
+    "telephone": "+16892427469",
+    "email": "brazacleaningflorida@gmail.com"
+  }
 }
 </script>
 <script type="application/ld+json">
@@ -53,6 +48,23 @@
     {"@type":"Question","name":"Vocês atendem casas de resort grandes em ChampionsGate e Solterra?","acceptedAnswer":{"@type":"Answer","text":"Sim — as casas de resort de 5 a 12 quartos em ChampionsGate, Solterra, Providence e Windsor Island são nossa especialidade, incluindo casas com piscina, game room e cinema."}},
     {"@type":"Question","name":"Vocês atendem no mesmo dia em Davenport?","acceptedAnswer":{"@type":"Answer","text":"Sim — atendemos turnovers no mesmo dia (checkout 11h, check-in 16h) com equipe de 2-3 pessoas, 7 dias por semana, incluindo feriados."}}
   ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "@id": "https://brazacleaning.com/pt/limpeza-airbnb-davenport/#service",
+  "name": "Limpeza de Airbnb em Davenport, FL",
+  "serviceType": "Limpeza de Airbnb",
+  "provider": {
+    "@id": "https://brazacleaning.com/#organization"
+  },
+  "areaServed": {
+    "@type": "City",
+    "name": "Davenport"
+  },
+  "url": "https://brazacleaning.com/pt/limpeza-airbnb-davenport/"
 }
 </script>
 <style>

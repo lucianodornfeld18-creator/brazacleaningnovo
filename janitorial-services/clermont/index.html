@@ -13,43 +13,19 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": [
-    "LocalBusiness",
-    "HomeAndConstructionBusiness"
-  ],
-  "@id": "https://brazacleaning.com/janitorial-services/clermont/#business",
-  "name": "Braza Cleaning \u2014 Janitorial Services Clermont FL",
-  "description": "Professional janitorial and commercial cleaning in Clermont FL.",
+  "@type": "Organization",
+  "@id": "https://brazacleaning.com/#organization",
+  "name": "Braza Cleaning Services",
+  "url": "https://brazacleaning.com/",
   "telephone": "+16892427469",
-  "url": "https://brazacleaning.com/janitorial-services/clermont/",
-  "priceRange": "$$",
-  "image": "https://brazacleaning.com/images/logo.webp",
-  "areaServed": [
-    {
-      "@type": "City",
-      "name": "Clermont",
-      "containedInPlace": {
-        "@type": "State",
-        "name": "Florida"
-      }
-    }
-  ],
-  "geo": {
-    "@type": "GeoCoordinates",
-    "latitude": 28.5494,
-    "longitude": -81.7729
-  },
-  "address": {
-    "@type": "PostalAddress",
-    "addressLocality": "Clermont",
-    "addressRegion": "FL",
-    "postalCode": "34711",
-    "addressCountry": "US"
-  },
-  "openingHoursSpecification": [
-    {"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],"opens":"00:00","closes":"23:59"}
-  ]
-  
+  "email": "brazacleaningflorida@gmail.com",
+  "logo": "https://brazacleaning.com/images/logo.webp",
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "contactType": "customer service",
+    "telephone": "+16892427469",
+    "email": "brazacleaningflorida@gmail.com"
+  }
 }
 </script>
 <script type="application/ld+json">
@@ -440,16 +416,7 @@ html{scroll-padding-top:120px}
   "@type": "Service",
   "name": "Janitorial Services in Clermont, FL",
   "provider": {
-    "@type": "LocalBusiness",
-    "name": "Braza Cleaning Services",
-    "telephone": "+16892427469",
-    "url": "https://brazacleaning.com",
-    "sameAs": [
-    "https://www.facebook.com/brazacleaningflorida/",
-    "https://www.instagram.com/brazacleaningservicesfl/",
-    "https://www.yelp.com/biz/braza-cleaning-services-ocoee",
-    "https://www.thumbtack.com/fl/ocoee/house-cleaning/braza-cleaning-services/service/508112741687074822"
-  ]
+    "@id": "https://brazacleaning.com/#organization"
   },
   "areaServed": {
     "@type": "City",
@@ -460,7 +427,8 @@ html{scroll-padding-top:120px}
     }
   },
   "serviceType": "Janitorial Services",
-  "url": "https://brazacleaning.com/janitorial-services/clermont/"
+  "url": "https://brazacleaning.com/janitorial-services/clermont/",
+  "@id": "https://brazacleaning.com/janitorial-services/clermont/#service"
 }
 </script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","url":"https://brazacleaning.com/janitorial-services/clermont/","speakable":{"@type":"SpeakableSpecification","cssSelector":["h1",".section-title"]}}</script>
