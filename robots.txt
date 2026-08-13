@@ -4,7 +4,6 @@ Allow: /
 Disallow: /thank-you/
 Disallow: /404
 Disallow: /admin/
-Disallow: /office-cleaning/
 
 # Block query parameters
 Disallow: /*?*

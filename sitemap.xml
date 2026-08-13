@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap-0.9">
   <url>
     <loc>https://brazacleaning.com/</loc>
-    <lastmod>2026-05-14</lastmod>
+<lastmod>2026-08-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
@@ -14,13 +14,13 @@
   </url>
   <url>
     <loc>https://brazacleaning.com/house-cleaning/</loc>
-    <lastmod>2026-05-14</lastmod>
+<lastmod>2026-08-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.95</priority>
   </url>
   <url>
     <loc>https://brazacleaning.com/airbnb-cleaning/</loc>
-    <lastmod>2026-05-14</lastmod>
+<lastmod>2026-08-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.95</priority>
   </url>
@@ -38,78 +38,121 @@
   </url>
   <url>
     <loc>https://brazacleaning.com/vacation-rental-cleaning/</loc>
-    <lastmod>2026-05-14</lastmod>
+<lastmod>2026-08-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.95</priority>
   </url>
   <url>
     <loc>https://brazacleaning.com/deep-cleaning/</loc>
-    <lastmod>2026-05-14</lastmod>
+<lastmod>2026-08-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.95</priority>
   </url>
   <url>
     <loc>https://brazacleaning.com/move-out-cleaning/</loc>
-    <lastmod>2026-05-14</lastmod>
+<lastmod>2026-08-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.95</priority>
   </url>
   <url>
     <loc>https://brazacleaning.com/move-in-cleaning/</loc>
-    <lastmod>2026-05-14</lastmod>
+<lastmod>2026-08-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.95</priority>
   </url>
   <url>
     <loc>https://brazacleaning.com/post-construction-cleaning/</loc>
-    <lastmod>2026-05-14</lastmod>
+<lastmod>2026-08-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.95</priority>
   </url>
   <url>
     <loc>https://brazacleaning.com/recurring-cleaning/</loc>
-    <lastmod>2026-05-14</lastmod>
+<lastmod>2026-08-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.95</priority>
   </url>
   <url>
     <loc>https://brazacleaning.com/commercial-cleaning/</loc>
-    <lastmod>2026-05-14</lastmod>
+<lastmod>2026-08-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.95</priority>
   </url>
   <url>
     <loc>https://brazacleaning.com/janitorial-services/</loc>
-    <lastmod>2026-05-14</lastmod>
+<lastmod>2026-08-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.95</priority>
   </url>
   <url>
-    <lastmod>2026-05-14</lastmod>
+    <loc>https://brazacleaning.com/office-cleaning/</loc>
+    <lastmod>2026-08-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.95</priority>
+  </url>
+  <url>
+    <loc>https://brazacleaning.com/office-cleaning/orlando/</loc>
+    <lastmod>2026-08-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://brazacleaning.com/office-cleaning/winter-garden/</loc>
+    <lastmod>2026-08-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://brazacleaning.com/office-cleaning/kissimmee/</loc>
+    <lastmod>2026-08-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://brazacleaning.com/office-cleaning/ocoee/</loc>
+    <lastmod>2026-08-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://brazacleaning.com/office-cleaning/clermont/</loc>
+    <lastmod>2026-08-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://brazacleaning.com/office-cleaning/davenport/</loc>
+    <lastmod>2026-08-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://brazacleaning.com/office-cleaning/apopka/</loc>
+    <lastmod>2026-08-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
   </url>
   <url>
     <loc>https://brazacleaning.com/cleaning-services/</loc>
-    <lastmod>2026-05-14</lastmod>
+<lastmod>2026-08-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.90</priority>
   </url>
   <url>
     <loc>https://brazacleaning.com/airbnb-cleaning/orlando/</loc>
-    <lastmod>2026-05-14</lastmod>
+<lastmod>2026-08-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.90</priority>
   </url>
   <url>
     <loc>https://brazacleaning.com/airbnb-cleaning/kissimmee/</loc>
-    <lastmod>2026-05-14</lastmod>
+<lastmod>2026-08-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.90</priority>
   </url>
   <url>
     <loc>https://brazacleaning.com/airbnb-cleaning/davenport/</loc>
-    <lastmod>2026-05-14</lastmod>
+<lastmod>2026-08-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.90</priority>
   </url>
