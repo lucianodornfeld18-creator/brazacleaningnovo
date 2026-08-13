@@ -148,6 +148,11 @@
     return true;
   }
 
+  // Form handlers call this after their own Web3Forms success check. Exposing
+  // the same once-only emitter keeps the inline fallback and fetch observer
+  // from ever creating two GA4 conversions for one lead.
+  window.__brazaTrackLeadSuccess = emitLeadOnce;
+
   function isVisibleInlineSuccess(element) {
     if (!element || element.hidden || element.getAttribute('aria-hidden') === 'true') return false;
     if (!window.getComputedStyle) return element.style.display !== 'none';

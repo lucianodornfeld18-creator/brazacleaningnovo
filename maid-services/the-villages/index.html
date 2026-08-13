@@ -943,7 +943,7 @@ if(form){
     try{
       var res=await fetch('https://api.web3forms.com/submit',{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},body:JSON.stringify(d)});
       var result=await res.json();
-      if(res.ok&&result&&result.success===true){document.getElementById('formWrap').style.display='none';document.getElementById('formSuccess').style.display='block';}
+      if(res.ok&&result&&result.success===true){if(typeof window.__brazaTrackLeadSuccess==='function'){window.__brazaTrackLeadSuccess();}else if(typeof window.gtag==='function'){window.gtag('event','generate_lead',{lead_type:'quote_form',form_id:'quoteForm',form_provider:'web3forms'});}document.getElementById('formWrap').style.display='none';document.getElementById('formSuccess').style.display='block';}
       else{throw new Error((result&&result.message)||'Unable to send request');}
     }catch(err){btn.disabled=false;btn.textContent='Send My Request →';alert('Error: '+err.message+'. Please call us at (689) 242-7469');}
   });
